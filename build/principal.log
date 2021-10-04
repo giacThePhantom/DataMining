@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.30)  13 SEP 2021 14:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.30)  4 OCT 2021 15:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Principal.tex
-(./Principal.tex
+**principal.tex
+(./principal.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18> (./prefix.tex
 (/usr/share/texmf-dist/tex/latex/base/book.cls
@@ -64,16 +64,15 @@ File: babel.def 2021/03/24 3.56 Babel common definitions
 )
 \bbl@dirlevel=\count192
 
-(/usr/share/texmf-dist/tex/generic/babel-italian/italian.ldf
-Language: italian 2020/05/21 v.1.4.04 Italian support for the babel system
-\it@lettering=\count193
-\it@doublequoteactive=\count194
-\it@ISOcompliance=\count195
+(/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: \l@canadian = using hyphenrules for english
+(babel)             (\language0) on input line 102.
+Package babel Info: \l@australian = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 105.
+Package babel Info: \l@newzealand = using hyphenrules for ukenglish
+(babel)             (\language21) on input line 108.
 ))
-(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count196
-)
 (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2020/08/01 v1.3d Input encoding file
 \inpenc@prehook=\toks17
@@ -102,13 +101,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count197
+\inf@bad=\count193
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count198
-\leftroot@=\count199
+\uproot@=\count194
+\leftroot@=\count195
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count266
-\DOTSCASE@=\count267
+\classnum@=\count196
+\DOTSCASE@=\count197
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -117,15 +116,15 @@ LaTeX Info: Redefining \cdots on input line 620.
 \big@size=\dimen150
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count268
-\c@MaxMatrixCols=\count269
+\macc@depth=\count198
+\c@MaxMatrixCols=\count199
 \dotsspace@=\muskip16
-\c@parentequation=\count270
-\dspbrk@lvl=\count271
+\c@parentequation=\count266
+\dspbrk@lvl=\count267
 \tag@help=\toks20
-\row@=\count272
-\column@=\count273
-\maxfields@=\count274
+\row@=\count268
+\column@=\count269
+\maxfields@=\count270
 \andhelp@=\toks21
 \eqnshift@=\dimen151
 \alignsep@=\dimen152
@@ -141,23 +140,23 @@ LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count275
+\lst@mode=\count271
 \lst@gtempboxa=\box49
 \lst@token=\toks24
-\lst@length=\count276
+\lst@length=\count272
 \lst@currlwidth=\dimen157
-\lst@column=\count277
-\lst@pos=\count278
+\lst@column=\count273
+\lst@pos=\count274
 \lst@lostspace=\dimen158
 \lst@width=\dimen159
-\lst@newlines=\count279
-\lst@lineno=\count280
+\lst@newlines=\count275
+\lst@lineno=\count276
 \lst@maxwidth=\dimen160
 
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count281
-\lst@skipnumbers=\count282
+\c@lstnumber=\count277
+\lst@skipnumbers=\count278
 \lst@framebox=\box50
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
@@ -204,8 +203,8 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen161
-\Hy@linkcounter=\count283
-\Hy@pagecounter=\count284
+\Hy@linkcounter=\count279
+\Hy@pagecounter=\count280
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
@@ -222,7 +221,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count285
+\Hy@SavedSpaceFactor=\count281
 
 (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
@@ -236,7 +235,7 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count286
+\c@Hy@tempcnt=\count282
 
 (/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
@@ -252,7 +251,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count287
+\Fld@menulength=\count283
 \Field@Width=\dimen163
 \Fld@charsize=\dimen164
 Package hyperref Info: Hyper figures OFF on input line 6075.
@@ -270,9 +269,9 @@ Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count288
-\c@Item=\count289
-\c@Hfootnote=\count290
+\Hy@abspage=\count284
+\c@Item=\count285
+\c@Hfootnote=\count286
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -284,8 +283,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\Fld@listcount=\count291
-\c@bookmark@seq@number=\count292
+\Fld@listcount=\count287
+\c@bookmark@seq@number=\count288
 
 (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
@@ -304,7 +303,7 @@ Package: expl3 2021-02-18 L3 programming layer (loader)
 
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count293
+\l__color_backend_stack_int=\count289
 \l__pdf_internal_box=\box51
 ))
 (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -327,27 +326,27 @@ Package: l3keys2e 2021-03-12 LaTeX2e option processing using LaTeX3 keys
 )
 \l__siunitx_tmp_box=\box54
 \l__siunitx_tmp_dim=\dimen167
-\l__siunitx_tmp_int=\count294
-\l__siunitx_number_mantissa_length_int=\count295
-\l__siunitx_number_uncert_length_int=\count296
-\l__siunitx_round_int=\count297
-\l__siunitx_process_decimal_int=\count298
-\l__siunitx_process_uncertainty_int=\count299
-\l__siunitx_process_fixed_int=\count300
-\l__siunitx_process_integer_min_int=\count301
-\l__siunitx_process_precision_int=\count302
-\l__siunitx_group_min_int=\count303
+\l__siunitx_tmp_int=\count290
+\l__siunitx_number_mantissa_length_int=\count291
+\l__siunitx_number_uncert_length_int=\count292
+\l__siunitx_round_int=\count293
+\l__siunitx_process_decimal_int=\count294
+\l__siunitx_process_uncertainty_int=\count295
+\l__siunitx_process_fixed_int=\count296
+\l__siunitx_process_integer_min_int=\count297
+\l__siunitx_process_precision_int=\count298
+\l__siunitx_group_min_int=\count299
 \l__siunitx_angle_marker_box=\box55
 \l__siunitx_angle_unit_box=\box56
 \l__siunitx_angle_marker_dim=\dimen168
 \l__siunitx_angle_unit_dim=\dimen169
-\l__siunitx_unit_int=\count304
-\l__siunitx_unit_denominator_int=\count305
-\l__siunitx_unit_numerator_int=\count306
-\l__siunitx_unit_prefix_int=\count307
-\l__siunitx_unit_prefix_base_int=\count308
-\l__siunitx_unit_prefix_gram_int=\count309
-\l__siunitx_number_product_int=\count310
+\l__siunitx_unit_int=\count300
+\l__siunitx_unit_denominator_int=\count301
+\l__siunitx_unit_numerator_int=\count302
+\l__siunitx_unit_prefix_int=\count303
+\l__siunitx_unit_prefix_base_int=\count304
+\l__siunitx_unit_prefix_gram_int=\count305
+\l__siunitx_number_product_int=\count306
 \c__siunitx_one_fill_skip=\skip55
 \l__siunitx_table_unit_align_skip=\skip56
 \l__siunitx_table_exponent_dim=\dimen170
@@ -388,7 +387,7 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 (/usr/share/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen179
-\c@nlinenum=\count311
+\c@nlinenum=\count307
 \TeXr@lab=\toks26
 )
 (/usr/share/texmf-dist/tex/latex/caption/caption.sty
@@ -405,8 +404,8 @@ Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
 \caption@hangindent=\dimen186
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count312
-\c@continuedfloat=\count313
+\c@caption@flags=\count308
+\c@continuedfloat=\count309
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
@@ -418,15 +417,15 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count314
-\calc@Bcount=\count315
+\calc@Acount=\count310
+\calc@Bcount=\count311
 \calc@Adimen=\dimen187
 \calc@Bdimen=\dimen188
 \calc@Askip=\skip68
 \calc@Bskip=\skip69
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count316
+\calc@Ccount=\count312
 \calc@Cskip=\skip70
 )
 (/usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty
@@ -479,24 +478,24 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
 (/usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2021/03/06 v0.5t Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count317
+\pdfpages@includegraphics@status=\count313
 \AM@pagebox=\box61
 \AM@global@opts=\toks27
-\AM@pagecnt=\count318
+\AM@pagecnt=\count314
 \AM@toc@title=\toks28
-\c@AM@survey=\count319
+\c@AM@survey=\count315
 \AM@templatesizebox=\box62
 )
 (/usr/share/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count320
+\c@tracingmulticols=\count316
 \mult@box=\box63
 \multicol@leftmargin=\dimen196
-\c@unbalance=\count321
-\c@collectmore=\count322
-\doublecol@number=\count323
-\multicoltolerance=\count324
-\multicolpretolerance=\count325
+\c@unbalance=\count317
+\c@collectmore=\count318
+\doublecol@number=\count319
+\multicoltolerance=\count320
+\multicolpretolerance=\count321
 \full@width=\dimen197
 \page@free=\dimen198
 \premulticols=\dimen199
@@ -547,24 +546,24 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \@tempa=\box104
 \@tempa=\box105
 \@tempa=\box106
-\c@minrows=\count326
-\c@columnbadness=\count327
-\c@finalcolumnbadness=\count328
+\c@minrows=\count322
+\c@columnbadness=\count323
+\c@finalcolumnbadness=\count324
 \last@try=\dimen258
 \multicolovershoot=\dimen259
 \multicolundershoot=\dimen260
 \mult@nat@firstbox=\box107
 \colbreak@box=\box108
-\mc@col@check@num=\count329
+\mc@col@check@num=\count325
 )
 (/usr/share/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count330
+\c@AlgoLine=\count326
 \algocf@hangindent=\skip73
 
 (/usr/share/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count331
+\c@checkoddpage=\count327
 )
 (/usr/share/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
@@ -602,9 +601,9 @@ Package: relsize 2013/03/29 ver 4.1
 \algoheightrule=\skip89
 \algotitleheightruledefault=\skip90
 \algotitleheightrule=\skip91
-\c@algocfline=\count332
-\c@algocfproc=\count333
-\c@algocf=\count334
+\c@algocfline=\count328
+\c@algocfproc=\count329
+\c@algocf=\count330
 \algocf@algoframe=\box115
 \algocf@algobox=\box116
 )
@@ -614,10 +613,10 @@ Package: mhchem 2018/06/22 v4.08 for typesetting chemical formulae
 (/usr/share/texmf-dist/tex/latex/chemgreek/chemgreek.sty
 Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use
  in chemistry (CN)
-\l__chemgreek_tmpa_int=\count335
-\g__chemgreek_tmpa_int=\count336
+\l__chemgreek_tmpa_int=\count331
+\g__chemgreek_tmpa_int=\count332
 )
-\l__mhchem_ce_distanceFromLastComma_int=\count337
+\l__mhchem_ce_distanceFromLastComma_int=\count333
 \__mhchem_arrow_extPgfLength_skip=\skip92
 \mhchem@minispace@tmp=\skip93
 \mhchem@minibackspace@tmp=\skip94
@@ -628,7 +627,7 @@ Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use
 \mhchem@smallbondwidth=\skip99
 \mhchem@bondtmp@minussidebearingleft=\skip100
 \mhchem@bondtmp@minussidebearingright=\skip101
-\l__mhchem_option_version_int=\count338
+\l__mhchem_option_version_int=\count334
 \mhchem@option@minusmathsidebearingleft=\dimen267
 \mhchem@option@minusmathsidebearingright=\dimen268
 \mhchem@option@minustextsidebearingleft=\dimen269
@@ -642,8 +641,8 @@ Package mhchem Warning: You did not specify a 'version' option for the mhchem
 (mhchem)                different output with the same input in future versions
 .
 
-)) (./build/Principal.aux)
-\openout1 = `Principal.aux'.
+)) (./build/principal.aux)
+\openout1 = `principal.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
@@ -698,9 +697,7 @@ LaTeX Font Info:    ... okay on input line 9.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \it@ocap on input line 9.
-LaTeX Info: Redefining \it@ccap on input line 9.
-\c@lstlisting=\count339
+\c@lstlisting=\count335
 Package hyperref Info: Link coloring OFF on input line 9.
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -711,15 +708,15 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count340
+\c@section@level=\count336
 )
 LaTeX Info: Redefining \ref on input line 9.
 LaTeX Info: Redefining \pageref on input line 9.
 LaTeX Info: Redefining \nameref on input line 9.
 
-(./build/Principal.out) (./build/Principal.out)
+(./build/principal.out) (./build/principal.out)
 \@outlinefile=\write3
-\openout3 = `Principal.out'.
+\openout3 = `principal.out'.
 
 
 (/usr/share/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
@@ -733,16 +730,16 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count341
+\scratchcounter=\count337
 \scratchdimen=\dimen271
 \scratchbox=\box117
-\nofMPsegments=\count342
-\nofMParguments=\count343
+\nofMPsegments=\count338
+\nofMParguments=\count339
 \everyMPshowfont=\toks29
-\MPscratchCnt=\count344
+\MPscratchCnt=\count340
 \MPscratchDim=\dimen272
-\MPnumerator=\count345
-\makeMPintoPDFobject=\count346
+\MPnumerator=\count341
+\makeMPintoPDFobject=\count342
 \everyMPtoPDFconversion=\toks30
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -767,39 +764,56 @@ Package chemgreek Info: Activating mapping `default' on line 9.
  [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./build/Principal.toc)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./build/principal.toc)
 \tf@toc=\write4
-\openout4 = `Principal.toc'.
+\openout4 = `principal.toc'.
 
 
-(./chapters/01_introduzione.tex)pdfTeX warning (ext4): destination with the sam
-e identifier (name{page.1}) has been already used, duplicate ignored
+(./chapters/01_introduction.texpdfTeX warning (ext4): destination with the same
+ identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.13 \end{document}
-                    [1
+l.1 \chapter
+            {Introduction} [1
 
-] (./build/Principal.aux)
-Package rerunfilecheck Info: File `Principal.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+]
+Chapter 1.
+[2
+
+] [3] [4]) (./chapters/02_decision_trees.tex [5]
+Chapter 2.
+[6
+
+] [7] [8]) [9] (./build/principal.aux)
+Package rerunfilecheck Info: File `principal.out' has not changed.
+(rerunfilecheck)             Checksum: D8A1D389B924FAA8AC3E747DAF08D704;5091.
  ) 
 Here is how much of TeX's memory you used:
- 18602 strings out of 478994
- 314264 string characters out of 5864751
- 658631 words of memory out of 5000000
- 35828 multiletter control sequences out of 15000+600000
- 414721 words of font info for 59 fonts, out of 8000000 for 9000
+ 18349 strings out of 478994
+ 311584 string characters out of 5864751
+ 658878 words of memory out of 5000000
+ 35494 multiletter control sequences out of 15000+600000
+ 419701 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,7n,91p,371b,765s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
-exmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts
-/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/c
-m-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm120
-0.pfb>
-Output written on ./build/Principal.pdf (2 pages, 46103 bytes).
+ 88i,11n,91p,371b,833s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/
+texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/font
+s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/
+sfbx1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></
+usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf
+-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
+per/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pf
+b></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on ./build/principal.pdf (10 pages, 219690 bytes).
 PDF statistics:
- 36 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 311 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
 
