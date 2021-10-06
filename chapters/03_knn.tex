@@ -1,0 +1,35 @@
+\chapter{K-nearest neighbours}
+
+\section{Introduction}
+The $K$-nearest neighbours is an algorithm that, given a training set represented as a vector of features, gives the label for a new sample as label of the majority of the $K$ nearest sample in the training set.
+
+\section{Measuring the instance between instances}
+
+	\subsection{Metric or distance definition}
+	Given a set $\mathcal{X}$ a function $d:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}^+_0$ is a metric for $\mathcal{X}$ if for any $x,y,z\in \mathcal{X}$ the following properties are satisfied:
+	\begin{itemize}
+		\item Reflexivity $d(x,y) = 0 \Leftrightarrow x = y$.
+		\item Symmetry $d(x,y) = d(y,x)$.
+		\item Triangle inequality $d(x, y) + d(y, z) \ge d(x, z)$.
+	\end{itemize}
+
+	\subsection{Euclidean distance}
+	The euclidean distance in $\mathbb{R}^n$ is:
+	$$d(x,y) = \sqrt{\sum\limits_{i=1}^n(x_i-y_i)^2}$$
+
+\section{Algorithms}
+
+	\subsection{Classification}
+
+	\subsection{Regression}
+
+\section{Characteristics}
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Instance-based learning: the model used for prediction is calibrated for the test example to be processed.
+			\item Lazy learning: the computation is mostly deferred to the classification phase.
+			\item Local learner: assumes prediction should mainly influenced by nearby instances.
+			\item Uniform feature weighting: all feature are uniformly weighted in computing dinstances.
+		\end{itemize}
+	\end{multicols}
