@@ -1,0 +1,20 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Not}{not}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{knn}{Knn-Classification}
+
+\caption{\protect\knn{}}
+\ForEach{test examples $x$}{
+	\ForEach{training examples $(x_i, y_i)$}{
+		compute distance $d(x,x_i)$\;
+	}
+	select $k$-nearest neighbours of $x$\;
+	\comment{return class of $x$ as majority class among neighbours}
+	\Return $\arg\max\limits_{x_y}\sum\limits^{k}_{i=1}\delta(y,y_i)$
+}
+\end{algorithm}

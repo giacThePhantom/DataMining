@@ -1,0 +1,21 @@
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{Not}{not}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{knn}{Knn-Regression}
+
+\caption{\protect\knn{}}
+\ForEach{test examples $x$}{
+	\ForEach{training examples $(x_i, y_i)$}{
+		compute distance $d(x,x_i)$\;
+	}
+	select $k$-nearest neighbours of $x$\;
+	\comment{return the average output value among neighbours}
+	\Return $\frac{1}{k}\sum\limits_{i=1}^k y_i$
+}
+\end{algorithm}

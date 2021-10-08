@@ -1,0 +1,65 @@
+\chapter{Linear algebra}
+
+\section{Vector space}
+A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and scalar multiplication are defined and satisfy for all $x,y,z\in\mathcal{X}$ and $\lambda,\mu\in\mathcal{R}$:
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Addition:
+			\begin{itemize}
+				\item Association: $x+(y+z) = (x+y)+z$.
+				\item Commutation: $x+y = y+x$.
+				\item There is an identity element: $\exists 0\in\mathcal{X}:x+0 = x$.
+				\item There is an inverse element: $\forall x\in\mathcal{X} \exists x'\in\mathcal{X}:x+x'=0$.
+			\end{itemize}
+		\item Scalar multiplication:
+			\begin{itemize}
+				\item Is distributive over elements: $\lambda(x+y) = \lambda x + \lambda y$.
+				\item Is distributive over scalars: $(\lambda+\mu)x = \lambda x + \mu x$.
+				\item Is associative over scalars: $\lambda(\mu x) = (\lambda\mu)x$.
+				\item There is an identity element: $\exists 1\in\mathbb{R}: 1x=x$.
+			\end{itemize}
+	\end{itemize}
+\end{multicols}
+
+	\subsection{Properties and operations}
+
+		\subsubsection{Subspace}
+		A subspace is any non-empty subset of $\mathcal{X}$ being itself a vector space.
+
+		\subsubsection{Linear combination}
+		Given $\lambda_i\in\mathbb{R}\land x_i\in\mathcal{X}$, a linear combination is:
+		$$\sum\limits_{i=1}^n\lambda_i x_i$$
+
+		\subsubsection{Span}
+		The span of vectors $x_1, \dots, x_n$ is defined as the set of their linear combination:
+		$$\bigl\{\sum\limits_{i=1}^n\lambda_ix_i, \lambda_i\in\mathbb{R}\bigr\}$$
+
+		\subsubsection{Linear independence}
+		A set of vector $x_i$ is linearly independent if none of them can be written as a linear combination of the others.
+
+	\subsection{Basis}
+	A set of vectors $x_i$ is a basis for $\mathcal{X}$ if any element in $\mathcal{X}$ can be uniquely written as a linear combination of vectors $x_j$.
+	The vectors $x_j$ need to be linearly independent.
+	All bases of $\mathcal{X}$ have the same number of elements, called the dimension of the vector space.
+
+\section{Matrices}
+
+	\subsection{Linear maps}
+	Given two vector spaces $\mathcal{X}$ and $\mathcal{Z}$ a function $f:\mathcal{X}\rightarrow\mathcal{Z}$ is a linear map if $\forall x, y\in\mathcal{X}\lambda\in\mathbb{R}$:
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $f(x + y) = f(x) + f(y)$.
+			\item $f(\lambda x) = \lambda f(x)$.
+		\end{itemize}
+	\end{multicols}
+
+	\subsection{Linear maps as matrices}
+	A linear map between two finite dimensional spaces $\mathcal{X}$ and $\mathcal{Z}$ of dimension $n$ and $m$ can always be written as a matrix.
+	Let $\{x_1, \dots, x_n\}$ and $\{z_1, \dots, z_m\}$ be some bases for $\mathcal{X}$ and $\mathcal{Z}$ respectively.
+	For any $x\in\mathcal{X}$:
+	\begin{align*}
+		f(x) &= f(\sum\limits_{i=1}^n\lambda_ix_i) = \sum\limits_{i = 1}^n\lambda_if(x_i)\\
+		f(x_i) &= \sum\limits_{j=1}^ma_{ji}^ma_{ij}z_j\\
+		f(x) &= \sum\limits_{i=1}^n\sum\limits_{j=1}^m\lambda_ia_{ji}z_j = \sum\limits_{j=1}^m\bigl(\sum\limits_{i=1}^n\lambda_ia_{ji}\bigr)z_j = \sum\limits_{j=1}^m\mu_j z_j
+	\end{align*}

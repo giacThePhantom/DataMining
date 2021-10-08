@@ -6,7 +6,7 @@ The $K$-nearest neighbours is an algorithm that, given a training set represente
 \section{Measuring the instance between instances}
 
 	\subsection{Metric or distance definition}
-	Given a set $\mathcal{X}$ a function $d:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}^+_0$ is a metric for $\mathcal{X}$ if for any $x,y,z\in \mathcal{X}$ the following properties are satisfied:
+Given a set $\mathcal{X}$ a function $d:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}^{+}_0$ is a metric for $\mathcal{X}$ if for any $x,y,z\in \mathcal{X}$ the following properties are satisfied:
 	\begin{itemize}
 		\item Reflexivity $d(x,y) = 0 \Leftrightarrow x = y$.
 		\item Symmetry $d(x,y) = d(y,x)$.
@@ -21,7 +21,11 @@ The $K$-nearest neighbours is an algorithm that, given a training set represente
 
 	\subsection{Classification}
 
+		\input{./pseudocode/03/knn-classification}
+
 	\subsection{Regression}
+
+		\input{./pseudocode/03/knn-regression}
 
 \section{Characteristics}
 
@@ -33,3 +37,18 @@ The $K$-nearest neighbours is an algorithm that, given a training set represente
 			\item Uniform feature weighting: all feature are uniformly weighted in computing dinstances.
 		\end{itemize}
 	\end{multicols}
+
+\section{Distance weighted k-nearest neighbour}
+The distance weighted k-nearest neighbour is a variant of the classic k-nearest neighbour in which the distance is weighted.
+The weight of a point is calculated as:
+
+$$w_i = \frac{1}{d(x,x_i)}$$
+
+The class is decided for classification according to the formula:
+
+$$\arg\max\limits_{x_y}\sum\limits_{i = 1}^k w_i\delta(y, y_i)$$
+
+For regression the formula is instead:
+
+$$\dfrac{\sum\limits_{i = 1}^kw_iy_i}{\sum\limits_{i=1}^k w_i}$$
+
