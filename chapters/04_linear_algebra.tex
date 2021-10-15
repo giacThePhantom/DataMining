@@ -63,3 +63,200 @@ A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and s
 		f(x_i) &= \sum\limits_{j=1}^ma_{ji}^ma_{ij}z_j\\
 		f(x) &= \sum\limits_{i=1}^n\sum\limits_{j=1}^m\lambda_ia_{ji}z_j = \sum\limits_{j=1}^m\bigl(\sum\limits_{i=1}^n\lambda_ia_{ji}\bigr)z_j = \sum\limits_{j=1}^m\mu_j z_j
 	\end{align*}
+
+		\subsubsection{Matrix of basis transformation}
+		A matrix can be used to transform the basis is:
+
+		$$M\in\mathbb{R}^{m\times n} = \begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots \\ a_{m1} & \cdots & a_{mn} \end{bmatrix}$$
+
+		The mapping from basis to basis coefficient is done:
+
+		$$M\lambda = \mu$$
+
+		\subsubsection{Matrix changing the coordinates, 2D examples}
+		Let $B = \biggl\{ \begin{bmatrix} 1 \\0 \end{bmatrix} , \begin{bmatrix} 0 \\ 1\end{bmatrix}\biggr\}$ be the standard basis in $\mathbb{R}^2$ and $B' = \biggl\{\begin{bmatrix} 3 \\ 1 \end{bmatrix}, \begin{bmatrix} -2 \\ 1 \end{bmatrix}\biggr\}$ be an alternative basis.
+		The change of coordinate matrix from $B'$ to $B$ is: 
+
+		$$P = \begin{bmatrix} 3 & -2 \\ 1 & 1 \end{bmatrix}$$
+
+		So that: 
+		
+		$$[v]_B = P[v]_{B'}\qquad\land\qquad [v]_{B'} = P^{-1}[v]_B$$
+
+		For arbitrary $B$ and $B'$ $P$'s columns must be the $B'$ vectors written in terms of the $B$ ones.
+
+	\subsection{Matrix properties}
+
+		\subsubsection{Transpose}
+		The transpose matrix is the matrix obtained exchanging the rows with column $M^T$.
+
+		$$(MN)^T = N^TM^T$$
+
+		\subsubsection{Trace}
+		The trace is the sum of the diagonal elements of a matrix:
+
+		$$tr(M) = \sum\limits_{i = 1}^n M_{ii}$$
+
+		\subsubsection{Inverse}
+		The inverse is the matrix which multiplied with the original matrix gives the identity:
+
+		$$MM^{-1} = I$$
+
+		\subsubsection{Rank}
+		The rank of an $n\times m$ matrix is the dimension of the space spanned by its columns.
+
+	\subsection{Matrix derivatives}
+
+	\begin{align*}
+		\frac{\partial M_X}{\partial x} &= M\\
+		\frac{\partial y^T Mx}{\partial x} &=M^Ty\\
+		\frac{\partial x^T Mx}{\partial x} &= (M^T + M)x\\
+		\frac{\partial x^T Mx}{\partial x} &= 2Mx \qquad \text{if }M\text{ is symmetric}\\
+		\frac{\partial x^T x}{\partial x} &= 2x
+	\end{align*}
+
+	Results are columns vectors.
+	Transposing the matrix gives the row vectors.
+
+	\subsection{Metric structure}
+
+		\subsubsection{Norm}
+		A function $||\cdot ||: \mathcal{X} \rightarrow \mathbb{R}^+_0$ is a norm $\forall x,y\in\mathcal{X},\lambda\in\mathbb{R}$:
+
+		\begin{multicols}{3}
+			\begin{itemize}
+				\item $||x + y|| \le ||x|| + ||y||$
+				\item $||\lambda x || = |\lambda| ||x||$
+				\item $||x||>0 if x\neq 0$
+			\end{itemize}
+		\end{multicols}
+
+		\subsubsection{Metric}
+		A norm defines a metric $d: \mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}_0^+$:
+
+		$$d(x,y) = ||x - y||$$
+
+		Not every metric gives rise to a norm.
+
+	\subsection{Dot product}
+	A dot product $\langle \cdot, \cdot\rangle:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$ is a symmetric bilinear form which is positive semi-definite:
+
+	$$\langle x, x\rangle \ge 0\forall x \in\mathcal{X}$$
+
+	A positive definite dot product satisfies:
+
+	$$\langle x, x\rangle = 0 \Leftrightarrow x = 0$$
+
+		\subsubsection{Norm}
+		Any dot product defines a corresponding norm via:
+
+		$$||x|| = \sqrt{\langle x, x\rangle}$$
+
+		\subsubsection{Properties}
+
+			\paragraph{Angle}
+			The angle $\theta$ between two vectors is defined as:
+
+			$$\cos\theta = \frac{\langle x, z\rangle}{||x||||z||}$$
+
+			\paragraph{Orthogonal}
+			Two vectors are orthogonal if $\langle x, y\rangle = 0$.
+
+			\paragraph{Orthonormal}
+			A set of vectors $\{x_1, \dots, x_n\}$ is orthonormal is
+
+			$$\langle x_i, x_j\rangle = \delta_{ij}$$
+
+			Where $\delta_{ij} = 1$ if $i = j$, $0$ otherwise.
+			If $x$ and $y$ are $n$-dimensional column vectors, their dot product is computed as:
+
+			$$\langle x, y\rangle = x^Ty = \sum\limits_{i=1}^nx_iy_i$$
+
+\section{Eigenvalues and eigenvectors}
+Given a $n\times n$ matrix $M$ the real value $\lambda$ and non zero vector $x$ are eigenvalue and the corresponding eigenvector of $M$ if:
+
+$$Mx = \lambda x$$
+
+	\subsection{Cardinality}
+	An $n\times n$ matrix has $n$ eigenvalues, but less than $n$ distinct ones.
+	The number of eigenvalues is the number of linear independent eigenvectors.
+
+	\subsection{Singular matrices}
+	A matrix is singular if it has a zero eigenvalue:
+
+	$$Mx = 0x = 0$$
+
+	A singular matrix has linearly dependent columns.
+
+	\subsection{Symmetric matrices}
+	Eigenvectors corresponding to distinct eigenvalues are orthogonal:
+
+	\begin{align*}
+		\lambda\langle x, z\rangle &= \langle Ax, z\rangle=\\
+					   &=(Ax)^Tz=
+					   &=x^TA^Tz=\\
+					   &=x^TAz=\\
+					   &\langle x, Az\rangle=\\
+					   &=\mu\langle x, z\rangle
+	\end{align*}
+
+	\subsection{Eigen-decomposition}
+
+		\subsubsection{Raleigh quotient}
+
+		\begin{align*}
+			Ax &=\lambda x\\
+			\frac{x^TAx}{x^Tx} &=\lambda\frac{x^Tx}{x^Tx} = \lambda
+		\end{align*}
+
+		\subsubsection{Finding eigenvector}
+		To find the eigenvector you need to maximize the eigenvalue:
+
+		$$x = \max\limits_v\frac{v^TAv}{v^Tv}$$
+
+		After that you need to normalize it so the solution is invariant to rescaling:
+
+		$$x\leftarrow\frac{x}{||x||}$$
+
+		\subsubsection{Deflating matrix}
+
+		$$\bar{A} = A - \lambda xx^T$$
+
+		The deflation turns $x$ into a zero eigenvalue eigenvector:
+
+		\begin{align*}
+			\bar{A}x &= Ax -\lambda xx^Tx\\
+				 &Ax-\lambda x = 0
+		\end{align*}
+		
+		Other eigenvalues are unchanged as eigenvectors with distinct eigenvalues are orthogonal because the matrix is symmetric:
+
+		\begin{align*}
+			\bar{A}z &= Az-\lambda xx^Tz\\
+			\bar{A}z &=Az
+		\end{align*}
+
+		\subsubsection{Iterating}
+		The maximization procedure is repeated on the deflated matrix until solution is zero.
+		Minimization is iterated to get eigenvectors with negative eigenvalues.
+		Eigenvectors with zero eigenvalues are obtained extending the obtained set to an orthonormal basis.
+		
+		\subsubsection{Eigen-decomposition}
+		Let $V = [v_1 \dots v_n]$ be a matrix with orthonormal eigenvectors as columns.
+		Let $A$ be the diagonal matrix of corresponding eigenvalues.
+		A square symmetric matrix can be diagonalizes as:
+
+		$$V^TAV=\Lambda$$
+
+		A diagonalized matrix is simpler to manage and has the same properties as the original one.
+
+			\paragraph{Proof}
+
+			\begin{align*}
+				A[v_1\dots v_n] &= [v_1\dots v_n \begin{bmatrix}\lambda_1 & & 0\\ & \ddots & \\ 0 & & \lambda_n\end{bmatrix}\\
+				AV &= V\Lambda\\
+				V^{-1}AV &= V^{-1}V\Lambda\\
+				V^TAV &= \Lambda
+			\end{align*}
+
+			$V$ is a unitary matrix with orthonormal columns for which $V^{-1}=V^T$.
