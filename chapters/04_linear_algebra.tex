@@ -260,3 +260,59 @@ $$Mx = \lambda x$$
 			\end{align*}
 
 			$V$ is a unitary matrix with orthonormal columns for which $V^{-1}=V^T$.
+
+		\subsubsection{Positive semi-definite matrix}
+		An $n\times n$ symmetric matrix $M$ is positive semi-definite if all its eigenvalues are non-negative.
+		Positive semi-definite:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\Leftrightarrow\forall x\in\mathbb{R}^n: x^TMx\ge 0$
+				\item $\Leftrightarrow\exists B: M=B^TB$
+			\end{itemize}
+		\end{multicols}
+
+		\subsubsection{Scaling transformation in standard basis}
+		Let $x_i = [1,0]$ and $x_2 = [0,1]$ the standard orthonormal basis in $\mathbb{R}^2$.
+		Let $x = [x_1, x_2]$ am arbitrary vector in $\mathbb{R}^2$.
+		A linear transformation is a scaling transformation if it only stretches $x$ along its directions.
+
+		\subsubsection{Scaling transformation in eigenbasis}
+		Let $A$ be a non-scaling transformation in $\mathbb{R}$.
+		Let $\{v_1, v_2\}$ be an eigenbasis for $A$.
+		By representing vectors in $\mathbb{R}^2$ in terms of the $\{v_1, v_2\}$ basis $A$ becomes a scaling transformation.
+
+\section{Principal component analysis}
+Principal component analysis or PCA is a non-supervised machine learning technique that accomplishes dimensionality reduction.
+Let $X$ be a data matrix with correlated coordinates.
+PCA is a linear transformation mapping data to a system of uncorrelated coordinates.
+It corresponds to fitting an ellipsoid to the data, whose axis are the coordinates of the new space.
+
+	\subsection{Procedure}
+	Given a dataset $X\in\mathbb{R}^{n\times d}$ in $d$ dimension:
+	Compute the mean of the data:
+
+	$$\bar{x} = \frac{1}{n}\sum\limits_{i=1}^nX_i$$
+
+	Center the data into the origin:
+
+	$$X - \begin{bmatrix}\bar{x}\\\cdots\\\bar{x}\end{bmatrix}$$
+
+	Compute the data covariance:
+
+	$$C = \frac{1}{n}X^TX$$
+
+	Compute the orthonormal eigen-decomposition of $C$:
+
+	$$V^TCV=A$$
+
+	Us it as the new coordinate system:
+
+	$$x' = V^{-1}x = V^Tx$$
+
+	This method assumes linear correlation and Gaussian distribution.
+
+	\subsection{Dimensionality reduction}
+	Each eigenvalue corresponds to the amount of variance in that direction.
+	Select only the $k$ eigenvalues with largest eigenvalue for dimensionality reduction:
+	$$W = [v_1, \dots, v_k]$$
+	$$x' = W^Tx$$

@@ -72,3 +72,28 @@
 \contentsline {subsection}{\numberline {4.2.4}Matrix derivatives}{17}{subsection.4.2.4}%
 \contentsline {subsection}{\numberline {4.2.5}Metric structure}{17}{subsection.4.2.5}%
 \contentsline {subsubsection}{\numberline {4.2.5.1}Norm}{17}{subsubsection.4.2.5.1}%
+\contentsline {subsubsection}{\numberline {4.2.5.2}Metric}{17}{subsubsection.4.2.5.2}%
+\contentsline {subsection}{\numberline {4.2.6}Dot product}{17}{subsection.4.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.6.1}Norm}{17}{subsubsection.4.2.6.1}%
+\contentsline {subsubsection}{\numberline {4.2.6.2}Properties}{18}{subsubsection.4.2.6.2}%
+\contentsline {paragraph}{\numberline {4.2.6.2.1}Angle}{18}{paragraph.4.2.6.2.1}%
+\contentsline {paragraph}{\numberline {4.2.6.2.2}Orthogonal}{18}{paragraph.4.2.6.2.2}%
+\contentsline {paragraph}{\numberline {4.2.6.2.3}Orthonormal}{18}{paragraph.4.2.6.2.3}%
+\contentsline {section}{\numberline {4.3}Eigenvalues and eigenvectors}{18}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Cardinality}{18}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Singular matrices}{18}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Symmetric matrices}{18}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Eigen-decomposition}{19}{subsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.1}Raleigh quotient}{19}{subsubsection.4.3.4.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.2}Finding eigenvector}{19}{subsubsection.4.3.4.2}%
+\contentsline {subsubsection}{\numberline {4.3.4.3}Deflating matrix}{19}{subsubsection.4.3.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.4.4}Iterating}{19}{subsubsection.4.3.4.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.5}Eigen-decomposition}{19}{subsubsection.4.3.4.5}%
+\contentsline {paragraph}{\numberline {4.3.4.5.1}Proof}{20}{paragraph.4.3.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.6}Positive semi-definite matrix}{20}{subsubsection.4.3.4.6}%
+\contentsline {subsubsection}{\numberline {4.3.4.7}Scaling transformation in standard basis}{20}{subsubsection.4.3.4.7}%
+\contentsline {subsubsection}{\numberline {4.3.4.8}Scaling transformation in eigenbasis}{20}{subsubsection.4.3.4.8}%
+\contentsline {section}{\numberline {4.4}Principal component analysis}{20}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Procedure}{20}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Dimensionality reduction}{21}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Probability theory}{22}{chapter.5}%
