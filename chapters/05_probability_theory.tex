@@ -8,7 +8,7 @@
 	$$P(v_i) = Pr[X = v_i]$$
 
 	This function satisfies:
-	
+
 	\begin{multicols}{2}
 		\begin{itemize}
 			\item $P(x) \ge 0$
@@ -65,18 +65,18 @@
 				\item $Var[x] = p(1-p)$
 			\end{itemize}
 		\end{multicols}
-		
+
 		\begin{multicols}{2}
 			\paragraph{Proof of mean}
-			
+
 			\begin{align*}
 				\mathbb{E}[x] &= \sum\limits_{x\in\mathcal{X}} xP(x)\\
 				      	& = \sum\limits_{x\in\{0;1\}}xP(x)\\
 				      	&= 0\cdot(1-p) + 1\cdot p = p
 			\end{align*}
-	
+
 			\paragraph{Proof of variance}
-	
+
 			\begin{align*}
 				Var[x] &=\sum\limits_{x\in\mathcal{X}} (x-\mu)^2P(x)\\
 			       	&=\sum\limits_{x\in\{0;1\}} (x-\mu)^2P(x)\\
@@ -102,25 +102,14 @@
 		\end{multicols}
 
 	\subsection{Pairs of discrete random variables}
-	
-		\subsubsection{Probability mass function}
-		Given a pair of discrete random variables $X$ and $Y$ taking values $\mathcal{X} = \{v_1,\dots, v_m\}$ and $\mathcal{Y} = \{w_1, \dots, w_n\}$ the joint probability mass function
-		\begin{multicols}{2}
-			\begin{itemize}
-				\item $\mathbb{E}[x] = np$
-				\item $Var[x] = np(1-p)$
-			\end{itemize}
-		\end{multicols}
 
-	\subsection{Pairs of discrete random variables}
-	
 		\subsubsection{Probability mass function}
 		Given a pair of discrete random variables $X$ and $Y$ taking values $\mathcal{X} = \{v_1,\dots, v_m\}$ and $\mathcal{Y} = \{w_1, \dots, w_n\}$ the joint probability mass function is defined as:
 
 		$$P(v_i, w_j) = Pr[X = v_i, Y = w_j]$$
 
 		This satisfies:
-		
+
 		\begin{multicols}{2}
 			\begin{itemize}
 				\item $P(x,y) \ge 0$
@@ -135,4 +124,93 @@
 			$$\mu_x = \mathbb{E}[x] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}xP(x,y)$$
 
 			$$\mu_y = \mathbb{E}[y] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}yP(x,y)$$
-	
+
+			\paragraph{Variance}
+
+			$$\sigma_x^2 = Var[(x-\mu_x)^2] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}(x-\mu_x)^2P(x,y)$$
+
+			$$\sigma_y^2 = Var[(y-\mu_y)^2] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}(y-\mu_y)^2P(x,y)$$
+
+			\paragraph{Covariance}
+
+			$$\sigma_{xy} + \mathbb{E}[(x-\mu_x)(y-\mu_y)] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}(x-\mu_x)(y-\mu_y)P(x,y)$$
+
+			\paragraph{Correlation coefficient}
+
+			$$\rho = \frac{\sigma_{xy}}{\sigma_x\sigma_y}$$
+
+		\subsubsection{Multinomial distribution}
+		Given $n$ samples of an event with $m$ possible outcomes, the multinomial distribution models the probability of a certain distribution of outcomes.
+		It has parameters $p_1,\dots, p_m$ probabiliry of each outcome and $n$ the number of samples.
+		Its probability mass function assumes $\sum\limits_{i=1}^mx_i = n$ and it is:
+
+		$$P(x_1, \dots, x_m; p_1, \dots, p_m, n) = \dfrac{n!}{\prod\limits_{i=1}^mx_i!}\prod\limits_{i=1}^mp_i^{x_i}$$
+
+		\begin{multicols}{3}
+			\begin{itemize}
+				\item $\mathbb{E}[x_i] = np)i$
+				\item $Var[x_i] = np_i(1-p_i)$
+				\item $Cov[x_i, x_j] = -np_ip_j$
+			\end{itemize}
+		\end{multicols}:
+
+		$$P(x_1, \dots, x_m; p_1, \dots, p_m, n) = \dfrac{n!}{\prod\limits_{i=1}^mx_i!}\prod\limits_{i=1}^mp_i^{x_i}$$
+
+		\begin{multicols}{3}
+			\begin{itemize}
+				\item $\mathbb{E}[x_i] = np)i$
+				\item $Var[x_i] = np_i(1-p_i)$
+				\item $Cov[x_i, x_j] = -np_ip_j$
+			\end{itemize}
+		\end{multicols}
+
+\section{Conditionally probability}
+The conditional probability is the probability of $x$ once $y$ is observed:
+
+$$P(x|y) = \dfrac{P(x,y)}{P(y)}$$
+
+Variables $X$ and $Y$ are statistical independent if and only if:
+
+$$P(x,y) = P(x)P(y)$$
+
+This implies:
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item $P(x|y) = P(x)$
+		\item $P(y|x) = P(y)$
+	\end{itemize}
+\end{multicols}
+
+	\subsection{Basic rules}
+
+		\subsubsection{Law of total probability}
+		The marginal distribution of a variable is obtained from a joint distribution summing over all possible values of the other variable:
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $P(x) = \sum\limits_{y\in\mathcal{Y}}P(x,y)$
+				\item $P(y) = \sum\limits_{x\in\mathcal{X}}P(x,y)$
+			\end{itemize}
+		\end{multicols}
+
+		\subsubsection{Product rule}
+		Conditional probabiliry definition implies that:
+
+		$$P(x,y) = P(x|y)P(y) = P(y|x)P(x)$$
+
+	\subsection{Bayes' rule}
+
+	$$P(y|x) = \frac{P(x|y)P(y)}{P(x)}$$
+
+	This allows to invert statistical connection between effects $x$ and cause $y$:
+
+	$$posterior = \frac{likelihood\times prior}{evidence}$$
+
+	The evidence can be obtained using the sum rule from likelihood and prior:
+
+	$$P(x) = \sum\limits_yP(x,y) = \sum\limits_yP(x|y)P(y)$$
+
+\section{Continuous random variables}
+
+	\subsection{Cumulative distribution function}
