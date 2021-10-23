@@ -1,1 +1,138 @@
 \chapter{Probability theory}
+
+\section{Discrete random variables}
+
+	\subsection{Probability mass function}
+	Given a discrete random variable $X$ taking values in $\mathcal{X} = \{v_1, \dots, v_m\}$ its probability mass function $P:\mathcal{X}\rightarrow [0,1]$ is defined as:
+
+	$$P(v_i) = Pr[X = v_i]$$
+
+	This function satisfies:
+	
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $P(x) \ge 0$
+			\item $\sum\limits_{x\in \mathcal{X}} = 1$
+		\end{itemize}
+	\end{multicols}
+
+	\subsection{Expected value}
+	The expected value, mean or average of a random variable $x$ is:
+
+	$$\mathbb{E}[x] = \mu = \sum\limits_{x\in\mathcal{X}}xP(x) = \sum\limits_{i=1}^mv_iP(v_i)$$
+
+	The expectation operator is linear:
+
+	$$\mathbb{E}[\lambda x + \lambda'y] = \lambda\mathbb{E}[x] + \lambda'\mathbb{E}[y]$$
+
+	\subsection{Variance}
+	The variance of a random variable is the moment of inertia of its probability mass function:
+
+	$$Var[x] = \sigma^2 = \mathbb{E}[(x-\mu)^2] = \sum\limits_{x\in\mathcal{X}}(x-\mu)^2P(x)$$
+
+	The standard deviation $\sigma$ indicates the typical amount of deviation from the mean one should expect for a randomly drawn value for $x$.
+
+	\subsection{Properties of mean and variance}
+
+		\subsubsection{Second moment}
+
+		$$\mathbb{E}[x^2] = \sum\limits_{x\in\mathcal{X}}x^2P(x)$$
+
+		\subsubsection{Variance in term of expectation}
+
+		$$Var[x] = \mathbb{E}[x^2] - \mathbb{E}[x]^2$$
+
+		\subsubsection{Variance and scalar multiplication}
+
+		$$Var[\lambda x] = \lambda^2Var[x]$$
+
+		\subsubsection{Variance of uncorrelated variables}
+
+		$$Var[x+y] = Var[x] + Var[y]$$
+
+	\subsection{Probability distributions}
+
+		\subsubsection{Bernoulli distribution}
+		The Bernoulli distribution indicates a variable for which there are two values: $1$ for success and $0$ for failure.
+		Its parameter is $p$ the probability of success.
+		Its probability mass function:
+
+		$$P(x;p) = \begin{cases} p\qquad if x = 1\\ 1-p \qquad if x = 1\end{cases}$$
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\mathbb{E}[x] = p$
+				\item $Var[x] = p(1-p)$
+			\end{itemize}
+		\end{multicols}
+		
+		\begin{multicols}{2}
+			\paragraph{Proof of mean}
+			
+			\begin{align*}
+				\mathbb{E}[x] &= \sum\limits_{x\in\mathcal{X}} xP(x)\\
+				      	& = \sum\limits_{x\in\{0;1\}}xP(x)\\
+				      	&= 0\cdot(1-p) + 1\cdot p = p
+			\end{align*}
+	
+			\paragraph{Proof of variance}
+	
+			\begin{align*}
+				Var[x] &=\sum\limits_{x\in\mathcal{X}} (x-\mu)^2P(x)\\
+			       	&=\sum\limits_{x\in\{0;1\}} (x-\mu)^2P(x)\\
+			       	&=(0-p)^2(1-p)+(1-p)^2p\\
+			       	&=p^2(1-p)+(1-p)(1-p)p\\
+			       	&=(1-p)(p^2+p-p^2)\\
+			       	&=(1-p)p
+			\end{align*}
+		\end{multicols}
+
+		\subsubsection{Binomial distribution}
+		The binomial distribution is the probability of a certain number of successes in $n$ independent Bernoulli trials.
+		Its parameters are $p$ the probability of success and $n$ the number of trials.
+		Its probability mass function:
+
+		$$P(x;p,n) = \binom{n}{x}p^x(1-p)^{n-x}$$
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\mathbb{E}[x] = np$
+				\item $Var[x] = np(1-p)$
+			\end{itemize}
+		\end{multicols}
+
+	\subsection{Pairs of discrete random variables}
+	
+		\subsubsection{Probability mass function}
+		Given a pair of discrete random variables $X$ and $Y$ taking values $\mathcal{X} = \{v_1,\dots, v_m\}$ and $\mathcal{Y} = \{w_1, \dots, w_n\}$ the joint probability mass function
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\mathbb{E}[x] = np$
+				\item $Var[x] = np(1-p)$
+			\end{itemize}
+		\end{multicols}
+
+	\subsection{Pairs of discrete random variables}
+	
+		\subsubsection{Probability mass function}
+		Given a pair of discrete random variables $X$ and $Y$ taking values $\mathcal{X} = \{v_1,\dots, v_m\}$ and $\mathcal{Y} = \{w_1, \dots, w_n\}$ the joint probability mass function is defined as:
+
+		$$P(v_i, w_j) = Pr[X = v_i, Y = w_j]$$
+
+		This satisfies:
+		
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $P(x,y) \ge 0$
+				\item $\sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}P(x,y) = 1$
+			\end{itemize}
+		\end{multicols}
+
+		\subsubsection{Properties}
+
+			\paragraph{Expected value}
+
+			$$\mu_x = \mathbb{E}[x] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}xP(x,y)$$
+
+			$$\mu_y = \mathbb{E}[y] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}yP(x,y)$$
+	

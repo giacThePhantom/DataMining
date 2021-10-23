@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.30)  15 OCT 2021 15:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.30)  15 OCT 2021 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -826,17 +826,17 @@ Chapter 4.
 ] [15] [16] [17] [18] [19] [20]) (./chapters/05_probability_theory.tex
 [21]
 Chapter 5.
-) [22
+[22
 
-] (./build/principal.aux)
+]) [23] (./build/principal.aux)
 Package rerunfilecheck Info: File `principal.out' has not changed.
-(rerunfilecheck)             Checksum: 85353E833CE1DF86A2C8E573B833474A;9615.
+(rerunfilecheck)             Checksum: EA80DA42BF52B4D0B0C141767D1A9EF2;10650.
  ) 
 Here is how much of TeX's memory you used:
- 18616 strings out of 478994
- 315814 string characters out of 5864751
- 662346 words of memory out of 5000000
- 35650 multiletter control sequences out of 15000+600000
+ 18636 strings out of 478994
+ 316158 string characters out of 5864751
+ 662353 words of memory out of 5000000
+ 35656 multiletter control sequences out of 15000+600000
  424714 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,16n,91p,371b,872s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -858,10 +858,10 @@ hare/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist
 /fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/s
 fti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ./build/principal.pdf (23 pages, 331436 bytes).
+Output written on ./build/principal.pdf (24 pages, 338093 bytes).
 PDF statistics:
- 581 PDF objects out of 1000 (max. 8388607)
- 530 compressed objects within 6 object streams
- 150 named destinations out of 1000 (max. 500000)
- 457 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 625 PDF objects out of 1000 (max. 8388607)
+ 573 compressed objects within 6 object streams
+ 164 named destinations out of 1000 (max. 500000)
+ 505 words of extra memory for PDF output out of 10000 (max. 10000000)
 
