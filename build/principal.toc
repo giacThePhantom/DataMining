@@ -1,123 +1,147 @@
 \babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Formalization of a machine learning problem}{3}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Components of a machine learning problem}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Designing a machine learning system}{3}{subsection.1.1.2}%
-\contentsline {subsubsection}{\numberline {1.1.2.1}Formalize the learning task}{4}{subsubsection.1.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.1.2.2}Collect data}{4}{subsubsection.1.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.1.2.3}Extract features}{4}{subsubsection.1.1.2.3}%
-\contentsline {subsubsection}{\numberline {1.1.2.4}Choose class of learning models}{4}{subsubsection.1.1.2.4}%
-\contentsline {subsubsection}{\numberline {1.1.2.5}Train model}{4}{subsubsection.1.1.2.5}%
-\contentsline {subsubsection}{\numberline {1.1.2.6}Evaluate model}{4}{subsubsection.1.1.2.6}%
-\contentsline {section}{\numberline {1.2}Learning settings}{5}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Supervised learning}{5}{subsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.1.1}Tasks}{5}{subsubsection.1.2.1.1}%
-\contentsline {paragraph}{\numberline {1.2.1.1.1}Classification}{5}{paragraph.1.2.1.1.1}%
-\contentsline {paragraph}{\numberline {1.2.1.1.2}Regression}{5}{paragraph.1.2.1.1.2}%
-\contentsline {paragraph}{\numberline {1.2.1.1.3}Ordinal regression or ranking}{5}{paragraph.1.2.1.1.3}%
-\contentsline {subsection}{\numberline {1.2.2}Unsupervised learning}{5}{subsection.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.2.2.1}Tasks}{5}{subsubsection.1.2.2.1}%
-\contentsline {paragraph}{\numberline {1.2.2.1.1}Dimensionality reduction}{5}{paragraph.1.2.2.1.1}%
-\contentsline {paragraph}{\numberline {1.2.2.1.2}Clustering}{5}{paragraph.1.2.2.1.2}%
-\contentsline {paragraph}{\numberline {1.2.2.1.3}Novelty detection}{5}{paragraph.1.2.2.1.3}%
-\contentsline {subsection}{\numberline {1.2.3}Semi-supervised learning}{5}{subsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.2.4}Reinforcement learning}{6}{subsection.1.2.4}%
-\contentsline {section}{\numberline {1.3}Probabilistic reasoning}{6}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Choice of learning algorithms}{6}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Based on information available}{6}{subsection.1.4.1}%
-\contentsline {chapter}{\numberline {2}Decision trees learning}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introduction}{7}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Appropriate problems for decision trees}{7}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Learning decision trees}{7}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Greedy top-down strategy}{7}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Choosing the best attribute}{8}{subsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.2.1}Information gain}{8}{subsubsection.2.2.2.1}%
-\contentsline {section}{\numberline {2.3}Issues in decision tree learning}{8}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Overfitting avoidance}{8}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Post-pruning}{8}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Dealing with continues valued attributes}{9}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Alternative attribute test measures}{9}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Handling attributes with missing values}{9}{subsection.2.3.5}%
-\contentsline {section}{\numberline {2.4}Random forest}{10}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Training}{10}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Testing}{10}{subsection.2.4.2}%
-\contentsline {chapter}{\numberline {3}K-nearest neighbours}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Measuring the instance between instances}{11}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Metric or distance definition}{11}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Euclidean distance}{11}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Algorithms}{12}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Classification}{12}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Regression}{12}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Characteristics}{12}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Distance weighted k-nearest neighbour}{12}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Linear algebra}{14}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Vector space}{14}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Properties and operations}{14}{subsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.1.1}Subspace}{14}{subsubsection.4.1.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.1.2}Linear combination}{14}{subsubsection.4.1.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.1.3}Span}{14}{subsubsection.4.1.1.3}%
-\contentsline {subsubsection}{\numberline {4.1.1.4}Linear independence}{15}{subsubsection.4.1.1.4}%
-\contentsline {subsection}{\numberline {4.1.2}Basis}{15}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Matrices}{15}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Linear maps}{15}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Linear maps as matrices}{15}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Matrix of basis transformation}{15}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}Matrix changing the coordinates, 2D examples}{16}{subsubsection.4.2.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Matrix properties}{16}{subsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}Transpose}{16}{subsubsection.4.2.3.1}%
-\contentsline {subsubsection}{\numberline {4.2.3.2}Trace}{16}{subsubsection.4.2.3.2}%
-\contentsline {subsubsection}{\numberline {4.2.3.3}Inverse}{16}{subsubsection.4.2.3.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.4}Rank}{16}{subsubsection.4.2.3.4}%
-\contentsline {subsection}{\numberline {4.2.4}Matrix derivatives}{17}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Metric structure}{17}{subsection.4.2.5}%
-\contentsline {subsubsection}{\numberline {4.2.5.1}Norm}{17}{subsubsection.4.2.5.1}%
-\contentsline {subsubsection}{\numberline {4.2.5.2}Metric}{17}{subsubsection.4.2.5.2}%
-\contentsline {subsection}{\numberline {4.2.6}Dot product}{17}{subsection.4.2.6}%
-\contentsline {subsubsection}{\numberline {4.2.6.1}Norm}{17}{subsubsection.4.2.6.1}%
-\contentsline {subsubsection}{\numberline {4.2.6.2}Properties}{18}{subsubsection.4.2.6.2}%
-\contentsline {paragraph}{\numberline {4.2.6.2.1}Angle}{18}{paragraph.4.2.6.2.1}%
-\contentsline {paragraph}{\numberline {4.2.6.2.2}Orthogonal}{18}{paragraph.4.2.6.2.2}%
-\contentsline {paragraph}{\numberline {4.2.6.2.3}Orthonormal}{18}{paragraph.4.2.6.2.3}%
-\contentsline {section}{\numberline {4.3}Eigenvalues and eigenvectors}{18}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Cardinality}{18}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Singular matrices}{18}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Symmetric matrices}{18}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Eigen-decomposition}{19}{subsection.4.3.4}%
-\contentsline {subsubsection}{\numberline {4.3.4.1}Raleigh quotient}{19}{subsubsection.4.3.4.1}%
-\contentsline {subsubsection}{\numberline {4.3.4.2}Finding eigenvector}{19}{subsubsection.4.3.4.2}%
-\contentsline {subsubsection}{\numberline {4.3.4.3}Deflating matrix}{19}{subsubsection.4.3.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.4.4}Iterating}{19}{subsubsection.4.3.4.4}%
-\contentsline {subsubsection}{\numberline {4.3.4.5}Eigen-decomposition}{19}{subsubsection.4.3.4.5}%
-\contentsline {paragraph}{\numberline {4.3.4.5.1}Proof}{20}{paragraph.4.3.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.3.4.6}Positive semi-definite matrix}{20}{subsubsection.4.3.4.6}%
-\contentsline {subsubsection}{\numberline {4.3.4.7}Scaling transformation in standard basis}{20}{subsubsection.4.3.4.7}%
-\contentsline {subsubsection}{\numberline {4.3.4.8}Scaling transformation in eigenbasis}{20}{subsubsection.4.3.4.8}%
-\contentsline {section}{\numberline {4.4}Principal component analysis}{20}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Procedure}{20}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Dimensionality reduction}{21}{subsection.4.4.2}%
-\contentsline {chapter}{\numberline {5}Probability theory}{22}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Discrete random variables}{22}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Probability mass function}{22}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Expected value}{22}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Variance}{22}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Properties of mean and variance}{23}{subsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.4.1}Second moment}{23}{subsubsection.5.1.4.1}%
-\contentsline {subsubsection}{\numberline {5.1.4.2}Variance in term of expectation}{23}{subsubsection.5.1.4.2}%
-\contentsline {subsubsection}{\numberline {5.1.4.3}Variance and scalar multiplication}{23}{subsubsection.5.1.4.3}%
-\contentsline {subsubsection}{\numberline {5.1.4.4}Variance of uncorrelated variables}{23}{subsubsection.5.1.4.4}%
-\contentsline {subsection}{\numberline {5.1.5}Probability distributions}{23}{subsection.5.1.5}%
-\contentsline {subsubsection}{\numberline {5.1.5.1}Bernoulli distribution}{23}{subsubsection.5.1.5.1}%
-\contentsline {paragraph}{\numberline {5.1.5.1.1}Proof of mean}{23}{paragraph.5.1.5.1.1}%
-\contentsline {paragraph}{\numberline {5.1.5.1.2}Proof of variance}{23}{paragraph.5.1.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.5.2}Binomial distribution}{23}{subsubsection.5.1.5.2}%
-\contentsline {subsection}{\numberline {5.1.6}Pairs of discrete random variables}{24}{subsection.5.1.6}%
-\contentsline {subsubsection}{\numberline {5.1.6.1}Probability mass function}{24}{subsubsection.5.1.6.1}%
-\contentsline {subsection}{\numberline {5.1.7}Pairs of discrete random variables}{24}{subsection.5.1.7}%
-\contentsline {subsubsection}{\numberline {5.1.7.1}Probability mass function}{24}{subsubsection.5.1.7.1}%
-\contentsline {subsubsection}{\numberline {5.1.7.2}Properties}{24}{subsubsection.5.1.7.2}%
-\contentsline {paragraph}{\numberline {5.1.7.2.1}Expected value}{24}{paragraph.5.1.7.2.1}%
-\contentsline {paragraph}{\numberline {5.1.7.2.2}Variance}{24}{paragraph.5.1.7.2.2}%
-\contentsline {paragraph}{\numberline {5.1.7.2.3}Covariance}{24}{paragraph.5.1.7.2.3}%
-\contentsline {paragraph}{\numberline {5.1.7.2.4}Correlation coefficient}{24}{paragraph.5.1.7.2.4}%
-\contentsline {subsubsection}{\numberline {5.1.7.3}Multinomial distribution}{25}{subsubsection.5.1.7.3}%
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Formalization of a machine learning problem}{4}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Components of a machine learning problem}{4}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Designing a machine learning system}{4}{subsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.2.1}Formalize the learning task}{5}{subsubsection.1.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.1.2.2}Collect data}{5}{subsubsection.1.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.1.2.3}Extract features}{5}{subsubsection.1.1.2.3}%
+\contentsline {subsubsection}{\numberline {1.1.2.4}Choose class of learning models}{5}{subsubsection.1.1.2.4}%
+\contentsline {subsubsection}{\numberline {1.1.2.5}Train model}{5}{subsubsection.1.1.2.5}%
+\contentsline {subsubsection}{\numberline {1.1.2.6}Evaluate model}{5}{subsubsection.1.1.2.6}%
+\contentsline {section}{\numberline {1.2}Learning settings}{6}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Supervised learning}{6}{subsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.1.1}Tasks}{6}{subsubsection.1.2.1.1}%
+\contentsline {paragraph}{\numberline {1.2.1.1.1}Classification}{6}{paragraph.1.2.1.1.1}%
+\contentsline {paragraph}{\numberline {1.2.1.1.2}Regression}{6}{paragraph.1.2.1.1.2}%
+\contentsline {paragraph}{\numberline {1.2.1.1.3}Ordinal regression or ranking}{6}{paragraph.1.2.1.1.3}%
+\contentsline {subsection}{\numberline {1.2.2}Unsupervised learning}{6}{subsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.2.1}Tasks}{6}{subsubsection.1.2.2.1}%
+\contentsline {paragraph}{\numberline {1.2.2.1.1}Dimensionality reduction}{6}{paragraph.1.2.2.1.1}%
+\contentsline {paragraph}{\numberline {1.2.2.1.2}Clustering}{6}{paragraph.1.2.2.1.2}%
+\contentsline {paragraph}{\numberline {1.2.2.1.3}Novelty detection}{6}{paragraph.1.2.2.1.3}%
+\contentsline {subsection}{\numberline {1.2.3}Semi-supervised learning}{6}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Reinforcement learning}{7}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}Probabilistic reasoning}{7}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Choice of learning algorithms}{7}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Based on information available}{7}{subsection.1.4.1}%
+\contentsline {chapter}{\numberline {2}Decision trees learning}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{8}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Appropriate problems for decision trees}{8}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Learning decision trees}{8}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Greedy top-down strategy}{8}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Choosing the best attribute}{9}{subsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.1}Information gain}{9}{subsubsection.2.2.2.1}%
+\contentsline {section}{\numberline {2.3}Issues in decision tree learning}{9}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Overfitting avoidance}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Post-pruning}{9}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Dealing with continues valued attributes}{10}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Alternative attribute test measures}{10}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Handling attributes with missing values}{10}{subsection.2.3.5}%
+\contentsline {section}{\numberline {2.4}Random forest}{11}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Training}{11}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Testing}{11}{subsection.2.4.2}%
+\contentsline {chapter}{\numberline {3}K-nearest neighbours}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Measuring the instance between instances}{12}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Metric or distance definition}{12}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Euclidean distance}{12}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Algorithms}{13}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Classification}{13}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Regression}{13}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Characteristics}{13}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Distance weighted k-nearest neighbour}{13}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Linear algebra}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Vector space}{15}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Properties and operations}{15}{subsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.1}Subspace}{15}{subsubsection.4.1.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.2}Linear combination}{15}{subsubsection.4.1.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.1.3}Span}{15}{subsubsection.4.1.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.1.4}Linear independence}{16}{subsubsection.4.1.1.4}%
+\contentsline {subsection}{\numberline {4.1.2}Basis}{16}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Matrices}{16}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Linear maps}{16}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Linear maps as matrices}{16}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Matrix of basis transformation}{16}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Matrix changing the coordinates, 2D examples}{17}{subsubsection.4.2.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Matrix properties}{17}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Transpose}{17}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Trace}{17}{subsubsection.4.2.3.2}%
+\contentsline {subsubsection}{\numberline {4.2.3.3}Inverse}{17}{subsubsection.4.2.3.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.4}Rank}{17}{subsubsection.4.2.3.4}%
+\contentsline {subsection}{\numberline {4.2.4}Matrix derivatives}{18}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Metric structure}{18}{subsection.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.5.1}Norm}{18}{subsubsection.4.2.5.1}%
+\contentsline {subsubsection}{\numberline {4.2.5.2}Metric}{18}{subsubsection.4.2.5.2}%
+\contentsline {subsection}{\numberline {4.2.6}Dot product}{18}{subsection.4.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.6.1}Norm}{18}{subsubsection.4.2.6.1}%
+\contentsline {subsubsection}{\numberline {4.2.6.2}Properties}{19}{subsubsection.4.2.6.2}%
+\contentsline {paragraph}{\numberline {4.2.6.2.1}Angle}{19}{paragraph.4.2.6.2.1}%
+\contentsline {paragraph}{\numberline {4.2.6.2.2}Orthogonal}{19}{paragraph.4.2.6.2.2}%
+\contentsline {paragraph}{\numberline {4.2.6.2.3}Orthonormal}{19}{paragraph.4.2.6.2.3}%
+\contentsline {section}{\numberline {4.3}Eigenvalues and eigenvectors}{19}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Cardinality}{19}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Singular matrices}{19}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Symmetric matrices}{19}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Eigen-decomposition}{20}{subsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.1}Raleigh quotient}{20}{subsubsection.4.3.4.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.2}Finding eigenvector}{20}{subsubsection.4.3.4.2}%
+\contentsline {subsubsection}{\numberline {4.3.4.3}Deflating matrix}{20}{subsubsection.4.3.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.4.4}Iterating}{20}{subsubsection.4.3.4.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.5}Eigen-decomposition}{20}{subsubsection.4.3.4.5}%
+\contentsline {paragraph}{\numberline {4.3.4.5.1}Proof}{21}{paragraph.4.3.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.6}Positive semi-definite matrix}{21}{subsubsection.4.3.4.6}%
+\contentsline {subsubsection}{\numberline {4.3.4.7}Scaling transformation in standard basis}{21}{subsubsection.4.3.4.7}%
+\contentsline {subsubsection}{\numberline {4.3.4.8}Scaling transformation in eigenbasis}{21}{subsubsection.4.3.4.8}%
+\contentsline {section}{\numberline {4.4}Principal component analysis}{21}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Procedure}{21}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Dimensionality reduction}{22}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Probability theory}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Discrete random variables}{23}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Probability mass function}{23}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Expected value}{23}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Variance}{23}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Properties of mean and variance}{24}{subsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.4.1}Second moment}{24}{subsubsection.5.1.4.1}%
+\contentsline {subsubsection}{\numberline {5.1.4.2}Variance in term of expectation}{24}{subsubsection.5.1.4.2}%
+\contentsline {subsubsection}{\numberline {5.1.4.3}Variance and scalar multiplication}{24}{subsubsection.5.1.4.3}%
+\contentsline {subsubsection}{\numberline {5.1.4.4}Variance of uncorrelated variables}{24}{subsubsection.5.1.4.4}%
+\contentsline {subsection}{\numberline {5.1.5}Probability distributions}{24}{subsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.5.1}Bernoulli distribution}{24}{subsubsection.5.1.5.1}%
+\contentsline {paragraph}{\numberline {5.1.5.1.1}Proof of mean}{24}{paragraph.5.1.5.1.1}%
+\contentsline {paragraph}{\numberline {5.1.5.1.2}Proof of variance}{24}{paragraph.5.1.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.5.2}Binomial distribution}{24}{subsubsection.5.1.5.2}%
+\contentsline {subsection}{\numberline {5.1.6}Pairs of discrete random variables}{25}{subsection.5.1.6}%
+\contentsline {subsubsection}{\numberline {5.1.6.1}Probability mass function}{25}{subsubsection.5.1.6.1}%
+\contentsline {subsubsection}{\numberline {5.1.6.2}Properties}{25}{subsubsection.5.1.6.2}%
+\contentsline {paragraph}{\numberline {5.1.6.2.1}Expected value}{25}{paragraph.5.1.6.2.1}%
+\contentsline {paragraph}{\numberline {5.1.6.2.2}Variance}{25}{paragraph.5.1.6.2.2}%
+\contentsline {paragraph}{\numberline {5.1.6.2.3}Covariance}{25}{paragraph.5.1.6.2.3}%
+\contentsline {paragraph}{\numberline {5.1.6.2.4}Correlation coefficient}{25}{paragraph.5.1.6.2.4}%
+\contentsline {subsubsection}{\numberline {5.1.6.3}Multinomial distribution}{25}{subsubsection.5.1.6.3}%
+\contentsline {section}{\numberline {5.2}Conditionally probability}{26}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Basic rules}{26}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}Law of total probability}{26}{subsubsection.5.2.1.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}Product rule}{26}{subsubsection.5.2.1.2}%
+\contentsline {subsection}{\numberline {5.2.2}Bayes' rule}{26}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Continuous random variables}{27}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Cumulative distribution function}{27}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Probability density function}{27}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Probability distribution}{27}{subsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}Gaussian or normal distribution}{27}{subsubsection.5.3.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}Beta distribution}{28}{subsubsection.5.3.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3.3}Multivariate normal distribution}{28}{subsubsection.5.3.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.4}Dirichlet distribution}{28}{subsubsection.5.3.3.4}%
+\contentsline {section}{\numberline {5.4}Probability laws}{29}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Expectation of an average}{29}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Variance of an average}{29}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Chebyshev's inequality}{29}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Law of large numbers}{29}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Central limit theorem}{30}{subsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.5.1}Interpretation}{30}{subsubsection.5.4.5.1}%
+\contentsline {section}{\numberline {5.5}Information theory}{30}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Entropy}{30}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Cross entropy}{30}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Relative entropy}{31}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Conditional entropy}{31}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Mutual information}{31}{subsection.5.5.5}%

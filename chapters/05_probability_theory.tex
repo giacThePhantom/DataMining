@@ -214,3 +214,225 @@ This implies:
 \section{Continuous random variables}
 
 	\subsection{Cumulative distribution function}
+	To generalize the probability mass function to continuous domains it is considered the probability of intervals:
+
+	$$W = (a < X \le b) \qquad A = (X \le a)\qquad B = (X\le b)$$
+
+	$W$ and $A$ are mutually exclusive, so:
+
+	$$P(B) = P(A) + P(W) \qquad P(W) = P(B) - P(A)$$
+
+	$F(q) = P(X\le q)$ is the cumulative distribution function of $X$ a monotonic function such that the probability of an interval is the difference:
+
+	$$P(a < X \le b) = F(b) - F(a)$$
+
+	\subsection{Probability density function}
+	The derivative of the cumulative distribution function:
+
+	$$p(x) = \frac{d}{dx}F(x)\qquad F(q) = P(X\le q) = \int\limits_{-\infty}^q p(x)dx$$
+
+	So that it respect the properties:
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $p(x) \ge 0$
+			\item $\int\limits_{-\infty}^\infty p(x)dx = 1$
+		\end{itemize}
+	\end{multicols}
+
+	The probability density function of a value $x$ can be greater than one provided the integral is one.
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $\mathbb{E}[x] = \mu = \int\limits_{-\infty}^\infty xp(x)dx$
+			\item $Var[x] = \sigma^2 = \int\limits_{-\infty}^\infty (x-\mu)^2p(x)dx$
+		\end{itemize}
+	\end{multicols}
+
+	Definitions and formulae for discrete random variables carry over to continuous random variables with sums replaced by integrals.
+
+	\subsection{Probability distribution}
+
+		\subsubsection{Gaussian or normal distribution}
+		The normal distribution is a bell-shaped curved with parameters $\mu$ mean and $\sigma^2$ variance.
+		Its probability density function is:
+
+		$$p(x;\mu,\sigma) = \frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+
+		Where:
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\mathbb{E}[x] = \mu$
+				\item $Var[x] = \sigma^2$
+			\end{itemize}
+		\end{multicols}
+
+		The standard normal distribution is $N(0,1)$.
+		Every normal distribution can be transformed in a standard one:
+
+		$$z = \frac{x-\mu}{\sigma}$$
+
+		\subsubsection{Beta distribution}
+		The beta distribution is defined in the interval $[0,1]$ with parameters $\alpha$ and $\beta$.
+		Its probability density function is:
+
+		$$p(x;\alpha, \beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}(1-x)^{\beta-1}$$
+
+		Where:
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\mathbb{E}[x] = \frac{\alpha}{\alpha+\beta}$
+				\item $Var[x] = \frac{\alpha\beta}{(\alpha+\beta+1)}$
+				\item $\Gamma(x+1) = x\Gamma(x)$
+				\item $\Gamma(1) = 1$
+			\end{itemize}
+		\end{multicols}
+
+		It models the posterior distribution of parameter $p$ of a binomial distribution after observing $n-1$ independent events with probability $p$ and $\beta-1$ with probability $1-p$.
+
+		\subsubsection{Multivariate normal distribution}
+		The multivariate normal distribution is the normal distribution for $d$-dimensional vectorial data.
+		Its parameter are $\vec{\mu}$ mean vector and $\Sigma$ covariance matrix.
+		Its probability density function:
+
+		$$p(\vec{x}, \vec{\mu}, \Sigma) = \frac{1}{(2\pi)^{\frac{d}{2}}|\Sigma|^{\frac{1}{2}}}e^{-\frac{1}{2}(\vec{x}-\vec{\mu})^T\Sigma^{-1}(\vec{x}-\vec{\mu})}$$
+
+		Where:
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\mathbb{E}[\vec{x}] = \vec{\mu}$
+				\item $Var[\vec{x}] = \Sigma$
+			\end{itemize}
+		\end{multicols}
+
+		The standard measure of instance to mean is the squared Mahalanobis distance"
+
+		$$r^2 = (\vec{x}-\vec{\mu})^T\Sigma^{-1}(\vec{x}-\vec{\mu})$$
+
+		\subsubsection{Dirichlet distribution}
+		The Dirichlet distribution is defines in $x\in [0,1]^m, \sum\limits_{i=1}^m x_i = 1$
+		It has parameters $\vec{\alpha} = \alpha_1, \dots, \alpha_m$.
+		Its probability density function is:
+
+		$$p(x_1, \dots, x_m; \vec{\alpha}) = \frac{\Gamma((\alpha_0)}{\prod\limits_{i=1}^m\Gamma(\alpha_i)}\prod\limits_{i=1}^mx_i^{a_i-1}$$
+
+		Where $\alpha_0 = \sum\limits_{j=1}^m \alpha_j$.
+		Also:
+		
+		\begin{multicols}{3}
+			\begin{itemize}
+				\item $\mathbb{E}[x_i] = \frac{\alpha_i}{\alpha_0}$
+				\item $Var[x_i] = \frac{\alpha_i(\alpha_0-\alpha_i)}{\alpha_0^2(\alpha_0+1)}$
+				\item $Cps[x_i, x_j] = \frac{-\alpha_i\alpha_j}{a_0^2(\alpha_0+1)}$
+			\end{itemize}
+		\end{multicols}
+
+		This distribution models the posterior distribution of parameters $p$ of a multinomial distribution after observing $\alpha_i -1$ times each mutually exclusive event.
+
+\section{Probability laws}
+
+	\subsection{Expectation of an average}
+	Consider a sample of $X_1, \dots, X_n$ instances drawn from a distribution with mean $\mu$ and variance $\sigma^2$.
+	Consider the random variable $\hat{X}_n$ measuring the sample average:
+
+	$$\hat{X}_n = \frac{X_1+\cdots+X_n}{n}$$
+
+	Considering that $\mathbb{E}[a(X+Y)] = a(\mathbb{E}[x] + \mathbb{E}[y])$:
+
+	$$\mathbb{E}[\hat{X}_n] = \frac{1}{n}(\mathbb{E}[X_1] + \cdots + \mathbb{E}[X_n]) = p$$
+
+	\subsection{Variance of an average}
+	Consider the random variable $\hat{X}_n$ measuring the sample average.
+	Its variance is computed as $Var[a(X+Y)] = a^2(Var[X] + Var[Y])$ if $X$ and $Y$ are independent:
+
+	$$Var[\hat{X}_n] = \frac{1}{n^2}(Var[X_1] + \cdots Var[X_n]) = \frac{\sigma^2}{n}$$
+
+	\subsection{Chebyshev's inequality}
+	Consider a random variable $X$ with mean $\mu$ and variance $\sigma^2$.
+	For all $a >0$:
+
+	$$Pr[|X-\mu|\ge a] \le \frac{\sigma^2}{a^2}$$
+
+	Considering $a = k\sigma$, for $k > 0$:
+
+	$$Pr[|X-\mu| \ge k\sigma] \le \frac{1}{k^2}$$
+
+	Most of the probability mass of a random variable stays within few standard deviations from its mean.
+
+	\subsection{Law of large numbers}
+	Consider a sample $X_1, \dots, X_n$ instances drawn from a distribution with mean $\mu$ and variance $\sigma^2$.
+	For any $\varepsilon >0$ its sample average $\hat{X}_n$ obeys:
+
+	$$\lim\limits_{n\rightarrow\infty} Pr[|\hat{X}_n-\mu| >\varepsilon] = 0$$
+
+	It can be shown using Chebyshev's inequality and the facts that $\mathbb{E}[\hat{X}_n] = \mu$ and $Var[\hat{X}_n] = \frac{\sigma^2}{n}$:
+
+	$$Pr[|\hat{X}_n - \mathbb{E}[\bar{X}_n]| \ge\varepsilon] \le \frac{\sigma^2}{n\varepsilon^2}$$
+
+	This tells that the accuracy of an empirical statistic increases with the number of samples.
+
+	\subsection{Central limit theorem}
+	Consider a sample of $X_1, \dots, X_n$ instances drawn from a distribution with mean $\mu$ and variance $\sigma^2$.
+	Regardless of the distribution of $X$, for $n\rightarrow\infty$ the distribution of the sample average $\hat{X}_n$ approaches a normal distribution.
+	Its mean approaches $\mu$ and its variance $\frac{\sigma^2}{n}$.
+	Thus the normalized sample average"
+
+	$$z = \frac{\hat{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}}$$
+
+	Approaches a normal distribution $N(0,1)$.
+
+		\subsubsection{Interpretation}
+		The sum of a sufficiently large sample of random measurements is approximately normally distributed.
+		The form of their distribution can be arbitrary.
+		This justifies the importance of the Normal distribution in real world applications.
+
+\section{Information theory}
+
+	\subsection{Entropy}
+	Consider a discrete set of symbols $\mathcal{V} = \{v_1, \dots, v_n\}$ with mutually exclusive probabilities.
+	To design a binary code for each symbol minimizing the average length of messages, Shannon and Weaver proved that the optimal code assigns to each symbol a number of bits equal to $-\log P(v_i)$.
+	The entropy of the set of symbols is the expected length of a message encoding a symbol assuming such optimal coding:
+
+	$$H[\mathcal{V}] = \mathbb{E}[-\log P(v)] = -\sum\limits_{i=1}^nP(v_i)\log P(v_i)$$
+
+	\subsection{Cross entropy}
+	Consider two distributions $P$ and $Q$ over variable $X$.
+	The cross entropy between $P$ and $Q$ measures the expected number of bits needed to code a symbol sampled from $P$ using $Q$ instead:
+
+	$$H(P,Q) = \mathbb{E}_P[-\log Q(v)] = -\sum\limits_{i=1}^nP(v_i)\log Q(v_i)$$
+
+	It is often used as a loss for binary classification with $P$ true distribution and $Q$ the predicted one.
+
+	\subsection{Relative entropy}
+	Consider two distributions $P$ and $Q$ over variable $X$.
+	The relative entropy or Kullback-Leibler divergence measures the expected length difference when coding instances sampled from $P$ using $Q$ instead.
+
+	\begin{align*}
+		D_{KL}(p||q) &= H(P,Q) - H(P)=\\
+			     &=-\sum\limits_{i=1}^nP(v_i)\log Q(v_i) + \sum\limits_{i=1}^nP(v_i)\log P(v_i)=\\
+			     & = \sum\limits_{i=1}^nP(v_i)\log\frac{P(v_i)}{Q(v_i)}
+	\end{align*}
+
+	The KL-divergence is not a distance as it is not symmetric.
+
+	\subsection{Conditional entropy}
+	Consider two variables $V$ and $W$ with possibly different distributions $P$.
+	The conditional entropy is the entropy remaining for variable $W$ once $V$ is known:
+
+	\begin{align*}
+		H(W|V) &= \sum\limits_v P(v)H(W|V=v)=\\
+		       &=-\sum\limits_{v}P(v)\sum\limits_wP(w|v)\log P(w|v)
+	\end{align*}
+
+	\subsection{Mutual information}
+	Consider two variables $V$ and $W$ with possibly different distributions $P$.
+	The mutual information or information gain is the reduction in entropy for $W$ once $V$ is known:
+
+	\begin{align*}
+		I(W, V) &= H(W) - H(W|V)\\
+			&=-\sum\limits_w p(w)\log p(w) + \sum\limits_{v}P(v)\sum\limits_wP(w|v)\log P(w|v)
+	\end{align*}
+	It is used in selecting the best attribute to use in building a decision tree, where $V$ is the attribute and $W$ is the label.
