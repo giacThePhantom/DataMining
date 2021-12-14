@@ -1,0 +1,148 @@
+\chapter{Evaluation}
+
+\section{Introduction}
+Evaluation requires to define the performance measures to be optimized.
+Performance of learning algorithms cannot be evaluated on the entire domain because of the generalization error, so there is a need for approximation.
+Performance evaluation is needed for:
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Tuning the hyperparameters of the learning method.
+		\item Evaluating the quality of the learned predictor.
+		\item Computing statistical significance of difference between different learning algorithms.
+	\end{itemize}
+\end{multicols}
+
+\section{Performance measures}
+
+	\subsection{Training loss and performance measures}
+	The training loss function measures the cost paid for predicting $f(x)$ for output $y$.
+	It is designed to boost effectiveness and efficiency of learning algorithm.
+	It is not necessarily the best measure of final performance, for example misclassification cost is never used as it is a piecewise constant no amenable to gradient descent.
+	Multiple performance measures could be used to evaluate different aspects of a learner.
+
+	\subsection{Binary classification}
+	For binary classification the confusion matrix reports the effective label on the rows and the predicted one on the columns.
+	Each entry contains the number of examples having label in row and predicted as column.
+	
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $TP$ true positives: positives predicted as positive.
+			\item $TN$ true negative: negative predicted as negative.
+			\item $FP$ false positives: negative predicted as positive.
+			\item $FN$ false negatives: positives predicted as negatives.
+		\end{itemize}
+	\end{multicols}
+
+		\subsubsection{Accuracy}
+		Accuracy is the fraction of correctly labelled examples among all predictions.
+		It is one minus the misclassification cost:
+
+		$$Acc = \frac{TP+TN}{TP+TN+FP+FN}$$
+
+		For strongly unbalanced datasets it is not informative because predictions are dominated by the larger class and predicting everything as negative maximizes accuracy.
+		One way of resolving this problem consists of introducing the rebalancing cost: a single positive counts as $\frac{N}{P}$ where $N = TN+FP$ and $P=TP+FN$.
+
+		\subsubsection{Precision}
+		Precision is the fraction of positives among examples predicted as positives.
+		It measures the precision of the learner when predicting positive:
+
+		$$Pre = \frac{TP}{TP+FP}$$
+
+		\subsubsection{Recall or sensitivity}
+		Recall is the fraction of positive examples predicted as positives.
+		It measures the coverage of the learner in returning positive examples:
+
+		$$Rec = \frac{TP}{TP+FN}$$
+
+		\subsubsection{F-measure}
+		Precision and recall are complementary: increasing prediction typically reduces recall.
+		F-measures combines the two measures balancing the two aspects with a parameter $\beta$ that defines the trade-off between precision and recall:
+
+		$$F_\beta = \frac{(1+\beta^2)(Pre+Rec)}{\beta^2Pre + Rec}$$
+
+		If $\beta = 1$ the measure is called $F_1$ and it is the harmonic mean of precision and recall:
+
+		$$F_1 = \frac{2(Pre+Rec)}{Pre+Rec}$$
+
+		\subsubsection{Precision-recall curve}
+		Classifiers often provide a confidence in the prediction and a hard decision is made setting a threshold on the classifier.
+		Accuracy, precision, recall and $F_1$ all measures performance of a classifier for a specific threshold.
+		It is possible to change the threshold if the interest is in maximizing a specific performance.
+		By varying the threshold from minimum to maximum possible values we obtain a curve of performance measures.
+		This curve can be shown plotting one measure like recall against the complementary one like precision.
+		It is possible to investigate performance of the learner in different scenarios.
+		The area under this curve can be used as a single aggregate value that combines performance of the algorithm for all possible threshold.
+
+	\subsection{Multiclass classification}
+	For multiclass classification the confusion matrix is a generalized evasion of the binary one such that $n_{ij}$ is the number of examples with class $y_i$ predicted as $y_j$.
+	The main diagonal contains true positives for each class.
+	The sum of off-diagonal elements along a column is the number of false positive for the column label and the sum of off-diagonal elements along a row is the number of false negatives for the raw label:
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $FP_i = \sum\limits_{j\neq i} n_{ji}$
+			\item $FN_i = \sum\limits_{j\neq i}n_{ij}$
+		\end{itemize}
+	\end{multicols}
+
+		\subsubsection{Muliclass accuracy}
+		Accuracy, precision, recall and $F_1$ carry over to a per-class measure considering as negative examples from other classes:
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $Pre_i = \frac{n_{ii}}{n_{ii} + FP_i}$
+				\item $Rec_i = \frac{n_{ii}}{n_{ii}+FN_i}$
+			\end{itemize}
+		\end{multicols}
+
+		Multiclass accuracy is the overall fraction of correctly classified examples:
+
+		$$MAcc = \frac{\sum\limits_i n_{ii}}{\sum\limits_i\sum\limits_j n_{i}}$$
+
+	\subsection{Regression}
+	
+		\subsubsection{Root mean squared error}
+		The root mean squared error for dataset $\mathcal{D}$ with $n = |\mathcal{D}|$ is:
+
+		$$RMSE = \sqrt{\frac{1}{n}\sum\limits_{i=1}^n(f(x_i)-y_i)^2}$$
+
+		\subsubsection{Pearson correlation coefficient}
+		The Pearson correlation coefficient for random variable $X$ and $Y$ is:
+
+		$$\rho = \frac{cov(X, Y)}{\sigma_X\sigma_Y} = \frac{\mathbb{E}[(X-\bar{X})(Y-\bar{Y}]}{\sqrt[\mathbb{E}[(X-\bar{X})^2]\mathbb{E}[(Y-\bar{Y})^2]}$$
+
+		For regression on $\mathcal{D}$ it becomes:
+
+		$$\rho = frac{\sum\limits_{i=1}^n(f(x_i)-\bar{f}(x_i))(y_i-\bar{y}_i)}{\sqrt{\sum\limits_{i=1}^n(f(x_i)-\bar{f}(x_i))^2\sum\limits_{i=1}^n(y_i-\bar{y}_i)^2}}$$
+
+		Where $\bar{z}$ is the average of $z$ on $\mathcal{D}$.
+
+		\subsubsection{Hold-out procedure}
+		Computing the performance measure on training set would be optimistically biased, so there is a need to retain an independent set on which to compute performance:
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item Validation set: when used to estimate performance of different algorithmic settings.
+				\item Test set: when used to estimate final performance of selected model.
+			\end{itemize}
+		\end{multicols}
+
+		Hold-out procedure depends on the specific test and validation set chosen.
+
+		\subsubsection{K-fold cross validation}
+		In the k-fold cross validation $\mathcal{D}$ is split in $k$ equal sized disjoint subsets $\mathcal{D}_i$.
+		Then for $i\in[1,k]$L
+		
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item Train predictor on $\mathcal{T} = \mathcal{D}\backslash\mathcal{D}_i$.
+				\item Compute score $S$ of predictor $L(\mathcal{T}_i)$ on test set $\mathcal{D}_i$: $S_i = S_{\mathcal{D}_i}[L(\mathcal{T}_i)]$.
+			\end{enumerate}
+		\end{multicols}
+		
+		Then the average score across folds is returned:
+
+		$$S = \frac{1}{k}\sum\limits_{i=1}^k S_i$$
+
+
