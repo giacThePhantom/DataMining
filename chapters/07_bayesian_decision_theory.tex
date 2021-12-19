@@ -1,3 +1,206 @@
 \chapter{Bayesian decision theory}
 
-	\section{Introduction}
+\section{Introduction}
+Bayesian decision theory allows to take optimal decisions in a fully probabilistic setting.
+It assumes all relevant probabilities are known, allowing to provide upper bounds on achievable errors and to evaluate classifiers accordingly.
+Bayesian reasoning can be generalized to cases when the probabilistic structure is not entirely known.
+
+	\subsection{Input-output pairs}
+	In binary classification assume that examples $(x,y)\in\mathcal{X}\times \{-1,1\}$ are drawn from a known distribution $p(x,y)$.
+	The task is predicting the class $y$ of examples given $x$.
+	This can be written in probabilistic terms using Bayes rule:
+
+	$$P(y|x) = \frac{p(x|y)P(y)}{p(x)}$$
+
+		\subsubsection{Output given input}
+		Bayes rule allows to compute the posterior probability given likelihood, prior and evidence:
+
+		$$posterior = \frac{likelihood\times prior}{evidence}$$
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item The posterior $P(y|x)$ is the probability that class is $y$ given that $x$ was observed.
+				\item The likelihood $p(x|y)$ is the probability of observing $x$ given that its class is $y$.
+				\item The prior $P(y)$ is the prior probability of the class without any evidence.
+				\item The evidence $p(x)$ is the probability of the observation and following the law of total probability can be computed as:
+
+					$$p(x) = \sum\limits_{i=1}^2 p(x|y)P(y)$$
+
+			\end{itemize}
+		\end{multicols}
+
+	\subsection{Expected error}
+	The probability of error given $x$ is:
+
+	$$P(error|x) = \begin{cases} P(y_2|x) &if\ y_1\ is\ chosen \\ P(y_1|x) &if\ y_2\ is\ chosen\end{cases}$$
+
+	The average probability of error is:
+
+	$$P(error) = \int\limits_{-\infty}^\infty P(error|x)p(x)dx$$
+
+	\subsection{Bayes decision rule}
+
+		\subsubsection{Binary case}
+
+		$$y_B = \arg\max\limits_{y_i\in\{-1,1\}} P(y_i|x) = \arg\max\limits_{y_i\in\{-1,1\}}p(x|y_i)P(y_i)$$
+
+		\subsubsection{Multiclass case}
+
+		$$y_B = \arg\max\limits_{y_i\in\{1, \dots, c\}} P(y_i|x) = \arg\max\limits_{y_i\in\{1, \dots, c\}}p(x|y_i)P(y_i)$$
+
+		\subsubsection{Optimal rule}
+		The probability of error given $x$ is:
+
+		$$P(error|x) = 1 - P(y_B|x)$$
+
+		The Bayes decision rule minimizes the probability of error.
+
+\section{Representing classifiers}
+
+	\subsection{Discriminant functions}
+	A classifier can be represented as a set of discriminant functions $g_i(x), i\in 1, \dots, c$, giving:
+
+	$$y = \arg\max\limits_{i\in 1, \dots, c}g_i(x)$$
+
+	A discriminant function is not unique and the most convenient one can be chosen for computational or explanatory reasons:
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $g_i(x) = P(y_i|x) = \frac{p(x|y_i)P(y_i)}{p(x)}$.
+			\item $g_i(x) = p(x|y_i)P(y_i)$.
+			\item $g_i(x) = \ln p(x|y_i) + \ln P(y_i)$.
+		\end{itemize}
+	\end{multicols}
+
+	\subsection{Decision regions}
+	The feature space is divided into decision regions $\mathcal{R}_1, \dots, \mathcal{R}_x$ such that:
+
+	$$x\in\mathcal{R}_i\qquad if\ g_i(x)>g_j(x)\forall j\neq i$$
+
+	This regions are separated by decision boundaries, regions in which ties occur among the largest discriminant functions.
+
+\section{Multivariate normal density}
+The multivariate normal density is the function
+
+$$d(\vec{x}) = \frac{1}{(2\pi)^\frac{d}{2}|\Sigma|^{\frac{1}{2}}}e^{-\frac{1}{2}(\vec{x}-\vec{\mu})^t\Sigma^{-1}(\vec{x}-\vec{\mu})}$$
+
+The covariance matrix $\Sigma$ is always symmetric and positive semi-definite and strictly positive definite is the dimension of the feature space is $d$.
+
+	\subsection{Hyperellipsoids}
+	The loci of constant density are hyperellipsoids of constant Mahalanobis distance from $\vec{x}$ to $\vec{\mu}$.
+	The principal axes of such hyperellipsoids are the eigenvectors of $\Sigma$, their lengths are given by the corresponding eigenvalues.
+
+	\subsection{Discriminant functions for normal density}
+	Let the discriminant function be:
+
+	\begin{align*}
+		g_i(\vec{x}) &= \ln p(\vec{x}|y_i) + \ln P(y_i)=\\
+								 &=-\frac{1}{2}(\vec{x}-\vec{\mu}_i)^t\Sigma_i^{-1}(\vec{x}-\vec{\mu}_i) - \frac{d}{2}\ln 2\pi - \frac{1}{2}\ln|\Sigma_i| + \ln P(y_i)
+	\end{align*}
+
+	Discarding those terms which are independent of $i$:
+
+	$$g_i(x) = -\frac{1}{2}(\vec{x}-\vec{\mu}_i)^t\Sigma_i^{-1}(\vec{x}-\vec{\mu}_i)-\frac{1}{2}\ln|\Sigma_i| + \ln P(y_i)$$
+
+		\subsubsection{Case $\Sigma_i = \sigma^2 I$}
+		In the case $\Sigma_i = \sigma^2 I$ all features are statistically independent and all of them have the same variance $\sigma^2$.
+		The covariance determinant $|\Sigma_i| = \sigma^{2d}$ can be ignored as being independent of $i$.
+		The covariance inverse is given by $\Sigma_i^{-1} = \frac{1}{\sigma^2}I$.
+		The discriminant function then becomes:
+
+		$$g_i(\vec{x}) = -\frac{||\vec{x}-\vec{\mu}_i||^2}{2\sigma^2} + \ln P(y_i)$$
+
+		Then, expanding the quadratic form:
+
+		$$g_i(\vec{x}) = -\frac{1}{2\sigma^2}[\vec{x}^t\vec{x}-2\vec{\mu}_i^t\vec{x} + \vec{\mu}_i^t\vec{\mu}_i] + \ln P(y_i)$$
+
+		Discarding all the terms independent of $i$ the linear discriminant function is obtained:
+
+		$$g_i(x) = \underbrace{\frac{1}{\sigma^2}\vec{\mu}_i^t\vec{x}}_{\vec{w}_i^t} - \underbrace{\frac{1}{2\sigma^2}\vec{\mu}_i^t\vec{\mu}_i + \ln P(y_i)}_{w_{i0}}$$
+
+			\paragraph{Separating hyperplane}
+			Setting $g_i(\vec{x}) = g_j(\vec{x})$ the decision boundaries are pieces of hyperplanes.
+
+			$$\underbrace{(\vec{\mu}_i - \vec{\mu}_j)^t}_{\vec{w}^t}\biggl(\vec{x}-\biggl(\underbrace{\frac{1}{2}(\vec{\mu}_i + \vec{\mu}_j) - \frac{\sigma^2}{||\vec{\mu}_i-\vec{\mu}_j||^2}\ln\frac{P(y_i)}{P(y_j)}(\vec{\mu}_i-\vec{\mu}_j)}_{\vec{x}_0}\biggr)\biggr)$$
+
+			This hyperplane is orthogonal to vector $\vec{w}$, the line linking the means and passes through $\vec{x}_0$: if the prior probabilities of the classes are equal, $\vec{x}_o$ is halfway between the means, otherwise it sifts away from the more likely mean.
+
+				\subparagraph{Derivation of the separating hyperplane}
+
+				\begin{align*}
+					g_i(\vec{x}) - g_j(\vec{x}) &= 0\\
+					\frac{1}{\sigma^2}\vec{\mu}_i^t\vec{x}-\frac{1}{2\sigma^2}\vec{\mu}_i^t\vec{\mu}_i + \ln P(y_i) - \frac{1}{\sigma^2}\vec{\mu}_j^t\vec{x} + \frac{1}{2\sigma^2}\vec{\mu}_j^t\vec{\mu}^j - \ln P(y_j) & = 0\\
+					 (\vec{\mu}_i-\vec{\mu}_j)^t\vec{x} - \frac{1}{2}(\vec{\mu}_i^t\vec{\mu}_i-\vec{\mu}_j^t\vec{\mu}_j)+\sigma^2\ln\frac{P(y_i)}{P(y_j)} &=0\\
+					 \vec{w}^t(\vec{x}-\vec{x}_o) & = 0\\
+					 \vec{w} &= \vec{\mu}_i-\vec{\mu}_j\\
+					 (\vec{\mu}_i - \vec{\mu}_j)^t\vec{x}_0 &=\frac{1}{2}(\vec{\mu}_i^t\vec{\mu}_i - \vec{\mu}_j^t\vec{\mu}_j) - \sigma^2\ln\frac{P(y_i)}{P(y_j)}\\
+					 \vec{\mu}_i^t\vec{\mu}_i - \vec{\mu}_j^t\vec{\mu}_j &= (\vec{\mu}_i - \vec{\mu}_j)^t(\vec{\mu}_i + \vec{\mu}_j)\\
+					 \ln\frac{P(y_i)}{P(y_j)} = \frac{(\vec{\mu}_i -\vec{\mu}_j)^t(\vec{\mu}_i - \vec{\mu}_j)}{(\vec{\mu}_i -\vec{\mu}_j)^t(\vec{\mu}_i - \vec{\mu}_j)}\ln\frac{P(y_i)}{P(y_j)} &= (\vec{\mu}_i - \vec{\mu}_j)^t\frac{\vec{\mu}_i-\vec{\mu}_j}{||\vec{\mu}_i-\vec{\mu}_j||^2}\ln\frac{P(y_i)}{P(y_j)}\\
+					\vec{x}_0 &= \frac{1}{2}(\vec{\mu}_i + \vec{\mu}_j) - \sigma^2 \frac{\vec{\mu}_i-\vec{\mu}_j}{||\vec{\mu}_i-\vec{\mu}_j||^2}\ln\frac{P(y_i)}{P(y_j)}
+				\end{align*}
+
+		\subsubsection{Case $\Sigma_i = \Sigma$}
+		In the case where all classes have the same covariance matrix the discriminant function become:
+
+		$$g_i(\vec{x}) = -\frac{1}{2}(\vec{x}-\vec{\mu}_i)^t\Sigma^{-1}(\vec{x}-\vec{\mu}_i) + \ln P(y_i)$$
+
+		Expanding the quadratic form and discarding terms independent of $i$ we obtain the linear discriminant function:
+
+		$$g_i(\vec{x}) = \underbrace{\vec{\mu}_i^t\Sigma^{-1}\vec{x}}_{\vec{w}_i^t} \underbrace{-\frac{1}{2}\vec{\mu}_i^t\Sigma^{-1}\vec{\mu}_i + \ln P(y_i)}_{w_{i0}}$$
+
+		The separating hyperplanes are not necessarily orthogonal to the line linking the means:
+
+		$$\underbrace{(\vec{\mu}_i - \vec{\mu}_j)^t\Sigma^{-1}}_{\vec{w}^t}\biggl(\vec{x}-\underbrace{\frac{1}{2}(\vec{\mu}_i+\vec{\mu}_j) - \frac{\ln \frac{P(y_i)}{P(y_j)}}{(\vec{\mu}_i - \vec{\mu}_j)^t\Sigma^{-1}(\vec{\mu}_i-\vec{\mu}_j)}(\vec{\mu}_i-\vec{\mu}_j)}_{\vec{x}_0}\biggr))$$
+
+		\subsubsection{Case $\Sigma_i$ arbitrary}
+		In the case where $\Sigma_i$ is arbitrary the discriminant functions are inherently quadratic:
+
+		$$g_i(\vec{x}) = \vec{x}^t\underbrace{\biggl(-\frac{1}{2}\Sigma^{-1}_i\biggr)}_{W_i}\vec{x} + \underbrace{\vec{\mu}_i^t\Sigma_i^{-1}}_{\vec{w}_i^t}\vec{x} \underbrace{-\frac{1}{2}\vec{\mu}_i^t\Sigma_i^{-1}\vec{\mu}_i - \frac{1}{2}\ln|\Sigma_i| + \ln P(y_i)}_{w_{i0}}$$
+
+		In the two category case the decision surfaces are hyperquadratics like hyperplanes, pairs of hyperplanes, hyperspheres or hyperellipsoids.
+
+\section{Arbitrary inputs and outputs}
+
+	\subsection{Setting}
+	Examples are input-output pairs $(x, y)\in\mathcal{X}\times\mathcal{Y}$ generated with probability $p(x, y)$.
+
+	\subsection{Risk}
+
+		\subsubsection{Conditional risk}
+		The conditional risk of predicting $y^*$ given $\vec{x}$ is:
+
+		$$R(y^*|\vec{x}) = \int_\mathcal{Y}l(y^*, y)P(y|x)dy$$
+
+		\subsubsection{Overall risk}
+		The overall risk of a decision rule $g$ is:
+
+		$$R[f] = \int R(f(x)|x)p(x)dx = \int_\mathcal{X}\int_\mathcal{Y}l(f(x), y)p(y, x)dxdy$$
+
+	\subsection{Bayes decision rule}
+	Bayes decision rule states:
+
+	$$y^B = \arg\min\limits_{y\in\mathcal{Y}} R(y|x)$$
+
+\section{Handling features}
+
+	\subsection{Handling missing features - marginalize over missing variables}
+	To marginalize over missing variables one must assume that input $\vec{x}$ consists of an observed part $\vec{x}_o$ and a missing part $\vec{x}_m$.
+	The posterior probability of $y_i$ given the observation can be obtained from probabilities over entire inputs by marginalizing over the missing part:
+
+	\begin{align*}
+		P(y_i|\vec{x}_o) &= \frac{p(y_i, \vec{x}_o)}{p(\vec{x}_o)} = \frac{\int p(y_i, \vec{x}_o, \vec{x}_m)d\vec{x_m}}{p(\vec{x}_o)}=\\
+										 &= \frac{\int P(y_i|\vec{x}_o, \vec{x}_m)p(\vec{x}_o, \vec{x}_m)d\vec{x}_m}{\int p(\vec{x}_o, \vec{x}_m)d\vec{x}_m}=\\
+										 &= \frac{\int P(y_i|vec{x})p(\vec{x})d\vec{x}_m}{\int p(\vec{x})d\vec{x}_m}
+	\end{align*}
+
+	\subsection{Handling noisy features - marginalize over true variables}
+	To marginalize over true variables on must assume that $\vec{x}$ consists of a clean part $\vec{x}_c$ and a noisy part $\vec{x}_n$.
+	Also there is a need for a noise model for the probability of the noisy feature given its true version $p(\vec{x}_n|\vec{x}_t)$.
+	The posterior probability of $y_i$ given the observation can be obtained from probabilities over clean inputs by marginalizing over true variables via the noise model:
+
+	\begin{align*}
+		P(y_i|\vec{x}_x, \vec{x}_n) &=\frac{p(y_i, \vec{x}_c, \vec{x}_n)}{p(\vec{x}_c, \vec{x}_n)} = \frac{\int p(y_i, \vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}{\int p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t)}=\\
+																&=\frac{\int p(y_i|\vec{x}_cm \vec{x}_n, \vec{x}_t)p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}{\int p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}=\\
+																&=\frac{\int p(y_i|\vec{x}_c, \vec{x}_t)p(\vec{x}_n|\vec{x}_c, \vec{x}_t)p(\vec{x}_c, \vec{x}_t)d\vec{x}_t}{\int p(\vec{x}_n|\vec{x}_c, \vec{x}_t)p(\vec{x}_c, \vec{x}_t)d\vec{x}_t}\\
+																&=\frac{\int p(y_i|\vec{x})p(\vec{x}_n|\vec{x_t})p(\vec{x})d\vec{x}_t}{\int p(\vec{x}_n|\vec{x}_t)p(\vec{x})d\vec{x}_t}
+	\end{align*}

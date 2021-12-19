@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.1)  19 DEC 2021 16:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.1)  19 DEC 2021 18:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -834,20 +834,25 @@ Chapter 6.
 
 ] [33] [34] [35] [36]) (./chapters/07_bayesian_decision_theory.tex [37]
 Chapter 7.
-) [38
+[38
 
-] (./build/principal.aux)
+] [39] [40]
+Overfull \hbox (0.13525pt too wide) detected at line 140
+[]
+ []
+
+[41] [42]) [43] (./build/principal.aux)
 Package rerunfilecheck Info: File `principal.out' has not changed.
-(rerunfilecheck)             Checksum: A73637F2D946496EB2DB6B05744FC2C8;16081.
+(rerunfilecheck)             Checksum: 6B2E96A4CD92F153E2E2268F51D60D06;19108.
  ) 
 Here is how much of TeX's memory you used:
- 18759 strings out of 478994
- 318187 string characters out of 5864751
- 667377 words of memory out of 5000000
- 35692 multiletter control sequences out of 15000+600000
+ 18807 strings out of 478994
+ 318958 string characters out of 5864751
+ 675392 words of memory out of 5000000
+ 35708 multiletter control sequences out of 15000+600000
  424714 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,16n,91p,371b,874s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 88i,16n,91p,445b,874s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/t
 exmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public
@@ -867,10 +872,10 @@ fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
 rm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></us
 r/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ./build/principal.pdf (39 pages, 401991 bytes).
+Output written on ./build/principal.pdf (44 pages, 423305 bytes).
 PDF statistics:
- 916 PDF objects out of 1000 (max. 8388607)
- 845 compressed objects within 9 object streams
- 245 named destinations out of 1000 (max. 500000)
- 777 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1036 PDF objects out of 1200 (max. 8388607)
+ 959 compressed objects within 10 object streams
+ 277 named destinations out of 1000 (max. 500000)
+ 905 words of extra memory for PDF output out of 10000 (max. 10000000)
 
