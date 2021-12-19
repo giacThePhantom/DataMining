@@ -11,8 +11,8 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 	*[X] 03_knn.pdf
 	*[X] 04_linear_algebra.pdf
 	*[X] 05_probability_theory.pdf
-	*[~] 06_evaluation.pdf
-	*[ ] 07_bn.pdf
+	*[X] 06_evaluation.pdf
+	*[~] 07_bn.pdf
 	*[ ] 08_bn_inference.pdf
 	*[ ] 09_bn_learning.pdf
 	*[ ] 10_naive_bayes.pdf

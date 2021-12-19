@@ -24,7 +24,7 @@ Performance evaluation is needed for:
 	\subsection{Binary classification}
 	For binary classification the confusion matrix reports the effective label on the rows and the predicted one on the columns.
 	Each entry contains the number of examples having label in row and predicted as column.
-	
+
 	\begin{multicols}{2}
 		\begin{itemize}
 			\item $TP$ true positives: positives predicted as positive.
@@ -101,7 +101,7 @@ Performance evaluation is needed for:
 		$$MAcc = \frac{\sum\limits_i n_{ii}}{\sum\limits_i\sum\limits_j n_{i}}$$
 
 	\subsection{Regression}
-	
+
 		\subsubsection{Root mean squared error}
 		The root mean squared error for dataset $\mathcal{D}$ with $n = |\mathcal{D}|$ is:
 
@@ -133,16 +133,93 @@ Performance evaluation is needed for:
 		\subsubsection{K-fold cross validation}
 		In the k-fold cross validation $\mathcal{D}$ is split in $k$ equal sized disjoint subsets $\mathcal{D}_i$.
 		Then for $i\in[1,k]$L
-		
+
 		\begin{multicols}{2}
 			\begin{enumerate}
 				\item Train predictor on $\mathcal{T} = \mathcal{D}\backslash\mathcal{D}_i$.
 				\item Compute score $S$ of predictor $L(\mathcal{T}_i)$ on test set $\mathcal{D}_i$: $S_i = S_{\mathcal{D}_i}[L(\mathcal{T}_i)]$.
 			\end{enumerate}
 		\end{multicols}
-		
+
 		Then the average score across folds is returned:
 
 		$$S = \frac{1}{k}\sum\limits_{i=1}^k S_i$$
 
+			\paragraph{Variance}
+			The variance of the average score is computed as:
 
+			$$Var[\bar{S}] = Var\biggl[\frac{S_1+\cdots + S_k}{k}\biggr] = \frac{1}{k^2}\sum\limits_{j=1}^k Var[S_j]$$
+
+			$Var[S_j]$ cannot be exactly computed, so it is approximated with the unbiased variance across folds"
+
+			$$Var[S_j] = Var[S_h]\approx \frac{1}{k-1} \sum\limits_{i=1}^k(S_i-\bar{S})^2$$
+
+			Giving:
+
+			$$Var[\bar{S}] \approx \frac{1}{k^2}\sum\limits_{i=1}^k(S_i-\bar{S})^2 = \frac{1}{k(k-1)}\sum\limits_{i=1}^k(S_i - \bar{S})^2$$
+
+\section{Hypothesis testing}
+There is a need to compare generalization performance of two learning algorithms.
+There is a need to know whether observed difference in performance is statistically significant.
+Hypothesis testing allows to test the statistical significance of an hypothesis.
+
+	\subsection{Test statistic}
+	Given a null hypothesis $H_0$, the default hypothesis, for rejecting which evidence should be provided, a sample of $k$ realizations of random variables $X_1, \dots, X_k$, a test statistic is a statistic $T = h(X_1, \dots, X_n$ whose value is used to decide whether to reject $H_0$ or not.
+
+	\subsection{Glossary}
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item \textbf{Tail probability}: probability that $T$ is at least as great (right tail) or at least as small (left tail) as the observed value $t$.
+			\item \textbf{p-value}: probability of obtaining a value $T$ at least as extreme as the observed $t$ in case $H_0$ is true.
+			\item \textbf{Type I error}: reject the null hypothesis when it's true.
+			\item \textbf{Type II error}: accept the null hypothesis when it's false.
+			\item \textbf{Significance level}: larges acceptable probability for committing a type I error.
+			\item \textbf{Critical region}: set of values of $T$ for which the null hypothesis is rejected.
+			\item \textbf{Critical values}: values on the boundary of the critical region.
+				\end{itemize}
+	\end{multicols}
+
+	\subsection{T-test}
+	In the t-test the test statistics is given by the standardized or studentized mean:
+
+	$$T = \frac{\bar{X} - \mu_0}{\sqrt{\tilde{Var}[\bar{X}]}}$$
+
+	Where $\tilde{Var}[\bar{X}]$ is the approximated variance using the unbiased sample one.
+	Assuming the samples come from an unknown normal distribution, the test statistics has a $t_{k-1}$ distribution under the null hypothesis.
+	The null hypothesis can be rejected at significance level $\alpha$ if:
+
+	$$T\le -t_{k-1,\frac{\alpha}{2}}\qquad\lor\qquad T\ge t_{k-1,\frac{\alpha}{2}}$$
+
+		\subsubsection{$t_{k-1}$ distribution}
+		The $t_{k-1}$ distribution is a bell-shaped distribution similar to the Normal one.
+		It is wider and shorter, reflecting greater variance due to using $\tilde{Var}[\bar{X}]$ instead of the true unknown variance of the distribution.
+		$k-1$ is the number of degree of freedom of the distribution and it's related to the number of independent events observed.
+		$t_{k-1}$ tends to the standardized normal $z$ for $k\rightarrow\infty$.
+
+	\subsection{Comparing learning algorithms}
+
+		\subsubsection{Hypothesis testing}
+		After having run $k$-fold cross validation procedure for algorithms $A$ and $B$, the mean performance difference for them is computed:
+
+		$$\bar{\delta} = \frac{1}{k}\sum\limits_{i=1}^k\delta_i = \frac{1}{k}\sum\limits_{i=1}^k S_{\mathcal{D}_i}[L_A(\mathcal{T}_i)] - S_{\mathcal{D}_i}[L_B(\mathcal{T}_i)]$$
+
+		The null hypothesis is that the mean difference is zero.
+
+		\subsubsection{T-test}
+		At significance level $\alpha$:
+
+		$$\frac{\bar{\delta}}{\sqrt{\tilde{Var}[\bar{\delta}]}}\le-t_{k-1,\frac{\alpha}{2}}\qquad\lor\qquad\frac{\bar{\delta}}{\sqrt{\tilde{var}[\bar{\delta}]}}\ge t_{k-1,\frac{\alpha}{2}}$$
+
+		Where:
+
+		$$\sqrt{\tilde{Var}[\bar{\delta}]} = \sqrt{\frac{1}{k(k-1)}\sum\limits_{i=1}^k(\delta_i-\bar{\delta})^2}$$
+
+		\subsubsection{Notes}
+
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item If the two hypothesis where evaluated over identical samples the paired test is used.
+				\item If no prior knowledge can tell the direction of difference the two-tailed test is used, otherwise the one-tailed test.
+			\end{itemize}
+		\end{multicols}

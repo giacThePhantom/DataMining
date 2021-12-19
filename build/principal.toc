@@ -162,3 +162,15 @@
 \contentsline {subsubsection}{\numberline {6.2.4.2}Pearson correlation coefficient}{34}{subsubsection.6.2.4.2}%
 \contentsline {subsubsection}{\numberline {6.2.4.3}Hold-out procedure}{34}{subsubsection.6.2.4.3}%
 \contentsline {subsubsection}{\numberline {6.2.4.4}K-fold cross validation}{35}{subsubsection.6.2.4.4}%
+\contentsline {paragraph}{\numberline {6.2.4.4.1}Variance}{35}{paragraph.6.2.4.4.1}%
+\contentsline {section}{\numberline {6.3}Hypothesis testing}{35}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Test statistic}{35}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Glossary}{35}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}T-test}{36}{subsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.3.1}$t_{k-1}$ distribution}{36}{subsubsection.6.3.3.1}%
+\contentsline {subsection}{\numberline {6.3.4}Comparing learning algorithms}{36}{subsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.4.1}Hypothesis testing}{36}{subsubsection.6.3.4.1}%
+\contentsline {subsubsection}{\numberline {6.3.4.2}T-test}{36}{subsubsection.6.3.4.2}%
+\contentsline {subsubsection}{\numberline {6.3.4.3}Notes}{37}{subsubsection.6.3.4.3}%
+\contentsline {chapter}{\numberline {7}Bayesian decision theory}{38}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introduction}{38}{section.7.1}%
