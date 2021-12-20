@@ -1,0 +1,331 @@
+\chapter{Bayesian networks}
+
+\section{Inference in graphical models}
+Assume that there is evidence $e$ on the state of a subset of variables $W$ in the model.
+Inference amounts at computing the posterior probability of a subset $X$ of the non-observed variables given the observations: $p(X|E=e)$.
+
+	\subsection{Efficiency}
+	The posterior probability can alwasy be computed as the ratio of two joint probabilities:
+
+	$$p(X|E=e)=\frac{p(X,E=e)}{p(E=e)}$$
+
+	The problem consists of estimating such joint porbabilities when dealing with a large number of variables.
+	Directly working on the full joint probabilities requires time exponential in the number of variables: if all $N$ variables are discrete and take one of $K$ possible values, a joint probability table has $K^N$ entries.
+	There is a way to exploit the structure in graphical models to do inference more efficiently.
+
+	\subsection{Inference on a chain}
+	Let a probability chain be:
+
+	$$p(X) = p(X_1)p(X_2|X_1)p(X_3|X_2)\cdot p(X_N|X_{N-1})$$
+
+	The marginal probability of an arbitrary $X_n$ is:
+
+	$$p(X_n) = \sum\limits_{X_1}\cdots\sum\limits_{X_{n-1}}\sum\limits_{X_{n+1}}\cdot\sum\limits_{X_{N}}p(X)$$
+
+	Only the $p(X_n|X_{N-1})$ is involved in the last summation which can be computed first, giving a function of $X_{N-1}$:
+
+	$$\mu_\beta(X_{N-1}) = \sum\limits_{X_N}p(X_N|X_{N-1})$$
+
+	The marginalization can be iterated as:
+
+	$$\mu_\beta(X_{N-2}) = \sum\limits_{X_{N-1}}p(X_{N-1}|X_{N-2})\mu_\beta(X_{N-1})$$
+
+	Down to the desired variable $X_n$, giving:
+
+	$$\mu_\beta(X_{n}) = \sum\limits_{X_{n+1}}p(X_{n+1}|X_{n})\mu_\beta(X_{n+1})$$
+
+	The same procedure can be applied starting from the other end of the chain, giving:
+
+	$$\mu_\alpha(X_2) = \sum\limits_{X_1}p(X_1)p(X_2|x_1)$$
+
+	Up to $\mu_\alpha(X_n)$.
+	The marginal probability is now computed as the product of the contributions coming from both ends:
+
+	$$p(X_n) = \mu_\alpha(X_n)\mu_\beta(X_n)$$
+
+	\subsection{Inference as message passing}
+	$\mu_\alpha(X_n)$ can be though as a message passing from $X_{n-1}$ to $X_n$:
+
+	$$\mu_\alpha(X_n) = \sum\limits_{X_{n-1}} p(X_n|X_{n-1})$$
+
+	$\mu_\beta(X_n)$ can be thought as a message passing from $X_{n+1}$ to $X_n$:
+
+	$$\mu_\beta(X_n) = \sum\limits_{X_{n+1}}p(X_{n+1}|X_n)\mu_\beta(X_{n+1})$$
+
+	Each outgoing message is obtained multiplying the incoming message by the local probability and summing over the node values.
+
+	\subsection{Full message passing}
+	Let's suppose we want to know marginal probabilities for a number of different variables $X_i$:
+
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item A message is sent from $\mu_\alpha(X_1)$ up to $\mu_\alpha(X_N)$.
+			\item A message is set from $\mu_\beta(X_N)$ down to $\mu_\beta(X_1)$.
+		\end{enumerate}
+	\end{multicols}
+
+	If all nodes store messages any marginal probability can be computed as:
+
+	$$p(X_i) = \mu_\alpha(X_i)\mu_\beta(X_i)$$
+
+	For any $i$ having sent a double number of messages with respect to a single marginal computation.
+
+	\subsection{Adding evidence}
+	If some nodes $X_e$ are observed their observed values are used instead of summing over all possible values when computing their messages.
+
+	\subsection{Computing conditional probability given evidence}
+	When adding evidence, the message passing procedure computes the joint probability of the variable and the evidence, and it has to be normalized to obtain the conditional probability given the evidence:
+
+	$$p(X_n|X_e =x_e) = \frac{p(X_n, X_e = x_e)}{\sum\limits_{X_n}p(X_n, X_e = x_e)}$$
+
+	\subsection{Inference on trees}
+	Efficient inference can be computed for the broad family  of tree-structured models: undirected trees, directed trees and directed polytrees.
+
+\section{Factor graphs}
+
+	\subsection{Description}
+	Efficient inference algorithms can be better explained using an alternative graphical representation called factor graph.
+	A factor graph is a graphical representation of a graphical model highlighting its factorizations (conditional probabilities).
+	The factor graph has one node for each node in the original graph, and one additional of a different type for each factor.
+	A factor node has undirected links to each of the node variables in the factor.
+
+	\subsection{Sum-product algorithm}
+	The sum-product algorithm is an efficient algorithm for exact inference on tree-structured graphs.
+	It is a message passing algorithm as its simpler version for chain.
+	It can be applied to undirected models and directed ones.
+
+		\subsubsection{Computing marginals}
+		The marginal probability of $X$ is $p(X) = \sum\limits_{x\backslash X}p(X)$.
+		Generalizing the message passing scheme, this can be computed as the product of messages coming from all neighbouring factors $f_s$:
+
+		$$p(X) = \prod\limits_{f_s\in ne(X)}\mu_{f_s\rightarrow X}(X)$$
+
+		\subsubsection{Factor messages}
+		Each factor message is the product of messages coming from nodes other than $X$, times the factor, summed over all possible values of the factor variables other than $X$:
+
+		$$\mu_{f_s\rightarrow X}(X) = \sum\limits_{X_1}\cdots\sum\limits_{X_M}f_s(X, X_1, \dots, X_M)\prod\limits_{X_m\in ne(f_s)\backslash X}\mu_{X_m\rightarrow f_s}(X_m)$$
+
+		\subsubsection{Node messages}
+		Each message from node $X_m$ to factor $f_s$ is the product of the factor messages to $X_m$ coming from factors other than $f_s$:
+
+		$$\mu_{X_m\rightarrow f_s}(X_m) = \prod\limits_{f_l\in ne(X_m)\backslash f_s}\mu_{f_l\rightarrow X_m}(X_m)$$
+
+		\subsubsection{Initialization}
+		Message passing start from leaves, factors or nodes.
+		Messages from leaf factors are initialized to the factor itself: $\mu_{f\rightarrow x}(x) = f(x)$.
+		Messages from leaf nodes are initialized to $1$: $\mu_{x\rightarrow f}(x) = 1$.
+
+		\subsubsection{Message passing scheme}
+		The node $X$ whose marginal has to be computed is designed as root.
+		Messages are sent from all leaves to their neighbours.
+		Each internal node sends its message towards the root as soon as it received messages from all other neighbours.
+		Once the root as collected all messages, the marginal can be computed as the product of them.
+
+		\subsubsection{Full message passing scheme}
+		In order to be able to compute marginals for any node, messages need to pass in all directions:
+
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item Choose an arbitrary node as root.
+				\item Collect messages for the root starting from leaves.
+				\item Send messages from the root down to the leaves.
+			\end{enumerate}
+		\end{multicols}
+
+		All messages are passed in all directions using only twice the number of computations used for a single marginal.
+
+		\subsubsection{Adding evidence}
+		If some nodes $X_e$ are observed, their values are used instead of summing over all possible values when computing their messages.
+		After normalization, this gives the conditional probability given the evidence.
+
+\section{Finding the most probable configuration}
+Given a joint probability distribution $p(\vec{X})$, there is a need to find the configuration for variables $\vec{X}$ having the highest probability:
+
+$$\vec{X}^{\max} = \arg\max\limits_{\vec{X}}p(\vec{X})$$
+
+For which the probability is $p(\vec{X}^{\max}) = \max\limits_{\vec{X}}p(\vec{x})$.
+Because the focus is the jointly maximal for all variables the sum-product algorithm cannot be used.
+
+	\subsection{The max-product algorithm}
+
+	$$p(\vec{X}^{\max}) = \max\limits_{\vec{X}}p(\vec{x}) = \max\limits_{X_1}\cdots\max\limits_{X_M}p(\vec{X})$$
+
+	As for the sum-product algorithm the distribution factorization can be exploited to efficiently compute the maximum.
+	To to so it is sufficient to replace the sum with the max in the sum-product algorithm.
+
+		\subsubsection{Linear chain}
+
+		\begin{align*}
+			\max\limits_{\vec{X}}p(\vec{X}) &= \max\limits_{X_1}\cdots\max\limits_{X_N}[p(X_1)p(X_2|X_1)\cdots p(X_N|X_{N-1})]=\\
+																			&\max\limits_{X_1}[p(X_1)p(X_2|X_1)[\cdots\max\limits_{X_N}p(X_n|X_{N-1})]]
+		\end{align*}
+
+		\subsubsection{Message passing}
+		As for the sum-product algorithm, the max-product can be seen as message passing over the graph.
+		The algorithm is easily applied to tree-structured graphs via their factor trees:
+
+		\begin{align*}
+			\mu_{f\rightarrow X}(X) &= \max\limits_{X_1, \dots, X_M}\biggl[f(X, X_1,\dots, X_M)\prod\limits_{X_m\in ne(f)\backslash X}\mu_{X_m\rightarrow f}f(X_m)\biggr]\\
+			\mu_{X\rightarrow f}(X) &= \prod\limits_{f_l\in ne(X)\backslash f}\mu_{f_l\rightarrow X}(X)
+		\end{align*}
+
+		\subsubsection{Recovering maximal configuration}
+		Messages are passed from leaves to an arbitrarily chosen root $X_r$.
+		The probability of maximal configuration is obtained as:
+
+		$$p(\vec{X}^{\max}) = \max\limits_{X_r}\biggl[\prod\limits_{f_l\in ne(X_r)}\mu_{f_l\rightarrow X_r}(X_r)\biggr]$$
+
+		The maximal configuration for the root is obtained as:
+
+		$$X_r^{\max} = \arg\max\limits_{X_r}\biggl[\prod\limits_{f_l\in ne(X_r)}\mu_{f_l\rightarrow X_r}(X_r)\biggr]$$
+
+		The maximal configuration is to recover for the other variables.
+		When sending a message towards $x$ each factor node should store the configuration of the other variables which gave the maximum:
+
+		$$\phi_{f\rightarrow X}(X) = \arg\max\limits_{X_1,\dots,X_M}\biggl[f(X, X_1, \dots, X_M)\prod\limits_{X_m\in ne(f)\backslash X} \mu_{X_m\rightarrow f}(X_m)\biggr]$$
+
+		When the maximal configuration for the root node $X_r$ has been obtained it can be used to retrieve the maximal configuration for the variables in neighbouring factors from:
+
+		$$X_1^{\max}, \dots, X_M^{\max} = \phi_{f\rightarrow X_r}(X_r^{\max})$$
+
+		The procedure can be repeated back-tracking to the leaves, retrieving maximal values for all variables.
+
+		\subsubsection{Trellis for linear chain}
+		A trellis or lattice diagram shows the $K$ possible states of each variable $X_n$ one per row.
+		For each state $k$ of a variable $X_n, \phi_{f_{n-1,n}\rightarrow X_n}(X_n)$ defines a unique and maximal previous state linked by and edge in the diagram.
+		Once the maximal state for the last variable $X_N$ is chosen, the maximal states for other variables are recovered following the edges backward.
+
+\section{Approximate inference}
+
+	\subsection{Underflow issues}
+	The max-product algorithm relies on products, which for many small probabilities can lead to an underflow problem.
+	This can be addressed computing the logarithm of the probability instead.
+	The logarithm is monotonic and the proper maximal configuration is recovered:
+
+	$$\log(\max\limits_{\vec{X}}p(\vec{X})) = \max\limits{\vec{X}}\log p(\vec{X})$$
+
+	The effect is replacing products with sums of logs in the max-product algorithm, giving the max-sum one.
+
+	\subsection{Exact inference on general graphs}
+	The sum-product and max-product algorithms can be applied to tree-structured graphs, with many application requiring graphs with undirected loops.
+	An extension of this algorithms to generic graphs can be achieved with the junction tree algorithm.
+	This algorithm works on junction trees, tree-structured graphs with nodes containing clusters of variables of the original graph.
+	A message assing scheme analogous to the sum-product and max-product algorithms is run on the junction tree.
+
+	\subsection{Problem with exact inference}
+	The complexity on the algorithm is exponential on the maximal number of variables in a cluster, making it intractable for large complex graphs.
+	In cases in which exact inference is intractable, approximate inference techniques are used.
+
+	\subsection{Loopy belief propagation}
+	In loopy belief propagation the message passing is done on the original graph even if it contains loops.
+	This is done through the sum-product algorithm.
+	All nodes are assumed in condition of sending messages.
+	A message passing schedule is chosen in order to decide which nodes start sending messages, like flooding (all nodes send messages in all directions at each time step).
+	Information flows many times around the graph, each message on a link replaces the previous one and is only bsed on the most recent messages received from the other neighbours.
+	The algorithm can eventually converge depending on the specific model over which it is applied.
+
+	\subsection{Variational methods}
+	Variational methods are deterministic approximations, assuming the posterior probability given the evidence factorizes in a particular way.
+
+	\subsection{Sampling methods}
+	Sampling methods approximate the posterior sampling from the network.
+	Given the joint probability distribution $p(\vec{X})$ a sample from the distribution is an instantiation of all the variables $\vec{X}$ according to probability $p$.
+	Samples can be used to approximate the probability of a certain assignment $\vec{Y} = \vec{y}$ for a subset $\vec{Y}\subset\vec{X}$ of the variables, counting the fraction of samples which are consistent with the desired assignemnt.
+	There is a need to sample from a posterior distribution given some evidence $\vec{E} = \vec{e}$.
+
+		\subsubsection{Markov chain monte Carlo}
+		It is usually to expensive to directly sample from the posterior distribution, so a random process is build that gradually samples from distributions closer and closer to the posterior.
+		The state of the process is an instantiation of all the variables.
+		The process can be seen as randomly traversing the graph of states moving from one state to another with a certain probability.
+		After enough time, the probability of being in any particular state is the desired posterior.
+		The random process is a Markov Chain.
+		The state graph is very different from the graphical model of the joint distribution: nodes in the state graph are instantiations of all the variables and not single variables.
+
+\section{Markov chain}
+
+	\subsection{Definition}
+	A Markov chain consist of a space $Val(\vec{X})$ of possible states, one for each possible instantiation of all variables $\vec{X}$.
+	A transition probability model defining for each state $\vec{x}\in Val(\vec{X})$ a next-state distribution over $Val(\vec{X})$.
+	The transition probability from $\vec{x}$ to $\vec{X}'$ is $\mathcal{T}(\vec{X}\rightarrow\vec{x}')$.
+	A Markov chain defines a stochastic process that evolves from state to state.
+
+	\subsection{Homogeneous chains}
+	A Markov chain is homogeneous if its transition probability model does not change over time.
+	Transition probability between states do not depend on the particular time instant in the process.
+	Those chains are useful for sampling.
+
+	\subsection{Chain dynamics}
+	Considering a sequence of states of the random process.
+	This at time $t$ can be seen as a random variable $\vec{X}^{(t)}$.
+	Assuming that the initial state $\vec{X}^{(0)}$ is distributed according to some initial probability $p^{(0)}(\vec{X}^{(0)})$, the distribution over subsequent states can be defined using the chain dynamics as:
+
+	$$p^{(t+1)}(\vec{X}^{(t+1)} = \vec{x}') = \sum\limits_{\vec{x}\in Val(\vec{X})}p^{(t)}(\vec{X}^{(t)} = \vec{x})\mathcal{T}(\vec{x}\rightarrow\vec{x}')$$
+
+	The probability of being in a certain state $\vec{x}$ at time $t$ is the sum of the probabilities of being in any possible state $\vec{x}'$ at time $t-1$ times the probability of a transition from $\vec{x}'$ to $\vec{x}$.
+
+	\subsection{Convergence}
+	As the process converges, $p^{(t+1)}$ should become close to $p^{(t)}$:
+
+	$$p^{(t)}(\vec{x}')\approx p^{(t+1)}(\vec{x}') = \sum\limits_{\vec{x}\in Val(\vec{X})}p^{(t)}(\vec{x})\mathcal{T}(\vec{x}\rightarrow\vec{x}')$$
+
+	At convergence an equilibrium distribution $\pi(\vec{X})$ is reached and the probability of being in a state is the same as that of transitioning into it from a random predecessor.
+
+	\subsection{Stationary distribution}
+	A distribution $\pi(\vec{X})$ is a stationary distribution for a Markov chain $\mathcal{T}$ if:
+
+	$$\pi(\vec{X}=\vec{x}') = \sum\limits_{\vec{x}\in Val(\vec{X})}\pi(\vec{X} = \vec{x})\mathcal{T}(\vec{x}\rightarrow\vec{x}')$$
+
+	\subsection{Requirements}
+	For sampling a Markov Chain must have a unique stationary distribution which is reachable from any starting distribution $p^{(0)}$.
+	For a Markov chain with a finite state space, regularity is a sufficient and necessary condition.
+
+	\subsection{Regular chains}
+	A Markov chain is regular if there exists a number $k$ such that for all state pairs $\vec{x},\vec{x}\in Val(\vec{X})$ the probability of getting from $\vec{x}$ to $\vec{x}'$ in exactly $k$ steps is greater than zero.
+	Regularity is ensured if it is possible to get from any state to any other using a positive probability path in the state graph and for every state $\vec{x}$ there is a positive probability of transitioning from $\vec{x}$ to $\vec{x}$ in one step.
+
+	\subsection{Markov chains for graphical models}
+	The typical use is estimating the probability of a certain instantiation $\vec{x}$ of the variables $\vec{X}$ given some evidence $\vec{E}=\vec{e}$.
+	This requires sampling from the posterior distribution $p(\vec{X}|\vec{E}=\vec{e}$.
+	There is a need to define a chain for which $p(\vec{X}|\vec{E}=\vec{e})$ is the stationary distribution.
+	States in the chain should be the subset of all possible instantiations which is consistent with the evidence: $\vec{x}\in Val(\vec{X})|\vec{x}_{\vec{E}} = \vec{e}$.
+
+	\subsection{Transition model}
+	A simple transition model consists of updating variables in $\bar{\vec{X}} = \vec{X}-\vec{E}$ one at a time.
+	This can be seen as made of a set of $k=|\bar{\vec{X}}$ local transition model $\mathcal{T}_i$, one for each variable $X_i\in\bar\vec{X}$.
+	Let $\vec{U}_i = \vec{X}-X_i$ and $\vec{u}_i$ a possible instantiation of $\vec{U}_i$.
+	The local transition model $\mathcal{T}_i$ defines transitions between states $(\vec{u}_i, x_i)$ and $(\vec{u}_i, x_i')$.
+	By defining  a transition as a sequence of $k$ local transitions, one for each variable $X_i$, a homogeneous global transition model is obtained.
+
+	\subsection{Gibbs sampling}
+	Gibbs sampling is an efficient and effective simple Markov chain for factored state spaces.
+	Local transitions $\mathcal{T}_i$ are defined forgetting about the value of $X_i$ in the current state.
+	This allows to sample a new value according to the posterior probability of $X_i$ given the rest of the current state"
+
+	$$\mathcal{T}_i((\vec{u}_i, x_i)\rightarrow(\vec{u}_i, x_i')) = p(x_i'|\vec{u}_i)$$
+
+	The Gibbs chain samples a new state performing the rest of the current state"
+
+	$$\mathcal{T}_i((\vec{u}_i, x_i)\rightarrow(\vec{u}_i, x_i')) = p(x_i'|\vec{u}_i)$$
+
+	The Gibbs chain samples a new state performing $k$ subsequent local moves.
+	Samples are taken only after a full round of local moves.
+
+		\subsubsection{Regularity}
+		Gibbs chains are ensured to be regular if the distribution is strictly positive: every value of $X_i$ given any instantiation of $\vec{U}_i$ has non-zero probability.
+		In this case we can get from any state to any other in at most $k=|\bar{\vec{X}}|$ local steps.
+		Gibbs chains have the desired posterior $p(\vec{X}|\vec{E}=\vec{e})$ as stationary distribution.
+
+		\subsubsection{Positivity}
+		Positivity of the distributions is guaranteed if no conditional probability distribution or clique potential has zero value for any configuration of the variables.
+
+	\subsection{Computing local transition probabilities}
+	Local transition probabilities can be computed very efficiently for discrete graphical models.
+	Only the Markov blanket of $X_i$ is needed in order to compute its posterior $p(X_i|\vec{u}_i)$.
+	Other models for which such posterior is not efficiently computable require more complex Markov chain methods such as the Metropolis-Hastings.
+
+	\subsection{Generating samples}
+	In order to generate samples from the correct posterior distribution the Markov chain has to converge to the stationary distribution.
+	After that all subsequent samples could be used to estimate the desired probability.
+	Consecutive samples are not independent.
+	A possible approach consist of discarding an interval of $d$ samples before collecting the next one.
+	It is often the case that using all samples leads to better estimates if a fixed amount of time is provided.

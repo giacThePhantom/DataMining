@@ -13,8 +13,8 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 	*[X] 05_probability_theory.pdf
 	*[X] 06_evaluation.pdf
 	*[X] 07_bayesian_decision_theory.pdf
-	*[~] 08_parameter_estimation.pdf
-	*[ ] 09_bn.pdf
+	*[X] 08_parameter_estimation.pdf
+	*[X] 09_bn.pdf
 	*[ ] 10_bn_inference.pdf
 	*[ ] 11_bn_learning.pdf
 	*[ ] 12_naive_bayes.pdf

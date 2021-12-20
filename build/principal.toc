@@ -245,3 +245,22 @@
 \contentsline {subsection}{\numberline {8.6.1}Setting}{55}{subsection.8.6.1}%
 \contentsline {subsection}{\numberline {8.6.2}Maximum likelihood estimation}{55}{subsection.8.6.2}%
 \contentsline {subsection}{\numberline {8.6.3}Bayesian estimation}{56}{subsection.8.6.3}%
+\contentsline {chapter}{\numberline {9}Bayesian networks}{57}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Inference in graphical models}{57}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Efficiency}{57}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Inference on a chain}{57}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Inference as message passing}{58}{subsection.9.1.3}%
+\contentsline {subsection}{\numberline {9.1.4}Full message passing}{58}{subsection.9.1.4}%
+\contentsline {subsection}{\numberline {9.1.5}Adding evidence}{58}{subsection.9.1.5}%
+\contentsline {subsection}{\numberline {9.1.6}Computing conditional probability given evidence}{59}{subsection.9.1.6}%
+\contentsline {subsection}{\numberline {9.1.7}Inference on trees}{59}{subsection.9.1.7}%
+\contentsline {section}{\numberline {9.2}Factor graphs}{59}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Description}{59}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Sum-product algorithm}{59}{subsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.2.1}Computing marginals}{59}{subsubsection.9.2.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2.2}Factor messages}{59}{subsubsection.9.2.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.2.3}Node messages}{60}{subsubsection.9.2.2.3}%
+\contentsline {subsubsection}{\numberline {9.2.2.4}Initialization}{60}{subsubsection.9.2.2.4}%
+\contentsline {subsubsection}{\numberline {9.2.2.5}Message passing scheme}{60}{subsubsection.9.2.2.5}%
+\contentsline {subsubsection}{\numberline {9.2.2.6}Full message passing scheme}{60}{subsubsection.9.2.2.6}%
+\contentsline {subsubsection}{\numberline {9.2.2.7}Adding evidence}{60}{subsubsection.9.2.2.7}%
