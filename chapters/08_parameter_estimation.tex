@@ -10,7 +10,7 @@
 	The task is to estimate the unknown parameters of $p$ from training data $\mathcal{D}$.
 	This is the same as Bayesian decision theory: there is a need to compute the posterior probability of classes given examples, except the parameters of the distributions are unknown and a training set is provided instead.
 
-	\subsection{Multiclass classification}
+	\subsection{Multi class classification}
 	The training set can be divided into $\mathcal{D}_1, \dots, \mathcal{D}_c$ subsets, one for each class such that $\mathcal{D}_i = \{\vec{x}_1, \dots, \vec{x}_n\}$ contains independent and identically distributed examples for target class $y_i$.
 	For any new example $\vec{x}$ the posterior probability of the class given the example and the full training set $\mathcal{D}$ is computed:
 
@@ -99,6 +99,63 @@ $$\vec{\theta}_i^* = \arg\max\limits_{\vec{\theta}_i} = p(\vec{\theta}_i|\mathca
 
 	$$\Sigma = \frac{1}{n}\sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t$$
 
+		\subsubsection{Proof for the mean}
+		The gradient with respect to the mean is:
+
+		\begin{align*}
+			\nabla\vec{\mu}\sum\limits_{j=1}^n-\frac{1}{2}(\vec{x}_j-\vec{\mu})^t\Sigma^{-1}(\vec{x}_j-\vec{\mu})-\frac{1}{2}\ln(2\pi)^d|\Sigma|=\\
+			\sum\limits_{j=1}^n\Sigma^{-1}(\vec{x}_j-\vec{\mu})
+		\end{align*}
+
+		Noting that $\frac{\partial}{\partial\vec{x}}\vec{x}^TA\vec{x} = A^T\vec{x}+A\vec{x} = 2A\vec{x}$ for symmetric $A$.
+		Setting the gradient to zero:
+
+		\begin{align*}
+			\sum\limits_{j=1}^n\Sigma^{-1}(\vec{x}_j-\vec{\mu}) &=\vec{0}\\
+			\sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu}) &=\Sigma\vec{0} = \vec{0}\\
+			\sum\limits_{j=1}^n\vec{x}_j &=\sum\limits_{j=1}^n\vec{\mu} = n\vec{\mu}\\
+			\vec{\mu} &=\frac{1}{n}\sum\limits_{j=1}^n\vec{x}_j
+		\end{align*}
+
+		\subsubsection{Proof for the covariance}
+		The gradient with respect to the covariance is:
+
+		\begin{align*}
+			\frac{\partial}{\partial\Sigma} \sum\limits_{j=1}^n-\frac{1}{2}(\vec{x}_j-\vec{\mu})^t\Sigma^{-1}(\vec{x}_j-\vec{\mu})-\frac{1}{2}\ln(2\pi)^d|\Sigma|=\\
+			-\frac{1}{2}\biggl(\sum\limits_{j=1}^n\frac{\partial}{\partial\Sigma}(\vec{x}_j-\vec{\mu})^t\Sigma^{-1}(\vec{x}_j-\vec{\mu})+\sum\limits_{j=1}^n\frac{\partial}{\partial\Sigma}\ln(2\pi)^d|\Sigma|\biggr)
+		\end{align*}
+
+		Now, expanding the first derivative:
+
+		\begin{align*}
+			\frac{\partial}{\partial\Sigma}(\vec{x}_j-\vec{\mu})^t\Sigma^{-1}(\vec{x}_j-\vec{\mu}) =\\
+			(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t\frac{\partial}{\partial\Sigma}\Sigma^{-1} =\\
+			-(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t\Sigma^{-2}
+		\end{align*}
+
+		Using the matrix derivative rule: $\frac{\partial}{\partial B} tr(ABC) = CA$, where $A=(\vec{x}_j-\vec{\mu})^t$, $B = \Sigma^{-1}$ and $C=(\vec{x}_j-\vec{\mu})$ and $tr(ABC) = ABC$ as $ABC$ is scalar.
+                Now, expanding the second derivative:
+
+                \begin{align*}
+                  \frac{\partial}{\partial\Sigma}\ln(2\pi)^d|\Sigma| &=\frac{1}{(2\pi)^d}|\Sigma|^{-1}\frac{\partial}{\partial\Sigma}(2\pi)^d|\Sigma|=\\
+                    \frac{1}{(2\pi)^d}|\Sigma|^{-1}(2\pi)^d\frac{\partial}{\partial\Sigma}|\Sigma| &=|\Sigma|^{-1}|\Sigma|\Sigma^{-1} = \Sigma^{-1}
+                \end{align*}
+
+                Using the matrix derivative rule: $\frac{\partial}{\partial A} |A| = |A|A^{-1}$.
+                Combining those results and putting them equal to zero:
+
+                $$-\frac{1}{2}\biggl(\sum\limits_{j=1}^n\overbrace{-(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t\Sigma^{-2}}^{\frac{\partial}{\partial\Sigma}(\vec{x}_j-\vec{\mu})^t\Sigma^{-1}(\vec{x}_j-\vec{\mu})}+\sum\limits_{j=1}^n\overbrace{\Sigma^{-1}}^{\frac{\partial}{\partial\Sigma}\ln(2\pi)^d|\Sigma|}\biggr)=0$$
+
+								\begin{align*}
+									\sum\limits_{j=1}^n\Sigma^{-1} &= \sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t\Sigma^{-2}\\
+									\Sigma^2\sum\limits_{j=1}^n\Sigma^{-1}&=\Sigma^2\sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t\Sigma^{-2}\\
+									\sum\limits_{j=1}^n\Sigma &= \sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t\\
+									n\Sigma &= \sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t\\
+									\Sigma &= \frac{1}{n}\sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t
+								\end{align*}
+
+
+
 	\subsection{General Gaussian case}
 	In the case of a general Gaussian the maximum likelihood estimates for Gaussian parameters are their empirical estimates over the samples: the mean is the sample mean and the covariance matrix is the mean of the sample covariances.
 
@@ -177,7 +234,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 											 &\sim N(\mu_n, \sigma^2 + \sigma^2_n)
 		\end{align*}
 
-		The probability of $x$ given the dataset for the class is a Gaussian with mean equal to the posterior mean, variance equal to the sum of the known variance $\sigma^2$ and an additional variace $\sigma^2_n$ due to the uncertainty of the mean.
+		The probability of $x$ given the dataset for the class is a Gaussian with mean equal to the posterior mean, variance equal to the sum of the known variance $\sigma^2$ and an additional variaci $\sigma^2_n$ due to the uncertainty of the mean.
 
 	\subsection{Multivariate normal case - unknown $\mu$, known $\Sigma$}
 	This is a generalization of the univariate case:
@@ -191,4 +248,184 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 		\end{itemize}
 	\end{multicols}
 
+	\subsection{Gamma distribution}
+	The gamma distribution is defined in the interval $[0, \infty]$.
+	Its parameters are $\alpha>0$ the shape and $\beta>0$ the rate.
+	Its probability density function is:
+
+	$$p(x;\alpha, \beta) = \frac{\mu^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}$$
+
+	With $\mathbb{E}[x] = \frac{\alpha}{\beta}$ and $Var[x] = \frac{\alpha}{\beta^2}$.
+	It is used to model the prior distribution of the precision.
+
+	\subsection{Univariate normal case - unknown $\mu$ and $\lambda = \frac{1}{\sigma^2}$}
+	In this case the samples are drawn from $p(x|\mu, \lambda)\sim N(\mu, \frac{1}{\lambda}$.
+	The prior of mean and precision is the Normal Gamma distribution:
+
+	\begin{align*}
+		p(\mu, \lambda) &=p(\mu|\lambda)p(\lambda) = N\biggl(\mu|\mu_0, \frac{1}{k_0 \lambda}\biggr)Ga(\lambda|\alpha_0, \beta_0)=\\
+										&=NG(\mu, \lambda|\mu_0, k_0, \alpha_0, \beta_0)
+	\end{align*}
+
+		\subsubsection{A posteriori parameter density}
+
+		\begin{align*}
+			p(\mu, \lambda|\mathcal{D})& = \frac{1}{\mathcal{D}}\prod\limits_{j=1}^n\overbrace{\frac{\lambda^{\frac{1}{2}}}{\sqrt{2\pi}}e^{-\frac{\lambda}{2}(x_j-\mu)^2}}^{p(x_j|\mu, \lambda)}\overbrace{\frac{(k_0\lambda)^{\frac{1}{2}}}{\sqrt{2\pi}}e^{-\frac{k_0\lambda}{2}(\mu-\mu_0)^2}}^{p(\mu|\lambda)}\overbrace{\frac{\beta^{\alpha_0}_0}{\Gamma(\alpha_0)}\lambda^{\alpha_0-1}e^{-\beta_0\lambda}}^{p(\lambda)}\propto\\
+									&\propto \lambda^{\alpha_0+\frac{n}{2}-1}e^{-\beta_0\lambda}\lambda^{\frac{1}{2}}e^{\frac{\lambda}{2}[\sum\limits_{j=1}^n(x_j-\mu)^2-k_0(\mu-\mu_0)^2}
+		\end{align*}
+
+		The posteriori parameter density is still a Normal Gamma distribution:
+
+		$$p(\mu, \lambda|\mathcal{D}) = NG(\mu, \lambda|\mu_n, k-n, \alpha_n, \beta_n)$$
+		Where:
+
+		\begin{itemize}
+			\item $\mu_n = \frac{k_0\mu_0+n\bar{\mu}_n}{k_0+n}$, the weighted average of prior $\mu_0$ and sample means $\mu_n$, weighted by $k_0$ and $n$ respectively.
+			\item $k_n = k_0+n$, increased by the number of samples.
+			\item $\alpha_n = \alpha_0 + \frac{n}{2}$ increased by half the number of samples.
+			\item $\beta_n = \beta_0+\frac{1}{2}\sum\limits_{j=1}^n(x_j-\bar{\mu}_n)^2+\frac{k_0n(\bar{\mu}_n-\mu_0)^2}{2(k_0+n)}$, this is the sum of prior sum of sqares $\beta_0$ and sample um of squares and a term due to the discrepancy between the sample mean and the prior mean.
+		\end{itemize}
+
+		\subsubsection{Computing the posterior predictive}
+
+		\begin{align*}
+			p(x|\mathcal{D}) &= \int_\mu\int_\lambda p(x|\mu, \lambda)p(\mu, \lambda|\mathcal{D})d\mu d\lambda\\
+											&=\frac{P(x, \mathcal{D})}{P(\mathcal{D})} = t_{2\alpha_n}\biggl(x|\mu_n, \frac{\beta_n(k_n+1)}{\alpha_n k_n}\biggr)
+		\end{align*}
+
+		This is a T-distribution with mean $\mu_n$ and precision $\frac{\beta_n(k_n+1)}{\alpha_n k_n}$.
+
+	\subsection{Wishart distribution}
+	The Wishart distribution is defined over $d\times d$ a positive semi-definite matrix.
+	Its parameters are $\nu>d-1$, the degrees of freedon adn $T>0$ the $d\times d$ scale matrix.
+	Its probability density function is:
+
+	$$p(X;\nu, T) = \frac{1}{2^{\nu\frac{d}{2}}|T|^{\frac{\nu}{2}}\Gamma_d(\frac{\nu}{2})}|X|^{\frac{\nu-d-1}{2}}e^{-\frac{1}{2}tr(T^{-1}X)}$$
+
+	With $\mathbb{E}[X] = \nu T$ and $Var[X_{ij}] = \nu(T_ii^2+T_{ii}T_{jj})$.
+	It is used to model the prior distribution of the precision matrix.
+	$T$ is the prior covariance.
+
+	\subsection{Multivariate normal case - unknown $\mu$ and $\Sigma$}
+	In this case the examples are drawn from $p(\vec{x}|\vec{\mu}, \Lambda)\sim N(\vec{\mu}, \Lambda^{-1})$.
+	The prior of mean and precision is the Normal Wishart distribution:
+
+	$$p(\vec{\mu}, \Lambda) = p(\vec{\mu}|\Lambda)p(\Lambda) = N(\vec{\mu}|\vec{\mu}_0, (k_0\Lambda)^{-1})Wi(\Lambda|\nu, T)$$
+
+		\subsubsection{A posteriori parameter density}
+
+		$$p(\vec{\mu}, \Lambda) = N(\vec{\mu}|\vec{\mu}_0, (k_0\Lambda)^{-1})Wi(\Lambda|\nu, T)$$
+
+		Where:
+
+		\begin{itemize}
+			\item $\mu_n = \frac{k_0\mu_0+n\bar{\mu}_n}{k_0+n}$
+			\item $T_n = T+\sum\limits_{i=1}^n(x_i-\bar{\mu}_n)(x_i-\bar{\mu}_n)^T + \frac{kn}{k+n}(\mu_0-\bar{\mu}_n)(\mu_0-\bar{\mu})n)^T$
+			\item $\nu_n = \nu+n$
+			\item $k_n = k+n$
+		\end{itemize}
+
+		\subsubsection{Computing the posterior predictive}
+
+		$$p(x|\mathcal{D}) = t_{\nu-d+1}\biggl(x|\mu_n, \frac{T_n(k_n+1)}{k_n(\nu_n-d+1)}\biggr)$$
+
 \section{Sufficient statistics}
+
+	\subsection{Definition}
+	Any function on a set of samples $\mathcal{D}$ is a statistic.
+	A statistic $s = \phi(\mathcal{D})$ is sufficient for some parameters $\vec{\theta}$ if $P(\mathcal{D}|\vec{s}, \vec{\theta}) = P(\mathcal{D}|\vec{s})$.
+	If $\vec{\theta}$ is a random variable, a sufficient statistic contains all relevant information $\mathcal{D}$ has for estimating it:
+
+	$$p(\vec{\theta}|\mathcal{D}, \vec{s}) = \frac{p(\mathcal{D}|\vec{\theta}, \vec{s})p(\vec{\theta}|\vec{s})}{p(\mathcal{D}|\vec{s})} = p(\vec{\theta}|\vec{s})$$
+
+	A sufficient statistic allows to compress a sample $\mathcal{D}$ into fewer values.
+	Sample mean and covariance are sufficient statistics for true mean and covariance of the Gaussian distribution.
+
+	\subsection{Conjugate priors}
+	Given a likelihood function $p(\vec{x}|\vec{\theta})$ and a prior distribution $p(\vec{\theta})$, $p(\vec{\theta})$ is a conjugate prior for $p(\vec{x}|\vec{\theta})$ if the posterior distribution $p(\vec{\theta}|\vec{x})$ is in the same family as the prior $p(\vec{\theta})$
+
+\section{Bernoulli distribution}
+
+	\subsection{Setting}
+	The Bernoulli distribution represent a boolean event with $x=1$ for success and $x=0$ for failure.
+	Its parameter is $\theta$, the probability of success.
+	Its probability mass function is:
+
+	$$P(x|\theta) = \theta^x(1-\theta)^{1-x}$$
+
+	Its beta conjugate prior is:
+
+	$$P(\theta|\psi) = P(\theta|\alpha_h, \alpha_t) = \frac{\Gamma(\alpha)}{\Gamma(\alpha_h)\Gamma(\alpha_t)}\theta^{\alpha_h-1}(1-\theta)^{\alpha_t-1}$$
+
+	\subsection{Maximum likelihood estimation}
+	Let $\mathcal{D} = \{H, H, T, T, T, H, H\}$ of $N$ realizations.
+	Its likelihood function is:
+
+	$$p(\mathcal{D}|\theta) = \theta\cdot\theta\cdot(1-\theta)\cdot(1-\theta)\cdot(1-\theta)\cdot\theta\cdot\theta = \theta^h(1-\theta)^t$$
+
+	Its maximum likelihood parameter:
+
+	\begin{align*}
+		\frac{\partial}{\partial\theta}\ln p(\mathcal{D}|\theta) = 0\Rightarrow \frac{\partial}{\partial\theta}h\ln\theta + t\ln(1-\theta) &=0\\
+		h\frac{1}{\theta}-t\frac{1}{1-\theta}&=0\\
+		h(1-\theta) &= t\theta\\
+		\theta &= \frac{h}{h+t}
+	\end{align*}
+
+	$h$ and $t$ are the sufficient statistics.
+
+	\subsection{Bayesian estimation}
+	Parameter posterior is proportional to:
+
+	$$P(\theta|\mathcal{D}, \psi)\propto P(\mathcal{D}|\theta)P(\theta|\psi)\propto \theta^t(1-\theta)^t\theta^{\alpha_h-1}(1-\theta)^{\alpha_t-1}$$
+
+	The posterior has a beta distribution with parameters $h+\alpha_h$ and $t+\alpha_t$:
+
+	$$P(\theta|\mathcal{D}, \psi)\propto\theta^{h+\alpha_h-1}(1-\theta)^{t+\alpha_t-1}$$
+
+	The prediction for a new event is the expected value of the posterior beta:
+
+	\begin{align*}
+		P(x|\mathcal{D}) &=\int P(x|\theta)P(\theta|\mathcal{D}, \psi)d\theta & = \int \theta P(\theta|\mathcal{D}, \psi)d\theta\\
+										 &=\mathbb{E}_{P(\theta|\mathcal{D}, \psi)}[\theta] &= \frac{h+\alpha_h}{h+t+\alpha_h+\alpha_t}
+	\end{align*}
+
+		\subsubsection{Interpreting priors}
+		The prior knowledge is encoded as the number $\alpha=\alpha_h+\alpha_t$ of imaginary experiments.
+		It is assumed $\alpha_t$ times heads was observed.
+		$\alpha$ is the equivalent sample size and $\alpha\rightarrow 0$ reduces the estimation to the classical maximum likelihood approach.
+
+\section{Multinomial distribution}
+
+	\subsection{Setting}
+	The multinomial distribution models categorical event with $r$ states $x\in\{x^1,\dots,x^r\}$.
+	One-hot encoding $\vec{z}(x) = [z_1(x), \dots, z_r(x)]$ with $z_k(x) = 1$ if $x=x^k$, $o$ otherwise.
+	Its parameters are $\vec{\theta} = [\theta_1, \dots, \theta_r]$ the probability  of each state.
+	Its probability mass function is:
+
+	$$P(x|\vec{\theta}) = \prod\limits_{k=1}^r\theta_k^{z_k(x)}$$
+
+	Its Dirichlet conjugate prior:
+
+	$$P(\vec{\theta}|\psi) = P(\vec{\theta}|\alpha_1, \dots, \alpha_r) = \frac{\Gamma(\alpha)}{\prod\limits_{k=1}^r\Gamma(\alpha_k)}\prod\limits_{k=1}^r\theta_k^{\alpha_k-1}$$
+
+	\subsection{Maximum likelihood estimation}
+	Let $\mathcal{D}$ a dataset of $N$ realizations.
+	The likelihood function is:
+
+	$$p(\mathcal{D}|\vec{\theta} = \prod\limits_{j=1}^N\prod\limits_{k=1}^r\theta_k^{z_k(x_j)} = \prod\limits_{k=1}^r\theta_k^{N_k}$$
+
+	The maximum likelihood parameter is $\theta_k= \frac{M_k}{N}$ and $N_1, \dots, N_r$ are the sufficient statistics.
+
+	\subsection{Bayesian estimation}
+	The parameter posterior is proportional to:
+
+	$$P(\vec{\theta}|\mathcal{D}, \psi)\propto P(\mathcal{D}|\vec{\theta})P(\theta|\psi)\propto\prod\limits_{k=1}^r\theta_k^{N_k}\theta_k^{\alpha_k-1}$$
+
+	The posterior has a Dirichlet distribution with parameters $N_k+\alpha_k$, where $k = 1, \dots, r$"
+
+	$$P(\vec{\theta}|\mathcal{D}, \psi)\propto \prod\limits_{k=1}^r\theta_k^{N_k+\alpha_k-1}$$
+
+	The prediction for a new event is the expected value of the posterior Dirichlet:
+
+	$$P(x_k|\mathcal{D}) = \int\theta_k P(\vec{\theta}|\mathcal{D}, \psi)d\vec{\theta} = \mathbb{E}_{P(\vec{\theta}|\mathcal{D}, \psi)}[\theta_k] = \frac{N_k+\alpha_k}{N+\alpha}$$

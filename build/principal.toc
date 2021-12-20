@@ -205,7 +205,7 @@
 \contentsline {section}{\numberline {8.1}Introduction}{45}{section.8.1}%
 \contentsline {subsection}{\numberline {8.1.1}Setting}{45}{subsection.8.1.1}%
 \contentsline {subsection}{\numberline {8.1.2}Task}{45}{subsection.8.1.2}%
-\contentsline {subsection}{\numberline {8.1.3}Multiclass classification}{45}{subsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.1.3}Multi class classification}{45}{subsection.8.1.3}%
 \contentsline {subsubsection}{\numberline {8.1.3.1}Simplifications}{45}{subsubsection.8.1.3.1}%
 \contentsline {section}{\numberline {8.2}Maximum likelihood}{46}{section.8.2}%
 \contentsline {subsection}{\numberline {8.2.1}Setting}{46}{subsection.8.2.1}%
@@ -214,13 +214,34 @@
 \contentsline {subsubsection}{\numberline {8.2.3.1}Mean}{47}{subsubsection.8.2.3.1}%
 \contentsline {subsubsection}{\numberline {8.2.3.2}Variance}{47}{subsubsection.8.2.3.2}%
 \contentsline {subsection}{\numberline {8.2.4}Multivariate Gaussian case}{47}{subsection.8.2.4}%
-\contentsline {subsection}{\numberline {8.2.5}General Gaussian case}{48}{subsection.8.2.5}%
-\contentsline {section}{\numberline {8.3}Bayesian estimation}{48}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Setting}{48}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Univariate normal case - unknown $\mu $, known $\sigma ^2$}{49}{subsection.8.3.2}%
-\contentsline {subsubsection}{\numberline {8.3.2.1}A posteriori parameter density}{49}{subsubsection.8.3.2.1}%
-\contentsline {subsubsection}{\numberline {8.3.2.2}Recovering mean and variance}{49}{subsubsection.8.3.2.2}%
-\contentsline {subsubsection}{\numberline {8.3.2.3}Interpreting the posterior}{49}{subsubsection.8.3.2.3}%
-\contentsline {subsubsection}{\numberline {8.3.2.4}Computing the class conditional density}{50}{subsubsection.8.3.2.4}%
-\contentsline {subsection}{\numberline {8.3.3}Multivariate normal case - unknown $\mu $, known $\Sigma $}{50}{subsection.8.3.3}%
-\contentsline {section}{\numberline {8.4}Sufficient statistics}{50}{section.8.4}%
+\contentsline {subsubsection}{\numberline {8.2.4.1}Proof for the mean}{48}{subsubsection.8.2.4.1}%
+\contentsline {subsubsection}{\numberline {8.2.4.2}Proof for the covariance}{48}{subsubsection.8.2.4.2}%
+\contentsline {subsection}{\numberline {8.2.5}General Gaussian case}{49}{subsection.8.2.5}%
+\contentsline {section}{\numberline {8.3}Bayesian estimation}{49}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Setting}{50}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Univariate normal case - unknown $\mu $, known $\sigma ^2$}{50}{subsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.2.1}A posteriori parameter density}{50}{subsubsection.8.3.2.1}%
+\contentsline {subsubsection}{\numberline {8.3.2.2}Recovering mean and variance}{51}{subsubsection.8.3.2.2}%
+\contentsline {subsubsection}{\numberline {8.3.2.3}Interpreting the posterior}{51}{subsubsection.8.3.2.3}%
+\contentsline {subsubsection}{\numberline {8.3.2.4}Computing the class conditional density}{51}{subsubsection.8.3.2.4}%
+\contentsline {subsection}{\numberline {8.3.3}Multivariate normal case - unknown $\mu $, known $\Sigma $}{51}{subsection.8.3.3}%
+\contentsline {subsection}{\numberline {8.3.4}Gamma distribution}{52}{subsection.8.3.4}%
+\contentsline {subsection}{\numberline {8.3.5}Univariate normal case - unknown $\mu $ and $\lambda = \frac {1}{\sigma ^2}$}{52}{subsection.8.3.5}%
+\contentsline {subsubsection}{\numberline {8.3.5.1}A posteriori parameter density}{52}{subsubsection.8.3.5.1}%
+\contentsline {subsubsection}{\numberline {8.3.5.2}Computing the posterior predictive}{53}{subsubsection.8.3.5.2}%
+\contentsline {subsection}{\numberline {8.3.6}Wishart distribution}{53}{subsection.8.3.6}%
+\contentsline {subsection}{\numberline {8.3.7}Multivariate normal case - unknown $\mu $ and $\Sigma $}{53}{subsection.8.3.7}%
+\contentsline {subsubsection}{\numberline {8.3.7.1}A posteriori parameter density}{53}{subsubsection.8.3.7.1}%
+\contentsline {subsubsection}{\numberline {8.3.7.2}Computing the posterior predictive}{53}{subsubsection.8.3.7.2}%
+\contentsline {section}{\numberline {8.4}Sufficient statistics}{54}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Definition}{54}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Conjugate priors}{54}{subsection.8.4.2}%
+\contentsline {section}{\numberline {8.5}Bernoulli distribution}{54}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Setting}{54}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Maximum likelihood estimation}{54}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}Bayesian estimation}{55}{subsection.8.5.3}%
+\contentsline {subsubsection}{\numberline {8.5.3.1}Interpreting priors}{55}{subsubsection.8.5.3.1}%
+\contentsline {section}{\numberline {8.6}Multinomial distribution}{55}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Setting}{55}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Maximum likelihood estimation}{55}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Bayesian estimation}{56}{subsection.8.6.3}%
