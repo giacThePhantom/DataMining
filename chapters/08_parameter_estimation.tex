@@ -1,0 +1,194 @@
+\chapter{Parameter estimation}
+
+\section{Introduction}
+
+	\subsection{Setting}
+	Data is sampled from a probability distribution $p(x, y)$, whose form is known but its parameters are unknown.
+	The training set $\mathcal{D} = \{(x_1, y_1), \dots, (x_m, y_m)\}$ of examples sampled independent and identically distributed according to $p(x,y)$.
+
+	\subsection{Task}
+	The task is to estimate the unknown parameters of $p$ from training data $\mathcal{D}$.
+	This is the same as Bayesian decision theory: there is a need to compute the posterior probability of classes given examples, except the parameters of the distributions are unknown and a training set is provided instead.
+
+	\subsection{Multiclass classification}
+	The training set can be divided into $\mathcal{D}_1, \dots, \mathcal{D}_c$ subsets, one for each class such that $\mathcal{D}_i = \{\vec{x}_1, \dots, \vec{x}_n\}$ contains independent and identically distributed examples for target class $y_i$.
+	For any new example $\vec{x}$ the posterior probability of the class given the example and the full training set $\mathcal{D}$ is computed:
+
+	$$P(y_i|\vec{x}, \mathcal{D}) = \frac{p(\vec{x}|y_i, \mathcal{D})p(y_i|\mathcal{D})}{p(\vec{x}|\mathcal{D}}$$
+
+		\subsubsection{Simplifications}
+		$\vec{x}$ can be assumed independent of $\mathcal{D}_j$ with $j\neq i$ given $y_i$ and $\mathcal{D}_i$.
+		Without additional knowledge $p(y_i|\mathcal{D})$ can be computed as the fraction of examples with that class in the dataset.
+		The normalizing factor $p(\vec{x}|\mathcal{D})$ can be computed marginalizing $p(\vec{x}|y_i, \mathcal{D}_i)p(y_i|\mathcal{D})$ over possible classes.
+		There is a need to estimate class-dependent parameters $\vec{\theta}_i$ for $p(\vec{x}|y_i, \mathcal{D}_i$.
+
+\section{Maximum likelihood}
+Maximum likelihood or maximum a posteriori estimation assumes parameters $\vec{\theta}_i$ have fixed but unknown values.
+These are computed as those maximizing the probability of the observed examples $\mathcal{D}_i$.
+Obtained values are used to compute the probability for new examples:
+
+$$p(\vec{x}|y_i, \mathcal{D}_i)\approx p(\vec{x}|\vec{\theta}_i)$$
+
+It assumes a prior distribution for the parameters $p(\vec{\theta}_i)$ is available.
+This maximizes the likelihood of the parameters with respect to the training samples and there is no assumption about prior distributions for parameters.
+
+$$\vec{\theta}_i^* = \arg\max\limits_{\vec{\theta}_i} = p(\vec{\theta}_i|\mathcal{D}_i, y_i) = \arg\max\limits_{\vec{\theta}_i}p(\mathcal{D}_i, y_i|\vec{\theta}_i)p(\vec{\theta}_i) = \arg\max\limits_{\vec{\theta}_i}p(\mathcal{D}_i, y_i|\vec{\theta}_i)$$
+
+	\subsection{Setting}
+	A training data $\mathcal{D} = \{\vec{x}_1, \dots, \vec{x}_n\}$ of independent and identically distributed examples for the target class $y$ is available.
+	Assuming the parameter vector $\vec{\theta}$ as a fixed but unknown value, the value maximizing its likelihood with respect to the training data is estimated:
+
+	$$\vec{\theta}^* = \arg\max\limits_{\vec{\theta}}p(\mathcal{D}|\vec{\theta}) = \arg\max\limits_{\vec{\theta}}\prod\limits_{j=1}^n p(\vec{x}_j|\vec{\theta})$$
+
+	The joint probability over $\mathcal{D}$ decomposes into a product as examples are independent and identically distributed.
+
+	\subsection{Maximizing log-likelihood}
+	It is usually simpler to maximize the logarithm of the likelihood because of its monotonic nature:
+
+	$$\vec{\theta}^* = \arg\max\limits_{\vec{\theta}}\ln p(\mathcal{D}|\vec{\theta}) = \arg\max\limits_{\vec{\theta}}\sum\limits_{j=1}^n\ln p(\vec{x}_j|\vec{\theta})$$
+
+	The necessary conditions for the maximum can be obtained zeroing the gradient with respect to $\vec{\theta}$:
+
+	$$\nabla_{\vec{\theta}}\sum\limits_{j=1}^n\ln p(\vec{x}_j|\vec{\theta}) = \vec{0}$$
+
+	Points zeroing the gradient can be local or global maxima depending on the form of the distribution.
+
+	\subsection{Univariate Gaussian case}
+	For the univariate Gaussian with unknown $\mu$ and $\sigma^2$ the log likelihood is:
+
+	$$\mathcal{L} = \sum\limits_{j=1}^n-\frac{1}{\sigma^2}(x_j-\mu)^2-\frac{1}{2}\ln 2\pi\sigma^2$$
+
+		\subsubsection{Mean}
+		The gradient with respect to $\mu$ is:
+
+		$$\frac{\partial\mathcal{L}}{\partial\mu} = 2\sum\limits_{j=1}^n-\frac{1}{2\sigma^2}(x_j - \mu)(-1) = \sum\limits_{j=1}^n\frac{1}{\sigma^2}(x_j-\mu)$$
+
+		Setting the gradient to zero gives mean:
+
+		\begin{align*}
+			\sum\limits_{j=1}^n\frac{1}{\sigma^2}(x_j-\mu) &= 0 = \sum\limits_{j=1}^n(x_j-\mu)\\
+			\sum\limits_{j=1}^n x_j &= \sum\limits_{j=1}^n\mu\\
+			\sum\limits_{j=1}^n & = n\mu\\
+			\mu &= \frac{1}{n}\sum\limits_{j=1}^nx_j
+		\end{align*}
+
+		\subsubsection{Variance}
+		The gradient with respect to $\sigma^2$ is:
+
+		\begin{align*}
+			\frac{\partial\mathcal{L}}{\partial\sigma^2} &= \sum\limits_{j=1}^n-(x_j-\mu)^2\frac{\partial}{\partial\sigma^2}\frac{1}{2\sigma^2}-\frac{1}{2}\frac{1}{2\pi\sigma^2}2\pi = \\
+																									 &=\sum\limits_{j-1}^n - (x_j - \mu)^2\frac{1}{2}(-1)\frac{1}{\sigma^4}-\frac{1}{2\sigma^2}
+		\end{align*}
+
+		Setting the gradient to zero gives variance:
+
+		\begin{align*}
+			\sum\limits_{j=1}^n\frac{1}{2\sigma^2} = \sum\limits_{j=1}^n\frac{(x_j-\mu)^2}{2\sigma^4}\\
+			\sum\limits_{j=1}^n\sigma^2 &= \sum\limits_{j=1}^n(x_j-\mu)^2\\
+			\sigma^2 = \frac{1}{n}\sum\limits_{j=1}^n(x_j-\mu)^2
+		\end{align*}
+
+	\subsection{Multivariate Gaussian case}
+	For the multivariate Gaussian with unknown $\vec{\mu}$ and $\Sigma$ the log-likelihood is:
+
+	$$\sum\limits_{j=1}^n-\frac{1}{2}(\vec{x}_j -\vec{\mu})^t\Sigma^{-1}(\vec{x}_j - \vec{\mu}) - \frac{1}{2}\ln(2\pi)^d|\Sigma|$$
+
+	The maximum-likelihood estimates are:
+
+	$$\vec{\mu} = \frac{1}{n}\sum\limits_{j=1}^n\vec{x}_j$$
+
+	$$\Sigma = \frac{1}{n}\sum\limits_{j=1}^n(\vec{x}_j-\vec{\mu})(\vec{x}_j-\vec{\mu})^t$$
+
+	\subsection{General Gaussian case}
+	In the case of a general Gaussian the maximum likelihood estimates for Gaussian parameters are their empirical estimates over the samples: the mean is the sample mean and the covariance matrix is the mean of the sample covariances.
+
+
+\section{Bayesian estimation}
+Bayesian estimation assumes parameters $\vec{\theta}_i$ are random variables with some known prior distribution.
+Observing examples turns prior distribution over parameters into a posterior distribution.
+Predictions for new examples are obtained integrating over all possible values for the parameters:
+
+$$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i|y_i, \mathcal{D}_i)d\vec{\theta}_i$$
+
+	\subsection{Setting}
+	Bayesian estimation assumes parameters $\vec{\theta}_i$ are random variables with some known prior distribution.
+	Predictions for new examples are obtained integrating over all possible values for the parameters:
+
+	$$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i|y_i, \mathcal{D}_i)d\vec{\theta}_i$$
+
+	Because probability of $\vec{x}$ given each class $y_i$ is independent of the other classes $y_i$:
+
+	$$p(\vec{x}|\mathcal{D}) = \int_{\vec{\theta}} p(\vec{x}, \vec{\theta}|mathcal{D})d\vec{\theta} =\int p(\vec{x}|\vec{\theta})p(\vec{\theta}|\mathcal{D})d\vec{\theta}$$
+
+	$p(\vec{x}|\vec{\theta})$ can be easily computed because the form and the parameters of the distribution are known, so there is a need to estimate the parameter posterior density given the training set:
+
+	$$p(\vec{\theta}|\mathcal{D}) = \frac{p(\mathcal{D}|\vec{\theta})p(\vec{\theta})}{p(\mathcal{D})}$$
+
+	$P(\mathcal{D})$ is a constant independent of $\vec{\theta}$ so it will not influence the final Bayesian decision, if the final probability is needed it can be computed:
+
+	$$P(\mathcal{D}) = \int_{\vec{\theta}}p(\mathcal{D}|\vec{\theta})p(\vec{\theta})d\vec{\theta}$$
+
+	\subsection{Univariate normal case - unknown $\mu$, known $\sigma^2$}
+	In this case the examples are drawn from $p(x|\mu)\sim N(\mu, \sigma^2)$.
+	The Gaussian mean prior distribution is itself normal: $p(\mu) \sim N(\mu_0, \sigma^2_0)$.
+	The Gaussian mean posterior given the dataset is computed as:
+
+	$$p(\mu|\mathcal{D}) = \frac{p(\mathcal{D}|\mu)p(\mu)}{p(\mathcal{D}} = \alpha\prod\limits_{j=1}^np(x_j|\mu)p(\mu)$$
+
+	Where $\alpha = \frac{1}{p(\mathcal{D})}$ is independent of $\mu$.
+
+		\subsubsection{A posteriori parameter density}
+
+		\begin{align*}
+			p(\mu|\mathcal{D}) &= \alpha\prod\limits_{j = 1}^n\overbrace{\frac{1}{\sqrt{2\pi}\sigma}e^{[-\frac{1}{2}(\frac{x_j-\mu}{\sigma})^2]}}^{p(x_j|\mu)}\overbrace{\frac{1}{\sqrt{2\pi}\sigma_0}e^{[-\frac{1}{2}(\frac{\mu-\mu_0}{\sigma_0})^2]}}^{p(\mu)} =\\
+												&=\alpha'e^{[-\frac{1}{2}(\sum\limits_{j=1}^n(\frac{\mu-x_j}{\sigma})^2+(\frac{\mu-\mu_0}{\sigma_0})^2)]} =\\
+												&=\alpha''e^{[-\frac{1}{2}[(\frac{n}{\sigma^2}+\frac{1}{\sigma^2_0})\mu^2 - 2(\frac{1}{\sigma^2}\sum\limits_{j=1}^nx_j + \frac{\mu_0}{\sigma^2_0})\mu]]}
+		\end{align*}
+
+		Where the normal distribution:
+
+		$$p(\mu|\mathcal{D}) = \frac{1}{\sqrt{2\pi}\sigma}e^{[-\frac{1}{2}(\frac{\mu-\mu_n}{\sigma^n})^2]}$$
+
+		\subsubsection{Recovering mean and variance}
+
+		\begin{align*}
+			\biggl(\frac{n}{\sigma^2} + \frac{1}{\sigma^2_0}\biggr)\mu^2 -2\biggl(\frac{1}{\sigma^2}\sum\limits_{j=1}^nx_j + \frac{\mu_0}{\sigma_0^2}\biggr)\mu + \alpha''' &=\biggl(\frac{\mu-\mu_n}{\sigma_n}\biggr)^2\\
+																																																																																			&=\frac{1}{\sigma^2_n}\mu^2 - 2\frac{\mu_n}{\sigma^2_n}\mu + \frac{\mu_n^2}{\sigma^2_n}
+		\end{align*}
+
+		Solving for $\mu_n$ and $\sigma^2_n$:
+
+		$$\mu_n = \biggl(\frac{n\sigma^2_0}{n\sigma^2_o+\sigma^2}\biggr)\bar{\mu}_n + \frac{\sigma^2}{n\sigma^2_0 + \sigma^2}\mu_0\qquad \sigma^2_n = \frac{\sigma^2_0\sigma^2}{n\sigma^2_0+\sigma^2}$$
+
+		Where the sample mean $\bar{\mu}_n = \frac{1}{n}\sum\limits_{j=1}^n x_j$.
+
+		\subsubsection{Interpreting the posterior}
+		The mean is a linear combination of the prior $\mu_0$ and the sample means $\bar{\mu}_n$.
+		The more training examples the more sample mean dominates over the prior mean.
+		The more training examples, the more variance decreases making the distribution sharply peaked over its mean:
+
+		$$\lim\limits_{n\rightarrow\infty}\frac{\sigma_0^2\sigma^2}{n\sigma^2_0+\sigma^2} = \lim\limits_{n\rightarrow\infty}\frac{\sigma^2}{n} = 0$$
+
+		\subsubsection{Computing the class conditional density}
+
+		\begin{align*}
+			p(x|\mathcal{D}) &= \int p(x|\mu)p(\mu|\mathcal{D})d\mu=\\
+											 &=\int\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\frac{1}{\sqrt{2\pi}\sigma_n}e^{-\frac{1}{2}(\frac{\mu-\mu_n}{\sigma_n})^2}d\mu=\\
+											 &\sim N(\mu_n, \sigma^2 + \sigma^2_n)
+		\end{align*}
+
+		The probability of $x$ given the dataset for the class is a Gaussian with mean equal to the posterior mean, variance equal to the sum of the known variance $\sigma^2$ and an additional variace $\sigma^2_n$ due to the uncertainty of the mean.
+
+	\subsection{Multivariate normal case - unknown $\mu$, known $\Sigma$}
+	This is a generalization of the univariate case:
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item $p(\vec{x}|\vec{\mu}) \sim N(\vec{\mu}, \Sigma)$
+			\item $p(\vec{\mu})\sim N(\vec{\mu}_0, \Sigma_0)$
+			\item $p(\vec{\mu}|\mathcal{D}) \sim N(\vec{\mu}_n, \Sigma_n)$
+			\item $p(\vec{x}|\mathcal{D}) \sim N(\vec{\mu}_n, \Sigma+\Sigma_n)$
+		\end{itemize}
+	\end{multicols}
+
+\section{Sufficient statistics}
