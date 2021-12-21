@@ -1,0 +1,259 @@
+\chapter{Support vector machines}
+
+\section{Introduction}
+Support vector machines are linear classifiers selecting hyperplane maximizing separation margin between classes or are large margin classifiers.
+The solution depends only on a small subset of training examples or the support vectors.
+They have a sound generalization theory with bounds or error based on the margin and they can easily extended to non-linear separation by the kernel machines.
+
+\section{Maximum margin classifiers}
+
+	\subsection{Classifier margin}
+	Given a training set $\mathcal{D}$, a classifier confidence margin is:
+
+	$$\rho = \min\limits_{(\vec{x},y)\in\mathcal{D}}yf(\vec{x})$$
+
+	It is the minimal confidence margin for predicting the true label among training examples.
+	A classifier geometric margin is:
+
+	$$\frac{\rho}{||\vec{w}||} = \min\limits_{(\vec{x},y)\in\mathcal{D}}\frac{yf(\vec{x})}{||\vec{w}||}$$
+
+	\subsection{Canonical hyperplane}
+	There is an infinite number of equivalent formulation for the same hyperplane:
+
+	\begin{align*}
+		\vec{w}^T\vec{x}+w_0 &=0\\
+		\alpha(\vec{w}^T\vec{x}+w_0) &= 0\qquad \forall\alpha\neq0
+	\end{align*}
+
+	The canonical hyperplane is the hyperplane having confidence margin equal to $1$: $\rho = \min\limits_{(\vec{x}, y)\in\mathcal{D}}yf(\vec{x}) = 1$.
+	Its geometric margin is:
+
+	$$\frac{\rho}{||\vec{w}||} = \frac{1}{||\vec{w}||}$$
+
+\section{Hard margin support vector machine}
+
+	\subsection{Margin error bound theorem}
+	Consider the set of decision functions $f(\vec{x}) = sign(\vec{w}^T\vec{x})$ with $||\vec{w}||\le\Lambda$ and $||\vec{x}||\le R$ for some $R, \Lambda > 0$.
+	Moreover let $\rho>0$ and $\nu$ denote the fraction of training examples with margin smaller than $\frac{\rho}{||\vec{w}||}$, referred as the margin error.
+	For all distributions $P$ generating the data, with probability at least $1-\delta$ over the drawing of the $m$ training patterns, and for any $\rho>0$ and $\delta\in]0;1[$, the probability that a test pattern drawn from $P$ will be misclassified is bound from above by:
+
+	$$\nu+\sqrt{\frac{c}{m}\biggl(\frac{R^2\Lambda^2}{\rho^2}\ln^2m+\ln\frac{1}{\delta}\biggr)}$$
+
+	Where $c$ is an universal constant.
+
+		\subsubsection{Interpretation of the margin error bound}
+		The probability of the test error depends on the number of margin errors $\nu$, examples with margin smaller than $\frac{\rho}{||\vec{w}||}$, the number of training examples, $\sqrt{\frac{ln^2m}{m}}$, the size of the margin $\frac{1}{\rho^2}$.
+
+	\subsection{Learning problem}
+	If $\rho$ is fixed to $1$, maximizing the margin corresponds to minimizing $||\vec{w}||$.
+	The learning problem becomes: $\min\limits_{\vec{w}, w_0} \frac{1}{2}||\vec{w}||^2$ subject to $y_i(\vec{w}^T\vec{x}_i+w_0)\ge 1\forall(\vec{x}_i, y_i)\in\mathcal{D}$.
+	The constraints guarantee that all points are correctly classified.
+	The minimization corresponds to maximizing the squared margin.
+	It is a quadratic optimization problem: the objective is quadratic and the points satisfying the constraints form a convex set.
+
+	\subsection{Constrained optimization - Karush-Kuhn-Tucker (KKT) approach}
+	Following the KKT approach a constrained optimization problem can be addressed by converting it into an unconstrained problem with the same solution.
+	Let's consider a constrained optimization problem as $\min\limits_z f(z)$ subject to $g_i(z)\ge 0\forall i$.
+	Let's introduce a non-negative variable $\alpha_i\ge 0$ or a Lagrange multiplier for each constraint and rewrite the optimization problem as Lagrangian:
+
+	$$\min\limits_{z}\max\limits_{\vec{\alpha}\ge 0}f(z)-\sum\limits_i\alpha_ig_i(z)$$
+
+	The optimal solutions $z^*$ for this problem are the same as the optimal solutions for the original problem: if for a given $z'$ at least one constraint is not satisfied, maximizing over $\alpha_i$ leads to an infinite value.
+	If all constraints are satisfied, maximization over the $\alpha$ will set all elements of the summation to zero, so that $z'$ is a solution of $\min\limits_zf(z)$.
+
+	\subsection{KKT approach in SVM}
+	The constraint can be included in the minimization using $m=|\mathcal{D}|$ Lagrange multipliers $\alpha_i\ge 0$
+
+	$$L(\vec{w}, w_0, \vec{\alpha}) = \frac{1}{2}||\vec{w}||^2-\sum\limits_{i=1}^m\alpha_i(y_i(\vec{w}^T\vec{x}_i+w_0)-1)$$
+
+	The Lagrangian is minimized with respect to $\vec{w}$, $w_0$ and maximized with respect to $\alpha_i$.
+	The solution is a saddle point.
+
+		\subsubsection{Dual formulation}
+		Vanishing derivatives with respect to primal variables we get:
+
+		$$\frac{\partial}{\partial w_0}L(\vec{w}, w_0, \vec{\alpha}) = 0\Rightarrow \sum\limits_{i=1}^m\alpha_iy_i=0$$
+
+		$$\frac{\partial}{\partial \vec{w}}L(\vec{w}, w_0, \vec{\alpha}) = 0\Rightarrow \vec{w}=\sum\limits_{i=1}^m\alpha_iy_i\vec{x}_i$$
+
+		So, substituting in the Lagrangian:
+
+		\begin{align*}
+			\frac{1}{2}||\vec{w}||^2-\sum\limits_{i=1}^m\alpha_i(y_i(\vec{w}^T\vec{x}_i+w_0)-1)=\\
+			=\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}_i^T\vec{x}_j-\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}_i^T\vec{x}_j-\underbrace{\sum\limits_{i=1}^m\alpha_iy_i}_{=0}w_0+\sum\limits_{i=1}^m\alpha_i=\\
+			=\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}^T_i\vec{x}_j = L(\alpha)
+		\end{align*}
+
+		Which is maximized with respect to the dual variables $\alpha$.
+		The resulting maximization problem including the constraints is $\max\limits_{\alpha\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}^T_i\vec{x}_j$ subject to $\alpha_i\ge 0\forall i\in\{1, dots, m\}$ and $\sum\limits_{i=1}^m\alpha_iy_i = 0$.
+		It is still a quadratic optimization problem.
+		The dual formulation has simpler constraints and it's easier to solve.
+		The primal formulation has $d+1$ variables: $\min\limits_{\vec{w},w_0}\frac{1}{2}||\vec{w}||^2$.
+		The dual formulation has $m$ variables, the number of training examples:$\max\limits_{\alpha\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}^T_i\vec{x}_j$.
+		One can choose the primal formulation if it has much less variables.
+
+	\subsection{Decision function}
+	Substituting $\vec{w}=\sum\limits_{i=1}^m\alpha_iy_i\vec{x}_i$ in the decision function:
+
+	$$f(\vec{x}) = \vec{w}^T\vec{x}+w_o = \sum\limits_{i=1}^m\alpha_iy_i\vec{x}^T_i\vec{x} + w_0$$
+
+	The decision function is a linear combination of dot products between training points and the test point.
+	The dot product is a kind of similarly between points.
+	Weights of the combination are $\alpha_iy_i$: large $\alpha_i$ implies large contribution towards class $y_i$ times the similarity.
+
+	\subsection{KKT conditions}
+
+	$$L(\vec{w}, w_o, \vec{\alpha}) = \frac{1}{2}||\vec{w}||^2-\sum\limits_{i=1}^m\alpha_i(y_i(\vec{w}^T\vec{x}_i+w_0)-1)$$
+
+	At the saddle point it holds that for all $i$:
+
+	$$\alpha_i(y_i(\vec{w}^T\vec{x}_i+w_0)-1) = 0$$
+
+	Thus, either the example does not contribute to the final $f(\vec{x})$ if $\alpha_i=0$ or the example stays on the minimal confidence hyperplane from the decision one: $y_i(\vec{w}^T\vec{x}_i+w_0) = 1$.
+
+	\subsection{Support vectors}
+	Support vectors are points staying on the minimal confidence hyperplanes.
+	All other points do not contribute to the final decision function and they could be removed from the training set.
+	SVM are typically sparse because they have few support vectors.
+
+	\subsection{Decision function bias}
+	The bias $w_0$ can be computed from the KKT conditions.
+	Given an arbitrary support vector $\vec{x}_i$ with $\alpha_i>0$, the KKT condition implies:
+
+	\begin{align*}
+		y_i(\vec{w}^T\vec{x}_i+w_0) &=1\\
+		y_i\vec{w}^T\vec{x}_i+y_iw_0 &= 1\\
+		w_0 &=\frac{1-y_i\vec{w}^T\vec{x}_i}{y_i}
+	\end{align*}
+
+	For robustness, the bias is usually averaged over all support vectors.
+
+\section{Soft margin SVM}
+
+	\subsection{Slack variables}
+	A slack variable $\xi_i$ represents the penalty for example $x_i$ not satisfying the margin constraint.
+	The sum of the slacks is minimized together to the inverse margin.
+	The regularization parameter $C\ge 0$ trades-off data fitting and size of the margin.
+
+	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\vec{\xi}\in\mathbb{R}^m}\frac{1}{2}||vec{w}||^2+C\sum\limits_{i=1}^m\xi_i$$
+
+	Subject to $y_i(\vec{w}^T\vec{x}_i+w_0)\ge 1-\xi_i\forall i\in\{1, \dots, m\}$ and $\xi_i\ge 0\forall i\in\{1, \dots\}$.
+
+	\subsection{Regularization theory}
+
+	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\vec{\xi}\in\mathbb{R}^m}\frac{1}{2}||vec{w}||^2+C\sum\limits_{i=1}^ml(y_i, f(\vec{x}_i))$$
+
+	This is a regularized loss minimization problem.
+	The loss term accounts for error minimization.
+	The margin maximization term accounts for regularization: solution with larger margin are preferred.
+	Regularization is a standard approach to prevent overfitting and it corresponds to a prior for simpler (more regular, smoother) solutions.
+
+		\subsubsection{Hinge loss}
+
+		$$l(y_i, f(\vec{x}_i)) = |1-y_if(\vec{x}_i)|_+ = |1-y_i(\vec{w}^T\vec{x}_i+w_0)|_+$$
+
+		$|z|_+=z$ if $z>0$ and $0$ otherwise and it corresponds to the slack variable $\xi_i$.
+		All examples not violating the margin constraint have zero loss so there is a sparse set of support vectors.
+
+	\subsection{Lagrangian}
+
+	$$L = C\sum\limits_{i=1}^m\xi_i+\frac{1}{2}||\vec{w}||^2-\sum\limits_{i=1}^m\alpha_i(y_i(\vec{w}^T\vec{x}_i+w_0)-1+\xi_i)-\sum\limits_{i=1}^m\beta_i\xi_i$$
+
+	Where $\alpha_i, \beta_i\ge 0$.
+
+	Vanishing derivatives with respect to primal variables we get:
+
+	$$\frac{\partial}{\partial w_0}L = 0 \Rightarrow \sum\limits_{i=1}^m\alpha_iy_i = 0$$
+
+	$$\frac{\partial}{\partial\vec{w}}L = 0\Rightarrow \vec{w} = \sum\limits_{i=1}^m\alpha_iy_i\vec{x}_i$$
+
+	$$\frac{\partial}{\partial\xi_i}L = 0 \Rightarrow C - \alpha_i -\beta_i = 0$$
+
+	\subsection{Dual formulation}
+	Substituting the Lagrangian:
+
+	\begin{align*}
+		C\sum\limits_{i=1}^m\xi_i+\frac{1}{2}||\vec{w}||^2-\sum\limits_{i=1}^m\alpha_i(y_i(\vec{w}^T\vec{x}_i+w_0)-1+\xi_i) - \sum\limits_{i=1}^m\beta_i\xi_i=\\
+		\sum\limits_{i=1}^m\xi_i\underbrace{(C-\alpha_i-\beta_i)}_{=0}+\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}_i^T\vec{x}_j-\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}_i^T\vec{x}_j-\underbrace{\sum\limits_{i=1}^m\alpha_iy_i}_{=0}w_0+\sum\limits_{i=1}^m\alpha_i=\\
+		\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}^T_i\vec{x}_j= L(\alpha)
+	\end{align*}
+
+	The box constraint for $\alpha_i$ comes from $C-\alpha_i-\beta_i=0$ and the fact that both $\alpha_i\ge 0$ and $\beta_i\ge 0$.
+
+	$$\max\limits_{\alpha\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i -\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}_i^T\vec{x}_j$$
+
+	Subject to $0\ge \alpha_i\ge C \forall i\in\{1, \dots, m\}$ and $\sum\limits_{i=1}^m\alpha)iy)i=0$.
+
+	\subsection{Karush-Khun-Tucker conditions}
+	At the saddle point it holds that for all $i$ $\alpha_i(y_i(\vec{w}^T\vec{x}_i + w_0)-1+\xi_i)=0$ and $\beta_i\xi_i = 0$, thus support vectors $\alpha_i > 0$ are examples for which $(y_i(\vec{w}^T\vec{x}_i+w_0)\le 1$.
+
+	\subsection{Support vectors}
+	If $\alpha_i< C$, $C-\alpha_i-\beta_i=0$ and $\beta_i\xi_i=0$ imply that $\xi_i=0$.
+	These are the unbound support vectors $(y_i(\vec{w}^T\vec{x}_i+w_0)=1$ and they stay on the confidence one hyperplane.
+	If $\alpha_i=C$ or bound support vectors then $\xi_i$ can be greater than zero, in which case the support vectors are margin errors.
+
+\section{Large-scale SVM learning}
+
+	\subsection{Stochastic gradient descent}
+
+	$$\min\limits_{\vec{w}\in\mathcal{X}}\frac{\lambda}{2}||\vec{w}||^2+\frac{1}{m}\sum\limits_{i=1}^m|1-y_i\langle\vec{w},\vec{x}_i\rangle|_+$$
+
+	The objective for a single example $(\vec{x}_i, y_i)$:
+
+	$$E(\vec{w}; (\vec{x}_i, y_i)) = \frac{\lambda}{2}||\vec{w}||^2+|1-y_i\langle\vec{w},\vec{x}_i\rangle|_+$$
+
+	The subgradient is:
+
+	$$\nabla_{\vec{w}}E(\vec{w};(\vec{x}_i, y_i)) = \lambda\vec{w}-\mathbb{1}[y_i\langle\vec{w},\vec{x}_i\rangle < 1]y_i\vec{x}_i$$
+
+	The indicator function is such that:
+
+	$$\mathbb{1}[y_i\langle\vec{w}, \vec{x}_i\rangle< 1] = \begin{cases}1 &if\ y_i\langle\vec{w},\vec{x}_i\rangle < 1\\ 0 &otherwise\end{cases}$$
+
+	The subgradient of a function $f$ at a point $x_0$ is any vector $\vec{v}$ such that for any $x$:
+
+	$$f(x) - f(x_0)\ge \vec{v}^T(x-x_0)$$
+
+		\subsubsection{Pseudocode - pegasus}
+
+		\begin{enumerate}
+			\item Initialize $\vec{w}_1 = \vec{0}$.
+			\item For $t = 1 $ to $T$:
+				\begin{enumerate}
+					\item Randomly choose $(\vec{x}_{i_t}, t_{i_t})$ from $\mathcal{D}$.
+					\item Set $\eta_t = \frac{1}{\lambda t}$.
+					\item Update $\vec{w}$:
+
+						$$\vec{w}_{t+1} = \vec{w}_t - \eta_t\nabla_{\vec{w}}E(\vec{w};(\vec{x}_{i_t}, y_{i_t}))$$
+
+				\end{enumerate}
+			\item Return $\vec{w}_{T+1}$.
+		\end{enumerate}
+
+		The choice of the learning rate allows to bound the runtime for and $\epsilon$-accurate solution to $O\biggl(\frac{d}{\lambda\epsilon}\biggr)$ with $d$ maximum number of non-zero features in an example.
+
+	\subsection{Dual version}
+	It is easy to show that:
+
+	$$\vec{w}_{t+1} = \frac{1}{\lambda t}\sum\limits_{i=1}^t\mathbb{1}[y_{i_t}\langle\vec{w}_t, \vec{x}_{i_t}\rangle < 1]y_{i_t}\vec{x}_{i_t}$$
+
+	$\vec{w}_{t+1}$ can be represented implicitly by storing in vector $\alpha_{t+1}$ the number of times each example was selected and had a non-zero loss:
+
+	$$\alpha_{t+1}[j] = |\{t'\le t:i_{t'} = j\land y_j\langle\vec{w}_{t'},\vec{x}_j\rangle < 1\}|$$
+
+		\subsubsection{Pseudocode - pegasus dual}
+
+		\begin{enumerate}
+			\item Initialize $\vec{\alpha}_1 = 0$.
+			\item For $t = 1$ to $T$:
+				\begin{enumerate}
+					\item Randomly choose $(\vec{x}_{i_t}, y_{i_t})$ from $\mathcal{D}$.
+					\item Set $\alpha_{t+1} = \alpha_t$.
+					\item If $y_{i_t}\frac{1}{\lambda t}\sum\limits_{j=1}^t \alpha_t[j]y_j\langle\vec{x}_j, \vec{x}_{i_t}\rangle < 1$ then:
+
+						$$\alpha_{t+1}[i_t] = \alpha_{t+1}[i_t] + 1$$
+				\end{enumerate}
+			\item Return $\alpha_{T+1}$.
+		\end{enumerate}
+
+		This will be useful when combined with kernels

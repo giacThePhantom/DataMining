@@ -19,7 +19,7 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 	*[X] 11_bn_learning.pdf
 	*[X] 12_naive_bayes.pdf
 	*[X] 13_linear_discriminant_functions.pdf
-	*[ ] 14_support_vector_machines.pdf
+	*[X] 14_support_vector_machines.pdf
 	*[ ] 15_non_linear_svm.pdf
 	*[ ] 16_kernel_machines.pdf
 	*[ ] 17_deep_learning.pdf
