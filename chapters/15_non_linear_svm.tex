@@ -1,0 +1,214 @@
+\chapter{Non linear support vector machines}
+
+\section{Non-linearly separable problems}
+Hard-margin SVM can address linearly separable problems and soft-margin SVM can address linearly separable problems with outliers.
+Non-linearly separable problems need a higher expressive power with more complex feature combinations, without loosing the advantages of linear separators like a large margin and theoretical guarantees.
+To do so the input examples are mapped into a higher dimensional feature space and the linear classification is performed in the higher dimensional space.
+
+\section{Non-linear support vector machines - feature map}
+A feature map is a function mapping each example to a higher dimensional space: $\Phi:\mathcal{X}\rightarrow\mathcal{H}$.
+Examples $\vec{x}$ are replaced with their feature mapping $\Phi(\vec{x})$.
+The feature mapping should increase the expressive power of the representation introducing features which are combination of input features and examples should be approximately linearly separable in the mapped space.
+Feature mapping can be homogeneous:
+
+$$\Phi\begin{pmatrix}x_1\\x_2\end{pmatrix} = \begin{pmatrix}x_1^2\\x_1x_2\\x_2^2\end{pmatrix}$$
+
+Or inhomogeneous:
+
+$$\Phi\begin{pmatrix}x_1\\x_2\end{pmatrix} = \begin{pmatrix}x_1\\x_2\\x_1^2\\x_1x_2\\x_2^2\end{pmatrix}$$
+
+
+	\subsection{Polynomial mapping}
+	Polynomial mapping maps feature to all possible conjunctions (products) of feature.
+	If it homogeneous it maps them to a certain degree $d$, if it is inhomogeneous it maps them up to a certain degree.
+
+	\subsection{Linear separation in feature space}
+	A SVM algorithm is applied replacing $\vec{x}$ with $\Phi(\vec{x})$:
+
+	$$f(\vec{x}) = \vec{w}^T\Phi(\vec{x})+w_0$$
+
+	A linear separation in the feature space corresponds to a non linear separation in the input space, for example:
+
+	$$f\begin{pmatrix}x_1\\x_2\end{pmatrix} = sgn(w_1x_1^2 + w_2x_1x_2 + w_3x_2^2 + w_0)$$
+
+\section{Support vector regression}
+Support vector regression retains combination of regularization and data fitting.
+Regularization means smoothness of the learned function, entailing smaller weights or lower complexity.
+A sparsifying loss can be used to have few support vectors.
+
+	\subsection{$\epsilon$-insensitive loss}
+
+	$$l(f(\vec{x}), y) = |y-f(\vec{x})|_\epsilon = \begin{cases} 0 &if\ |y-f(\vec{x})|\le\epsilon\\ |y-f(\vec{x})|-\epsilon & otherwise\end{cases}$$
+
+	The $\epsilon$-insensitive loss allow to tolerate small $\epsilon$ deviation from the true value with no penalty.
+	It defines a $\epsilon$-tube of insensitiveness around true values.
+	This also allows to trade off function complexity with data fitting playing with the $\epsilon$ value.
+
+	\subsection{Optimization problem}
+
+	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R}, \vec{\xi}, \vec{\xi}^*\in\mathbb{R}^m}\frac{1}{2}||\vec{w}||^2+C\sum\limits_{i=1}^m(\xi_i+\xi_i^*)$$
+
+	Subject to $\vec{w}^T\Phi(\vec{x}_i) + w_0-y_i\le \epsilon+\xi_i$, $y_i-(\vec{w}^T\phi(\vec{x}_i)+w_0)\le\epsilon+\xi_i^*$ and $\xi_i,\xi_i^*\ge 0$.
+	There are two constraints for each example for the upper and lower sides of the tube.
+	Slack variables $\xi_i$ and $\xi_i^*$ penalize predictions out of the $\epsilon$-insensitive tube.
+
+	\subsection{Lagrangian}
+	The constraints are included in the minimization function using Lagrange multipliers $\alpha_i, \alpha_i^*, \beta_i, \beta_i^*\ge 0$:
+
+	$$L = \frac{1}{2}||\vec{w}||^2 + C\sum\limits_{i=1}^m(\xi_i+\xi^*_i) - \sum\limits_{i=1}^m(\beta_i\xi_i+\beta_i^*\xi_i^*) -\sum\limits_{i=1}^m\alpha_i(\epsilon+\xi_i+y_i-\vec{w}^T\Phi(\vec{x}_i)-w_0) -\sum\limits_{i=1}^m\alpha_i^*(\epsilon + \xi_i^*-y_i+\vec{w}^T\Phi(\vec{x}_i) + w_0)$$
+
+		\subsubsection{Vanishing the derivatives with respect to the primal variables}
+		Vanishing the derivatives with respect to the primal variables:
+
+		$$\frac{\partial L}{\partial\vec{w}} = \vec{w}-\sum\limits_{i=1}^m(\alpha_i^*-\alpha_i)\Phi(\vec{x}_i) = 0\rightarrow \vec{w} = \sum\limits_{i=1}^m(\alpha_i^*-\alpha_i)\Phi(\vec{x}_i)$$
+
+		$$\frac{\partial L}{\partial w_0} = \sum\limits_{i=1}^m(\alpha_i-\alpha_i^*) = 0$$
+
+		$$\frac{\partial L}{\partial \xi_i} = C-\alpha_i-\beta_i = 0 \rightarrow \alpha_i\in[0,C]$$
+
+		$$\frac{\partial L}{\partial \xi^*_i} = C-\alpha^*_i-\beta^*_i = 0 \rightarrow \alpha^*_i\in[0,C]$$
+
+	\subsection{Dual formulation}
+	Substituting them in the Lagrangian:
+
+	\begin{align*}
+		\frac{1}{2}\underbrace{\sum\limits_{i,j = 1}^m(\alpha_i^*-\alpha_i)(\alpha_j^*-\alpha_j)\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)}_{||\vec{w}||^2} &+ \sum\limits_{i=1}^m\xi_i\underbrace{(C-\beta_i-\alpha_i)}_{=0}+\\
+		+\sum\limits_{i=1}^m\xi_i^*\underbrace{(C-\beta_i^*-\alpha_i^*)}_{=0}&-\epsilon\sum\limits_{i=1}^m(\alpha_i+\alpha_i^*)+\sum\limits_{i=1}^my_i(\alpha_i^*-\alpha_i)+\\
+		+w_0\underbrace{\sum\limits_{i=1}^m(\alpha_i-\alpha_i^*)}_{=0}&-\sum\limits_{i,j=1}^m(\alpha_i^*-\alpha_i)(\alpha_j^*-\alpha_j)\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)
+	\end{align*}
+
+	So the problem becomes to optimize:
+
+	$$\max\limits_{\alpha\in\mathbb{R}^m}-\frac{1}{2}\sum\limits_{i,j=1}^m(\alpha_i^*-\alpha_i)(\alpha_j^*-\alpha_j)\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)-\epsilon\sum\limits_{i=1}^m(\alpha_i^*+\alpha_i)+\sum\limits_{i=1}^my_i(\alpha_i^*-\alpha_i)$$
+
+	Subject to $\sum\limits_{i=1}^m(\alpha_i-\alpha_i^*) = 0$ with $\alpha_i,\alpha_i^*\in[0,C]\forall i\in [1,m]$.
+
+
+	\subsection{Regression function}
+
+	$$f(\vec{x}) = \vec{w}^T\Phi(\vec{x}) + w_0 = \sum\limits_{i=1}^m(\alpha_i-\alpha_i^*)\Phi(\vec{x}_i)^T\Phi(\vec{x})+w_0$$
+
+	\subsection{KKT conditions}
+	At the saddle point holds that for all $i$:
+
+	\begin{align*}
+		\alpha_i(\epsilon+\xi_i+y_i-\vec{w}^T\Phi(\vec{x}_i)-w_0) &= 0\\
+		\alpha^*_i(\epsilon+\xi^*_i+y_i-\vec{w}^T\Phi(\vec{x}_i)-w_0) &= 0\\
+		\beta_i\xi_i &=0\\
+		\beta^*_i\xi^*_i &=0
+	\end{align*}
+
+	Combined with $C-\alpha_i-\beta_i= 0$, $\alpha_i\ge0$, $\beta_i\ge 0$, $C-\alpha_i^*-\beta_i^* = 0$, $\alpha_i^*\ge 0$, $\beta_i^*\ge 0$:
+
+	\begin{align*}
+		\alpha_i\in [0,C]\qquad&\qquad \alpha_i^*\in[0,C]\\
+		\alpha_i=C\ if\ \xi_i>0\qquad &\qquad \alpha_i^*=C\ if\ \xi_i^*>0
+	\end{align*}
+
+	\subsection{Support vectors}
+	All patterns within the $\epsilon$-tube, for which $|f(\vec{x})i-y)i|<\epsilon$ have $\alpha_i, \alpha_i^* = 0$ and don't contribute to the estimated function $f$.
+	Pattern for which either $0<\alpha_i<C$ or $0<\alpha_i^*<C$ are on the border of the $\epsilon$-tube: $|f(\vec{x}_i)-y_i| = \epsilon$ and are the unbound support vectors.
+	The remaining patterns are margin errors: $\xi_i>0\lor\xi_i^*>0$ and reside out of the $\epsilon$-insensitive region and they are bound support vectors with corresponding $\alpha_i=C\lor\alpha_i^* = C$.
+
+\section{Smallest enclosing hypersphere}
+The smallest enclosing hypersphere characterize a set of examples defining boundaries enclosing them.
+The objective is to find the smallest hypersphere in the feature space enclosing the data points accounting for outliers paying a cost for leaving examples out of the sphere.
+This is done for one-class classification: it models a class when no negative examples exists or for anomaly or novelty detection: it detects test data falling outside of the sphere and return them as novel or anomalous.
+
+	\subsection{Optimization problem}
+
+	$$\min\limits_{R\in\mathbb{R}, \vec{O}\in\mathcal{H},\vec{\xi}\in\mathbb{R}^m} R^2+C\sum\limits_{i=1}^m\xi_i$$
+
+	Subject to $||\phi(\vec{x}_i)-\vec{o}||^2\le R^2+\xi_i\forall i\in\{1, \dots, m\}$ and $\xi_i\ge 0\forall i\in\{1, \dots, m\}$.
+	With $\vec{o}$ the centre of the  sphere, $R$ the minimized radius and slack variables $\vec{\xi}$ gather costs for outliers.
+
+	\subsection{Lagrangian}
+	Considering Lagrange multipliers $\alpha_i,\beta_i\ge 0$ the Lagrangian is:
+
+	$$L = R^2 + C\sum\limits_{i=1}^m-\sum\limits_{i=1}^m\alpha_i(R^2+\xi_i-||\Phi(\vec{x}_i)-\vec{o}||^2)-\sum\limits_{i=1}^m\beta_i\xi_i$$
+
+		\subsubsection{Vanishing the derivatives with respect to the primal variables}
+
+		$$\frac{\partial L}{\partial R} = 2R\biggl(1-\sum\limits_{1}^m\alpha_i\biggr) = 0\rightarrow \sum\limits_{i=1}^m\alpha_i = 1$$
+
+		$$\frac{\partial L}{\partial\vec{o}} = 2\sum\limits_{i=1}^m\alpha_i(\Phi(\vec{x}_i)-\vec{o})(-1) = 0\rightarrow \vec{o}\underbrace{\sum\limits_{i=1}^m\alpha_i}_{=1} = \sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)$$
+
+		$$\frac{\partial L}{\partial \xi_i} = X-\alpha_i-\beta_i = 0 \rightarrow \alpha_i\in [0,C]$$
+
+	\subsection{Dual formulation}
+
+	$$R^2\underbrace{\biggl(1-\sum\limits_{i=1}^m\alpha_i\biggr)}_{=0}+\sum\limits_{i=1}^m\xi_i\underbrace{(C-\alpha_i-\beta_i}_{=0} + \sum\limits_{i=1}^m\alpha_i(\Phi(\vec{x}_i) - \underbrace{\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j))}_{\vec{o}}^T(\Phi(\vec{x}_i)-\underbrace{\sum\limits_{h=1}^m\alpha_h\Phi(\vec{x}_h))}_{\vec{0}}$$
+
+	So:
+
+	\begin{align*}
+		\sum\limits_{i=1}^m\alpha_i(\Phi(\vec{x}_i)-\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j))^T(\Phi(\vec{x}_i)-\sum\limits_{h=1}^m\alpha_h\Phi(\vec{x}_h))=\\
+		=\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\Phi(\vec{x}_i)-\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\sum\limits_{h=1}^m\alpha_h\Phi(\vec{x}_h) - \sum\limits_{i=1}^m\alpha_i\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j)^T\Phi(\vec{x}_i)+\underbrace{\sum\limits_{i=1}^m\alpha_i}_{=1}\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j)^T\sum\limits_{h=1}^m\alpha_h\Phi(\vec{x}_h)=\\
+		=\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\Phi(\vec{x}_i)-\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j)
+	\end{align*}
+
+	The optimization problem then becomes:
+
+	$$\max\limits_{\vec{\alpha}\in\mathbb{R}^m} \sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\Phi(\vec{x}_i)-\sum\limits_{i,j=1}^m\alpha_i\alpha_j\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)$$
+
+	Subject to $\sum\limits_{i=1}^m\alpha_i=1$, $0\le\alpha_i\le C\forall i\in\{1, \dots, m\}$.
+
+	\subsection{Distance function}
+	The distance of a point from the origin is:
+
+	\begin{align*}
+		R^2(\vec{x}) &-||\Phi(\vec{x}-\vec{o}||^2\\
+								 &=(\Phi(\vec{x}-\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i))^T(\Phi(\vec{x})-\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j))=\\
+								 &=\Phi(\vec{x})^T\Phi(\vec{x}) - 2\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\Phi(\vec{x}) + \sum\limits_{i,j=1}^m\alpha_i\alpha_j\Phi(\vec{x}_i^T\Phi(\vec{x}_j)
+	\end{align*}
+
+	\subsection{KKT conditions}
+	At the saddle points it holds that for all $i$:
+
+	\begin{align*}
+		\beta_i\xi_i &= 0\\
+		\alpha_i(R^2+\xi_i-||\Phi(\vec{x}_i)-\vec{o}||^2) &=0
+	\end{align*}
+
+	\subsection{Support vectors}
+	Unbound support vectors $0<\alpha_i<C$ have an image that lies on the surface of the enclosing sphere.
+	Bound support vectors $\alpha_i = C$ have an image that lies outside of the enclosing sphere and correspond to outliers.
+	All other points $\vec{\alpha} = \vec{0}$ have images inside the enclosing sphere.
+
+	\subsection{Decision function}
+	The radius $R^*$ of the enclosing sphere can be computed using the distance function on any unbound support vector $\vec{x}$:
+
+	$$R^2(\vec{x}) = \Phi(\vec{x})^T\Phi(\vec{x})-2\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\Phi(\vec{x}) + \sum\limits_{i,j=1}^m\alpha_i\alpha_j\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)$$
+
+	A decision function for novelty detection could be:
+
+	$$f(\vec{x}) = sgn(R^2(\vec{x})-(R^*)^2)$$
+
+	Positive if the examples lays outside the sphere and negative otherwise.
+
+\section{Support vector ranking}
+Support vector ranking order examples by relevance.
+It learns a scoring function predicting the quality of the example.
+It constraint the function to score $\vec{x}_i$ higher than $\vec{x}_j$ if it is more relevant doing pairwise comparison for training.
+It is easily formalized as a support vector classification task.
+
+	\subsection{Optimization problem}
+
+	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\xi_{i,j}\in\mathbb{R}}\frac{1}{2}||\vec{w}||^2+C\sum\limits_{i,j}\xi_{i,j}$$
+
+	Subject to $\vec{w}^T\Phi(\vec{x}_i)-\vec{w}^T\Phi(\vec{x}_j) \ge 1 - \xi_{i,j}$, $\xi_{i,j}\ge 0$ $\forall i,j:\vec{x}_i\prec\vec{x}_j$.
+	There is one constraint for each pair of examples having ordering information and examples should be correctly ordered with a large margin.
+
+	\subsection{Support vector classification on pairs}
+
+	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\xi_{i,j}\in\mathbb{R}}\frac{1}{2}||\vec{w}||^2+C\sum\limits_{i,j}\xi_{i,j}$$
+
+	Subject to $y_{i,j}\vec{w}^T\underbrace{(\Phi(\vec{x}_i)-\Phi(\vec{x}_j))}_{\Phi(\vec{x}_{ij})} \ge 1 - \xi_{i,j}$, $\xi_{i,j}\ge 0$ $\forall i,j:\vec{x}_i\prec\vec{x}_j$.
+	Where labels are always positive.
+
+	\subsection{Decision function}
+	The decision function is:
+
+	$$f(\vec{x}) = \vec{w}^T\Phi(\vec{x})$$
+
+	This is an unbiased standard support vector classification function and represents the score of the example for ranking it.
