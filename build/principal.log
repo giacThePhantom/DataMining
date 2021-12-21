@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.1)  20 DEC 2021 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.1)  21 DEC 2021 01:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -786,23 +786,23 @@ eX warning (ext4): destination with the same identifier (name{page.1}) has been
  already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.52 ...ine {3.4}Characteristics}{14}{section.3.4}
+l.52 ...ine {3.4}Characteristics}{15}{section.3.4}
                                                   % [1
 
-] [2] [3])
+] [2] [3] [4])
 \tf@toc=\write4
 \openout4 = `principal.toc'.
 
 
-(./chapters/01_introduction.tex [4]
+(./chapters/01_introduction.tex [5]
 Chapter 1.
-[5
+[6
 
-] [6] [7]) (./chapters/02_decision_trees.tex [8]
+] [7] [8]) (./chapters/02_decision_trees.tex [9]
 Chapter 2.
-[9
+[10
 
-] [10] [11]) (./chapters/03_knn.tex [12]
+] [11] [12]) (./chapters/03_knn.tex [13]
 Chapter 3.
 (./pseudocode/03/knn-classification.tex
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
@@ -810,42 +810,42 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 
 (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)) [13
+)) [14
 
 ]
-(./pseudocode/03/knn-regression.tex) [14pdfTeX warning (ext4): destination with
+(./pseudocode/03/knn-regression.tex) [15pdfTeX warning (ext4): destination with
  the same identifier (name{algocf.}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
 l.53 $
       $\dfrac{\sum\limits_{i = 1}^kw_iy_i}{\sum\limits_{i=1}^k w_i}$$])
-(./chapters/04_linear_algebra.tex [15]
+(./chapters/04_linear_algebra.tex [16]
 Chapter 4.
-[16
+[17
 
-] [17] [18] [19] [20] [21] [22]) (./chapters/05_probability_theory.tex
-[23]
+] [18] [19] [20] [21] [22] [23]) (./chapters/05_probability_theory.tex
+[24]
 Chapter 5.
-[24
+[25
 
-] [25] [26] [27] [28] [29] [30] [31]) (./chapters/06_evaluation.tex [32]
+] [26] [27] [28] [29] [30] [31] [32]) (./chapters/06_evaluation.tex [33]
 Chapter 6.
-[33
+[34
 
-] [34] [35] [36] [37]) (./chapters/07_bayesian_decision_theory.tex [38]
+] [35] [36] [37] [38]) (./chapters/07_bayesian_decision_theory.tex [39]
 Chapter 7.
-[39
+[40
 
-] [40] [41]
+] [41] [42]
 Overfull \hbox (0.13525pt too wide) detected at line 140
 []
  []
 
-[42] [43]) (./chapters/08_parameter_estimation.tex [44]
+[43] [44]) (./chapters/08_parameter_estimation.tex [45]
 Chapter 8.
-[45
+[46
 
-] [46] [47] [48] [49]
+] [47] [48] [49] [50]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 188.
@@ -874,7 +874,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 188.
 
-[50]
+[51]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 239.
@@ -899,7 +899,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 239.
 
-[51]
+[52]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 261.
@@ -944,7 +944,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 261.
 
-[52]
+[53]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 309.
@@ -969,19 +969,23 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 309.
 
-[53] [54] [55]) (./chapters/09_bn.tex [56]
+[54] [55] [56]) (./chapters/09_bn.tex [57]
 Chapter 9.
-[57
+[58
 
-] [58] [59]) [60] (./build/principal.aux)
+] [59] [60] [61] [62] [63]) (./chapters/10_bn_inference.tex [64]
+Chapter 10.
+[65
+
+] [66] [67] [68] [69] [70] [71] [72]) [73] (./build/principal.aux)
 Package rerunfilecheck Info: File `principal.out' has not changed.
-(rerunfilecheck)             Checksum: DD63FED55EC5E8CBDF606E8CF0B85B93;26254.
+(rerunfilecheck)             Checksum: 80E9945935E9D65BA68954CC7702EEA8;32993.
  ) 
 Here is how much of TeX's memory you used:
- 18942 strings out of 478994
- 321067 string characters out of 5864751
- 675422 words of memory out of 5000000
- 35752 multiletter control sequences out of 15000+600000
+ 19066 strings out of 478994
+ 323133 string characters out of 5864751
+ 675448 words of memory out of 5000000
+ 35792 multiletter control sequences out of 15000+600000
  424714 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,17n,91p,469b,874s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1009,10 +1013,10 @@ ype1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
 super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.
 pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share
 /texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ./build/principal.pdf (61 pages, 528794 bytes).
+Output written on ./build/principal.pdf (74 pages, 573946 bytes).
 PDF statistics:
- 1387 PDF objects out of 1440 (max. 8388607)
- 1284 compressed objects within 13 object streams
- 362 named destinations out of 1000 (max. 500000)
- 1241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1685 PDF objects out of 1728 (max. 8388607)
+ 1566 compressed objects within 16 object streams
+ 443 named destinations out of 1000 (max. 500000)
+ 1553 words of extra memory for PDF output out of 10000 (max. 10000000)
 
