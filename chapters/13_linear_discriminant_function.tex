@@ -1,0 +1,212 @@
+\chapter{Linear discriminant functions}
+
+\section{Discriminative learning}
+If generative learning assumes knowledge of the distribution governing the data, discriminant learning focuses on directly modelling the discriminant function.
+For classification it directly models decision boundaries rather than inferring them from the modelled data distributions.
+
+	\subsection{Pros of discriminative learning}
+	When data is complex, modelling their distribution can be very difficult.
+	If data discrimination is the goal, data distribution modelling is not needed.
+	In this way the parameters are focused and thus the use of available training examples on the desired goal.
+
+	\subsection{Cons of discriminative learning}
+	The learned model is less flexible in its usage and it does not allow to perform arbitrary inference task.
+	For example it is not possible to efficiently generate new data from a certain class.
+
+\section{Linear discriminant functions}
+
+	\subsection{Description}
+
+	$$f(\vec{x}) = \vec{w}^T\vec{x}+w_0$$
+
+	The discriminant function is a linear combination of example features.
+	$w_0$ is the bias or threshold.
+	This is the simplest possible discriminant function and depending on the complexity of the task and the amount of data it can be the best option available.
+
+	\subsection{Linear binary classifier}
+
+	$$f(\vec{x}) = sign(\vec{w}^T\vec{x}+w_0)$$
+
+	The linear binary classifier is obtained taking the sign of the linear function.
+	The decision boundary $f(\vec{x}) = 0$ is a hyperplane $H$.
+	The weight vector $\vec{w}$ is orthogonal to the decision hyperplane:
+
+	\begin{align*}
+		\forall\vec{x}, \vec{x}':f(\vec{x})&=f(\vec{x}') = 0\\
+		\vec{w}^T\vec{x}+w_0-\vec{w}^T\vec{x}'-w_o &=0\\
+		\vec{w}^T(\vec{x}-\vec{x}') &= 0
+	\end{align*}
+
+		\subsubsection{Functional margin}
+		The value $f(\vec{x})$ of the function for a certain point $\vec{x}$ is called functional margin and can be seen as a confidence in the prediction.
+
+		\subsubsection{Geometric margin}
+		The distance from $\vec{x}$ to the hyperplane is the geometric margin: $r^x = \frac{f(\vec{x})}{||\vec{w}||}$.
+		It is a normalized version of the functional margin.
+		The distance from the origin to the hyperplane is:
+
+		$$r^0 = \frac{f(\vec{0})}{||\vec{w}||} = \frac{w_0}{||\vec{w}||}$$
+
+		A point can be expressed by its projection on $H$ plus its distance to $H$ times the unit vector in that direction:
+
+		$$\vec{x} = \vec{x}^p + r^x\frac{\vec{w}}{||\vec{w}||}$$
+
+		Then, as $f(\vec{x}^p) = 0$:
+
+		\begin{align*}
+			f(\vec{x}) &= \vec{w}^T\vec{x} + w_0=\\
+								 &=\vec{w}^T\biggl(\vec{x}^p+r^x\frac{\vec{w}}{||\vec{w}||}\biggr)+w_0=\\
+								 &=\underbrace{\vec{w}^T\vec{x}^p+w_0}_{f(\vec{x}^p)}+r^x\vec{w}^T\frac{\vec{w}}{||\vec{w}||}=\\
+								 &=r^x||\vec{w}||=\\
+			\frac{f(\vec{x})}{||\vec{w}||} & =r^x
+		\end{align*}
+
+\section{Perceptron}
+The perceptron is a linear combination of input features with a threshold activation function.
+It is a single neuron architecture.
+
+	\subsection{Biological motivation}
+	The human brain is composed of densely interconnected networks of neurons.
+	A neuron is made of a soma (central body containing the nucleus), dendrites (set of filaments departing from the body), an axon (a longer filament) and synapses (connections between dendrites and axons from other neurons.
+	Electrochemical reactions allow signals to propagate along neurons via axons, synapses and dendrites.
+	Synapses can excite or inhibit a neuron potential and once a neuron potential exceeds a certain threshold, a signal is generated and transmitted along the axon.
+
+	\subsection{Representational power}
+	The perceptron can represent any linearly separable sets of examples like primitive boolean functions, so any logic formula can be represented by a network of two levels of perceptrons in disjunctive or conjunctive normal form.
+	Non-linearly separable sets of examples cannot be separated and representing complex formulas can require a number of perceptrons exponential in the size of the input.
+
+	\subsection{Augmented feature or weight vectors}
+	The augmented feature vector is the weight vector incorporated with the bias: $\hat{\vec{w}} = \begin{pmatrix}w_0\\\vec{w}\end{pmatrix}$ and $\hat{\vec{x}} = \begin{pmatrix}1\\\vec{x}\end{pmatrix}$ the search for weight vector and bias is replaced by the search for the augmented weight vector.
+
+	\subsection{Parameter learning}
+
+		\subsubsection{Error minimization}
+		There is a need to find a function of the parameters to be optimized.
+		A reasonable function is the measure of error on the training set $\mathcal{D}$;
+
+		$$E(\vec{w};\mathcal{D}) = \sum\limits_{(\vec{x}, y)\in\mathcal{D}}l(y, f(\vec{x}))$$
+
+		There is the problem of overfitting on the training data.
+
+		\subsubsection{Gradient descent}
+		Gradient descent is the technique by which the error is minimized:
+
+		\begin{enumerate}
+			\item Initialize $\vec{w}$, for example $\vec{w} = \vec{0}$.
+			\item Iterate until gradient is approximately zero: $\vec{w} = \vec{w}-\eta\nabla E(\vec{w};\mathcal{D})$
+		\end{enumerate}
+
+		$\eta$ is the learning rate and controls the amount of movement at each gradient step.
+		The algorithm is guaranteed to converge to a local optimum of $E(\vec{w};\mathcal{D})$ for small enough $\eta$.
+		Too low $\eta$ implies slow convergence and there are techniques to adaptively modify it.
+		The misclassification loss is piecewise constant so it's a poor candidate for gradient descent.
+
+	\subsection{Perceptron training rule}
+
+	$$E(\vec{w};\mathcal{D}) = \sum\limits_{(\vec{x}, y)\in\mathcal{D}_E}-yf(\vec{x})$$
+
+	$\mathcal{D}_E$ is the set of current training errors for which $yf(\vec{x}) \le 0$.
+	The error is the sum of the functional margins of incorrectly classified examples.
+	The error gradient is:
+
+	\begin{align*}
+		\nabla E(\vec{w};\mathcal{D}) &= \nabla\sum\limits_{(\vec{x}ly)\in\mathcal{D}_E}-yf(\vec{x})=\\
+																	&=\nabla\sum\limits_{(\vec{x},y)\in\mathcal{D}_E}-y(\vec{w}^T\vec{x})=\\
+																	&=\sum\limits_{(\vec{x},y)\in\mathcal{D}_E}-y\vec{x}
+	\end{align*}
+
+	The amount to update is:
+
+	$$-\eta\nabla E(\vec{w};\mathcal{D} = \eta\sum\limits_{(\vec{x}, y)\in\mathcal{D}_E}y\vec{x}$$
+
+	\subsection{Stochastic perceptron training rule}
+
+	\begin{enumerate}
+		\item Initialize weights randomly.
+		\item Iterate until all examples are correctly classified: for each incorrectly classified training example $(\vec{x}, y)$ update the weight vector $\vec{w}\leftarrow \vec{w}+\eta y\vec{x}$.
+	\end{enumerate}
+
+	The gradient step for each training error is done instead of the some of them in batch learning.
+	Each gradient step is very fast and stochasticity can sometimes help to avoid local minima, being guided by various gradients for each training example.
+
+	\subsection{Perceptron regression}
+
+		\subsubsection{Exact solution}
+		Let $X\in\mathbb{R}^n\times\mathbb{R}^d$ be the input training matrix.
+		Let $\vec{y}\in\mathbb{R}^n$ be the output training matrix, where $y_i$ is the output for example $\vec{x}^{(i)}$.
+		Regression learning could be stated as a set of linear equations:
+
+		$$X\vec{w} = \vec{y}$$
+
+		Giving solution $\vec{w} = X^{-1}\vec{y}$.
+		Matrix $X$ is rectangular and so not invertible, with more rows than columns.
+		The system of equations is overdetermined, with more equations than unknowns and no exact solution typically exists.
+
+		\subsubsection{Mean squared error}
+		Because no exact solution exists the mean squared error MSE is used, resorting to loss minimization.
+		The standard loss for regression is the mean squared error:
+
+		$$E(\vec{w};\mathcal{D}) = \sum\limits_{(\vec{x},y)\in\mathcal{D}}(y-f(\vec{x}))^2 = (\vec{y}-X\vec{w})^T(\vec{y}-X\vec{w})$$
+
+		A closed form solution exists and can always be solved by gradient descent, that can be faster.
+		Mean squared error can also be used as a classification loss.
+
+			\paragraph{Closed form solution}
+
+			\begin{align*}
+				\nabla E(\vec{w};\mathcal{D}) & = \nabla(\vec{y}-X\vec{w})^T(\vec{y}-X\vec{w})=\\
+																			&= 2(\vec{y}-X\vec{w})^T(-X) = 0\\
+																			&= -2\vec{y}^TX+2\vec{w}^TX^TX = 0\\
+				\vec{w}^TX^TX &=\vec{y}^TX\\
+				X^TX\vec{w} &= X^T\vec{y}\\
+				\vec{w} &= (X^TX)^{-1}X^T\vec{y}
+			\end{align*}
+
+			$(X^TX)^{-1}X^T$ is called left inverse.
+			If $X$ is square and nonsingular, inverse and left-inverse coincide and the MSE solution correspond to the exact one.
+			The left inverse exists provided $(X^TX)\in\mathbb{R}^{d\times d}$ is full rank: this happens if features are linearly independent.
+			If not the redundant one can be removed.
+
+			\paragraph{Gradient descent}
+
+			\begin{align*}
+				\frac{\partial E}{\partial w_i} &=\frac{\partial}{\partial w_i}\frac{1}{2}\sum\limits_{(\vec{x},y)\in\mathcal{D}}(y-f(\vec{x}))^2=\\
+																				&=\frac{1}{2}\sum\limits_{(\vec{x},y)\in\mathcal{D}}\frac{\partial}{\partial w_i}(y-f(\vec{x}))^2=\\
+																				&=\frac{1}{2}\sum\limits_{(\vec{x},y)\in\mathcal{D}}2(y-f(\vec{x}))\frac{\partial}{\partial w_i}(y-\vec{w}^t\vec{x})=\\
+																				&=\sum\limits_{(\vec{x}, y)\in\mathcal{D}}(y-f(\vec{x}))(-x_i)
+			\end{align*}
+
+\section{Multiclass classification}
+
+	\subsection{One-vs-all}
+	In the one-vs-all approach a binary classifier is learned for each class: positive examples are examples of the class, negative ones are examples of all other classes.
+	A new example is predicted in the class with maximum functional margin.
+	Decision boundaries for which $f_i(\vec{x}) = f_j(\vec{x})$ are pieces of hyperplanes so that:
+
+	\begin{align*}
+		\vec{w}^T_i\vec{x} &= \vec{w}^T_j\vec{x}\\
+		(\vec{w}_i-\vec{w}_j)^T\vec{x} &= 0
+	\end{align*}
+
+	\subsection{All-pairs}
+	In the all-pairs approach a binary classifier is learned for each pair of classes: positive examples are from one class and negative ones are from the other.
+	A new example is predicted in the class winning the largest number of pairwise classifications.
+
+\section{Generative linear classifiers}
+
+	\subsection{Gaussian distributions}
+	Linear decision boundaries are obtained when covariance is shared among classes: $\Sigma_i = \Sigma$.
+
+	\subsection{Naive Bayes classifier}
+
+	\begin{align*}
+		f_i(\vec{x}) = P(\vec{x}|y_i)P(y_i) &=\prod\limits_{j=1}^{|\vec{x}|}\prod\limits_{k=1}^K\theta_{ky_i}^{z_k(x[j])}\frac{|\mathcal{D}_i|}{|\mathcal{D}|}=\\
+																				&=\prod\limits_{k=1}^K\theta_{ky_i}^{N_k\vec{x}}\frac{|\mathcal{D}_i|}{|\mathcal{D}|}
+	\end{align*}
+
+	Where $N_{k\vec{x}}$ is the number of times feature $k$ appears in $\vec{x}$.
+	Naive Bayes is a log-linear model as Gaussian distributions with shared $\Sigma$:
+
+	$$\log f_i(\vec{x}) = \underbrace{\sum\limits_{k=1}^K N_{k\vec{x}}\log\theta_{ky_i}}_{\vec{w}^T\vec{x}'}+\underbrace{\log\biggl(\frac{|\mathcal{D}_i|}{|\mathcal{D}|}\biggr)}_{w_0}$$
+
+	Where $\vec{x}' = [N_{1\vec{x}},\dots, N_{K\vec{x}}]^T$ and $\vec{w} = [\log\theta_{1y_i},\dots, \log\theta_{Ky_i}]^T$.
