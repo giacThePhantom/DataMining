@@ -351,3 +351,14 @@
 \contentsline {subparagraph}{\numberline {11.2.3.2.1.2}Approach}{78}{subparagraph.11.2.3.2.1.2}%
 \contentsline {paragraph}{\numberline {11.2.3.2.2}General case}{78}{paragraph.11.2.3.2.2}%
 \contentsline {subsubsection}{\numberline {11.2.3.3}Search strategy}{79}{subsubsection.11.2.3.3}%
+\contentsline {chapter}{\numberline {12}Naive Bayes classifier}{80}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Setting}{80}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Learning problem}{80}{subsection.12.1.1}%
+\contentsline {section}{\numberline {12.2}Definition}{80}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Single distribution case}{80}{subsection.12.2.1}%
+\contentsline {section}{\numberline {12.3}Parameters learning}{81}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Examples}{81}{section.12.4}%
+\contentsline {subsection}{\numberline {12.4.1}Text classification}{81}{subsection.12.4.1}%
+\contentsline {subsubsection}{\numberline {12.4.1.1}Naive Bayes learning}{81}{subsubsection.12.4.1.1}%
+\contentsline {subsubsection}{\numberline {12.4.1.2}Naive Bayes classification}{81}{subsubsection.12.4.1.2}%
+\contentsline {subsubsection}{\numberline {12.4.1.3}Parameter estimation}{82}{subsubsection.12.4.1.3}%

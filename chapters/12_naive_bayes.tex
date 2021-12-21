@@ -1,0 +1,64 @@
+\chapter{Naive Bayes classifier}
+
+\section{Setting}
+Each instance $x$ is described by a conjunction of attribute values $\langle a_1, \dots, a_m\rangle$.
+The target function can take any value from a finite set of $\mathcal{Y}$.
+The task is predicting the MAP target value given the instance:
+
+\begin{align*}
+	y^* = \arg\max\limits_{y_i\in\mathcal{Y}}P(y_i|x) &=\arg\max\limits_{y_i\in\mathcal{y}}\frac{P(a_1, \dots, a_m|y_i)p(y_i)}{P(a_1, \dots, a_m)}=\\
+																										&=\arg\max\limits_{y_i\in\mathcal{Y}}P(a_1, \dots, a_m|y_i)P(y_i)
+\end{align*}
+
+	\subsection{Learning problem}
+	Class conditional probabilities $P(a_1, \dots, a_m|y_i)$ are hard to learn, as the number of terms is equal to the number of possible instances times the number of target values.
+	To simplify it attribute values are assumed independent of each other given the target value:
+
+	$$P(a_1, \dots, a_m|y_i) = \prod\limits_{j=1}^mP(a_j|y_i)$$
+
+	Parameters to be learned reduce to the number of possible attribute values time the number of possible target values.
+
+\section{Definition}
+$$y^* = \arg\max\limits_{y_i\in\mathcal{Y}}\prod\limits_{j=1}^mP(a_j|y_i)P(y_i)$$
+
+	\subsection{Single distribution case}
+	Assuming that all attribute values come from the same distribution, the probability of an attribute value given the class can be modelled as a multinomial distribution over the $K$ possible values:
+
+	$$P(a_j|y_i) = \prod\limits_{k=1}^K\theta_{ky_i}^{z_k(a_j)}$$
+
+\section{Parameters learning}
+Target prior $P(y_i)$ can be learned as the fraction of training set instances having each target value.
+The maximum-likelihood estimate for the parameter $\theta_{kc}$, the probability of value $v_k$ given class $c$ is the fraction of times the value was observed in training examples of class $c$: $\theta_{kx} = \frac{N_{kn}}{N_c}$.
+The posterior distribution for attribute parameters is multinomial:
+
+$$\theta_{kc} = \frac{N_{kc}+\alpha_{kc}}{N_c+\alpha_c}$$
+
+\section{Examples}
+
+	\subsection{Text classification}
+	Classify documents in one of $C$ possible classes.
+	Each document is represented as the bag-of-words it contains.
+	Let $V$ be the vocabulary of all possible words and that a dataset of labelled document $\mathcal{D}$ is available.
+
+		\subsubsection{Naive Bayes learning}
+		Compute prior probabilities of classes as $P(y_i) = \frac{|\mathcal{D}_i|}{|\mathcal{D}|}$.
+		Model the attributes with a multinomial distribution with $K=|V|$ possible states.
+		Compute the probability of word $w_k$ given class $c$ as the fraction of times the word appear in documents of class $y_i$ with respect to all words in document of class $c$:
+
+		$$\theta_{kc} = \frac{\sum\limits_{\vec{x}\in\mathcal{D}_x}\sum\limits_{j=1}^{|\vec{x}|}z_k(x[j])}{\sum\limits_{\vec{x}\in\mathcal{D}_c}|\vec{x}}$$
+
+		\subsubsection{Naive Bayes classification}
+
+		\begin{align*}
+			y^* &=\arg\max\limits_{y_i\in\mathcal{Y}}\prod\limits_{j=1}^{|\vec{x}|}P(x[j]|y_i)P(y_i) =\\
+					&=\arg\max\limits_{y_i\in\mathcal{Y}}\prod\limits_{j=1}^{|\vec{x}|}\prod\limits_{k=1}^K\theta_{ky_i}^{z_k(x[j])}\frac{|\mathcal{D}_i|}{|\mathcal{D}|}
+		\end{align*}
+
+		The assumption is that all attribute values come from the same distribution, otherwise attributes from different distributions have to be considered separately for parameter estimation.
+
+		\subsubsection{Parameter estimation}
+		Assume each instance $x$ is represented as a vector of $l$ attributes.
+		Assume the $j^{th}$ attribute can take $\{v_{j1}, \dots, v_{jK_j}\}$ possible values.
+		The parameter $\theta_{jkc}$ representing the probability of observing value $v_{jk}$ for the $j^{th}$ attribute given class $c$ is estimated as:
+
+		$$\theta_{jkc} = \frac{\sum\limits_{\vec{x}\in\mathcal{D}_c}z_{jk}(x[j])}{|\mathcal{D}_c|}$$
