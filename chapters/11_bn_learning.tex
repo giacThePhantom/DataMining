@@ -1,0 +1,180 @@
+\chapter{Learning Bayesian networks}
+
+\section{Parameter estimation}
+Let's assume the structure of the model is given and there is a dataset of examples $\mathcal{D} =\{\vec{x}(1), \dots, \vec{x}(N)\}$.
+Each example $\vec{x}(i)$ is a configuration for all or some variables in the model.
+There is a need to estimate the parameters of the model from the data.
+The simplest approach consists of learning the parameters maximizing the likelihood of the data:
+
+$$\vec{\theta}^{\max} = \arg\max\limits_{\vec{\theta}}p(\mathcal{D}|\vec{\theta})=\arg\max\limits_{\vec{\theta}}\mathcal{L}(\mathcal{D}, \vec{\theta})$$
+
+	\subsection{Maximum likelihood estimation - complete data}
+
+		\subsubsection{Learning Bayesian networks}
+
+		\begin{align*}
+			p(\mathcal{D}|\vec{\theta}) &=\prod\limits_{i=1}^Np(\vec{x}(i)|\vec{\theta})&\text{examples independent given }\theta\\
+																	&=\prod\limits_{i=1}^N\prod\limits_{j=1}^mp(x_j(i)|pa_j(i),\vec{\theta} &\text{factorization for BAN}\\
+																	&=\prod\limits_{i=1}^N\prod\limits_{j=1}^mp(x_j(i)|pa_j(i),\vec{\theta}_{X_j|pa_j} &\text{disjoint CPD parameters}
+		\end{align*}
+
+		\subsubsection{Learning graphical models}
+		The parameters of each CPD can be estimated independently:
+
+		$$\vec{\theta}^{\max}_{X_j|pa_j} = \arg\max\limits_{\vec{\theta}_{X_j|pa_j}}\underbrace{\prod\limits_{i=1}^Mp(x_j(i)|pa_j(i),\vec{\theta}_{X_j|pa_j})}_{\mathcal{L}(\vec{\theta}_{x_j|pa_j},\mathcal{D})}$$
+
+		A discrete CPD $P(X|\mathcal{U})$ can be represented as a table with a number of rows equal to the number $Val(X)$ of configurations for $X$, a number of columns equal to the number $Val(\vec{U})$ of configurations for its parents $\vec{U}$ and each table entry $\theta_{x|\vec{u}}$ indicating the probability of a specific configuration of $X=x$ and its parents $\vec{U}=\vec{u}$.
+		Replacing $p(x(i)|pa(i))$ with $\theta_{x(i)|\vec{u}(i)}$ the local likelihood of a single CPD becomes:
+
+		\begin{align*}
+			\mathcal{L}(\vec{\theta}_{X|pa}, \mathcal{D} &= \prod\limits_{i=1}^Np(x(i)|pa(i), \vec{\theta}_{X|pa_j})=\\
+																									 &=\prod\limits_{i=1}^N\theta_{x(i)|\vec{u}(i)}=\\
+																									 &=\prod\limits_{\vec{u}\in Val(\vec{U})}\biggl[\prod\limits_{x\in Val(X)}\theta_{x|\vec{u}}^{N_{\vec{u}, x}}\biggr]\\
+		\end{align*}
+
+		Where $N_{\vec{u},x}$ is the number of times the specific configuration $X=x$, $\vec{U}=\vec{u}$ was found in the data.
+		A column in the CPD table contains a multinomial distribution over values of $X$ for a certain configuration of the parents $\vec{U}$.
+		Thus each column should sum to one: $\sum\limits_{x}\theta_{x|\vec{u}}=1$.
+		Parameters of different columns can be estimated independently and for each multinomial distribution, zeroing the gradient of the maximum likelihood and considering the normalization constraint:
+
+		$$\theta_{x|\vec{u}}^{\max}=\frac{N_{\vec{u}|x}}{\sum\limits_{x}N_{\vec{u},x}}$$
+
+		The maximum likelihood parameters are the fraction of times in which the specific configuration was observed in the data.
+
+	\subsection{Learning graphical models - adding priors}
+	ML estimation tends to overfit the training set: a configuration that does not appear in the training set will receive zero probability.
+	A common approach consists of combining ML with a prior probability on the parameters, achieving a maximum-a-posteriori estimate:
+
+	$$\vec{\theta}^{\max} = \arg\max\limits_{\vec{\theta}}p(\mathcal{D}|\vec{\theta})p(\vec{\theta})$$
+
+		\subsubsection{Dirichlet prior}
+		The conjugate  prior for a multinomial distribution is a Driblet distribution with parameters $\alpha_{x|\vec{u}}$ for each possible value of $x$.
+		The resulting maximum-a-posteriori estimate is:
+
+		$$\theta_{x|\vec{u}}^{\max} = \frac{N_{\vec{u},x} + \alpha_{x|\vec{u}}}{\sum\limits_{x}(N_{\vec{u},x}+\alpha_{x|\vec{u}})}$$
+
+		Introducing a prior is like observing $\alpha_{x|\vec{u}}$ imaginary samples with configuration $X=x$ and $\vec{U}=\vec{u}$.
+
+	\subsection{Learning with missing data}
+	With incomplete data, some of the examples miss evidence on some of the variables.
+	Counts of occurrences of different configurations cannot be computed if not all data is observed.
+	The full Bayesian approach of integrating over missing variables is often intractable in practice.
+	There is a need to introduce approximate methods to deal with it.
+
+		\subsubsection{Expectation-maximization for Bayesian networks}
+		With missing data a sufficient statistics like counts cannot be computed.
+		Missing data can be inferred using the current parameters getting expected counts solving the inference problem.
+		The maximizing likelihood of such expected counts is used to compute the parameter and the process is iterated to improve their quality.
+
+		\subsubsection{Expectation maximization algorithm}
+
+			\paragraph{e-step}
+			During the e-step the sufficient statistics for the compete dataset are computed, with expectation taken with respect to the joint distribution for $\vec{X}$ conditioned of the current value of $\vec{\theta}$ and the known data $\mathcal{D}$:
+
+			$$\mathbb{E}_{p(\vec{x}|\mathcal{D},\vec{\theta})}[N_{ijk}] = \sum\limits_{k=1}^np(X_i(l) = x_k, pa_i(l) = pa_j|\vec{X}_l, \vec{\theta})$$
+
+			If $X_i(l)$ and $pa_j(l)$ are observed for $\vec{X}_l$ it is either zero or one, otherwise Bayesian inference is run to compute probabilities from observed variables.
+
+			\paragraph{m-step}
+			During the m-step parameters maximizing likelihood of the completed dataset $\mathcal{D}_c$ are computed using expected counts:
+
+			$$\vec{\theta}^* = \arg\max\limits_{\vec{\theta}}p(\mathcal{D}_x|\vec{\theta})$$
+
+			For each multinomial the parameter evaluates to:
+
+			$$\theta^*_{ijk} = \frac{\mathbb{E}_{p(\vec{x}|\mathcal{D},\vec{\theta})}[N_{ijk}]}{\sum\limits_{k=1}^{r_i}\mathbb{E}_{p(\vec{x}, \mathcal{D},\vec{\theta})}[N_{ijk}]}$$
+
+			ML estimation can be replaced by maximum a-posteriori estimation:
+
+			$$\theta^*_{ijk} = \frac{\alpha_{ijk} + \mathbb{E}_{p(\vec{x}|\mathcal{D},\vec{\theta})}[N_{ijk}]}{\sum\limits_{k=1}^{r_i}(\alpha_{ijk} + \mathbb{E}_{p(\vec{x}, \mathcal{D},\vec{\theta})}[N_{ijk}])}$$
+
+\section{Learning the structure of graphical models}
+
+	\subsection{Model averaging approach}
+	In the model-averaging approach a prior probability is assigned to each structure, and the average prediction over all possible structures weighted by their probability is taken.
+	This is a full Bayesian approach and often intractable.
+	Let $\mathcal{S}$ be the space of possible structures or DAGS for domain $\vec{X}$.
+	Let $\mathcal{D}$ be a dataset of observations.
+	Prediction for a new instance are computed marginalizing over both structures and parameters:
+
+	\begin{align*}
+		p(\vec{X}_{N+1}|\mathcal{D} &= \sum\limits_{S\in\mathcal{S}} \int_{\vec{\theta}} P(\vec{X}_{N+1}, S, \vec{\theta}|\mathcal{D}d\vec{\theta}=\\
+																&=\sum\limits_{S\in\mathcal{S}}\int_{\vec{\theta}}P(\vec{X}_{N+1}|S, \vec{\theta}, \mathcal{D})P(S, \vec{\theta}|\mathcal{D})d\vec{\theta}=\\
+																&=\sum\limits_{S\in\mathcal{S}}\int_{\vec{\theta}} P(\vec{X}_{N+1}|S, \vec{\theta})P(\vec{\theta}|S, \mathcal{D})P(S|\mathcal{D})d\vec{\theta}=\\
+																&=\sum\limits_{S\in\mathcal{S}}P(S|\mathcal{D})\int_{\vec{\theta}}P(\vec{X}_{N+1}|S, \vec{\theta})P(\vec{\theta}|S, \mathcal{D})d\vec{\theta}
+	\end{align*}
+
+		\subsubsection{Model selection}
+		Averaging all possible structures is too expensive.
+		So a best structure $S^*$ is chosen and $P(S^*|\mathcal{D})=1$ is assumed.
+		$S^*$ can be chosen using a score-based or constraint-based approach.
+
+	\subsection{Constraint based approach}
+	In the constraint-based approach conditional independences are tested on the data and a model satisfying them is constructed.
+
+	\subsection{Score based approach}
+	In the score-based approach a score is assigned to each possible structure, a search procedure is defined to look for the structure maximizing the score.
+	The structure can be scored using a maximum-likelihood score:
+
+	$$S^*=\arg\max\limits_{S\in\mathcal{S}}p(\mathcal{D}|S)$$
+
+	Or using a maximum-a-posteriori score:
+
+	$$S^*=\arg\max\limits_{S\in\mathcal{S}}p(\mathcal{D}|S)p(S)$$
+
+		\subsubsection{Maximum likelihood approximation}
+		The easiest solution is to approximate $P(\mathcal{D}|S)$ with the maximum-likelihood score over the parameters:
+
+		$$P(\mathcal{D}|S)\approx\max\limits_{\theta}P(\mathcal{D}|S,\theta)$$
+
+		This is an addition of a connection between two variables if their empirical mutual information over the training set is non-zero.
+		Because of noise, empirical mutual information between variables is almost never exactly zero, so it builds a fully connected network.
+
+		\subsubsection{Bayesian-Dirichlet scoring}
+		Let $P(\mathcal{D}|S)\equiv P_S(\mathcal{D})$.
+
+			\paragraph{Simple case}
+
+				\subparagraph{Setting}
+				Let $X$ a single variable with $r$ possible realizations.
+				$S$ is a single node.
+				The probability distribution is a multinomial with $\alpha_i, \dots, \alpha_r$ Dirichlet prior.
+				$\mathcal{D}$ is a sequence of $N$ realizations.
+
+				\subparagraph{Approach}
+				Sort $\mathcal{D}$ according to outcome:
+
+				$$\mathcal{D} = \{x^1, x^1, \dots, x^1, x^2, \dots, x^2, \dots, x^r, \dots x^r\}$$
+
+				Its probability can be decomposed as:
+
+				$$P_S(\mathcal{D}) = \prod\limits_{y=1}^NP_S(X(t)|\underbrace{X(t-1),\dots, X(1)}_{\mathcal{D}(t-1)})$$
+
+				The prediction for a new event given the past is:
+
+				$$P_s(X(t+1) = x^t|\mathcal{D}(t)) = \mathbb{E}_{P_S(\vec{\theta}|\mathcal{D}(t))}[\theta_k] = \frac{\alpha_k+N_k(t)}{\alpha+t}$$
+
+				Where $N_k(t)$ is the number of times $X=x^k$ in the first $t$ examples in $\mathcal{D}$.
+				So:
+
+				\begin{align*}
+					P_S(\mathcal{D}) &= \frac{\alpha_1}{\alpha}\frac{\alpha_1+1}{\alpha+1}\cdots\frac{\alpha_1+N_1-1}{\alpha+N_1-1}\frac{\alpha_2}{\alpha+N_1}\cdots\frac{\alpha_2+N_2-1}{\alpha+N_1+N_2-1}\frac{\alpha_r}{\alpha+N_1\cdots+N_{r-1}}\cdots\frac{\alpha_r+N_r-1}{\alpha+N-1}=\\
+													 &=\frac{\Gamma(\alpha)}{\Gamma(\alpha+N)}\prod\limits_{k=1}^r\frac{\Gamma(\alpha_k+N_k)}{\alpha_k}
+				\end{align*}
+
+				Where the Gamma function $\Gamma(x+1) = x\Gamma(x)$:
+
+				$$\alpha(1+\alpha)\cdots(N-1+\alpha) = \frac{\Gamma(N+\alpha)}{\Gamma(\alpha)}$$
+
+			\paragraph{General case}
+
+			$$P_s(\mathcal{D}) = \prod\limits_i\prod\limits_j \frac{\Gamma(\alpha_{ij})}{\Gamma(\alpha_{ij}+N_{ij})}\prod\limits_{k=1}^r\frac{\Gamma(\alpha_{ijk}+N_{ijk})}{\alpha_{ijk}}$$
+
+			Where $i\in\{1, \dots, n\}$ ranges over nodes in the networks, $j\in\{1, q_i\}$ ranges over configurations of $X_i$'s parents and $k\in\{1, r_i\}$ ranges over states of $X_i$.
+			This score is decomposable: it is the product of independent scores associated with the distribution of each node in the net.
+
+		\subsubsection{Search strategy}
+		The search strategy is NP-hard for nets whose nodes have at most $k>1$ parents.
+		To solve it heuristic strategies are employed.
+		Because the search space is a set of DAGs with operations of adding, removing and reversing one arc, with an initial structure random or fully disconnected, strategies like hill climbing, best first and simulated annealing are employed.
+		Decomposable scores allow to recompute local scores only for a single move.

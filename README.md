@@ -16,7 +16,7 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 	*[X] 08_parameter_estimation.pdf
 	*[X] 09_bn.pdf
 	*[X] 10_bn_inference.pdf
-	*[ ] 11_bn_learning.pdf
+	*[X] 11_bn_learning.pdf
 	*[ ] 12_naive_bayes.pdf
 	*[ ] 13_linear_discriminant_functions.pdf
 	*[ ] 14_support_vector_machines.pdf
