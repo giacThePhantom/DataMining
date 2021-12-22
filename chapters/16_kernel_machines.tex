@@ -1,0 +1,228 @@
+\chapter{Kernel machines}
+
+\section{Kernel trick}
+Feature mapping $\Phi(\cdot)$ can be very high dimensional and so it can be highly expensive to explicitly compute it.
+Noting that feature mappings appear only in dot products in dual formulation, the kernel trick consists in replacing these dot products with an equivalent kernel function:
+
+$$k(\vec{x},\vec{x}') = \Phi(\vec{x})^T\Phi(\vec{x}')$$
+
+The kernel function uses examples in the input space
+
+	\subsection{Support vector classification}
+
+		\subsubsection{Dual optimization problem}
+
+		$$\max\limits_{\vec{\alpha}\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\underbrace{\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)}_{k(\vec{x}_i,\vec{x}_j)}$$
+
+		Subject to $o\le\alpha_i\le C\forall i\in\{1,\dots,m\}$ and $\sum\limits_{i=1}^m\alpha_iy_i=0$
+
+		\subsubsection{Dual decision function}
+
+		$$f(\vec{x}) = \sum\limits_{i=1}^m\alpha_iy_i\underbrace{\Phi(\vec{x}_i)^T\Phi(\vec{x})}_{k(\vec{x}_i,\vec{x})}$$
+
+	\subsection{Polynomial kernel}
+
+		\subsubsection{Homogeneous}
+
+		$$k(\vec{x},\vec{x}') = (\vec{x}^T\vec{x}')^d$$
+
+		With $d=2$:
+
+		\begin{align*}
+			k\biggl(\begin{pmatrix}x_1\\x_2\end{pmatrix},\begin{pmatrix}x'_1\\x'_2\end{pmatrix}\biggr) &=(x_1x_1'+x_2x_2')^2 =\\
+																																																 &=(x_1x_1')^23+(x_2x_2')^2+2x_1x_1'x_2x_2'=\\
+																																																 &=\underbrace{\begin{pmatrix}x_1^2 &\sqrt{2}x_1x_2&x_2^2\end{pmatrix}^T}_{\Phi(\vec{x})^T}\underbrace{\begin{pmatrix}x_1^{'2}\\\sqrt{2}x_1'x_2'\\x_2^{'2}\end{pmatrix}}_{\Phi(\vec{x}')}
+		\end{align*}
+
+		\subsubsection{Inhomogeneous}
+
+		$$k(\vec{x},\vec{x}') = (1+\vec{x}^T\vec{x}')^d$$
+
+		With $d = 2$:
+
+		\begin{align*}
+			k\biggl(\begin{pmatrix}x_1\\x_2\end{pmatrix},\begin{pmatrix}x'_1\\x'_2\end{pmatrix}\biggr) &=(1+x_1x_1'+x_2x_2')^2 =\\
+																																																 &=1+ (x_1x_1')^23+(x_2x_2')^2+2x_1x_1' +2x_2x_2'+2x_1x_1'x_2x_2'=\\
+																																																 &=\underbrace{\begin{pmatrix}1&\sqrt{2}x_1 &\sqrt{2}x_2 &x_1^2 &\sqrt{2}x_1x_2 &x_2^2\end{pmatrix}^T}_{\Phi(\vec{x})^T}\underbrace{\begin{pmatrix}1\\\sqrt{2}x_1'\\\sqrt{2}x_2'\\x_1^{'2}\\\sqrt{2}x_1'x_2'\\x_2^{'2}\end{pmatrix}}_{\Phi(\vec{x}')}
+		\end{align*}
+
+
+\section{Valid kernels}
+
+	\subsection{Dot product in feature space}
+	A valid kernel is a similarity function defined in the Cartesian product of the input space: $k:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$,
+	It corresponds to a dot product in a certain feature space: $k(\vec{x},\vec{x}'=\Phi(\vec{x})^T\Phi(\vec{x}')$.
+	The kernel generalizes the notion of dot product to arbitrary input space and it can be seen as a measure of similarity between objects.
+
+	\subsection{Gram matrix}
+	Given examples $\{\vec{x}_1,\dots,\vec{x}_m\}$ and a kernel function $k$ the Gram matrix $K$ is the symmetric matrix of pairwise kernels between examples:
+
+	$$K_{ij} = k(\vec{x}_i,\vec{x}_j)\forall i,j$$
+
+		\subsubsection{Positive definite matrix}
+		A symmetric $m\times m$ matrix $K$ is positive definite if:
+
+		$$\sum\limits_{i,j=1}^mc_ic_jK_{ij}\ge0,\forall\vec{c}\in\mathbb{R}^m$$
+
+		If this equality holds for $\vec{c}=\vec{0}$ then the matrix is strictly positive definite.
+		A matrix is also positive definite if all eigenvalues are non-negative or there exists a matrix $B$ such that $K=B^TB$.
+
+	\subsection{positive definite kernels}
+	A positive definite kernel is a function $k:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$ giving rise to a positive definite Gram matrix for any $m$ and $\{\vec{x}_1,\dots,\vec{x}_m\}$.
+	Positive definiteness is necessary and sufficient condition for a kernel to correspond to a dot product of some feature map $\Phi$.
+
+	\subsection{Verifying kernel validity}
+	To verify kernel validity one can prove its positive definiteness, find out a corresponding feature map or use kernel combination properties.
+
+\section{Support vector regression}
+
+	\subsection{Dual problem}
+	$$\max\limits_{\alpha\in\mathbb{R}^m}-\frac{1}{2}\sum\limits_{i,j=1}^m(\alpha_i^*-\alpha_i)(\alpha_j^*-\alpha_j)\underbrace{\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)}_{k(\vec{x}_i,\vec{x}_j)}-\epsilon\sum\limits_{i=1}^m(\alpha_i^*+\alpha_i)+\sum\limits_{i=1}^my_i(\alpha_i^*-\alpha_i)$$
+
+	Subject to $\sum\limits_{i=1}^m(\alpha_i-\alpha_i^*) = 0$ with $\alpha_i,\alpha_i^*\in[0,C]\forall i\in [1,m]$.
+	The regression function is:
+
+	$$f(\vec{x}) = \vec{w}^T\Phi(\vec{x}) + w_0 = \sum\limits_{i=1}^m(\alpha_i-\alpha_i^*)\underbrace{\Phi(\vec{x}_i)^T\Phi(\vec{x})}_{k(\vec{x}_i,\vec{x})}+w_0$$
+
+	\subsection{Stochastic Perceptron}
+	The function is:
+
+	$$f(\vec{x}) = \vec{w}^T\vec{x}$$
+
+	\begin{enumerate}
+		\item Initialize $\vec{w} = \vec{0}$.
+		\item Iterate until all examples are correctly classified and for each incorrectly classified training example $(\vec{x}_i,y_i)$:
+
+			$$\vec{w}\leftarrow\vec{w}+\eta y_i\vec{x}_i$$
+	\end{enumerate}
+
+	\subsection{Kernel Perceptron}
+	The function is:
+
+	$$f(\vec{x}) = \sum\limits_{i=1}^m\alpha_ik(\vec{x}_i,\vec{x})$$
+
+	\begin{enumerate}
+		\item Initialize $\alpha_i= 0\forall i$.
+		\item Iterate until all examples are correctly classified and for each incorrectly classified training example $(\vec{x}_i,y_i)$:
+
+			$$\alpha_i\leftarrow\alpha_i+\eta y_i$$
+	\end{enumerate}
+
+\section{Kernels}
+
+	\subsection{Basic kernels}
+
+		\subsubsection{Linear kernel}
+
+		$$k(\vec{x},\vec{x}') = \vec{x}^T\vec{x}'$$
+
+		\subsubsection{Polynomial kernel}
+
+		$$k_{d,c}(\vec{x},\vec{x}') = (\vec{x}^T\vec{x}'+c)^d$$
+
+	\subsection{Gaussian kernel}
+
+	$$k_\sigma(\vec{x},\vec{x}' = e^{-\frac{||\vec{x}-\vec{x}'||^2}{2\sigma^2}} = e^{-\frac{\vec{x}^T\vec{x}-2\vec{x}^T\vec{x}' +\vec{x}^{'T}\vec{x}}{2\sigma^2}}$$
+
+	The Gaussian kernel depends on a width parameter $\sigma$.
+	The smaller the width, the more prediction on a point only depends on its nearest neighbours.
+	This is an example of an universal kernel: it can uniformly approximate any arbitrary continuous target function.
+
+	\subsection{Kernels on structured data}
+	Kernels are a generalization of dot products to arbitrary domains.
+	It is possible to design kernels over structured objects like sequences, trees or graphs, the idea is to design a pairwise function measuring the similarity of two objects.
+	This measure has to satisfy the positive definite condition to be a valid kernel.
+
+		\subsubsection{Match or delta kernel}
+		The match or delta kernel it is the simplest kernel on structures and $x$ does not need to be a vector:
+
+		$$k_\delta(x,x') = \delta(x,x') = \begin{cases}1 &if\ x = x'\\0 &otherwise\end{cases}$$
+
+	\subsection{Kernels on sequences - spectrum kernel}
+	When considering sequences the feature space is all possible k-grams or subsequences.
+	An efficient procedure based on suffix trees allows to compute the kernel without explicitly building feature maps.
+
+	\subsection{Kernel combination}
+	Simpler kernels can be combined using operators like sum and product.
+	A kernel combination allows to design complex kernels on structures from simpler ones.
+	Correctly using the combination operators guarantees that the complex kernels are positive definite.
+	This is the simplest constructive approach to build valid kernels.
+
+		\subsubsection{Kernel sum}
+		The sum of two kernels corresponds to the concatenation of their respective feature spaces:
+
+		\begin{align*}
+			(k_1+k_2)(\vec{x},\vec{x}') &=k_1(\vec{x},\vec{x}')+k_2(\vec{x},\vec{x}')=\\
+																	&=\Phi_1(\vec{x})^T\Phi(\vec{x}') + \Phi_2(\vec{x})^T\Phi(\vec{x}')=\\
+																	&=\begin{pmatrix}\phi_1(\vec{x})&\Phi_2(\vec{x})\end{pmatrix}\begin{pmatrix}\Phi_1(\vec{x}')\\\Phi_2(\vec{x}')\end{pmatrix}
+		\end{align*}
+
+		The two kernels can be defined on different spaces.
+
+		\subsubsection{Kernel product}
+		The product of two kernels corresponds to the Cartesian products of their features:
+
+		\begin{align*}
+		(k_1\times k_2)(\vec{x},\vec{x}') &= k_1(\vec{x},\vec{x}')k_2(\vec{x},\vec{x}')=\\
+																			&=\sum\limits_{i=1}^n\Phi_{1i}(\vec{x})\Phi_{i1}(\vec{x}')\sum\limits_{j=1}^m\Phi_{2j}(\vec{x})\Phi_{2j}(\vec{x}')=\\
+																			&=\sum\limits_{i=1}^m\sum\limits_{j=1}^m(\Phi_{1i}(\vec{x})\Phi_{2j}(\vec{x}))(\Phi_{1i}(\vec{x}')\Phi_{2j}(\vec{x}'))=\\
+																			&=\sum\limits_{k=1}^{nm}\Phi_{12k}(\vec{x})\Phi_{12k}(\vec{x}') = \Phi_{12}(\vec{x})^T\Phi_{12}(\vec{x}')
+		\end{align*}
+
+		Where $\Phi_{12}(\vec{x}) = \Phi_1(\vec{x})\times\Phi_2(\vec{x})$ and is the Cartesian product.
+		The product can be between kernels in different spaces and is the tensor product.
+
+		\subsubsection{Linear combination}
+		A kernel can be rescaled by an arbitrary positive constant: $k_\beta(\vec{x},\vec{x}') = \beta k(\vec{x},\vec{x}')$.
+		A linear combination of kernels can be defined, each rescaled by the desired weight:
+
+		$$k_{sum}(\vec{x},\vec{x}') = \sum\limits_{k=1}^K\beta_k k_k(\vec{x},\vec{x}')$$
+
+		The weights of the linear combination can be learned simultaneously to the predictor weights.
+		This is performing kernel learning.
+
+		\subsubsection{Kernel normalization}
+		Kernel values can be influenced by the dimension of objects.
+		This effect can be reduced normalizing the kernel.
+		One way to do so is the cosine normalization, that computes the cosine of the dot product in feature space:
+
+		$$\hat{k}(\vec{x},\vec{x}') = \frac{k(\vec{x},\vec{x}')}{\sqrt{k(\vec{x},\vec{x})k(\vec{x}',\vec{x}')}}$$
+
+		\subsubsection{Kernel composition}
+		Given a kernel over structured data $k(\vec{x},\vec{x}')$ it is always possible to use a basic kernel on top of it:
+
+		$$(k_{d,c}\circ k)(\vec{x},\vec{x}') = (k(\vec{x},\vec{x}')+c)^d$$
+
+		$$(k_\sigma\circ k)(\vec{x},\vec{x}') = e^{-\frac{k(\vec{x},\vec{x})-2k(\vec{x},\vec{x}')+k(\vec{x}',\vec{x}')}{2\sigma^2}}$$
+
+	\subsection{Kernels on graphs}
+
+		\subsubsection{Weistfeiler-Lehman graph kernel}
+		The Weistfeiler-Lehman graph kernel is an efficient graph kernel for large graphs.
+		It relies on an approximation of the Weistfeiler-Lehman test of graph isomorphism.
+		It defines a family of graph kernels.
+
+			\paragraph{Weistfeiler-Lehman isomorphism test}
+			Given $G=(\mathcal{V},\mathcal{E})$ and $G'=(\mathcal{V}',\mathcal{E}')$ with $n=|\mathcal{V}|=|mathcal{V}'|$, let $L(G) = \{l(v)|v\in\mathcal{V}\}$ be the set of labels in $G$ end let $L(G) =L(G')$.
+			Let $label(s)$ be a function assigning a unique label to a string.
+
+			\begin{enumerate}
+				\item Set $l_0(v) = l(v)\forall v$.
+				\item For $i\in[1,n-1]$:
+					\begin{enumerate}
+						\item For each node $v$ in $G$ and $G'$.
+						\item Let $M_i(v) = \{l_{i-1}(u)|u\in neigh(v)\}$.
+						\item Concatenate the sorted labels of $M_i(v)$ into $s_i(v)$.
+						\item Let $l_i(v) = label(l_{i-1}(v)\circ s_i(v))$ with $\circ$ concatenation.
+						\item If $L_i(G)\neq L_i(G')$.
+						\item Return fail.
+					\end{enumerate}
+				\item Return pass.
+			\end{enumerate}
+
+			\paragraph{Weistfeiler-Lehman graph kernel}
+			Let $\{G_0,\dot,G_h\} = \{(\mathcal{V},\mathcal{E},l_0),\dots, (\mathcal{V},\mathcal{E},l_h)\}$ be a sequence of graphs made from $G$, where $l_i$ is the node labelling of the $i-th$ WL iteration.
+			Let $k:G\times G'\rightarrow\mathbb{R}$ be any kernel on graphs.
+			The Weistfeiler-Lehman graph kernel is defined as:
+
+			$$k_{WL}^h(G,G') = \sum\limits_{i=1}^hk(G_i,G_i')$$

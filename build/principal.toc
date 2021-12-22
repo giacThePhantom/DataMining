@@ -447,3 +447,39 @@
 \contentsline {subsection}{\numberline {15.5.1}Optimization problem}{103}{subsection.15.5.1}%
 \contentsline {subsection}{\numberline {15.5.2}Support vector classification on pairs}{103}{subsection.15.5.2}%
 \contentsline {subsection}{\numberline {15.5.3}Decision function}{104}{subsection.15.5.3}%
+\contentsline {chapter}{\numberline {16}Kernel machines}{105}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Kernel trick}{105}{section.16.1}%
+\contentsline {subsection}{\numberline {16.1.1}Support vector classification}{105}{subsection.16.1.1}%
+\contentsline {subsubsection}{\numberline {16.1.1.1}Dual optimization problem}{105}{subsubsection.16.1.1.1}%
+\contentsline {subsubsection}{\numberline {16.1.1.2}Dual decision function}{105}{subsubsection.16.1.1.2}%
+\contentsline {subsection}{\numberline {16.1.2}Polynomial kernel}{105}{subsection.16.1.2}%
+\contentsline {subsubsection}{\numberline {16.1.2.1}Homogeneous}{105}{subsubsection.16.1.2.1}%
+\contentsline {subsubsection}{\numberline {16.1.2.2}Inhomogeneous}{106}{subsubsection.16.1.2.2}%
+\contentsline {section}{\numberline {16.2}Valid kernels}{106}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}Dot product in feature space}{106}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}Gram matrix}{106}{subsection.16.2.2}%
+\contentsline {subsubsection}{\numberline {16.2.2.1}Positive definite matrix}{107}{subsubsection.16.2.2.1}%
+\contentsline {subsection}{\numberline {16.2.3}positive definite kernels}{107}{subsection.16.2.3}%
+\contentsline {subsection}{\numberline {16.2.4}Verifying kernel validity}{107}{subsection.16.2.4}%
+\contentsline {section}{\numberline {16.3}Support vector regression}{107}{section.16.3}%
+\contentsline {subsection}{\numberline {16.3.1}Dual problem}{107}{subsection.16.3.1}%
+\contentsline {subsection}{\numberline {16.3.2}Stochastic Perceptron}{107}{subsection.16.3.2}%
+\contentsline {subsection}{\numberline {16.3.3}Kernel Perceptron}{108}{subsection.16.3.3}%
+\contentsline {section}{\numberline {16.4}Kernels}{108}{section.16.4}%
+\contentsline {subsection}{\numberline {16.4.1}Basic kernels}{108}{subsection.16.4.1}%
+\contentsline {subsubsection}{\numberline {16.4.1.1}Linear kernel}{108}{subsubsection.16.4.1.1}%
+\contentsline {subsubsection}{\numberline {16.4.1.2}Polynomial kernel}{108}{subsubsection.16.4.1.2}%
+\contentsline {subsection}{\numberline {16.4.2}Gaussian kernel}{108}{subsection.16.4.2}%
+\contentsline {subsection}{\numberline {16.4.3}Kernels on structured data}{108}{subsection.16.4.3}%
+\contentsline {subsubsection}{\numberline {16.4.3.1}Match or delta kernel}{108}{subsubsection.16.4.3.1}%
+\contentsline {subsection}{\numberline {16.4.4}Kernels on sequences - spectrum kernel}{109}{subsection.16.4.4}%
+\contentsline {subsection}{\numberline {16.4.5}Kernel combination}{109}{subsection.16.4.5}%
+\contentsline {subsubsection}{\numberline {16.4.5.1}Kernel sum}{109}{subsubsection.16.4.5.1}%
+\contentsline {subsubsection}{\numberline {16.4.5.2}Kernel product}{109}{subsubsection.16.4.5.2}%
+\contentsline {subsubsection}{\numberline {16.4.5.3}Linear combination}{109}{subsubsection.16.4.5.3}%
+\contentsline {subsubsection}{\numberline {16.4.5.4}Kernel normalization}{110}{subsubsection.16.4.5.4}%
+\contentsline {subsubsection}{\numberline {16.4.5.5}Kernel composition}{110}{subsubsection.16.4.5.5}%
+\contentsline {subsection}{\numberline {16.4.6}Kernels on graphs}{110}{subsection.16.4.6}%
+\contentsline {subsubsection}{\numberline {16.4.6.1}Weistfeiler-Lehman graph kernel}{110}{subsubsection.16.4.6.1}%
+\contentsline {paragraph}{\numberline {16.4.6.1.1}Weistfeiler-Lehman isomorphism test}{110}{paragraph.16.4.6.1.1}%
+\contentsline {paragraph}{\numberline {16.4.6.1.2}Weistfeiler-Lehman graph kernel}{111}{paragraph.16.4.6.1.2}%
