@@ -6,22 +6,22 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 
 ## Lecture plan
 
-	*[X] 01_introduzione.pdf
-	*[X] 02_decision_trees.pdf
-	*[X] 03_knn.pdf
-	*[X] 04_linear_algebra.pdf
-	*[X] 05_probability_theory.pdf
-	*[X] 06_evaluation.pdf
-	*[X] 07_bayesian_decision_theory.pdf
-	*[X] 08_parameter_estimation.pdf
-	*[X] 09_bn.pdf
-	*[X] 10_bn_inference.pdf
-	*[X] 11_bn_learning.pdf
-	*[X] 12_naive_bayes.pdf
-	*[X] 13_linear_discriminant_functions.pdf
-	*[X] 14_support_vector_machines.pdf
-	*[X] 15_non_linear_svm.pdf
-	*[X] 16_kernel_machines.pdf
-	*[X] 17_deep_learning.pdf
-	*[X] 18_unsupervised_learning.pdf
-	*[ ] 19_reinforced_learning.pdf
+	*[FIRST DRAFT] 01_introduzione.pdf
+	*[FIRST DRAFT] 02_decision_trees.pdf
+	*[FIRST DRAFT] 03_knn.pdf
+	*[FIRST DRAFT] 04_linear_algebra.pdf
+	*[FIRST DRAFT] 05_probability_theory.pdf
+	*[FIRST DRAFT] 06_evaluation.pdf
+	*[FIRST DRAFT] 07_bayesian_decision_theory.pdf
+	*[FIRST DRAFT] 08_parameter_estimation.pdf
+	*[FIRST DRAFT] 09_bn.pdf
+	*[FIRST DRAFT] 10_bn_inference.pdf
+	*[FIRST DRAFT] 11_bn_learning.pdf
+	*[FIRST DRAFT] 12_naive_bayes.pdf
+	*[FIRST DRAFT] 13_linear_discriminant_functions.pdf
+	*[FIRST DRAFT] 14_support_vector_machines.pdf
+	*[FIRST DRAFT] 15_non_linear_svm.pdf
+	*[FIRST DRAFT] 16_kernel_machines.pdf
+	*[FIRST DRAFT] 17_deep_learning.pdf
+	*[FIRST DRAFT] 18_unsupervised_learning.pdf
+	*[FIRST DRAFT] 19_reinforced_learning.pdf

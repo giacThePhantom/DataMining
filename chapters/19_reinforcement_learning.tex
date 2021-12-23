@@ -1,0 +1,333 @@
+\chapter{Reinforcement learning}
+
+\section{Introduction}
+
+	\subsection{Setting}
+	The learner is provided a set of possible states $\mathcal{S}$ and, for each state, a set of possible actions, $\mathcal{A}$ moving it to a new state.
+	In performing action $a$ from state $s$, the learner is provided an immediate reward $r(s,a)$.
+	The task is to learn a policy allowing to choose for each state $s$ the action $a$ maximizing the overall reward including future moves.
+	The learner has to deal with problems of delayed rewards coming from future moves and trade-off between exploitation and exploration.
+	Typical application include moving policies for robots and sequential scheduling problems in general.
+
+	\subsection{Sequential decision making}
+	An agent needs to take a sequence of decisions and should maximise some utility function.
+	There is uncertainty in the result of a decision.
+
+\section{Markov decision process MPD}
+A Markov decision process is defined by:
+
+\begin{itemize}
+	\item A set of states $\mathcal{S}$ in which the agent can be at each time instant, 
+	\item A possibly empty set of terminal states $\mathcal{S}_G\subset\mathcal{S}$,
+	\item A set of actions $\mathcal{A}$ that the agent can make, 
+	\item A transition model providing the probability of going to a state $s'$ with action $a$ from state $s$:
+
+		$$p(s'|s,a)\qquad s,s'\in\mathcal{S},a\in\mathcal{A}$$
+
+	\item A reward $R(s,a,s')$ for making action $a$ in state $s$ and reaching state $s'$
+\end{itemize}
+
+	\subsection{Utilities over time}
+	An environment history is defined as a sequence of states.
+	Utilities are defined over environment histories.
+	An infinite horizon with no constraint on the number of time steps is assumed.
+	A stationary preference where if one history is preferred to another at time $t$, the same should hold at time $t'$ provided they start from the same date is assumed.
+	With these assumptions two sensible way to define utilities are:
+
+	\begin{itemize}
+		\item[Additive rewards]
+
+			$$U([s_0,\dots,s_2]) = R(s_0) + \cdots +R(s_n)$$
+
+		\item[Discounted rewards] for $\gamma\in[0,1]$:
+
+			$$U([s_0,\dots,s_2]) = \gamma^0R(s_0) + \cdots +\gamma^{n-1}R(s_n)$$
+
+	\end{itemize}
+
+	Only rewards that only depend on the destination state are considered, in a more general case: $R(s_t, a_t, s_{t+1})$
+
+	\subsection{Taking decisions}
+
+		\subsubsection{Optimal policy}
+		A policy $\pi$ is a full specification of what action to take at each state.
+		The expected utility of a policy is the utility of an environment history taken in expectation over all possible histories generated with that policy.
+		An optimal policy $\pi^*$ is a policy maximizing expected utility.
+		For infinite horizons optimal policies are stationary and depends only on the current state.
+
+			\paragraph{Utility of state}
+			The utility of a state given a policy $\pi$ is:
+
+			$$U^\pi(s) = \mathbb{E}_\pi\biggl[\sum\limits_{k=0}^\infty\gamma^tR(S_{t+k+1})|S_t=s\biggr]$$
+
+			Where $S_{i+k+1}$ is the state reached after $k$ steps using policy $\pi$ starting from $S_t = s$.
+			The true utility of a state is its utility under an optimal policy:
+
+			$$U(s) = U^{\pi^*}(s)$$
+
+			Given the true utility, an optimal policy is:
+
+			$$\pi^*(s) = \arg\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U(s')$$
+
+
+	\subsection{Computing an optimal policy}
+	The utility of a state is its immediate reward plus the expected discounted utility of the next state, assuming that the agent chooses an optimal action.
+
+		\subsubsection{Bellman equation}	
+
+		$$U(s) = R(s) + \gamma\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U(s')$$
+
+		There is a Bellman equation for each state $s\in\mathcal{S}$ where utilities of states are solutions of the set of Bellman equations.
+		The solutions to the set of Bellman equations are unique.
+		Directly solving the set of equation is hard and because of the non-linearities introduced by the $\max$ operation.
+
+		\subsubsection{Value iteration}
+
+		\begin{enumerate}
+			\item Initialize $U_0(s)$ to zero for all $s$.
+			\item Repeat:
+
+				\begin{enumerate}
+					\item Do a Bellman update for each state $s$:
+
+						$$U_{i+1}(s) \leftarrow R(s) + \gamma\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U_i(s')$$
+
+					\item $i += 1$
+				\end{enumerate}
+
+			\item Until max utility difference is below a threshold.
+			\item Return $U$.
+		\end{enumerate}
+
+		The optimal policy can be set as:
+
+		$$\pi^*(s) = \arg\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U(s')$$
+
+		\subsubsection{Policy iteration}
+
+		\begin{enumerate}
+			\item Initialize $\pi_0$ randomly.
+			\item Repeat:
+
+				\begin{enumerate}
+					\item Policy evaluation, solve the set of linear equations:
+
+						$$U_i(s) = R(s) + \gamma\sum\limits_{s'\in\mathcal{S}}p(s'|s,\pi_i(s))U_i(s')\qquad\forall s\in\mathcal{S}$$
+
+					\item Policy improvement:
+
+						$$\pi_{i+1}(s)\leftarrow \arg\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U_i(s')\\quad\forall s\in\mathcal{S}$$
+
+				\end{enumerate}
+
+			\item Until there is no policy improvement.
+			\item Return $\pi$
+		\end{enumerate}
+
+\section{Dealing with partial knowledge}
+Value and policy iteration assume perfect knowledge of environment, transition model and rewards.
+In most cases some of these aspects are not known.
+Reinforcement learning aims at learning policies by space exploration.
+With policy evaluation a policy is given and the environment is learned, with policy improvement both policy and environment are learned.
+
+	\subsection{Policy evaluation in an unknown environment}
+
+		\subsubsection{Adaptive dynamic programming}
+	
+			\paragraph{Algorithm}
+	
+			\begin{enumerate}
+				\item Loop.
+	
+					\begin{enumerate}
+						\item Initialize $s$.
+						
+							\begin{enumerate}
+								\item Receive reward $r$, set $R(s) = r$.
+								\item Choose next action $a\leftarrow\pi(s)$.
+								\item Take action $a$, reach step $s'$.
+								\item Update counts:
+	
+									$$N_{sa}\leftarrow N_{sa} + 1\qquad N_{s'|sa}\leftarrow N_{s'|sa}+1$$
+	
+								\item Update transition model:
+	
+									$$p(s''|s,a)\leftarrow \frac{N_{s''|sa}}{N_{sa}}\qquad\forall s''\in\mathcal{S}$$
+	
+								\item Update utility estimate:
+	
+									$$U\leftarrow PolicyEvaluation(\pi, U, p, R, \gamma)$$
+	
+							\end{enumerate}
+	
+						\item Until $s$ is terminal.
+					\end{enumerate}
+			\end{enumerate}
+	
+			\paragraph{Characteristics}
+			The algorithm performs maximum likelihood estimation of transition probabilities and upon updating the transition model it calls a standard policy evaluation to update the utility estimate ($U$ is initially empty).
+			Each step is expensive as it runs policy evaluation.
+	
+		\subsubsection{Temporal-difference policy evaluation}
+	
+			\paragraph{Rationale}
+			Temporal-difference (TD) policy evaluation avoids running the policy evaluation at each iteration locally updating the utility.
+			If transition from $s$ to $s'$ is observed if $s'$ was always the successor of $s$, its utility should be:
+	
+			$$U(s) = R(s) + \gamma U(s')$$
+	
+			The temporal-difference update rule updates the utility to get closer to that situation:
+	
+			$$U(s)\leftarrow U(s) + \alpha(R(s)+\gamma U(s')-U(s))$$
+	
+			\paragraph{Algorithm}
+	
+			\begin{enumerate}
+				\item Loop.
+	
+					\begin{enumerate}
+						\item Repeat.
+	
+							\begin{enumerate}
+								\item Receive reward $r$.
+								\item Choose next action $a$ and reach step $s'$.
+								\item Update the local utility estimate:
+			
+									$$U(s)\leftarrow U(s) + \alpha(r+\gamma U(s')-U(s))$$
+	
+							\end{enumerate}
+	
+						\item Until $s$ is terminal
+					\end{enumerate}
+	
+			\end{enumerate}
+	
+			\paragraph{Characteristics}
+			There is no need for a transition model for the utility update and each step is faster than ADP, without loosing anything on the long run.
+			It takes longer to converge and can e seen as a rough efficient approximation of ADP.
+
+	\subsection{Policy learning in an unknown environment}
+
+		\subsubsection{Setting}
+		Policy learning requires to combine the learning of the environment and the learning of the optimal policy for it.
+		A simple option consist of replacing the policy evaluation in ADP with optimal policy computation given the current knowledge of the environment creating a greedy agent:
+
+		$$U(s) = R(s) + \gamma\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U(s')$$
+
+		Because the knowledge of the environment is incomplete a greedy agent usually learns a suboptimal policy because of lack of exploration.
+
+		\subsubsection{Exploration-exploitation trade-off}
+		Exploitation consists in following promising directions given the current knowledge and exploration consists in trying novel directions looking for better unknown alternatives.
+		A reasonable trade-off should be used in defining the search scheme.
+		For example an $\epsilon$-greedy strategy chooses a random move with probability $\epsilon$ and is greedy otherwise.
+		Moreover a higher utility estimate can be assigned to relatively unexplored state-action pairs:
+
+		$$U^+(s) = R(s) + \gamma\max\limits_{a\in\mathcal{A}}f\biggl(\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U^+(s'),N_{sa}\biggr)$$
+
+		With $f$ increasing over the first argument and decreasing over the second.
+	
+		\subsubsection{Temporal-difference learning - learning utilities of actions}
+		The TD policy evaluation can also be adapted to learn an optimal policy.
+		If TD is used to learn a state utility function it needs to estimate a transition model to derive a policy.
+		TD can instead be applied to learn an action utility function $Q(s,a)$ and the optimal policy corresponds to:
+
+		$$\pi^*(s) = \arg\max\limits_{a\in\mathcal{A}}Q(s,a)$$
+	
+		\subsubsection{SARSA - on-policy temporal-difference learning}
+
+		\begin{enumerate}
+			\item Loop.
+
+				\begin{enumerate}
+					\item Initialize $s$.
+					\item Repeat.
+
+						\begin{enumerate}
+							\item Receive reward $r$.
+							\item Choose next action $a\leftarrow\pi^\epsilon(s)$.
+							\item Take action $a$ and reach step $s'$.
+							\item Choose action $a'\leftarrow\pi^\epsilon(s')$.
+							\item Update local utility estimate:
+
+								$$Q(s,a) \leftarrow Q(s,a) + \alpha(r+\gamma Q(s',a')- Q(s,a))$$
+
+						\end{enumerate}
+
+					\item Until $s$ is terminal.
+				\end{enumerate}
+
+		\end{enumerate}
+
+		$\pi^\epsilon$ is an $\epsilon$-greedy or some other form of non-greedy policy based on $Q$.
+	
+		\subsubsection{Q-learning - off-policy temporal-difference learning}
+
+		\begin{enumerate}
+			\item Loop.
+
+				\begin{enumerate}
+					\item Initialize $s$.
+					\item Repeat.
+
+						\begin{enumerate}
+							\item Receive reward $r$.
+							\item Choose next action $a\leftarrow\pi^\epsilon(s)$.
+							\item Take action $a$ and reach step $s'$.
+							\item Update local utility estimate:
+
+								$$Q(s,a) \leftarrow Q(s,a) + \alpha(r+\gamma Q(s',a')- Q(s,a))$$
+
+						\end{enumerate}
+
+					\item Until $s$ is terminal.
+				\end{enumerate}
+
+		\end{enumerate}
+	
+		\subsubsection{SARSA vs Q-learning}
+		SARSA is on-policy: it updates $Q$ using the current policy;s action.
+		Q-learning is off-policy: it updates $Q$ using the greedy policy's action.
+		Off-policy methods are more flexible and they can learn from traces generated with an unknown policy.
+		On-policy methods tend to converge faster and are easier to use for continuous-state spaces and linear function approximators.
+
+\section{Scaling to large state spaces}
+
+	\subsection{Function approximation}
+	All techniques seen so far assume a tabular representation of utility functions.
+	This type of representation doesn't scale to large state spaces.
+	The solution is to rely on function approximation: $U(s)$ or $Q(s,a)$ are approximated with a parametrized function.
+	The function takes a state representation as input and allows to generalize to unseen states.
+
+	\subsection{Learning the approximation function}
+
+		\subsubsection{Temporal-difference learning - state utility}
+		The TD error is:
+
+		$$E(s,s') = \frac{1}{2}(R(s) + \gamma U_{\vec{\theta}}(s')-U_{\vec{\theta}}(s))^2$$
+
+		The error gradient with respect to the function's parameter is:
+
+		$$\nabla_{\vec{\theta}} E(s,s') = (R(s) + \gamma U_{\vec{\theta}}(s') - U_{\vec{\theta}}(s))(-\nabla_{\vec{\theta}}U_{\vec{\theta}}(s))$$
+
+		So the stochastic gradient update rule is:
+
+		\begin{align*}
+			\vec{\theta} &= \vec{\theta} - \alpha\nabla_{\vec{\theta}}E(s,s') = \\
+				     &= \vec{\theta} + \alpha(R(s) + \gamma U_{\vec{\theta}}(s') - U_{\vec{\theta}}(s))(\nabla_{\vec{\theta}}U_{\vec{\theta}}(s))
+		\end{align*}
+
+		\subsubsection{Temporal-difference learning - action utility Q-learning}
+		The TD error is:
+
+		$$E((s,a),s') = \frac{1}{2}(R(s) + \gamma\max\limits_{a'\in\mathcal{A}}Q_{\vec{\theta}}(s',a')-Q_{\vec{\theta}}(s,a))^2$$
+
+		The error gradient with respect to the function's parameter is:
+
+		$$\nabla_{\vec{\theta}} E((s,a),s') = (R(s) + \gamma\max\limits_{a'\in\mathcal{A}}Q_{\vec{\theta}}(s',a') - Q_{\vec{\theta}}(s,a))(-\nabla_{\vec{\theta}}Q_{\vec{\theta}}(s,a))$$
+
+		So the stochastic gradient update rule is:
+
+		\begin{align*}
+			\vec{\theta} &= \vec{\theta} - \alpha\nabla_{\vec{\theta}}E((s,a),s') = \\
+				     &= \vec{\theta} + \alpha(R(s) + \gamma\max\limits_{a'\in\mathcal{A}}Q_{\vec{\theta}}(s',a') - Q_{\vec{\theta}}(s,a))(\nabla_{\vec{\theta}}Q_{\vec{\theta}}(s,a))
+		\end{align*}

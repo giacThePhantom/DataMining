@@ -1,584 +1,618 @@
 \babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Introduction}{9}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Formalization of a machine learning problem}{9}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Components of a machine learning problem}{9}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Designing a machine learning system}{9}{subsection.1.1.2}%
-\contentsline {subsubsection}{\numberline {1.1.2.1}Formalize the learning task}{10}{subsubsection.1.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.1.2.2}Collect data}{10}{subsubsection.1.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.1.2.3}Extract features}{10}{subsubsection.1.1.2.3}%
-\contentsline {subsubsection}{\numberline {1.1.2.4}Choose class of learning models}{10}{subsubsection.1.1.2.4}%
-\contentsline {subsubsection}{\numberline {1.1.2.5}Train model}{10}{subsubsection.1.1.2.5}%
-\contentsline {subsubsection}{\numberline {1.1.2.6}Evaluate model}{10}{subsubsection.1.1.2.6}%
-\contentsline {section}{\numberline {1.2}Learning settings}{11}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Supervised learning}{11}{subsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.1.1}Tasks}{11}{subsubsection.1.2.1.1}%
-\contentsline {paragraph}{\numberline {1.2.1.1.1}Classification}{11}{paragraph.1.2.1.1.1}%
-\contentsline {paragraph}{\numberline {1.2.1.1.2}Regression}{11}{paragraph.1.2.1.1.2}%
-\contentsline {paragraph}{\numberline {1.2.1.1.3}Ordinal regression or ranking}{11}{paragraph.1.2.1.1.3}%
-\contentsline {subsection}{\numberline {1.2.2}Unsupervised learning}{11}{subsection.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.2.2.1}Tasks}{11}{subsubsection.1.2.2.1}%
-\contentsline {paragraph}{\numberline {1.2.2.1.1}Dimensionality reduction}{11}{paragraph.1.2.2.1.1}%
-\contentsline {paragraph}{\numberline {1.2.2.1.2}Clustering}{11}{paragraph.1.2.2.1.2}%
-\contentsline {paragraph}{\numberline {1.2.2.1.3}Novelty detection}{11}{paragraph.1.2.2.1.3}%
-\contentsline {subsection}{\numberline {1.2.3}Semi-supervised learning}{11}{subsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.2.4}Reinforcement learning}{12}{subsection.1.2.4}%
-\contentsline {section}{\numberline {1.3}Probabilistic reasoning}{12}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Choice of learning algorithms}{12}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Based on information available}{12}{subsection.1.4.1}%
-\contentsline {chapter}{\numberline {2}Decision trees learning}{13}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introduction}{13}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Appropriate problems for decision trees}{13}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Learning decision trees}{13}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Greedy top-down strategy}{13}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Choosing the best attribute}{14}{subsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.2.1}Information gain}{14}{subsubsection.2.2.2.1}%
-\contentsline {section}{\numberline {2.3}Issues in decision tree learning}{14}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Overfitting avoidance}{14}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Post-pruning}{14}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Dealing with continues valued attributes}{15}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Alternative attribute test measures}{15}{subsection.2.3.4}%
-\contentsline {subsection}{\numberline {2.3.5}Handling attributes with missing values}{15}{subsection.2.3.5}%
-\contentsline {section}{\numberline {2.4}Random forest}{16}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Training}{16}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Testing}{16}{subsection.2.4.2}%
-\contentsline {chapter}{\numberline {3}K-nearest neighbours}{17}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introduction}{17}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Measuring the instance between instances}{17}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Metric or distance definition}{17}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Euclidean distance}{17}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Algorithms}{18}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Classification}{18}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Regression}{18}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Characteristics}{18}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Distance weighted k-nearest neighbour}{18}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Linear algebra}{20}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Vector space}{20}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Properties and operations}{20}{subsection.4.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.1.1}Subspace}{20}{subsubsection.4.1.1.1}%
-\contentsline {subsubsection}{\numberline {4.1.1.2}Linear combination}{20}{subsubsection.4.1.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.1.3}Span}{20}{subsubsection.4.1.1.3}%
-\contentsline {subsubsection}{\numberline {4.1.1.4}Linear independence}{21}{subsubsection.4.1.1.4}%
-\contentsline {subsection}{\numberline {4.1.2}Basis}{21}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Matrices}{21}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Linear maps}{21}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Linear maps as matrices}{21}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}Matrix of basis transformation}{21}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}Matrix changing the coordinates, 2D examples}{22}{subsubsection.4.2.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Matrix properties}{22}{subsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}Transpose}{22}{subsubsection.4.2.3.1}%
-\contentsline {subsubsection}{\numberline {4.2.3.2}Trace}{22}{subsubsection.4.2.3.2}%
-\contentsline {subsubsection}{\numberline {4.2.3.3}Inverse}{22}{subsubsection.4.2.3.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.4}Rank}{22}{subsubsection.4.2.3.4}%
-\contentsline {subsection}{\numberline {4.2.4}Matrix derivatives}{23}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Metric structure}{23}{subsection.4.2.5}%
-\contentsline {subsubsection}{\numberline {4.2.5.1}Norm}{23}{subsubsection.4.2.5.1}%
-\contentsline {subsubsection}{\numberline {4.2.5.2}Metric}{23}{subsubsection.4.2.5.2}%
-\contentsline {subsection}{\numberline {4.2.6}Dot product}{23}{subsection.4.2.6}%
-\contentsline {subsubsection}{\numberline {4.2.6.1}Norm}{23}{subsubsection.4.2.6.1}%
-\contentsline {subsubsection}{\numberline {4.2.6.2}Properties}{24}{subsubsection.4.2.6.2}%
-\contentsline {paragraph}{\numberline {4.2.6.2.1}Angle}{24}{paragraph.4.2.6.2.1}%
-\contentsline {paragraph}{\numberline {4.2.6.2.2}Orthogonal}{24}{paragraph.4.2.6.2.2}%
-\contentsline {paragraph}{\numberline {4.2.6.2.3}Orthonormal}{24}{paragraph.4.2.6.2.3}%
-\contentsline {section}{\numberline {4.3}Eigenvalues and eigenvectors}{24}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Cardinality}{24}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Singular matrices}{24}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Symmetric matrices}{24}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Eigen-decomposition}{25}{subsection.4.3.4}%
-\contentsline {subsubsection}{\numberline {4.3.4.1}Raleigh quotient}{25}{subsubsection.4.3.4.1}%
-\contentsline {subsubsection}{\numberline {4.3.4.2}Finding eigenvector}{25}{subsubsection.4.3.4.2}%
-\contentsline {subsubsection}{\numberline {4.3.4.3}Deflating matrix}{25}{subsubsection.4.3.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.4.4}Iterating}{25}{subsubsection.4.3.4.4}%
-\contentsline {subsubsection}{\numberline {4.3.4.5}Eigen-decomposition}{25}{subsubsection.4.3.4.5}%
-\contentsline {paragraph}{\numberline {4.3.4.5.1}Proof}{26}{paragraph.4.3.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.3.4.6}Positive semi-definite matrix}{26}{subsubsection.4.3.4.6}%
-\contentsline {subsubsection}{\numberline {4.3.4.7}Scaling transformation in standard basis}{26}{subsubsection.4.3.4.7}%
-\contentsline {subsubsection}{\numberline {4.3.4.8}Scaling transformation in eigenbasis}{26}{subsubsection.4.3.4.8}%
-\contentsline {section}{\numberline {4.4}Principal component analysis}{26}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Procedure}{26}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Dimensionality reduction}{27}{subsection.4.4.2}%
-\contentsline {chapter}{\numberline {5}Probability theory}{28}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Discrete random variables}{28}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Probability mass function}{28}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Expected value}{28}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Variance}{28}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Properties of mean and variance}{29}{subsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.4.1}Second moment}{29}{subsubsection.5.1.4.1}%
-\contentsline {subsubsection}{\numberline {5.1.4.2}Variance in term of expectation}{29}{subsubsection.5.1.4.2}%
-\contentsline {subsubsection}{\numberline {5.1.4.3}Variance and scalar multiplication}{29}{subsubsection.5.1.4.3}%
-\contentsline {subsubsection}{\numberline {5.1.4.4}Variance of uncorrelated variables}{29}{subsubsection.5.1.4.4}%
-\contentsline {subsection}{\numberline {5.1.5}Probability distributions}{29}{subsection.5.1.5}%
-\contentsline {subsubsection}{\numberline {5.1.5.1}Bernoulli distribution}{29}{subsubsection.5.1.5.1}%
-\contentsline {paragraph}{\numberline {5.1.5.1.1}Proof of mean}{29}{paragraph.5.1.5.1.1}%
-\contentsline {paragraph}{\numberline {5.1.5.1.2}Proof of variance}{29}{paragraph.5.1.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.5.2}Binomial distribution}{29}{subsubsection.5.1.5.2}%
-\contentsline {subsection}{\numberline {5.1.6}Pairs of discrete random variables}{30}{subsection.5.1.6}%
-\contentsline {subsubsection}{\numberline {5.1.6.1}Probability mass function}{30}{subsubsection.5.1.6.1}%
-\contentsline {subsubsection}{\numberline {5.1.6.2}Properties}{30}{subsubsection.5.1.6.2}%
-\contentsline {paragraph}{\numberline {5.1.6.2.1}Expected value}{30}{paragraph.5.1.6.2.1}%
-\contentsline {paragraph}{\numberline {5.1.6.2.2}Variance}{30}{paragraph.5.1.6.2.2}%
-\contentsline {paragraph}{\numberline {5.1.6.2.3}Covariance}{30}{paragraph.5.1.6.2.3}%
-\contentsline {paragraph}{\numberline {5.1.6.2.4}Correlation coefficient}{30}{paragraph.5.1.6.2.4}%
-\contentsline {subsubsection}{\numberline {5.1.6.3}Multinomial distribution}{30}{subsubsection.5.1.6.3}%
-\contentsline {section}{\numberline {5.2}Conditionally probability}{31}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Basic rules}{31}{subsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.1.1}Law of total probability}{31}{subsubsection.5.2.1.1}%
-\contentsline {subsubsection}{\numberline {5.2.1.2}Product rule}{31}{subsubsection.5.2.1.2}%
-\contentsline {subsection}{\numberline {5.2.2}Bayes' rule}{31}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}Continuous random variables}{32}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Cumulative distribution function}{32}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Probability density function}{32}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Probability distribution}{32}{subsection.5.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.3.1}Gaussian or normal distribution}{32}{subsubsection.5.3.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.3.2}Beta distribution}{33}{subsubsection.5.3.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3.3}Multivariate normal distribution}{33}{subsubsection.5.3.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.3.4}Dirichlet distribution}{33}{subsubsection.5.3.3.4}%
-\contentsline {section}{\numberline {5.4}Probability laws}{34}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Expectation of an average}{34}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Variance of an average}{34}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Chebyshev's inequality}{34}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Law of large numbers}{34}{subsection.5.4.4}%
-\contentsline {subsection}{\numberline {5.4.5}Central limit theorem}{35}{subsection.5.4.5}%
-\contentsline {subsubsection}{\numberline {5.4.5.1}Interpretation}{35}{subsubsection.5.4.5.1}%
-\contentsline {section}{\numberline {5.5}Information theory}{35}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Entropy}{35}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Cross entropy}{35}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Relative entropy}{36}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}Conditional entropy}{36}{subsection.5.5.4}%
-\contentsline {subsection}{\numberline {5.5.5}Mutual information}{36}{subsection.5.5.5}%
-\contentsline {chapter}{\numberline {6}Evaluation}{37}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introduction}{37}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Performance measures}{37}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Training loss and performance measures}{37}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Binary classification}{37}{subsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.2.1}Accuracy}{38}{subsubsection.6.2.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2.2}Precision}{38}{subsubsection.6.2.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.2.3}Recall or sensitivity}{38}{subsubsection.6.2.2.3}%
-\contentsline {subsubsection}{\numberline {6.2.2.4}F-measure}{38}{subsubsection.6.2.2.4}%
-\contentsline {subsubsection}{\numberline {6.2.2.5}Precision-recall curve}{38}{subsubsection.6.2.2.5}%
-\contentsline {subsection}{\numberline {6.2.3}Multiclass classification}{39}{subsection.6.2.3}%
-\contentsline {subsubsection}{\numberline {6.2.3.1}Muliclass accuracy}{39}{subsubsection.6.2.3.1}%
-\contentsline {subsection}{\numberline {6.2.4}Regression}{39}{subsection.6.2.4}%
-\contentsline {subsubsection}{\numberline {6.2.4.1}Root mean squared error}{39}{subsubsection.6.2.4.1}%
-\contentsline {subsubsection}{\numberline {6.2.4.2}Pearson correlation coefficient}{39}{subsubsection.6.2.4.2}%
-\contentsline {subsubsection}{\numberline {6.2.4.3}Hold-out procedure}{39}{subsubsection.6.2.4.3}%
-\contentsline {subsubsection}{\numberline {6.2.4.4}K-fold cross validation}{40}{subsubsection.6.2.4.4}%
-\contentsline {paragraph}{\numberline {6.2.4.4.1}Variance}{40}{paragraph.6.2.4.4.1}%
-\contentsline {section}{\numberline {6.3}Hypothesis testing}{40}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Test statistic}{40}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Glossary}{40}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}T-test}{41}{subsection.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.3.1}$t_{k-1}$ distribution}{41}{subsubsection.6.3.3.1}%
-\contentsline {subsection}{\numberline {6.3.4}Comparing learning algorithms}{41}{subsection.6.3.4}%
-\contentsline {subsubsection}{\numberline {6.3.4.1}Hypothesis testing}{41}{subsubsection.6.3.4.1}%
-\contentsline {subsubsection}{\numberline {6.3.4.2}T-test}{41}{subsubsection.6.3.4.2}%
-\contentsline {subsubsection}{\numberline {6.3.4.3}Notes}{42}{subsubsection.6.3.4.3}%
-\contentsline {chapter}{\numberline {7}Bayesian decision theory}{43}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introduction}{43}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Input-output pairs}{43}{subsection.7.1.1}%
-\contentsline {subsubsection}{\numberline {7.1.1.1}Output given input}{43}{subsubsection.7.1.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Expected error}{43}{subsection.7.1.2}%
-\contentsline {subsection}{\numberline {7.1.3}Bayes decision rule}{44}{subsection.7.1.3}%
-\contentsline {subsubsection}{\numberline {7.1.3.1}Binary case}{44}{subsubsection.7.1.3.1}%
-\contentsline {subsubsection}{\numberline {7.1.3.2}Multiclass case}{44}{subsubsection.7.1.3.2}%
-\contentsline {subsubsection}{\numberline {7.1.3.3}Optimal rule}{44}{subsubsection.7.1.3.3}%
-\contentsline {section}{\numberline {7.2}Representing classifiers}{44}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Discriminant functions}{44}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Decision regions}{44}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Multivariate normal density}{45}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Hyperellipsoids}{45}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Discriminant functions for normal density}{45}{subsection.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.2.1}Case $\Sigma _i = \sigma ^2 I$}{45}{subsubsection.7.3.2.1}%
-\contentsline {paragraph}{\numberline {7.3.2.1.1}Separating hyperplane}{46}{paragraph.7.3.2.1.1}%
-\contentsline {subparagraph}{\numberline {7.3.2.1.1.1}Derivation of the separating hyperplane}{46}{subparagraph.7.3.2.1.1.1}%
-\contentsline {subsubsection}{\numberline {7.3.2.2}Case $\Sigma _i = \Sigma $}{46}{subsubsection.7.3.2.2}%
-\contentsline {subsubsection}{\numberline {7.3.2.3}Case $\Sigma _i$ arbitrary}{47}{subsubsection.7.3.2.3}%
-\contentsline {section}{\numberline {7.4}Arbitrary inputs and outputs}{47}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Setting}{47}{subsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.4.2}Risk}{47}{subsection.7.4.2}%
-\contentsline {subsubsection}{\numberline {7.4.2.1}Conditional risk}{47}{subsubsection.7.4.2.1}%
-\contentsline {subsubsection}{\numberline {7.4.2.2}Overall risk}{47}{subsubsection.7.4.2.2}%
-\contentsline {subsection}{\numberline {7.4.3}Bayes decision rule}{47}{subsection.7.4.3}%
-\contentsline {section}{\numberline {7.5}Handling features}{47}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Handling missing features - marginalize over missing variables}{47}{subsection.7.5.1}%
-\contentsline {subsection}{\numberline {7.5.2}Handling noisy features - marginalize over true variables}{48}{subsection.7.5.2}%
-\contentsline {chapter}{\numberline {8}Parameter estimation}{49}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Introduction}{49}{section.8.1}%
-\contentsline {subsection}{\numberline {8.1.1}Setting}{49}{subsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.1.2}Task}{49}{subsection.8.1.2}%
-\contentsline {subsection}{\numberline {8.1.3}Multi class classification}{49}{subsection.8.1.3}%
-\contentsline {subsubsection}{\numberline {8.1.3.1}Simplifications}{49}{subsubsection.8.1.3.1}%
-\contentsline {section}{\numberline {8.2}Maximum likelihood}{50}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Setting}{50}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Maximizing log-likelihood}{50}{subsection.8.2.2}%
-\contentsline {subsection}{\numberline {8.2.3}Univariate Gaussian case}{50}{subsection.8.2.3}%
-\contentsline {subsubsection}{\numberline {8.2.3.1}Mean}{51}{subsubsection.8.2.3.1}%
-\contentsline {subsubsection}{\numberline {8.2.3.2}Variance}{51}{subsubsection.8.2.3.2}%
-\contentsline {subsection}{\numberline {8.2.4}Multivariate Gaussian case}{51}{subsection.8.2.4}%
-\contentsline {subsubsection}{\numberline {8.2.4.1}Proof for the mean}{52}{subsubsection.8.2.4.1}%
-\contentsline {subsubsection}{\numberline {8.2.4.2}Proof for the covariance}{52}{subsubsection.8.2.4.2}%
-\contentsline {subsection}{\numberline {8.2.5}General Gaussian case}{53}{subsection.8.2.5}%
-\contentsline {section}{\numberline {8.3}Bayesian estimation}{53}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Setting}{54}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Univariate normal case - unknown $\mu $, known $\sigma ^2$}{54}{subsection.8.3.2}%
-\contentsline {subsubsection}{\numberline {8.3.2.1}A posteriori parameter density}{54}{subsubsection.8.3.2.1}%
-\contentsline {subsubsection}{\numberline {8.3.2.2}Recovering mean and variance}{55}{subsubsection.8.3.2.2}%
-\contentsline {subsubsection}{\numberline {8.3.2.3}Interpreting the posterior}{55}{subsubsection.8.3.2.3}%
-\contentsline {subsubsection}{\numberline {8.3.2.4}Computing the class conditional density}{55}{subsubsection.8.3.2.4}%
-\contentsline {subsection}{\numberline {8.3.3}Multivariate normal case - unknown $\mu $, known $\Sigma $}{55}{subsection.8.3.3}%
-\contentsline {subsection}{\numberline {8.3.4}Gamma distribution}{56}{subsection.8.3.4}%
-\contentsline {subsection}{\numberline {8.3.5}Univariate normal case - unknown $\mu $ and $\lambda = \frac {1}{\sigma ^2}$}{56}{subsection.8.3.5}%
-\contentsline {subsubsection}{\numberline {8.3.5.1}A posteriori parameter density}{56}{subsubsection.8.3.5.1}%
-\contentsline {subsubsection}{\numberline {8.3.5.2}Computing the posterior predictive}{57}{subsubsection.8.3.5.2}%
-\contentsline {subsection}{\numberline {8.3.6}Wishart distribution}{57}{subsection.8.3.6}%
-\contentsline {subsection}{\numberline {8.3.7}Multivariate normal case - unknown $\mu $ and $\Sigma $}{57}{subsection.8.3.7}%
-\contentsline {subsubsection}{\numberline {8.3.7.1}A posteriori parameter density}{57}{subsubsection.8.3.7.1}%
-\contentsline {subsubsection}{\numberline {8.3.7.2}Computing the posterior predictive}{57}{subsubsection.8.3.7.2}%
-\contentsline {section}{\numberline {8.4}Sufficient statistics}{58}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Definition}{58}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Conjugate priors}{58}{subsection.8.4.2}%
-\contentsline {section}{\numberline {8.5}Bernoulli distribution}{58}{section.8.5}%
-\contentsline {subsection}{\numberline {8.5.1}Setting}{58}{subsection.8.5.1}%
-\contentsline {subsection}{\numberline {8.5.2}Maximum likelihood estimation}{58}{subsection.8.5.2}%
-\contentsline {subsection}{\numberline {8.5.3}Bayesian estimation}{59}{subsection.8.5.3}%
-\contentsline {subsubsection}{\numberline {8.5.3.1}Interpreting priors}{59}{subsubsection.8.5.3.1}%
-\contentsline {section}{\numberline {8.6}Multinomial distribution}{59}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Setting}{59}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Maximum likelihood estimation}{59}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Bayesian estimation}{60}{subsection.8.6.3}%
-\contentsline {chapter}{\numberline {9}Bayesian networks}{61}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Introduction}{61}{section.9.1}%
-\contentsline {subsection}{\numberline {9.1.1}Bayesian networks semantics}{61}{subsection.9.1.1}%
-\contentsline {subsection}{\numberline {9.1.2}Graph and distributions}{61}{subsection.9.1.2}%
-\contentsline {subsection}{\numberline {9.1.3}Factorization}{62}{subsection.9.1.3}%
-\contentsline {subsubsection}{\numberline {9.1.3.1}Proof that from I-map follows factorization}{62}{subsubsection.9.1.3.1}%
-\contentsline {subsubsection}{\numberline {9.1.3.2}Proof that from factorization follows I-map}{62}{subsubsection.9.1.3.2}%
-\contentsline {subsection}{\numberline {9.1.4}Bayesian network definition}{63}{subsection.9.1.4}%
-\contentsline {subsubsection}{\numberline {9.1.4.1}Factorized probability}{63}{subsubsection.9.1.4.1}%
-\contentsline {section}{\numberline {9.2}Conditional independence}{63}{section.9.2}%
-\contentsline {subsection}{\numberline {9.2.1}D separation}{63}{subsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.1.1}Tail to tail}{63}{subsubsection.9.2.1.1}%
-\contentsline {subsubsection}{\numberline {9.2.1.2}Head to tail}{64}{subsubsection.9.2.1.2}%
-\contentsline {subsubsection}{\numberline {9.2.1.3}Head to head}{64}{subsubsection.9.2.1.3}%
-\contentsline {subsubsection}{\numberline {9.2.1.4}General head-to-head}{64}{subsubsection.9.2.1.4}%
-\contentsline {subsection}{\numberline {9.2.2}General d-separation criterion}{65}{subsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.2.1}d-separation definition}{65}{subsubsection.9.2.2.1}%
-\contentsline {section}{\numberline {9.3}BN independence revisited}{65}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Independence assumptions}{65}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}BN equivalence classes}{65}{subsection.9.3.2}%
-\contentsline {subsubsection}{\numberline {9.3.2.1}I-equivalence}{65}{subsubsection.9.3.2.1}%
-\contentsline {paragraph}{\numberline {9.3.2.1.1}Sufficient conditions}{65}{paragraph.9.3.2.1.1}%
-\contentsline {paragraph}{\numberline {9.3.2.1.2}Necessary and sufficient conditions}{65}{paragraph.9.3.2.1.2}%
-\contentsline {paragraph}{\numberline {9.3.2.1.3}Equivalence class}{65}{paragraph.9.3.2.1.3}%
-\contentsline {subparagraph}{\numberline {9.3.2.1.3.1}Partially directed acyclic graph}{65}{subparagraph.9.3.2.1.3.1}%
-\contentsline {subparagraph}{\numberline {9.3.2.1.3.2}Representing an equivalence class}{65}{subparagraph.9.3.2.1.3.2}%
-\contentsline {subparagraph}{\numberline {9.3.2.1.3.3}Generating members}{66}{subparagraph.9.3.2.1.3.3}%
-\contentsline {subsection}{\numberline {9.3.3}I-maps and distributions}{66}{subsection.9.3.3}%
-\contentsline {subsubsection}{\numberline {9.3.3.1}Minimal I-maps}{66}{subsubsection.9.3.3.1}%
-\contentsline {subsubsection}{\numberline {9.3.3.2}Perfect maps P-maps}{66}{subsubsection.9.3.3.2}%
-\contentsline {subsection}{\numberline {9.3.4}Building Bayesian networks}{66}{subsection.9.3.4}%
-\contentsline {section}{\numberline {9.4}Markov blanket or boundary}{66}{section.9.4}%
-\contentsline {subsection}{\numberline {9.4.1}Definition}{66}{subsection.9.4.1}%
-\contentsline {subsection}{\numberline {9.4.2}d-separation}{67}{subsection.9.4.2}%
-\contentsline {chapter}{\numberline {10}Bayesian networks inference}{68}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Inference in graphical models}{68}{section.10.1}%
-\contentsline {subsection}{\numberline {10.1.1}Efficiency}{68}{subsection.10.1.1}%
-\contentsline {subsection}{\numberline {10.1.2}Inference on a chain}{68}{subsection.10.1.2}%
-\contentsline {subsection}{\numberline {10.1.3}Inference as message passing}{69}{subsection.10.1.3}%
-\contentsline {subsection}{\numberline {10.1.4}Full message passing}{69}{subsection.10.1.4}%
-\contentsline {subsection}{\numberline {10.1.5}Adding evidence}{69}{subsection.10.1.5}%
-\contentsline {subsection}{\numberline {10.1.6}Computing conditional probability given evidence}{70}{subsection.10.1.6}%
-\contentsline {subsection}{\numberline {10.1.7}Inference on trees}{70}{subsection.10.1.7}%
-\contentsline {section}{\numberline {10.2}Factor graphs}{70}{section.10.2}%
-\contentsline {subsection}{\numberline {10.2.1}Description}{70}{subsection.10.2.1}%
-\contentsline {subsection}{\numberline {10.2.2}Sum-product algorithm}{70}{subsection.10.2.2}%
-\contentsline {subsubsection}{\numberline {10.2.2.1}Computing marginals}{70}{subsubsection.10.2.2.1}%
-\contentsline {subsubsection}{\numberline {10.2.2.2}Factor messages}{70}{subsubsection.10.2.2.2}%
-\contentsline {subsubsection}{\numberline {10.2.2.3}Node messages}{71}{subsubsection.10.2.2.3}%
-\contentsline {subsubsection}{\numberline {10.2.2.4}Initialization}{71}{subsubsection.10.2.2.4}%
-\contentsline {subsubsection}{\numberline {10.2.2.5}Message passing scheme}{71}{subsubsection.10.2.2.5}%
-\contentsline {subsubsection}{\numberline {10.2.2.6}Full message passing scheme}{71}{subsubsection.10.2.2.6}%
-\contentsline {subsubsection}{\numberline {10.2.2.7}Adding evidence}{71}{subsubsection.10.2.2.7}%
-\contentsline {section}{\numberline {10.3}Finding the most probable configuration}{71}{section.10.3}%
-\contentsline {subsection}{\numberline {10.3.1}The max-product algorithm}{72}{subsection.10.3.1}%
-\contentsline {subsubsection}{\numberline {10.3.1.1}Linear chain}{72}{subsubsection.10.3.1.1}%
-\contentsline {subsubsection}{\numberline {10.3.1.2}Message passing}{72}{subsubsection.10.3.1.2}%
-\contentsline {subsubsection}{\numberline {10.3.1.3}Recovering maximal configuration}{72}{subsubsection.10.3.1.3}%
-\contentsline {subsubsection}{\numberline {10.3.1.4}Trellis for linear chain}{73}{subsubsection.10.3.1.4}%
-\contentsline {section}{\numberline {10.4}Approximate inference}{73}{section.10.4}%
-\contentsline {subsection}{\numberline {10.4.1}Underflow issues}{73}{subsection.10.4.1}%
-\contentsline {subsection}{\numberline {10.4.2}Exact inference on general graphs}{73}{subsection.10.4.2}%
-\contentsline {subsection}{\numberline {10.4.3}Problem with exact inference}{73}{subsection.10.4.3}%
-\contentsline {subsection}{\numberline {10.4.4}Loopy belief propagation}{73}{subsection.10.4.4}%
-\contentsline {subsection}{\numberline {10.4.5}Variational methods}{73}{subsection.10.4.5}%
-\contentsline {subsection}{\numberline {10.4.6}Sampling methods}{74}{subsection.10.4.6}%
-\contentsline {subsubsection}{\numberline {10.4.6.1}Markov chain monte Carlo}{74}{subsubsection.10.4.6.1}%
-\contentsline {section}{\numberline {10.5}Markov chain}{74}{section.10.5}%
-\contentsline {subsection}{\numberline {10.5.1}Definition}{74}{subsection.10.5.1}%
-\contentsline {subsection}{\numberline {10.5.2}Homogeneous chains}{74}{subsection.10.5.2}%
-\contentsline {subsection}{\numberline {10.5.3}Chain dynamics}{74}{subsection.10.5.3}%
-\contentsline {subsection}{\numberline {10.5.4}Convergence}{75}{subsection.10.5.4}%
-\contentsline {subsection}{\numberline {10.5.5}Stationary distribution}{75}{subsection.10.5.5}%
-\contentsline {subsection}{\numberline {10.5.6}Requirements}{75}{subsection.10.5.6}%
-\contentsline {subsection}{\numberline {10.5.7}Regular chains}{75}{subsection.10.5.7}%
-\contentsline {subsection}{\numberline {10.5.8}Markov chains for graphical models}{75}{subsection.10.5.8}%
-\contentsline {subsection}{\numberline {10.5.9}Transition model}{75}{subsection.10.5.9}%
-\contentsline {subsection}{\numberline {10.5.10}Gibbs sampling}{76}{subsection.10.5.10}%
-\contentsline {subsubsection}{\numberline {10.5.10.1}Regularity}{76}{subsubsection.10.5.10.1}%
-\contentsline {subsubsection}{\numberline {10.5.10.2}Positivity}{76}{subsubsection.10.5.10.2}%
-\contentsline {subsection}{\numberline {10.5.11}Computing local transition probabilities}{76}{subsection.10.5.11}%
-\contentsline {subsection}{\numberline {10.5.12}Generating samples}{76}{subsection.10.5.12}%
-\contentsline {chapter}{\numberline {11}Learning Bayesian networks}{77}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Parameter estimation}{77}{section.11.1}%
-\contentsline {subsection}{\numberline {11.1.1}Maximum likelihood estimation - complete data}{77}{subsection.11.1.1}%
-\contentsline {subsubsection}{\numberline {11.1.1.1}Learning Bayesian networks}{77}{subsubsection.11.1.1.1}%
-\contentsline {subsubsection}{\numberline {11.1.1.2}Learning graphical models}{77}{subsubsection.11.1.1.2}%
-\contentsline {subsection}{\numberline {11.1.2}Learning graphical models - adding priors}{78}{subsection.11.1.2}%
-\contentsline {subsubsection}{\numberline {11.1.2.1}Dirichlet prior}{78}{subsubsection.11.1.2.1}%
-\contentsline {subsection}{\numberline {11.1.3}Learning with missing data}{79}{subsection.11.1.3}%
-\contentsline {subsubsection}{\numberline {11.1.3.1}Expectation-maximization for Bayesian networks}{79}{subsubsection.11.1.3.1}%
-\contentsline {subsubsection}{\numberline {11.1.3.2}Expectation maximization algorithm}{79}{subsubsection.11.1.3.2}%
-\contentsline {paragraph}{\numberline {11.1.3.2.1}e-step}{79}{paragraph.11.1.3.2.1}%
-\contentsline {paragraph}{\numberline {11.1.3.2.2}m-step}{79}{paragraph.11.1.3.2.2}%
-\contentsline {section}{\numberline {11.2}Learning the structure of graphical models}{79}{section.11.2}%
-\contentsline {subsection}{\numberline {11.2.1}Model averaging approach}{79}{subsection.11.2.1}%
-\contentsline {subsubsection}{\numberline {11.2.1.1}Model selection}{80}{subsubsection.11.2.1.1}%
-\contentsline {subsection}{\numberline {11.2.2}Constraint based approach}{80}{subsection.11.2.2}%
-\contentsline {subsection}{\numberline {11.2.3}Score based approach}{80}{subsection.11.2.3}%
-\contentsline {subsubsection}{\numberline {11.2.3.1}Maximum likelihood approximation}{80}{subsubsection.11.2.3.1}%
-\contentsline {subsubsection}{\numberline {11.2.3.2}Bayesian-Dirichlet scoring}{81}{subsubsection.11.2.3.2}%
-\contentsline {paragraph}{\numberline {11.2.3.2.1}Simple case}{81}{paragraph.11.2.3.2.1}%
-\contentsline {subparagraph}{\numberline {11.2.3.2.1.1}Setting}{81}{subparagraph.11.2.3.2.1.1}%
-\contentsline {subparagraph}{\numberline {11.2.3.2.1.2}Approach}{81}{subparagraph.11.2.3.2.1.2}%
-\contentsline {paragraph}{\numberline {11.2.3.2.2}General case}{81}{paragraph.11.2.3.2.2}%
-\contentsline {subsubsection}{\numberline {11.2.3.3}Search strategy}{82}{subsubsection.11.2.3.3}%
-\contentsline {chapter}{\numberline {12}Naive Bayes classifier}{83}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Setting}{83}{section.12.1}%
-\contentsline {subsection}{\numberline {12.1.1}Learning problem}{83}{subsection.12.1.1}%
-\contentsline {section}{\numberline {12.2}Definition}{83}{section.12.2}%
-\contentsline {subsection}{\numberline {12.2.1}Single distribution case}{83}{subsection.12.2.1}%
-\contentsline {section}{\numberline {12.3}Parameters learning}{84}{section.12.3}%
-\contentsline {section}{\numberline {12.4}Examples}{84}{section.12.4}%
-\contentsline {subsection}{\numberline {12.4.1}Text classification}{84}{subsection.12.4.1}%
-\contentsline {subsubsection}{\numberline {12.4.1.1}Naive Bayes learning}{84}{subsubsection.12.4.1.1}%
-\contentsline {subsubsection}{\numberline {12.4.1.2}Naive Bayes classification}{84}{subsubsection.12.4.1.2}%
-\contentsline {subsubsection}{\numberline {12.4.1.3}Parameter estimation}{85}{subsubsection.12.4.1.3}%
-\contentsline {chapter}{\numberline {13}Linear discriminant functions}{86}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Discriminative learning}{86}{section.13.1}%
-\contentsline {subsection}{\numberline {13.1.1}Pros of discriminative learning}{86}{subsection.13.1.1}%
-\contentsline {subsection}{\numberline {13.1.2}Cons of discriminative learning}{86}{subsection.13.1.2}%
-\contentsline {section}{\numberline {13.2}Linear discriminant functions}{86}{section.13.2}%
-\contentsline {subsection}{\numberline {13.2.1}Description}{86}{subsection.13.2.1}%
-\contentsline {subsection}{\numberline {13.2.2}Linear binary classifier}{86}{subsection.13.2.2}%
-\contentsline {subsubsection}{\numberline {13.2.2.1}Functional margin}{87}{subsubsection.13.2.2.1}%
-\contentsline {subsubsection}{\numberline {13.2.2.2}Geometric margin}{87}{subsubsection.13.2.2.2}%
-\contentsline {section}{\numberline {13.3}Perceptron}{87}{section.13.3}%
-\contentsline {subsection}{\numberline {13.3.1}Biological motivation}{87}{subsection.13.3.1}%
-\contentsline {subsection}{\numberline {13.3.2}Representational power}{88}{subsection.13.3.2}%
-\contentsline {subsection}{\numberline {13.3.3}Augmented feature or weight vectors}{88}{subsection.13.3.3}%
-\contentsline {subsection}{\numberline {13.3.4}Parameter learning}{88}{subsection.13.3.4}%
-\contentsline {subsubsection}{\numberline {13.3.4.1}Error minimization}{88}{subsubsection.13.3.4.1}%
-\contentsline {subsubsection}{\numberline {13.3.4.2}Gradient descent}{88}{subsubsection.13.3.4.2}%
-\contentsline {subsection}{\numberline {13.3.5}Perceptron training rule}{88}{subsection.13.3.5}%
-\contentsline {subsection}{\numberline {13.3.6}Stochastic perceptron training rule}{89}{subsection.13.3.6}%
-\contentsline {subsection}{\numberline {13.3.7}Perceptron regression}{89}{subsection.13.3.7}%
-\contentsline {subsubsection}{\numberline {13.3.7.1}Exact solution}{89}{subsubsection.13.3.7.1}%
-\contentsline {subsubsection}{\numberline {13.3.7.2}Mean squared error}{89}{subsubsection.13.3.7.2}%
-\contentsline {paragraph}{\numberline {13.3.7.2.1}Closed form solution}{90}{paragraph.13.3.7.2.1}%
-\contentsline {paragraph}{\numberline {13.3.7.2.2}Gradient descent}{90}{paragraph.13.3.7.2.2}%
-\contentsline {section}{\numberline {13.4}Multiclass classification}{90}{section.13.4}%
-\contentsline {subsection}{\numberline {13.4.1}One-vs-all}{90}{subsection.13.4.1}%
-\contentsline {subsection}{\numberline {13.4.2}All-pairs}{90}{subsection.13.4.2}%
-\contentsline {section}{\numberline {13.5}Generative linear classifiers}{91}{section.13.5}%
-\contentsline {subsection}{\numberline {13.5.1}Gaussian distributions}{91}{subsection.13.5.1}%
-\contentsline {subsection}{\numberline {13.5.2}Naive Bayes classifier}{91}{subsection.13.5.2}%
-\contentsline {chapter}{\numberline {14}Support vector machines}{92}{chapter.14}%
-\contentsline {section}{\numberline {14.1}Introduction}{92}{section.14.1}%
-\contentsline {section}{\numberline {14.2}Maximum margin classifiers}{92}{section.14.2}%
-\contentsline {subsection}{\numberline {14.2.1}Classifier margin}{92}{subsection.14.2.1}%
-\contentsline {subsection}{\numberline {14.2.2}Canonical hyperplane}{92}{subsection.14.2.2}%
-\contentsline {section}{\numberline {14.3}Hard margin support vector machine}{93}{section.14.3}%
-\contentsline {subsection}{\numberline {14.3.1}Margin error bound theorem}{93}{subsection.14.3.1}%
-\contentsline {subsubsection}{\numberline {14.3.1.1}Interpretation of the margin error bound}{93}{subsubsection.14.3.1.1}%
-\contentsline {subsection}{\numberline {14.3.2}Learning problem}{93}{subsection.14.3.2}%
-\contentsline {subsection}{\numberline {14.3.3}Constrained optimization - Karush-Kuhn-Tucker (KKT) approach}{93}{subsection.14.3.3}%
-\contentsline {subsection}{\numberline {14.3.4}KKT approach in SVM}{94}{subsection.14.3.4}%
-\contentsline {subsubsection}{\numberline {14.3.4.1}Dual formulation}{94}{subsubsection.14.3.4.1}%
-\contentsline {subsection}{\numberline {14.3.5}Decision function}{94}{subsection.14.3.5}%
-\contentsline {subsection}{\numberline {14.3.6}KKT conditions}{95}{subsection.14.3.6}%
-\contentsline {subsection}{\numberline {14.3.7}Support vectors}{95}{subsection.14.3.7}%
-\contentsline {subsection}{\numberline {14.3.8}Decision function bias}{95}{subsection.14.3.8}%
-\contentsline {section}{\numberline {14.4}Soft margin SVM}{95}{section.14.4}%
-\contentsline {subsection}{\numberline {14.4.1}Slack variables}{95}{subsection.14.4.1}%
-\contentsline {subsection}{\numberline {14.4.2}Regularization theory}{96}{subsection.14.4.2}%
-\contentsline {subsubsection}{\numberline {14.4.2.1}Hinge loss}{96}{subsubsection.14.4.2.1}%
-\contentsline {subsection}{\numberline {14.4.3}Lagrangian}{96}{subsection.14.4.3}%
-\contentsline {subsection}{\numberline {14.4.4}Dual formulation}{96}{subsection.14.4.4}%
-\contentsline {subsection}{\numberline {14.4.5}Karush-Khun-Tucker conditions}{97}{subsection.14.4.5}%
-\contentsline {subsection}{\numberline {14.4.6}Support vectors}{97}{subsection.14.4.6}%
-\contentsline {section}{\numberline {14.5}Large-scale SVM learning}{97}{section.14.5}%
-\contentsline {subsection}{\numberline {14.5.1}Stochastic gradient descent}{97}{subsection.14.5.1}%
-\contentsline {subsubsection}{\numberline {14.5.1.1}Pseudocode - pegasus}{97}{subsubsection.14.5.1.1}%
-\contentsline {subsection}{\numberline {14.5.2}Dual version}{98}{subsection.14.5.2}%
-\contentsline {subsubsection}{\numberline {14.5.2.1}Pseudocode - pegasus dual}{98}{subsubsection.14.5.2.1}%
-\contentsline {chapter}{\numberline {15}Non linear support vector machines}{99}{chapter.15}%
-\contentsline {section}{\numberline {15.1}Non-linearly separable problems}{99}{section.15.1}%
-\contentsline {section}{\numberline {15.2}Non-linear support vector machines - feature map}{99}{section.15.2}%
-\contentsline {subsection}{\numberline {15.2.1}Polynomial mapping}{99}{subsection.15.2.1}%
-\contentsline {subsection}{\numberline {15.2.2}Linear separation in feature space}{100}{subsection.15.2.2}%
-\contentsline {section}{\numberline {15.3}Support vector regression}{100}{section.15.3}%
-\contentsline {subsection}{\numberline {15.3.1}$\epsilon $-insensitive loss}{100}{subsection.15.3.1}%
-\contentsline {subsection}{\numberline {15.3.2}Optimization problem}{100}{subsection.15.3.2}%
-\contentsline {subsection}{\numberline {15.3.3}Lagrangian}{100}{subsection.15.3.3}%
-\contentsline {subsubsection}{\numberline {15.3.3.1}Vanishing the derivatives with respect to the primal variables}{101}{subsubsection.15.3.3.1}%
-\contentsline {subsection}{\numberline {15.3.4}Dual formulation}{101}{subsection.15.3.4}%
-\contentsline {subsection}{\numberline {15.3.5}Regression function}{101}{subsection.15.3.5}%
-\contentsline {subsection}{\numberline {15.3.6}KKT conditions}{102}{subsection.15.3.6}%
-\contentsline {subsection}{\numberline {15.3.7}Support vectors}{102}{subsection.15.3.7}%
-\contentsline {section}{\numberline {15.4}Smallest enclosing hypersphere}{102}{section.15.4}%
-\contentsline {subsection}{\numberline {15.4.1}Optimization problem}{102}{subsection.15.4.1}%
-\contentsline {subsection}{\numberline {15.4.2}Lagrangian}{102}{subsection.15.4.2}%
-\contentsline {subsubsection}{\numberline {15.4.2.1}Vanishing the derivatives with respect to the primal variables}{103}{subsubsection.15.4.2.1}%
-\contentsline {subsection}{\numberline {15.4.3}Dual formulation}{103}{subsection.15.4.3}%
-\contentsline {subsection}{\numberline {15.4.4}Distance function}{103}{subsection.15.4.4}%
-\contentsline {subsection}{\numberline {15.4.5}KKT conditions}{104}{subsection.15.4.5}%
-\contentsline {subsection}{\numberline {15.4.6}Support vectors}{104}{subsection.15.4.6}%
-\contentsline {subsection}{\numberline {15.4.7}Decision function}{104}{subsection.15.4.7}%
-\contentsline {section}{\numberline {15.5}Support vector ranking}{104}{section.15.5}%
-\contentsline {subsection}{\numberline {15.5.1}Optimization problem}{104}{subsection.15.5.1}%
-\contentsline {subsection}{\numberline {15.5.2}Support vector classification on pairs}{104}{subsection.15.5.2}%
-\contentsline {subsection}{\numberline {15.5.3}Decision function}{105}{subsection.15.5.3}%
-\contentsline {chapter}{\numberline {16}Kernel machines}{106}{chapter.16}%
-\contentsline {section}{\numberline {16.1}Kernel trick}{106}{section.16.1}%
-\contentsline {subsection}{\numberline {16.1.1}Support vector classification}{106}{subsection.16.1.1}%
-\contentsline {subsubsection}{\numberline {16.1.1.1}Dual optimization problem}{106}{subsubsection.16.1.1.1}%
-\contentsline {subsubsection}{\numberline {16.1.1.2}Dual decision function}{106}{subsubsection.16.1.1.2}%
-\contentsline {subsection}{\numberline {16.1.2}Polynomial kernel}{106}{subsection.16.1.2}%
-\contentsline {subsubsection}{\numberline {16.1.2.1}Homogeneous}{106}{subsubsection.16.1.2.1}%
-\contentsline {subsubsection}{\numberline {16.1.2.2}Inhomogeneous}{107}{subsubsection.16.1.2.2}%
-\contentsline {section}{\numberline {16.2}Valid kernels}{107}{section.16.2}%
-\contentsline {subsection}{\numberline {16.2.1}Dot product in feature space}{107}{subsection.16.2.1}%
-\contentsline {subsection}{\numberline {16.2.2}Gram matrix}{107}{subsection.16.2.2}%
-\contentsline {subsubsection}{\numberline {16.2.2.1}Positive definite matrix}{108}{subsubsection.16.2.2.1}%
-\contentsline {subsection}{\numberline {16.2.3}positive definite kernels}{108}{subsection.16.2.3}%
-\contentsline {subsection}{\numberline {16.2.4}Verifying kernel validity}{108}{subsection.16.2.4}%
-\contentsline {section}{\numberline {16.3}Support vector regression}{108}{section.16.3}%
-\contentsline {subsection}{\numberline {16.3.1}Dual problem}{108}{subsection.16.3.1}%
-\contentsline {subsection}{\numberline {16.3.2}Stochastic Perceptron}{108}{subsection.16.3.2}%
-\contentsline {subsection}{\numberline {16.3.3}Kernel Perceptron}{109}{subsection.16.3.3}%
-\contentsline {section}{\numberline {16.4}Kernels}{109}{section.16.4}%
-\contentsline {subsection}{\numberline {16.4.1}Basic kernels}{109}{subsection.16.4.1}%
-\contentsline {subsubsection}{\numberline {16.4.1.1}Linear kernel}{109}{subsubsection.16.4.1.1}%
-\contentsline {subsubsection}{\numberline {16.4.1.2}Polynomial kernel}{109}{subsubsection.16.4.1.2}%
-\contentsline {subsection}{\numberline {16.4.2}Gaussian kernel}{109}{subsection.16.4.2}%
-\contentsline {subsection}{\numberline {16.4.3}Kernels on structured data}{109}{subsection.16.4.3}%
-\contentsline {subsubsection}{\numberline {16.4.3.1}Match or delta kernel}{109}{subsubsection.16.4.3.1}%
-\contentsline {subsection}{\numberline {16.4.4}Kernels on sequences - spectrum kernel}{110}{subsection.16.4.4}%
-\contentsline {subsection}{\numberline {16.4.5}Kernel combination}{110}{subsection.16.4.5}%
-\contentsline {subsubsection}{\numberline {16.4.5.1}Kernel sum}{110}{subsubsection.16.4.5.1}%
-\contentsline {subsubsection}{\numberline {16.4.5.2}Kernel product}{110}{subsubsection.16.4.5.2}%
-\contentsline {subsubsection}{\numberline {16.4.5.3}Linear combination}{110}{subsubsection.16.4.5.3}%
-\contentsline {subsubsection}{\numberline {16.4.5.4}Kernel normalization}{111}{subsubsection.16.4.5.4}%
-\contentsline {subsubsection}{\numberline {16.4.5.5}Kernel composition}{111}{subsubsection.16.4.5.5}%
-\contentsline {subsection}{\numberline {16.4.6}Kernels on graphs}{111}{subsection.16.4.6}%
-\contentsline {subsubsection}{\numberline {16.4.6.1}Weistfeiler-Lehman graph kernel}{111}{subsubsection.16.4.6.1}%
-\contentsline {paragraph}{\numberline {16.4.6.1.1}Weistfeiler-Lehman isomorphism test}{111}{paragraph.16.4.6.1.1}%
-\contentsline {paragraph}{\numberline {16.4.6.1.2}Weistfeiler-Lehman graph kernel}{112}{paragraph.16.4.6.1.2}%
-\contentsline {chapter}{\numberline {17}Deep networks}{113}{chapter.17}%
-\contentsline {section}{\numberline {17.1}Need for deep networks}{113}{section.17.1}%
-\contentsline {section}{\numberline {17.2}Multilayer perceptron}{113}{section.17.2}%
-\contentsline {subsection}{\numberline {17.2.1}Activation function}{113}{subsection.17.2.1}%
-\contentsline {subsubsection}{\numberline {17.2.1.1}Perceptron}{113}{subsubsection.17.2.1.1}%
-\contentsline {subsubsection}{\numberline {17.2.1.2}Sigmoid}{113}{subsubsection.17.2.1.2}%
-\contentsline {subsection}{\numberline {17.2.2}Output layer}{114}{subsection.17.2.2}%
-\contentsline {subsubsection}{\numberline {17.2.2.1}Binary classification}{114}{subsubsection.17.2.2.1}%
-\contentsline {subsubsection}{\numberline {17.2.2.2}Multiclass classification}{114}{subsubsection.17.2.2.2}%
-\contentsline {subsubsection}{\numberline {17.2.2.3}Regression}{114}{subsubsection.17.2.2.3}%
-\contentsline {subsection}{\numberline {17.2.3}Representational power of a multilayer perceptron}{114}{subsection.17.2.3}%
-\contentsline {subsection}{\numberline {17.2.4}Shallow and deep structures for boolean functions}{115}{subsection.17.2.4}%
-\contentsline {subsubsection}{\numberline {17.2.4.1}Conjunctive normal form}{115}{subsubsection.17.2.4.1}%
-\contentsline {subsubsection}{\numberline {17.2.4.2}Number of gates}{115}{subsubsection.17.2.4.2}%
-\contentsline {subsection}{\numberline {17.2.5}Training MLP}{115}{subsection.17.2.5}%
-\contentsline {subsubsection}{\numberline {17.2.5.1}Common choices for loss functions}{115}{subsubsection.17.2.5.1}%
-\contentsline {paragraph}{\numberline {17.2.5.1.1}Cross entropy}{115}{paragraph.17.2.5.1.1}%
-\contentsline {subparagraph}{\numberline {17.2.5.1.1.1}For binary classification}{115}{subparagraph.17.2.5.1.1.1}%
-\contentsline {subparagraph}{\numberline {17.2.5.1.1.2}For multiclass classification}{115}{subparagraph.17.2.5.1.1.2}%
-\contentsline {paragraph}{\numberline {17.2.5.1.2}Mean squared error}{115}{paragraph.17.2.5.1.2}%
-\contentsline {subsubsection}{\numberline {17.2.5.2}Stochastic gradient descent}{115}{subsubsection.17.2.5.2}%
-\contentsline {subsubsection}{\numberline {17.2.5.3}Backpropagation}{115}{subsubsection.17.2.5.3}%
-\contentsline {subsubsection}{\numberline {17.2.5.4}Output units}{116}{subsubsection.17.2.5.4}%
-\contentsline {subsubsection}{\numberline {17.2.5.5}Hidden units}{116}{subsubsection.17.2.5.5}%
-\contentsline {paragraph}{\numberline {17.2.5.5.1}Derivative of sigmoid}{116}{paragraph.17.2.5.5.1}%
-\contentsline {subsubsection}{\numberline {17.2.5.6}Modular nature of deep architectures}{116}{subsubsection.17.2.5.6}%
-\contentsline {subsubsection}{\numberline {17.2.5.7}Remarks on backpropagation - local minima}{117}{subsubsection.17.2.5.7}%
-\contentsline {subsection}{\numberline {17.2.6}Stopping criterion and generalization}{117}{subsection.17.2.6}%
-\contentsline {subsection}{\numberline {17.2.7}Vanishing gradient}{117}{subsection.17.2.7}%
-\contentsline {section}{\numberline {17.3}Trick of the trade}{117}{section.17.3}%
-\contentsline {subsection}{\numberline {17.3.1}Introduction}{117}{subsection.17.3.1}%
-\contentsline {subsection}{\numberline {17.3.2}Activation functions}{117}{subsection.17.3.2}%
-\contentsline {subsection}{\numberline {17.3.3}Regularization}{118}{subsection.17.3.3}%
-\contentsline {subsubsection}{\numberline {17.3.3.1}2-norm regularization}{118}{subsubsection.17.3.3.1}%
-\contentsline {subsubsection}{\numberline {17.3.3.2}1-norm regularization}{118}{subsubsection.17.3.3.2}%
-\contentsline {subsection}{\numberline {17.3.4}Initialization}{118}{subsection.17.3.4}%
-\contentsline {subsection}{\numberline {17.3.5}Gradient descent}{118}{subsection.17.3.5}%
-\contentsline {subsubsection}{\numberline {17.3.5.1}Batch vs stochastic}{118}{subsubsection.17.3.5.1}%
-\contentsline {subsubsection}{\numberline {17.3.5.2}Momentum}{118}{subsubsection.17.3.5.2}%
-\contentsline {subsection}{\numberline {17.3.6}Adaptive gradient}{119}{subsection.17.3.6}%
-\contentsline {subsubsection}{\numberline {17.3.6.1}Decreasing learning rate}{119}{subsubsection.17.3.6.1}%
-\contentsline {subsubsection}{\numberline {17.3.6.2}Adagrad}{119}{subsubsection.17.3.6.2}%
-\contentsline {subsubsection}{\numberline {17.3.6.3}RMSProp}{119}{subsubsection.17.3.6.3}%
-\contentsline {subsection}{\numberline {17.3.7}Batch normalization}{119}{subsection.17.3.7}%
-\contentsline {subsubsection}{\numberline {17.3.7.1}Covariate shift problem}{119}{subsubsection.17.3.7.1}%
-\contentsline {subsection}{\numberline {17.3.8}Pre-training}{120}{subsection.17.3.8}%
-\contentsline {subsubsection}{\numberline {17.3.8.1}Layerwise pre-training}{120}{subsubsection.17.3.8.1}%
-\contentsline {subsubsection}{\numberline {17.3.8.2}Transfer learning}{120}{subsubsection.17.3.8.2}%
-\contentsline {subsubsection}{\numberline {17.3.8.3}Multi-level supervision}{120}{subsubsection.17.3.8.3}%
-\contentsline {section}{\numberline {17.4}Popular deep architectures}{120}{section.17.4}%
-\contentsline {subsection}{\numberline {17.4.1}Autoencoders}{120}{subsection.17.4.1}%
-\contentsline {subsection}{\numberline {17.4.2}Convolutional networks}{120}{subsection.17.4.2}%
-\contentsline {subsection}{\numberline {17.4.3}Long Short-Term Memory networks}{121}{subsection.17.4.3}%
-\contentsline {subsection}{\numberline {17.4.4}Generative adversarial networks}{121}{subsection.17.4.4}%
-\contentsline {subsubsection}{\numberline {17.4.4.1}Transformers}{121}{subsubsection.17.4.4.1}%
-\contentsline {subsection}{\numberline {17.4.5}Graph neural networks}{121}{subsection.17.4.5}%
-\contentsline {chapter}{\numberline {18}Unsupervised learning}{122}{chapter.18}%
-\contentsline {section}{\numberline {18.1}Setting}{122}{section.18.1}%
-\contentsline {section}{\numberline {18.2}K-means clustering}{122}{section.18.2}%
-\contentsline {subsection}{\numberline {18.2.1}Setting}{122}{subsection.18.2.1}%
-\contentsline {subsection}{\numberline {18.2.2}Algorithm}{122}{subsection.18.2.2}%
-\contentsline {subsection}{\numberline {18.2.3}Defining similarity}{122}{subsection.18.2.3}%
-\contentsline {subsubsection}{\numberline {18.2.3.1}Similarity measures}{122}{subsubsection.18.2.3.1}%
-\contentsline {paragraph}{\numberline {18.2.3.1.1}Standard euclidean distance}{122}{paragraph.18.2.3.1.1}%
-\contentsline {paragraph}{\numberline {18.2.3.1.2}Generic Minkowski metric}{123}{paragraph.18.2.3.1.2}%
-\contentsline {paragraph}{\numberline {18.2.3.1.3}Cosine similarity}{123}{paragraph.18.2.3.1.3}%
-\contentsline {subsubsection}{\numberline {18.2.3.2}Define the quality of the obtained clusters}{123}{subsubsection.18.2.3.2}%
-\contentsline {section}{\numberline {18.3}Gaussian Mixture model GMM}{123}{section.18.3}%
-\contentsline {subsection}{\numberline {18.3.1}Parameter estimation}{123}{subsection.18.3.1}%
-\contentsline {subsection}{\numberline {18.3.2}Estimating means of $k$ univariate Gaussians}{123}{subsection.18.3.2}%
-\contentsline {subsubsection}{\numberline {18.3.2.1}Setting}{123}{subsubsection.18.3.2.1}%
-\contentsline {subsubsection}{\numberline {18.3.2.2}Algorithm}{124}{subsubsection.18.3.2.2}%
-\contentsline {paragraph}{\numberline {18.3.2.2.1}E-step}{124}{paragraph.18.3.2.2.1}%
-\contentsline {paragraph}{\numberline {18.3.2.2.2}M-step}{124}{paragraph.18.3.2.2.2}%
-\contentsline {section}{\numberline {18.4}Expectation-Maximization (EM)}{124}{section.18.4}%
-\contentsline {subsection}{\numberline {18.4.1}Formal setting}{124}{subsection.18.4.1}%
-\contentsline {subsection}{\numberline {18.4.2}Generic algorithm}{124}{subsection.18.4.2}%
-\contentsline {subsection}{\numberline {18.4.3}Estimating means of $k$ univariate Gaussians}{125}{subsection.18.4.3}%
-\contentsline {subsubsection}{\numberline {18.4.3.1}Derivation}{125}{subsubsection.18.4.3.1}%
-\contentsline {subsubsection}{\numberline {18.4.3.2}E-step}{125}{subsubsection.18.4.3.2}%
-\contentsline {subsubsection}{\numberline {18.4.3.3}M-step}{125}{subsubsection.18.4.3.3}%
-\contentsline {section}{\numberline {18.5}Choosing the number of clusters}{126}{section.18.5}%
-\contentsline {subsection}{\numberline {18.5.1}Elbow method}{126}{subsection.18.5.1}%
-\contentsline {subsubsection}{\numberline {18.5.1.1}Idea}{126}{subsubsection.18.5.1.1}%
-\contentsline {subsubsection}{\numberline {18.5.1.2}Approach}{126}{subsubsection.18.5.1.2}%
-\contentsline {subsection}{\numberline {18.5.2}Average silhouette method}{126}{subsection.18.5.2}%
-\contentsline {subsubsection}{\numberline {18.5.2.1}Idea}{126}{subsubsection.18.5.2.1}%
-\contentsline {subsubsection}{\numberline {18.5.2.2}Silhouette coefficient for example $i$}{126}{subsubsection.18.5.2.2}%
-\contentsline {subsubsection}{\numberline {18.5.2.3}Approach}{127}{subsubsection.18.5.2.3}%
-\contentsline {section}{\numberline {18.6}Hierarchical clustering}{127}{section.18.6}%
-\contentsline {subsection}{\numberline {18.6.1}Setting}{127}{subsection.18.6.1}%
-\contentsline {subsection}{\numberline {18.6.2}Top-down approach}{127}{subsection.18.6.2}%
-\contentsline {subsection}{\numberline {18.6.3}Bottom-up approach}{127}{subsection.18.6.3}%
-\contentsline {subsection}{\numberline {18.6.4}Dendograms}{127}{subsection.18.6.4}%
-\contentsline {subsection}{\numberline {18.6.5}Agglomeritive hierarchical clustering}{127}{subsection.18.6.5}%
-\contentsline {subsubsection}{\numberline {18.6.5.1}Algorithm}{127}{subsubsection.18.6.5.1}%
-\contentsline {subsection}{\numberline {18.6.6}Measuring cluster similarities}{128}{subsection.18.6.6}%
-\contentsline {subsection}{\numberline {18.6.7}Stepwise optimal hierarchical clustering}{128}{subsection.18.6.7}%
-\contentsline {subsubsection}{\numberline {18.6.7.1}Algorithm}{128}{subsubsection.18.6.7.1}%
+\contentsline {chapter}{\numberline {1}Introduction}{10}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Formalization of a machine learning problem}{10}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Components of a machine learning problem}{10}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Designing a machine learning system}{10}{subsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.2.1}Formalize the learning task}{11}{subsubsection.1.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.1.2.2}Collect data}{11}{subsubsection.1.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.1.2.3}Extract features}{11}{subsubsection.1.1.2.3}%
+\contentsline {subsubsection}{\numberline {1.1.2.4}Choose class of learning models}{11}{subsubsection.1.1.2.4}%
+\contentsline {subsubsection}{\numberline {1.1.2.5}Train model}{11}{subsubsection.1.1.2.5}%
+\contentsline {subsubsection}{\numberline {1.1.2.6}Evaluate model}{11}{subsubsection.1.1.2.6}%
+\contentsline {section}{\numberline {1.2}Learning settings}{12}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Supervised learning}{12}{subsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.1.1}Tasks}{12}{subsubsection.1.2.1.1}%
+\contentsline {paragraph}{\numberline {1.2.1.1.1}Classification}{12}{paragraph.1.2.1.1.1}%
+\contentsline {paragraph}{\numberline {1.2.1.1.2}Regression}{12}{paragraph.1.2.1.1.2}%
+\contentsline {paragraph}{\numberline {1.2.1.1.3}Ordinal regression or ranking}{12}{paragraph.1.2.1.1.3}%
+\contentsline {subsection}{\numberline {1.2.2}Unsupervised learning}{12}{subsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.2.1}Tasks}{12}{subsubsection.1.2.2.1}%
+\contentsline {paragraph}{\numberline {1.2.2.1.1}Dimensionality reduction}{12}{paragraph.1.2.2.1.1}%
+\contentsline {paragraph}{\numberline {1.2.2.1.2}Clustering}{12}{paragraph.1.2.2.1.2}%
+\contentsline {paragraph}{\numberline {1.2.2.1.3}Novelty detection}{12}{paragraph.1.2.2.1.3}%
+\contentsline {subsection}{\numberline {1.2.3}Semi-supervised learning}{12}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Reinforcement learning}{13}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}Probabilistic reasoning}{13}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Choice of learning algorithms}{13}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Based on information available}{13}{subsection.1.4.1}%
+\contentsline {chapter}{\numberline {2}Decision trees learning}{14}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{14}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Appropriate problems for decision trees}{14}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Learning decision trees}{14}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Greedy top-down strategy}{14}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Choosing the best attribute}{15}{subsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.2.1}Information gain}{15}{subsubsection.2.2.2.1}%
+\contentsline {section}{\numberline {2.3}Issues in decision tree learning}{15}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Overfitting avoidance}{15}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Post-pruning}{15}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Dealing with continues valued attributes}{16}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Alternative attribute test measures}{16}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Handling attributes with missing values}{16}{subsection.2.3.5}%
+\contentsline {section}{\numberline {2.4}Random forest}{17}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Training}{17}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Testing}{17}{subsection.2.4.2}%
+\contentsline {chapter}{\numberline {3}K-nearest neighbours}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{18}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Measuring the instance between instances}{18}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Metric or distance definition}{18}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Euclidean distance}{18}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Algorithms}{19}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Classification}{19}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Regression}{19}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Characteristics}{19}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Distance weighted k-nearest neighbour}{19}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Linear algebra}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Vector space}{21}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Properties and operations}{21}{subsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.1}Subspace}{21}{subsubsection.4.1.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1.2}Linear combination}{21}{subsubsection.4.1.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.1.3}Span}{21}{subsubsection.4.1.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.1.4}Linear independence}{22}{subsubsection.4.1.1.4}%
+\contentsline {subsection}{\numberline {4.1.2}Basis}{22}{subsection.4.1.2}%
+\contentsline {section}{\numberline {4.2}Matrices}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Linear maps}{22}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Linear maps as matrices}{22}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}Matrix of basis transformation}{22}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}Matrix changing the coordinates, 2D examples}{23}{subsubsection.4.2.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Matrix properties}{23}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}Transpose}{23}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}Trace}{23}{subsubsection.4.2.3.2}%
+\contentsline {subsubsection}{\numberline {4.2.3.3}Inverse}{23}{subsubsection.4.2.3.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.4}Rank}{23}{subsubsection.4.2.3.4}%
+\contentsline {subsection}{\numberline {4.2.4}Matrix derivatives}{24}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Metric structure}{24}{subsection.4.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.5.1}Norm}{24}{subsubsection.4.2.5.1}%
+\contentsline {subsubsection}{\numberline {4.2.5.2}Metric}{24}{subsubsection.4.2.5.2}%
+\contentsline {subsection}{\numberline {4.2.6}Dot product}{24}{subsection.4.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.6.1}Norm}{24}{subsubsection.4.2.6.1}%
+\contentsline {subsubsection}{\numberline {4.2.6.2}Properties}{25}{subsubsection.4.2.6.2}%
+\contentsline {paragraph}{\numberline {4.2.6.2.1}Angle}{25}{paragraph.4.2.6.2.1}%
+\contentsline {paragraph}{\numberline {4.2.6.2.2}Orthogonal}{25}{paragraph.4.2.6.2.2}%
+\contentsline {paragraph}{\numberline {4.2.6.2.3}Orthonormal}{25}{paragraph.4.2.6.2.3}%
+\contentsline {section}{\numberline {4.3}Eigenvalues and eigenvectors}{25}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Cardinality}{25}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Singular matrices}{25}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Symmetric matrices}{25}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Eigen-decomposition}{26}{subsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.1}Raleigh quotient}{26}{subsubsection.4.3.4.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.2}Finding eigenvector}{26}{subsubsection.4.3.4.2}%
+\contentsline {subsubsection}{\numberline {4.3.4.3}Deflating matrix}{26}{subsubsection.4.3.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.4.4}Iterating}{26}{subsubsection.4.3.4.4}%
+\contentsline {subsubsection}{\numberline {4.3.4.5}Eigen-decomposition}{26}{subsubsection.4.3.4.5}%
+\contentsline {paragraph}{\numberline {4.3.4.5.1}Proof}{27}{paragraph.4.3.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.3.4.6}Positive semi-definite matrix}{27}{subsubsection.4.3.4.6}%
+\contentsline {subsubsection}{\numberline {4.3.4.7}Scaling transformation in standard basis}{27}{subsubsection.4.3.4.7}%
+\contentsline {subsubsection}{\numberline {4.3.4.8}Scaling transformation in eigenbasis}{27}{subsubsection.4.3.4.8}%
+\contentsline {section}{\numberline {4.4}Principal component analysis}{27}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Procedure}{27}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Dimensionality reduction}{28}{subsection.4.4.2}%
+\contentsline {chapter}{\numberline {5}Probability theory}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Discrete random variables}{29}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Probability mass function}{29}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Expected value}{29}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Variance}{29}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Properties of mean and variance}{30}{subsection.5.1.4}%
+\contentsline {subsubsection}{\numberline {5.1.4.1}Second moment}{30}{subsubsection.5.1.4.1}%
+\contentsline {subsubsection}{\numberline {5.1.4.2}Variance in term of expectation}{30}{subsubsection.5.1.4.2}%
+\contentsline {subsubsection}{\numberline {5.1.4.3}Variance and scalar multiplication}{30}{subsubsection.5.1.4.3}%
+\contentsline {subsubsection}{\numberline {5.1.4.4}Variance of uncorrelated variables}{30}{subsubsection.5.1.4.4}%
+\contentsline {subsection}{\numberline {5.1.5}Probability distributions}{30}{subsection.5.1.5}%
+\contentsline {subsubsection}{\numberline {5.1.5.1}Bernoulli distribution}{30}{subsubsection.5.1.5.1}%
+\contentsline {paragraph}{\numberline {5.1.5.1.1}Proof of mean}{30}{paragraph.5.1.5.1.1}%
+\contentsline {paragraph}{\numberline {5.1.5.1.2}Proof of variance}{30}{paragraph.5.1.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.5.2}Binomial distribution}{30}{subsubsection.5.1.5.2}%
+\contentsline {subsection}{\numberline {5.1.6}Pairs of discrete random variables}{31}{subsection.5.1.6}%
+\contentsline {subsubsection}{\numberline {5.1.6.1}Probability mass function}{31}{subsubsection.5.1.6.1}%
+\contentsline {subsubsection}{\numberline {5.1.6.2}Properties}{31}{subsubsection.5.1.6.2}%
+\contentsline {paragraph}{\numberline {5.1.6.2.1}Expected value}{31}{paragraph.5.1.6.2.1}%
+\contentsline {paragraph}{\numberline {5.1.6.2.2}Variance}{31}{paragraph.5.1.6.2.2}%
+\contentsline {paragraph}{\numberline {5.1.6.2.3}Covariance}{31}{paragraph.5.1.6.2.3}%
+\contentsline {paragraph}{\numberline {5.1.6.2.4}Correlation coefficient}{31}{paragraph.5.1.6.2.4}%
+\contentsline {subsubsection}{\numberline {5.1.6.3}Multinomial distribution}{31}{subsubsection.5.1.6.3}%
+\contentsline {section}{\numberline {5.2}Conditionally probability}{32}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Basic rules}{32}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}Law of total probability}{32}{subsubsection.5.2.1.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}Product rule}{32}{subsubsection.5.2.1.2}%
+\contentsline {subsection}{\numberline {5.2.2}Bayes' rule}{32}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Continuous random variables}{33}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Cumulative distribution function}{33}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Probability density function}{33}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Probability distribution}{33}{subsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.1}Gaussian or normal distribution}{33}{subsubsection.5.3.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.3.2}Beta distribution}{34}{subsubsection.5.3.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3.3}Multivariate normal distribution}{34}{subsubsection.5.3.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.3.4}Dirichlet distribution}{34}{subsubsection.5.3.3.4}%
+\contentsline {section}{\numberline {5.4}Probability laws}{35}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Expectation of an average}{35}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Variance of an average}{35}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Chebyshev's inequality}{35}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Law of large numbers}{35}{subsection.5.4.4}%
+\contentsline {subsection}{\numberline {5.4.5}Central limit theorem}{36}{subsection.5.4.5}%
+\contentsline {subsubsection}{\numberline {5.4.5.1}Interpretation}{36}{subsubsection.5.4.5.1}%
+\contentsline {section}{\numberline {5.5}Information theory}{36}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Entropy}{36}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Cross entropy}{36}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Relative entropy}{37}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Conditional entropy}{37}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Mutual information}{37}{subsection.5.5.5}%
+\contentsline {chapter}{\numberline {6}Evaluation}{38}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction}{38}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Performance measures}{38}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Training loss and performance measures}{38}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Binary classification}{38}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}Accuracy}{39}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}Precision}{39}{subsubsection.6.2.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.3}Recall or sensitivity}{39}{subsubsection.6.2.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.2.4}F-measure}{39}{subsubsection.6.2.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.2.5}Precision-recall curve}{39}{subsubsection.6.2.2.5}%
+\contentsline {subsection}{\numberline {6.2.3}Multiclass classification}{40}{subsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.3.1}Muliclass accuracy}{40}{subsubsection.6.2.3.1}%
+\contentsline {subsection}{\numberline {6.2.4}Regression}{40}{subsection.6.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.4.1}Root mean squared error}{40}{subsubsection.6.2.4.1}%
+\contentsline {subsubsection}{\numberline {6.2.4.2}Pearson correlation coefficient}{40}{subsubsection.6.2.4.2}%
+\contentsline {subsubsection}{\numberline {6.2.4.3}Hold-out procedure}{40}{subsubsection.6.2.4.3}%
+\contentsline {subsubsection}{\numberline {6.2.4.4}K-fold cross validation}{41}{subsubsection.6.2.4.4}%
+\contentsline {paragraph}{\numberline {6.2.4.4.1}Variance}{41}{paragraph.6.2.4.4.1}%
+\contentsline {section}{\numberline {6.3}Hypothesis testing}{41}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Test statistic}{41}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Glossary}{41}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}T-test}{42}{subsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.3.1}$t_{k-1}$ distribution}{42}{subsubsection.6.3.3.1}%
+\contentsline {subsection}{\numberline {6.3.4}Comparing learning algorithms}{42}{subsection.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.4.1}Hypothesis testing}{42}{subsubsection.6.3.4.1}%
+\contentsline {subsubsection}{\numberline {6.3.4.2}T-test}{42}{subsubsection.6.3.4.2}%
+\contentsline {subsubsection}{\numberline {6.3.4.3}Notes}{43}{subsubsection.6.3.4.3}%
+\contentsline {chapter}{\numberline {7}Bayesian decision theory}{44}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introduction}{44}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Input-output pairs}{44}{subsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.1.1}Output given input}{44}{subsubsection.7.1.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Expected error}{44}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Bayes decision rule}{45}{subsection.7.1.3}%
+\contentsline {subsubsection}{\numberline {7.1.3.1}Binary case}{45}{subsubsection.7.1.3.1}%
+\contentsline {subsubsection}{\numberline {7.1.3.2}Multiclass case}{45}{subsubsection.7.1.3.2}%
+\contentsline {subsubsection}{\numberline {7.1.3.3}Optimal rule}{45}{subsubsection.7.1.3.3}%
+\contentsline {section}{\numberline {7.2}Representing classifiers}{45}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Discriminant functions}{45}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Decision regions}{45}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Multivariate normal density}{46}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Hyperellipsoids}{46}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Discriminant functions for normal density}{46}{subsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.2.1}Case $\Sigma _i = \sigma ^2 I$}{46}{subsubsection.7.3.2.1}%
+\contentsline {paragraph}{\numberline {7.3.2.1.1}Separating hyperplane}{47}{paragraph.7.3.2.1.1}%
+\contentsline {subparagraph}{\numberline {7.3.2.1.1.1}Derivation of the separating hyperplane}{47}{subparagraph.7.3.2.1.1.1}%
+\contentsline {subsubsection}{\numberline {7.3.2.2}Case $\Sigma _i = \Sigma $}{47}{subsubsection.7.3.2.2}%
+\contentsline {subsubsection}{\numberline {7.3.2.3}Case $\Sigma _i$ arbitrary}{48}{subsubsection.7.3.2.3}%
+\contentsline {section}{\numberline {7.4}Arbitrary inputs and outputs}{48}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Setting}{48}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Risk}{48}{subsection.7.4.2}%
+\contentsline {subsubsection}{\numberline {7.4.2.1}Conditional risk}{48}{subsubsection.7.4.2.1}%
+\contentsline {subsubsection}{\numberline {7.4.2.2}Overall risk}{48}{subsubsection.7.4.2.2}%
+\contentsline {subsection}{\numberline {7.4.3}Bayes decision rule}{48}{subsection.7.4.3}%
+\contentsline {section}{\numberline {7.5}Handling features}{48}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Handling missing features - marginalize over missing variables}{48}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Handling noisy features - marginalize over true variables}{49}{subsection.7.5.2}%
+\contentsline {chapter}{\numberline {8}Parameter estimation}{50}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Introduction}{50}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Setting}{50}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Task}{50}{subsection.8.1.2}%
+\contentsline {subsection}{\numberline {8.1.3}Multi class classification}{50}{subsection.8.1.3}%
+\contentsline {subsubsection}{\numberline {8.1.3.1}Simplifications}{50}{subsubsection.8.1.3.1}%
+\contentsline {section}{\numberline {8.2}Maximum likelihood}{51}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Setting}{51}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Maximizing log-likelihood}{51}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Univariate Gaussian case}{51}{subsection.8.2.3}%
+\contentsline {subsubsection}{\numberline {8.2.3.1}Mean}{52}{subsubsection.8.2.3.1}%
+\contentsline {subsubsection}{\numberline {8.2.3.2}Variance}{52}{subsubsection.8.2.3.2}%
+\contentsline {subsection}{\numberline {8.2.4}Multivariate Gaussian case}{52}{subsection.8.2.4}%
+\contentsline {subsubsection}{\numberline {8.2.4.1}Proof for the mean}{53}{subsubsection.8.2.4.1}%
+\contentsline {subsubsection}{\numberline {8.2.4.2}Proof for the covariance}{53}{subsubsection.8.2.4.2}%
+\contentsline {subsection}{\numberline {8.2.5}General Gaussian case}{54}{subsection.8.2.5}%
+\contentsline {section}{\numberline {8.3}Bayesian estimation}{54}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Setting}{55}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Univariate normal case - unknown $\mu $, known $\sigma ^2$}{55}{subsection.8.3.2}%
+\contentsline {subsubsection}{\numberline {8.3.2.1}A posteriori parameter density}{55}{subsubsection.8.3.2.1}%
+\contentsline {subsubsection}{\numberline {8.3.2.2}Recovering mean and variance}{56}{subsubsection.8.3.2.2}%
+\contentsline {subsubsection}{\numberline {8.3.2.3}Interpreting the posterior}{56}{subsubsection.8.3.2.3}%
+\contentsline {subsubsection}{\numberline {8.3.2.4}Computing the class conditional density}{56}{subsubsection.8.3.2.4}%
+\contentsline {subsection}{\numberline {8.3.3}Multivariate normal case - unknown $\mu $, known $\Sigma $}{56}{subsection.8.3.3}%
+\contentsline {subsection}{\numberline {8.3.4}Gamma distribution}{57}{subsection.8.3.4}%
+\contentsline {subsection}{\numberline {8.3.5}Univariate normal case - unknown $\mu $ and $\lambda = \frac {1}{\sigma ^2}$}{57}{subsection.8.3.5}%
+\contentsline {subsubsection}{\numberline {8.3.5.1}A posteriori parameter density}{57}{subsubsection.8.3.5.1}%
+\contentsline {subsubsection}{\numberline {8.3.5.2}Computing the posterior predictive}{58}{subsubsection.8.3.5.2}%
+\contentsline {subsection}{\numberline {8.3.6}Wishart distribution}{58}{subsection.8.3.6}%
+\contentsline {subsection}{\numberline {8.3.7}Multivariate normal case - unknown $\mu $ and $\Sigma $}{58}{subsection.8.3.7}%
+\contentsline {subsubsection}{\numberline {8.3.7.1}A posteriori parameter density}{58}{subsubsection.8.3.7.1}%
+\contentsline {subsubsection}{\numberline {8.3.7.2}Computing the posterior predictive}{58}{subsubsection.8.3.7.2}%
+\contentsline {section}{\numberline {8.4}Sufficient statistics}{59}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Definition}{59}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Conjugate priors}{59}{subsection.8.4.2}%
+\contentsline {section}{\numberline {8.5}Bernoulli distribution}{59}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Setting}{59}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Maximum likelihood estimation}{59}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}Bayesian estimation}{60}{subsection.8.5.3}%
+\contentsline {subsubsection}{\numberline {8.5.3.1}Interpreting priors}{60}{subsubsection.8.5.3.1}%
+\contentsline {section}{\numberline {8.6}Multinomial distribution}{60}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Setting}{60}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Maximum likelihood estimation}{60}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Bayesian estimation}{61}{subsection.8.6.3}%
+\contentsline {chapter}{\numberline {9}Bayesian networks}{62}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Introduction}{62}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Bayesian networks semantics}{62}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Graph and distributions}{62}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Factorization}{63}{subsection.9.1.3}%
+\contentsline {subsubsection}{\numberline {9.1.3.1}Proof that from I-map follows factorization}{63}{subsubsection.9.1.3.1}%
+\contentsline {subsubsection}{\numberline {9.1.3.2}Proof that from factorization follows I-map}{63}{subsubsection.9.1.3.2}%
+\contentsline {subsection}{\numberline {9.1.4}Bayesian network definition}{64}{subsection.9.1.4}%
+\contentsline {subsubsection}{\numberline {9.1.4.1}Factorized probability}{64}{subsubsection.9.1.4.1}%
+\contentsline {section}{\numberline {9.2}Conditional independence}{64}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}D separation}{64}{subsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.1.1}Tail to tail}{64}{subsubsection.9.2.1.1}%
+\contentsline {subsubsection}{\numberline {9.2.1.2}Head to tail}{65}{subsubsection.9.2.1.2}%
+\contentsline {subsubsection}{\numberline {9.2.1.3}Head to head}{65}{subsubsection.9.2.1.3}%
+\contentsline {subsubsection}{\numberline {9.2.1.4}General head-to-head}{65}{subsubsection.9.2.1.4}%
+\contentsline {subsection}{\numberline {9.2.2}General d-separation criterion}{66}{subsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.2.1}d-separation definition}{66}{subsubsection.9.2.2.1}%
+\contentsline {section}{\numberline {9.3}BN independence revisited}{66}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Independence assumptions}{66}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}BN equivalence classes}{66}{subsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {9.3.2.1}I-equivalence}{66}{subsubsection.9.3.2.1}%
+\contentsline {paragraph}{\numberline {9.3.2.1.1}Sufficient conditions}{66}{paragraph.9.3.2.1.1}%
+\contentsline {paragraph}{\numberline {9.3.2.1.2}Necessary and sufficient conditions}{66}{paragraph.9.3.2.1.2}%
+\contentsline {paragraph}{\numberline {9.3.2.1.3}Equivalence class}{66}{paragraph.9.3.2.1.3}%
+\contentsline {subparagraph}{\numberline {9.3.2.1.3.1}Partially directed acyclic graph}{66}{subparagraph.9.3.2.1.3.1}%
+\contentsline {subparagraph}{\numberline {9.3.2.1.3.2}Representing an equivalence class}{66}{subparagraph.9.3.2.1.3.2}%
+\contentsline {subparagraph}{\numberline {9.3.2.1.3.3}Generating members}{67}{subparagraph.9.3.2.1.3.3}%
+\contentsline {subsection}{\numberline {9.3.3}I-maps and distributions}{67}{subsection.9.3.3}%
+\contentsline {subsubsection}{\numberline {9.3.3.1}Minimal I-maps}{67}{subsubsection.9.3.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.3.2}Perfect maps P-maps}{67}{subsubsection.9.3.3.2}%
+\contentsline {subsection}{\numberline {9.3.4}Building Bayesian networks}{67}{subsection.9.3.4}%
+\contentsline {section}{\numberline {9.4}Markov blanket or boundary}{67}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Definition}{67}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}d-separation}{68}{subsection.9.4.2}%
+\contentsline {chapter}{\numberline {10}Bayesian networks inference}{69}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Inference in graphical models}{69}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Efficiency}{69}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Inference on a chain}{69}{subsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.1.3}Inference as message passing}{70}{subsection.10.1.3}%
+\contentsline {subsection}{\numberline {10.1.4}Full message passing}{70}{subsection.10.1.4}%
+\contentsline {subsection}{\numberline {10.1.5}Adding evidence}{70}{subsection.10.1.5}%
+\contentsline {subsection}{\numberline {10.1.6}Computing conditional probability given evidence}{71}{subsection.10.1.6}%
+\contentsline {subsection}{\numberline {10.1.7}Inference on trees}{71}{subsection.10.1.7}%
+\contentsline {section}{\numberline {10.2}Factor graphs}{71}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Description}{71}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Sum-product algorithm}{71}{subsection.10.2.2}%
+\contentsline {subsubsection}{\numberline {10.2.2.1}Computing marginals}{71}{subsubsection.10.2.2.1}%
+\contentsline {subsubsection}{\numberline {10.2.2.2}Factor messages}{71}{subsubsection.10.2.2.2}%
+\contentsline {subsubsection}{\numberline {10.2.2.3}Node messages}{72}{subsubsection.10.2.2.3}%
+\contentsline {subsubsection}{\numberline {10.2.2.4}Initialization}{72}{subsubsection.10.2.2.4}%
+\contentsline {subsubsection}{\numberline {10.2.2.5}Message passing scheme}{72}{subsubsection.10.2.2.5}%
+\contentsline {subsubsection}{\numberline {10.2.2.6}Full message passing scheme}{72}{subsubsection.10.2.2.6}%
+\contentsline {subsubsection}{\numberline {10.2.2.7}Adding evidence}{72}{subsubsection.10.2.2.7}%
+\contentsline {section}{\numberline {10.3}Finding the most probable configuration}{72}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}The max-product algorithm}{73}{subsection.10.3.1}%
+\contentsline {subsubsection}{\numberline {10.3.1.1}Linear chain}{73}{subsubsection.10.3.1.1}%
+\contentsline {subsubsection}{\numberline {10.3.1.2}Message passing}{73}{subsubsection.10.3.1.2}%
+\contentsline {subsubsection}{\numberline {10.3.1.3}Recovering maximal configuration}{73}{subsubsection.10.3.1.3}%
+\contentsline {subsubsection}{\numberline {10.3.1.4}Trellis for linear chain}{74}{subsubsection.10.3.1.4}%
+\contentsline {section}{\numberline {10.4}Approximate inference}{74}{section.10.4}%
+\contentsline {subsection}{\numberline {10.4.1}Underflow issues}{74}{subsection.10.4.1}%
+\contentsline {subsection}{\numberline {10.4.2}Exact inference on general graphs}{74}{subsection.10.4.2}%
+\contentsline {subsection}{\numberline {10.4.3}Problem with exact inference}{74}{subsection.10.4.3}%
+\contentsline {subsection}{\numberline {10.4.4}Loopy belief propagation}{74}{subsection.10.4.4}%
+\contentsline {subsection}{\numberline {10.4.5}Variational methods}{74}{subsection.10.4.5}%
+\contentsline {subsection}{\numberline {10.4.6}Sampling methods}{75}{subsection.10.4.6}%
+\contentsline {subsubsection}{\numberline {10.4.6.1}Markov chain monte Carlo}{75}{subsubsection.10.4.6.1}%
+\contentsline {section}{\numberline {10.5}Markov chain}{75}{section.10.5}%
+\contentsline {subsection}{\numberline {10.5.1}Definition}{75}{subsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.5.2}Homogeneous chains}{75}{subsection.10.5.2}%
+\contentsline {subsection}{\numberline {10.5.3}Chain dynamics}{75}{subsection.10.5.3}%
+\contentsline {subsection}{\numberline {10.5.4}Convergence}{76}{subsection.10.5.4}%
+\contentsline {subsection}{\numberline {10.5.5}Stationary distribution}{76}{subsection.10.5.5}%
+\contentsline {subsection}{\numberline {10.5.6}Requirements}{76}{subsection.10.5.6}%
+\contentsline {subsection}{\numberline {10.5.7}Regular chains}{76}{subsection.10.5.7}%
+\contentsline {subsection}{\numberline {10.5.8}Markov chains for graphical models}{76}{subsection.10.5.8}%
+\contentsline {subsection}{\numberline {10.5.9}Transition model}{76}{subsection.10.5.9}%
+\contentsline {subsection}{\numberline {10.5.10}Gibbs sampling}{77}{subsection.10.5.10}%
+\contentsline {subsubsection}{\numberline {10.5.10.1}Regularity}{77}{subsubsection.10.5.10.1}%
+\contentsline {subsubsection}{\numberline {10.5.10.2}Positivity}{77}{subsubsection.10.5.10.2}%
+\contentsline {subsection}{\numberline {10.5.11}Computing local transition probabilities}{77}{subsection.10.5.11}%
+\contentsline {subsection}{\numberline {10.5.12}Generating samples}{77}{subsection.10.5.12}%
+\contentsline {chapter}{\numberline {11}Learning Bayesian networks}{78}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Parameter estimation}{78}{section.11.1}%
+\contentsline {subsection}{\numberline {11.1.1}Maximum likelihood estimation - complete data}{78}{subsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.1.1}Learning Bayesian networks}{78}{subsubsection.11.1.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.1.2}Learning graphical models}{78}{subsubsection.11.1.1.2}%
+\contentsline {subsection}{\numberline {11.1.2}Learning graphical models - adding priors}{79}{subsection.11.1.2}%
+\contentsline {subsubsection}{\numberline {11.1.2.1}Dirichlet prior}{79}{subsubsection.11.1.2.1}%
+\contentsline {subsection}{\numberline {11.1.3}Learning with missing data}{80}{subsection.11.1.3}%
+\contentsline {subsubsection}{\numberline {11.1.3.1}Expectation-maximization for Bayesian networks}{80}{subsubsection.11.1.3.1}%
+\contentsline {subsubsection}{\numberline {11.1.3.2}Expectation maximization algorithm}{80}{subsubsection.11.1.3.2}%
+\contentsline {paragraph}{\numberline {11.1.3.2.1}e-step}{80}{paragraph.11.1.3.2.1}%
+\contentsline {paragraph}{\numberline {11.1.3.2.2}m-step}{80}{paragraph.11.1.3.2.2}%
+\contentsline {section}{\numberline {11.2}Learning the structure of graphical models}{80}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Model averaging approach}{80}{subsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {11.2.1.1}Model selection}{81}{subsubsection.11.2.1.1}%
+\contentsline {subsection}{\numberline {11.2.2}Constraint based approach}{81}{subsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.2.3}Score based approach}{81}{subsection.11.2.3}%
+\contentsline {subsubsection}{\numberline {11.2.3.1}Maximum likelihood approximation}{81}{subsubsection.11.2.3.1}%
+\contentsline {subsubsection}{\numberline {11.2.3.2}Bayesian-Dirichlet scoring}{82}{subsubsection.11.2.3.2}%
+\contentsline {paragraph}{\numberline {11.2.3.2.1}Simple case}{82}{paragraph.11.2.3.2.1}%
+\contentsline {subparagraph}{\numberline {11.2.3.2.1.1}Setting}{82}{subparagraph.11.2.3.2.1.1}%
+\contentsline {subparagraph}{\numberline {11.2.3.2.1.2}Approach}{82}{subparagraph.11.2.3.2.1.2}%
+\contentsline {paragraph}{\numberline {11.2.3.2.2}General case}{82}{paragraph.11.2.3.2.2}%
+\contentsline {subsubsection}{\numberline {11.2.3.3}Search strategy}{83}{subsubsection.11.2.3.3}%
+\contentsline {chapter}{\numberline {12}Naive Bayes classifier}{84}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Setting}{84}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Learning problem}{84}{subsection.12.1.1}%
+\contentsline {section}{\numberline {12.2}Definition}{84}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Single distribution case}{84}{subsection.12.2.1}%
+\contentsline {section}{\numberline {12.3}Parameters learning}{85}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Examples}{85}{section.12.4}%
+\contentsline {subsection}{\numberline {12.4.1}Text classification}{85}{subsection.12.4.1}%
+\contentsline {subsubsection}{\numberline {12.4.1.1}Naive Bayes learning}{85}{subsubsection.12.4.1.1}%
+\contentsline {subsubsection}{\numberline {12.4.1.2}Naive Bayes classification}{85}{subsubsection.12.4.1.2}%
+\contentsline {subsubsection}{\numberline {12.4.1.3}Parameter estimation}{86}{subsubsection.12.4.1.3}%
+\contentsline {chapter}{\numberline {13}Linear discriminant functions}{87}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Discriminative learning}{87}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Pros of discriminative learning}{87}{subsection.13.1.1}%
+\contentsline {subsection}{\numberline {13.1.2}Cons of discriminative learning}{87}{subsection.13.1.2}%
+\contentsline {section}{\numberline {13.2}Linear discriminant functions}{87}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}Description}{87}{subsection.13.2.1}%
+\contentsline {subsection}{\numberline {13.2.2}Linear binary classifier}{87}{subsection.13.2.2}%
+\contentsline {subsubsection}{\numberline {13.2.2.1}Functional margin}{88}{subsubsection.13.2.2.1}%
+\contentsline {subsubsection}{\numberline {13.2.2.2}Geometric margin}{88}{subsubsection.13.2.2.2}%
+\contentsline {section}{\numberline {13.3}Perceptron}{88}{section.13.3}%
+\contentsline {subsection}{\numberline {13.3.1}Biological motivation}{88}{subsection.13.3.1}%
+\contentsline {subsection}{\numberline {13.3.2}Representational power}{89}{subsection.13.3.2}%
+\contentsline {subsection}{\numberline {13.3.3}Augmented feature or weight vectors}{89}{subsection.13.3.3}%
+\contentsline {subsection}{\numberline {13.3.4}Parameter learning}{89}{subsection.13.3.4}%
+\contentsline {subsubsection}{\numberline {13.3.4.1}Error minimization}{89}{subsubsection.13.3.4.1}%
+\contentsline {subsubsection}{\numberline {13.3.4.2}Gradient descent}{89}{subsubsection.13.3.4.2}%
+\contentsline {subsection}{\numberline {13.3.5}Perceptron training rule}{89}{subsection.13.3.5}%
+\contentsline {subsection}{\numberline {13.3.6}Stochastic perceptron training rule}{90}{subsection.13.3.6}%
+\contentsline {subsection}{\numberline {13.3.7}Perceptron regression}{90}{subsection.13.3.7}%
+\contentsline {subsubsection}{\numberline {13.3.7.1}Exact solution}{90}{subsubsection.13.3.7.1}%
+\contentsline {subsubsection}{\numberline {13.3.7.2}Mean squared error}{90}{subsubsection.13.3.7.2}%
+\contentsline {paragraph}{\numberline {13.3.7.2.1}Closed form solution}{91}{paragraph.13.3.7.2.1}%
+\contentsline {paragraph}{\numberline {13.3.7.2.2}Gradient descent}{91}{paragraph.13.3.7.2.2}%
+\contentsline {section}{\numberline {13.4}Multiclass classification}{91}{section.13.4}%
+\contentsline {subsection}{\numberline {13.4.1}One-vs-all}{91}{subsection.13.4.1}%
+\contentsline {subsection}{\numberline {13.4.2}All-pairs}{91}{subsection.13.4.2}%
+\contentsline {section}{\numberline {13.5}Generative linear classifiers}{92}{section.13.5}%
+\contentsline {subsection}{\numberline {13.5.1}Gaussian distributions}{92}{subsection.13.5.1}%
+\contentsline {subsection}{\numberline {13.5.2}Naive Bayes classifier}{92}{subsection.13.5.2}%
+\contentsline {chapter}{\numberline {14}Support vector machines}{93}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Introduction}{93}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Maximum margin classifiers}{93}{section.14.2}%
+\contentsline {subsection}{\numberline {14.2.1}Classifier margin}{93}{subsection.14.2.1}%
+\contentsline {subsection}{\numberline {14.2.2}Canonical hyperplane}{93}{subsection.14.2.2}%
+\contentsline {section}{\numberline {14.3}Hard margin support vector machine}{94}{section.14.3}%
+\contentsline {subsection}{\numberline {14.3.1}Margin error bound theorem}{94}{subsection.14.3.1}%
+\contentsline {subsubsection}{\numberline {14.3.1.1}Interpretation of the margin error bound}{94}{subsubsection.14.3.1.1}%
+\contentsline {subsection}{\numberline {14.3.2}Learning problem}{94}{subsection.14.3.2}%
+\contentsline {subsection}{\numberline {14.3.3}Constrained optimization - Karush-Kuhn-Tucker (KKT) approach}{94}{subsection.14.3.3}%
+\contentsline {subsection}{\numberline {14.3.4}KKT approach in SVM}{95}{subsection.14.3.4}%
+\contentsline {subsubsection}{\numberline {14.3.4.1}Dual formulation}{95}{subsubsection.14.3.4.1}%
+\contentsline {subsection}{\numberline {14.3.5}Decision function}{95}{subsection.14.3.5}%
+\contentsline {subsection}{\numberline {14.3.6}KKT conditions}{96}{subsection.14.3.6}%
+\contentsline {subsection}{\numberline {14.3.7}Support vectors}{96}{subsection.14.3.7}%
+\contentsline {subsection}{\numberline {14.3.8}Decision function bias}{96}{subsection.14.3.8}%
+\contentsline {section}{\numberline {14.4}Soft margin SVM}{96}{section.14.4}%
+\contentsline {subsection}{\numberline {14.4.1}Slack variables}{96}{subsection.14.4.1}%
+\contentsline {subsection}{\numberline {14.4.2}Regularization theory}{97}{subsection.14.4.2}%
+\contentsline {subsubsection}{\numberline {14.4.2.1}Hinge loss}{97}{subsubsection.14.4.2.1}%
+\contentsline {subsection}{\numberline {14.4.3}Lagrangian}{97}{subsection.14.4.3}%
+\contentsline {subsection}{\numberline {14.4.4}Dual formulation}{97}{subsection.14.4.4}%
+\contentsline {subsection}{\numberline {14.4.5}Karush-Khun-Tucker conditions}{98}{subsection.14.4.5}%
+\contentsline {subsection}{\numberline {14.4.6}Support vectors}{98}{subsection.14.4.6}%
+\contentsline {section}{\numberline {14.5}Large-scale SVM learning}{98}{section.14.5}%
+\contentsline {subsection}{\numberline {14.5.1}Stochastic gradient descent}{98}{subsection.14.5.1}%
+\contentsline {subsubsection}{\numberline {14.5.1.1}Pseudocode - pegasus}{98}{subsubsection.14.5.1.1}%
+\contentsline {subsection}{\numberline {14.5.2}Dual version}{99}{subsection.14.5.2}%
+\contentsline {subsubsection}{\numberline {14.5.2.1}Pseudocode - pegasus dual}{99}{subsubsection.14.5.2.1}%
+\contentsline {chapter}{\numberline {15}Non linear support vector machines}{100}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Non-linearly separable problems}{100}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Non-linear support vector machines - feature map}{100}{section.15.2}%
+\contentsline {subsection}{\numberline {15.2.1}Polynomial mapping}{100}{subsection.15.2.1}%
+\contentsline {subsection}{\numberline {15.2.2}Linear separation in feature space}{101}{subsection.15.2.2}%
+\contentsline {section}{\numberline {15.3}Support vector regression}{101}{section.15.3}%
+\contentsline {subsection}{\numberline {15.3.1}$\epsilon $-insensitive loss}{101}{subsection.15.3.1}%
+\contentsline {subsection}{\numberline {15.3.2}Optimization problem}{101}{subsection.15.3.2}%
+\contentsline {subsection}{\numberline {15.3.3}Lagrangian}{101}{subsection.15.3.3}%
+\contentsline {subsubsection}{\numberline {15.3.3.1}Vanishing the derivatives with respect to the primal variables}{102}{subsubsection.15.3.3.1}%
+\contentsline {subsection}{\numberline {15.3.4}Dual formulation}{102}{subsection.15.3.4}%
+\contentsline {subsection}{\numberline {15.3.5}Regression function}{102}{subsection.15.3.5}%
+\contentsline {subsection}{\numberline {15.3.6}KKT conditions}{103}{subsection.15.3.6}%
+\contentsline {subsection}{\numberline {15.3.7}Support vectors}{103}{subsection.15.3.7}%
+\contentsline {section}{\numberline {15.4}Smallest enclosing hypersphere}{103}{section.15.4}%
+\contentsline {subsection}{\numberline {15.4.1}Optimization problem}{103}{subsection.15.4.1}%
+\contentsline {subsection}{\numberline {15.4.2}Lagrangian}{103}{subsection.15.4.2}%
+\contentsline {subsubsection}{\numberline {15.4.2.1}Vanishing the derivatives with respect to the primal variables}{104}{subsubsection.15.4.2.1}%
+\contentsline {subsection}{\numberline {15.4.3}Dual formulation}{104}{subsection.15.4.3}%
+\contentsline {subsection}{\numberline {15.4.4}Distance function}{104}{subsection.15.4.4}%
+\contentsline {subsection}{\numberline {15.4.5}KKT conditions}{105}{subsection.15.4.5}%
+\contentsline {subsection}{\numberline {15.4.6}Support vectors}{105}{subsection.15.4.6}%
+\contentsline {subsection}{\numberline {15.4.7}Decision function}{105}{subsection.15.4.7}%
+\contentsline {section}{\numberline {15.5}Support vector ranking}{105}{section.15.5}%
+\contentsline {subsection}{\numberline {15.5.1}Optimization problem}{105}{subsection.15.5.1}%
+\contentsline {subsection}{\numberline {15.5.2}Support vector classification on pairs}{105}{subsection.15.5.2}%
+\contentsline {subsection}{\numberline {15.5.3}Decision function}{106}{subsection.15.5.3}%
+\contentsline {chapter}{\numberline {16}Kernel machines}{107}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Kernel trick}{107}{section.16.1}%
+\contentsline {subsection}{\numberline {16.1.1}Support vector classification}{107}{subsection.16.1.1}%
+\contentsline {subsubsection}{\numberline {16.1.1.1}Dual optimization problem}{107}{subsubsection.16.1.1.1}%
+\contentsline {subsubsection}{\numberline {16.1.1.2}Dual decision function}{107}{subsubsection.16.1.1.2}%
+\contentsline {subsection}{\numberline {16.1.2}Polynomial kernel}{107}{subsection.16.1.2}%
+\contentsline {subsubsection}{\numberline {16.1.2.1}Homogeneous}{107}{subsubsection.16.1.2.1}%
+\contentsline {subsubsection}{\numberline {16.1.2.2}Inhomogeneous}{108}{subsubsection.16.1.2.2}%
+\contentsline {section}{\numberline {16.2}Valid kernels}{108}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}Dot product in feature space}{108}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}Gram matrix}{108}{subsection.16.2.2}%
+\contentsline {subsubsection}{\numberline {16.2.2.1}Positive definite matrix}{109}{subsubsection.16.2.2.1}%
+\contentsline {subsection}{\numberline {16.2.3}positive definite kernels}{109}{subsection.16.2.3}%
+\contentsline {subsection}{\numberline {16.2.4}Verifying kernel validity}{109}{subsection.16.2.4}%
+\contentsline {section}{\numberline {16.3}Support vector regression}{109}{section.16.3}%
+\contentsline {subsection}{\numberline {16.3.1}Dual problem}{109}{subsection.16.3.1}%
+\contentsline {subsection}{\numberline {16.3.2}Stochastic Perceptron}{109}{subsection.16.3.2}%
+\contentsline {subsection}{\numberline {16.3.3}Kernel Perceptron}{110}{subsection.16.3.3}%
+\contentsline {section}{\numberline {16.4}Kernels}{110}{section.16.4}%
+\contentsline {subsection}{\numberline {16.4.1}Basic kernels}{110}{subsection.16.4.1}%
+\contentsline {subsubsection}{\numberline {16.4.1.1}Linear kernel}{110}{subsubsection.16.4.1.1}%
+\contentsline {subsubsection}{\numberline {16.4.1.2}Polynomial kernel}{110}{subsubsection.16.4.1.2}%
+\contentsline {subsection}{\numberline {16.4.2}Gaussian kernel}{110}{subsection.16.4.2}%
+\contentsline {subsection}{\numberline {16.4.3}Kernels on structured data}{110}{subsection.16.4.3}%
+\contentsline {subsubsection}{\numberline {16.4.3.1}Match or delta kernel}{110}{subsubsection.16.4.3.1}%
+\contentsline {subsection}{\numberline {16.4.4}Kernels on sequences - spectrum kernel}{111}{subsection.16.4.4}%
+\contentsline {subsection}{\numberline {16.4.5}Kernel combination}{111}{subsection.16.4.5}%
+\contentsline {subsubsection}{\numberline {16.4.5.1}Kernel sum}{111}{subsubsection.16.4.5.1}%
+\contentsline {subsubsection}{\numberline {16.4.5.2}Kernel product}{111}{subsubsection.16.4.5.2}%
+\contentsline {subsubsection}{\numberline {16.4.5.3}Linear combination}{111}{subsubsection.16.4.5.3}%
+\contentsline {subsubsection}{\numberline {16.4.5.4}Kernel normalization}{112}{subsubsection.16.4.5.4}%
+\contentsline {subsubsection}{\numberline {16.4.5.5}Kernel composition}{112}{subsubsection.16.4.5.5}%
+\contentsline {subsection}{\numberline {16.4.6}Kernels on graphs}{112}{subsection.16.4.6}%
+\contentsline {subsubsection}{\numberline {16.4.6.1}Weistfeiler-Lehman graph kernel}{112}{subsubsection.16.4.6.1}%
+\contentsline {paragraph}{\numberline {16.4.6.1.1}Weistfeiler-Lehman isomorphism test}{112}{paragraph.16.4.6.1.1}%
+\contentsline {paragraph}{\numberline {16.4.6.1.2}Weistfeiler-Lehman graph kernel}{113}{paragraph.16.4.6.1.2}%
+\contentsline {chapter}{\numberline {17}Deep networks}{114}{chapter.17}%
+\contentsline {section}{\numberline {17.1}Need for deep networks}{114}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Multilayer perceptron}{114}{section.17.2}%
+\contentsline {subsection}{\numberline {17.2.1}Activation function}{114}{subsection.17.2.1}%
+\contentsline {subsubsection}{\numberline {17.2.1.1}Perceptron}{114}{subsubsection.17.2.1.1}%
+\contentsline {subsubsection}{\numberline {17.2.1.2}Sigmoid}{114}{subsubsection.17.2.1.2}%
+\contentsline {subsection}{\numberline {17.2.2}Output layer}{115}{subsection.17.2.2}%
+\contentsline {subsubsection}{\numberline {17.2.2.1}Binary classification}{115}{subsubsection.17.2.2.1}%
+\contentsline {subsubsection}{\numberline {17.2.2.2}Multiclass classification}{115}{subsubsection.17.2.2.2}%
+\contentsline {subsubsection}{\numberline {17.2.2.3}Regression}{115}{subsubsection.17.2.2.3}%
+\contentsline {subsection}{\numberline {17.2.3}Representational power of a multilayer perceptron}{115}{subsection.17.2.3}%
+\contentsline {subsection}{\numberline {17.2.4}Shallow and deep structures for boolean functions}{116}{subsection.17.2.4}%
+\contentsline {subsubsection}{\numberline {17.2.4.1}Conjunctive normal form}{116}{subsubsection.17.2.4.1}%
+\contentsline {subsubsection}{\numberline {17.2.4.2}Number of gates}{116}{subsubsection.17.2.4.2}%
+\contentsline {subsection}{\numberline {17.2.5}Training MLP}{116}{subsection.17.2.5}%
+\contentsline {subsubsection}{\numberline {17.2.5.1}Common choices for loss functions}{116}{subsubsection.17.2.5.1}%
+\contentsline {paragraph}{\numberline {17.2.5.1.1}Cross entropy}{116}{paragraph.17.2.5.1.1}%
+\contentsline {subparagraph}{\numberline {17.2.5.1.1.1}For binary classification}{116}{subparagraph.17.2.5.1.1.1}%
+\contentsline {subparagraph}{\numberline {17.2.5.1.1.2}For multiclass classification}{116}{subparagraph.17.2.5.1.1.2}%
+\contentsline {paragraph}{\numberline {17.2.5.1.2}Mean squared error}{116}{paragraph.17.2.5.1.2}%
+\contentsline {subsubsection}{\numberline {17.2.5.2}Stochastic gradient descent}{116}{subsubsection.17.2.5.2}%
+\contentsline {subsubsection}{\numberline {17.2.5.3}Backpropagation}{116}{subsubsection.17.2.5.3}%
+\contentsline {subsubsection}{\numberline {17.2.5.4}Output units}{117}{subsubsection.17.2.5.4}%
+\contentsline {subsubsection}{\numberline {17.2.5.5}Hidden units}{117}{subsubsection.17.2.5.5}%
+\contentsline {paragraph}{\numberline {17.2.5.5.1}Derivative of sigmoid}{117}{paragraph.17.2.5.5.1}%
+\contentsline {subsubsection}{\numberline {17.2.5.6}Modular nature of deep architectures}{117}{subsubsection.17.2.5.6}%
+\contentsline {subsubsection}{\numberline {17.2.5.7}Remarks on backpropagation - local minima}{118}{subsubsection.17.2.5.7}%
+\contentsline {subsection}{\numberline {17.2.6}Stopping criterion and generalization}{118}{subsection.17.2.6}%
+\contentsline {subsection}{\numberline {17.2.7}Vanishing gradient}{118}{subsection.17.2.7}%
+\contentsline {section}{\numberline {17.3}Trick of the trade}{118}{section.17.3}%
+\contentsline {subsection}{\numberline {17.3.1}Introduction}{118}{subsection.17.3.1}%
+\contentsline {subsection}{\numberline {17.3.2}Activation functions}{118}{subsection.17.3.2}%
+\contentsline {subsection}{\numberline {17.3.3}Regularization}{119}{subsection.17.3.3}%
+\contentsline {subsubsection}{\numberline {17.3.3.1}2-norm regularization}{119}{subsubsection.17.3.3.1}%
+\contentsline {subsubsection}{\numberline {17.3.3.2}1-norm regularization}{119}{subsubsection.17.3.3.2}%
+\contentsline {subsection}{\numberline {17.3.4}Initialization}{119}{subsection.17.3.4}%
+\contentsline {subsection}{\numberline {17.3.5}Gradient descent}{119}{subsection.17.3.5}%
+\contentsline {subsubsection}{\numberline {17.3.5.1}Batch vs stochastic}{119}{subsubsection.17.3.5.1}%
+\contentsline {subsubsection}{\numberline {17.3.5.2}Momentum}{119}{subsubsection.17.3.5.2}%
+\contentsline {subsection}{\numberline {17.3.6}Adaptive gradient}{120}{subsection.17.3.6}%
+\contentsline {subsubsection}{\numberline {17.3.6.1}Decreasing learning rate}{120}{subsubsection.17.3.6.1}%
+\contentsline {subsubsection}{\numberline {17.3.6.2}Adagrad}{120}{subsubsection.17.3.6.2}%
+\contentsline {subsubsection}{\numberline {17.3.6.3}RMSProp}{120}{subsubsection.17.3.6.3}%
+\contentsline {subsection}{\numberline {17.3.7}Batch normalization}{120}{subsection.17.3.7}%
+\contentsline {subsubsection}{\numberline {17.3.7.1}Covariate shift problem}{120}{subsubsection.17.3.7.1}%
+\contentsline {subsection}{\numberline {17.3.8}Pre-training}{121}{subsection.17.3.8}%
+\contentsline {subsubsection}{\numberline {17.3.8.1}Layerwise pre-training}{121}{subsubsection.17.3.8.1}%
+\contentsline {subsubsection}{\numberline {17.3.8.2}Transfer learning}{121}{subsubsection.17.3.8.2}%
+\contentsline {subsubsection}{\numberline {17.3.8.3}Multi-level supervision}{121}{subsubsection.17.3.8.3}%
+\contentsline {section}{\numberline {17.4}Popular deep architectures}{121}{section.17.4}%
+\contentsline {subsection}{\numberline {17.4.1}Autoencoders}{121}{subsection.17.4.1}%
+\contentsline {subsection}{\numberline {17.4.2}Convolutional networks}{121}{subsection.17.4.2}%
+\contentsline {subsection}{\numberline {17.4.3}Long Short-Term Memory networks}{122}{subsection.17.4.3}%
+\contentsline {subsection}{\numberline {17.4.4}Generative adversarial networks}{122}{subsection.17.4.4}%
+\contentsline {subsubsection}{\numberline {17.4.4.1}Transformers}{122}{subsubsection.17.4.4.1}%
+\contentsline {subsection}{\numberline {17.4.5}Graph neural networks}{122}{subsection.17.4.5}%
+\contentsline {chapter}{\numberline {18}Unsupervised learning}{123}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Setting}{123}{section.18.1}%
+\contentsline {section}{\numberline {18.2}K-means clustering}{123}{section.18.2}%
+\contentsline {subsection}{\numberline {18.2.1}Setting}{123}{subsection.18.2.1}%
+\contentsline {subsection}{\numberline {18.2.2}Algorithm}{123}{subsection.18.2.2}%
+\contentsline {subsection}{\numberline {18.2.3}Defining similarity}{123}{subsection.18.2.3}%
+\contentsline {subsubsection}{\numberline {18.2.3.1}Similarity measures}{123}{subsubsection.18.2.3.1}%
+\contentsline {paragraph}{\numberline {18.2.3.1.1}Standard euclidean distance}{123}{paragraph.18.2.3.1.1}%
+\contentsline {paragraph}{\numberline {18.2.3.1.2}Generic Minkowski metric}{124}{paragraph.18.2.3.1.2}%
+\contentsline {paragraph}{\numberline {18.2.3.1.3}Cosine similarity}{124}{paragraph.18.2.3.1.3}%
+\contentsline {subsubsection}{\numberline {18.2.3.2}Define the quality of the obtained clusters}{124}{subsubsection.18.2.3.2}%
+\contentsline {section}{\numberline {18.3}Gaussian Mixture model GMM}{124}{section.18.3}%
+\contentsline {subsection}{\numberline {18.3.1}Parameter estimation}{124}{subsection.18.3.1}%
+\contentsline {subsection}{\numberline {18.3.2}Estimating means of $k$ univariate Gaussians}{124}{subsection.18.3.2}%
+\contentsline {subsubsection}{\numberline {18.3.2.1}Setting}{124}{subsubsection.18.3.2.1}%
+\contentsline {subsubsection}{\numberline {18.3.2.2}Algorithm}{125}{subsubsection.18.3.2.2}%
+\contentsline {paragraph}{\numberline {18.3.2.2.1}E-step}{125}{paragraph.18.3.2.2.1}%
+\contentsline {paragraph}{\numberline {18.3.2.2.2}M-step}{125}{paragraph.18.3.2.2.2}%
+\contentsline {section}{\numberline {18.4}Expectation-Maximization (EM)}{125}{section.18.4}%
+\contentsline {subsection}{\numberline {18.4.1}Formal setting}{125}{subsection.18.4.1}%
+\contentsline {subsection}{\numberline {18.4.2}Generic algorithm}{125}{subsection.18.4.2}%
+\contentsline {subsection}{\numberline {18.4.3}Estimating means of $k$ univariate Gaussians}{126}{subsection.18.4.3}%
+\contentsline {subsubsection}{\numberline {18.4.3.1}Derivation}{126}{subsubsection.18.4.3.1}%
+\contentsline {subsubsection}{\numberline {18.4.3.2}E-step}{126}{subsubsection.18.4.3.2}%
+\contentsline {subsubsection}{\numberline {18.4.3.3}M-step}{126}{subsubsection.18.4.3.3}%
+\contentsline {section}{\numberline {18.5}Choosing the number of clusters}{127}{section.18.5}%
+\contentsline {subsection}{\numberline {18.5.1}Elbow method}{127}{subsection.18.5.1}%
+\contentsline {subsubsection}{\numberline {18.5.1.1}Idea}{127}{subsubsection.18.5.1.1}%
+\contentsline {subsubsection}{\numberline {18.5.1.2}Approach}{127}{subsubsection.18.5.1.2}%
+\contentsline {subsection}{\numberline {18.5.2}Average silhouette method}{127}{subsection.18.5.2}%
+\contentsline {subsubsection}{\numberline {18.5.2.1}Idea}{127}{subsubsection.18.5.2.1}%
+\contentsline {subsubsection}{\numberline {18.5.2.2}Silhouette coefficient for example $i$}{127}{subsubsection.18.5.2.2}%
+\contentsline {subsubsection}{\numberline {18.5.2.3}Approach}{128}{subsubsection.18.5.2.3}%
+\contentsline {section}{\numberline {18.6}Hierarchical clustering}{128}{section.18.6}%
+\contentsline {subsection}{\numberline {18.6.1}Setting}{128}{subsection.18.6.1}%
+\contentsline {subsection}{\numberline {18.6.2}Top-down approach}{128}{subsection.18.6.2}%
+\contentsline {subsection}{\numberline {18.6.3}Bottom-up approach}{128}{subsection.18.6.3}%
+\contentsline {subsection}{\numberline {18.6.4}Dendograms}{128}{subsection.18.6.4}%
+\contentsline {subsection}{\numberline {18.6.5}Agglomeritive hierarchical clustering}{128}{subsection.18.6.5}%
+\contentsline {subsubsection}{\numberline {18.6.5.1}Algorithm}{128}{subsubsection.18.6.5.1}%
+\contentsline {subsection}{\numberline {18.6.6}Measuring cluster similarities}{129}{subsection.18.6.6}%
+\contentsline {subsection}{\numberline {18.6.7}Stepwise optimal hierarchical clustering}{129}{subsection.18.6.7}%
+\contentsline {subsubsection}{\numberline {18.6.7.1}Algorithm}{129}{subsubsection.18.6.7.1}%
+\contentsline {chapter}{\numberline {19}Reinforcement learning}{130}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Introduction}{130}{section.19.1}%
+\contentsline {subsection}{\numberline {19.1.1}Setting}{130}{subsection.19.1.1}%
+\contentsline {subsection}{\numberline {19.1.2}Sequential decision making}{130}{subsection.19.1.2}%
+\contentsline {section}{\numberline {19.2}Markov decision process MPD}{130}{section.19.2}%
+\contentsline {subsection}{\numberline {19.2.1}Utilities over time}{131}{subsection.19.2.1}%
+\contentsline {subsection}{\numberline {19.2.2}Taking decisions}{131}{subsection.19.2.2}%
+\contentsline {subsubsection}{\numberline {19.2.2.1}Optimal policy}{131}{subsubsection.19.2.2.1}%
+\contentsline {paragraph}{\numberline {19.2.2.1.1}Utility of state}{131}{paragraph.19.2.2.1.1}%
+\contentsline {subsection}{\numberline {19.2.3}Computing an optimal policy}{131}{subsection.19.2.3}%
+\contentsline {subsubsection}{\numberline {19.2.3.1}Bellman equation}{132}{subsubsection.19.2.3.1}%
+\contentsline {subsubsection}{\numberline {19.2.3.2}Value iteration}{132}{subsubsection.19.2.3.2}%
+\contentsline {subsubsection}{\numberline {19.2.3.3}Policy iteration}{132}{subsubsection.19.2.3.3}%
+\contentsline {section}{\numberline {19.3}Dealing with partial knowledge}{133}{section.19.3}%
+\contentsline {subsection}{\numberline {19.3.1}Policy evaluation in an unknown environment}{133}{subsection.19.3.1}%
+\contentsline {subsubsection}{\numberline {19.3.1.1}Adaptive dynamic programming}{133}{subsubsection.19.3.1.1}%
+\contentsline {paragraph}{\numberline {19.3.1.1.1}Algorithm}{133}{paragraph.19.3.1.1.1}%
+\contentsline {paragraph}{\numberline {19.3.1.1.2}Characteristics}{133}{paragraph.19.3.1.1.2}%
+\contentsline {subsubsection}{\numberline {19.3.1.2}Temporal-difference policy evaluation}{133}{subsubsection.19.3.1.2}%
+\contentsline {paragraph}{\numberline {19.3.1.2.1}Rationale}{133}{paragraph.19.3.1.2.1}%
+\contentsline {paragraph}{\numberline {19.3.1.2.2}Algorithm}{134}{paragraph.19.3.1.2.2}%
+\contentsline {paragraph}{\numberline {19.3.1.2.3}Characteristics}{134}{paragraph.19.3.1.2.3}%
+\contentsline {subsection}{\numberline {19.3.2}Policy learning in an unknown environment}{134}{subsection.19.3.2}%
+\contentsline {subsubsection}{\numberline {19.3.2.1}Setting}{134}{subsubsection.19.3.2.1}%
+\contentsline {subsubsection}{\numberline {19.3.2.2}Exploration-exploitation trade-off}{134}{subsubsection.19.3.2.2}%
+\contentsline {subsubsection}{\numberline {19.3.2.3}Temporal-difference learning - learning utilities of actions}{134}{subsubsection.19.3.2.3}%
+\contentsline {subsubsection}{\numberline {19.3.2.4}SARSA - on-policy temporal-difference learning}{135}{subsubsection.19.3.2.4}%
+\contentsline {subsubsection}{\numberline {19.3.2.5}Q-learning - off-policy temporal-difference learning}{135}{subsubsection.19.3.2.5}%
+\contentsline {subsubsection}{\numberline {19.3.2.6}SARSA vs Q-learning}{135}{subsubsection.19.3.2.6}%
+\contentsline {section}{\numberline {19.4}Scaling to large state spaces}{135}{section.19.4}%
+\contentsline {subsection}{\numberline {19.4.1}Function approximation}{135}{subsection.19.4.1}%
+\contentsline {subsection}{\numberline {19.4.2}Learning the approximation function}{136}{subsection.19.4.2}%
+\contentsline {subsubsection}{\numberline {19.4.2.1}Temporal-difference learning - state utility}{136}{subsubsection.19.4.2.1}%
+\contentsline {subsubsection}{\numberline {19.4.2.2}Temporal-difference learning - action utility Q-learning}{136}{subsubsection.19.4.2.2}%
