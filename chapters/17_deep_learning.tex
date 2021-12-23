@@ -40,7 +40,7 @@ The output layer is typically at the top and makes the prediction.
 
 		$$y^* = sign(f(\vec{x}) - 0.5$$
 
-		\sybsybsection{Multiclass classification}
+		\subsubsection{Multiclass classification}
 		In multiclass classification there is one output neuron per class, together they form the logits layer:
 
 		$$[o_1(\vec{x}),\dots, o_c(\vec{x})]$$
@@ -131,7 +131,7 @@ The output layer is typically at the top and makes the prediction.
 		\begin{align*}
 			\delta_i &= \frac{\partial E(W)}{\partial a_i}  = \sum\limits_{k\in ch[i]}\frac{\partial E(W)}{\partial a_k}\frac{\partial a_k}{\partial a_i}=\\
 				 &=\sum\limits_{k\in ch[i]} \delta_k\frac{\partial a_k}{\partial\phi_i}\frac{\partial\phi_i}{\partial a_l}=\\
-				 &=\sum\limits_{k\in ch[i]}\delta_kw_{ki}\frac{\partial\sigma(a_i)}{\frac a_i}=\\
+				 &=\sum\limits_{k\in ch[i]}\delta_kw_{ki}\frac{\partial\sigma(a_i)}{\partial a_i}=\\
 				 &=\sum\limits_{k\in ch[i]}\delta_kw_{ki}\sigma(a_i)(1-\sigma(a_i))
 		\end{align*}
 
@@ -151,7 +151,7 @@ The output layer is typically at the top and makes the prediction.
 		The modular structure of deep architectures becomes clear when considering the loss function:
 		For any neuron at layer $j$: $\phi_j = F_j(\phi_{j-1},W_j)$, then:
 
-		$$\frac{\partial E}{\partial W_j} = \frac{\partial E}{\partail\phi_j}\frac{\partial\phi_j}{\partial W_j} = \frac{\partial E}{\partial \phi_j}\frac{\partial F_j(\phi_{j-1},W_j)}{\partial W_j}$$
+		$$\frac{\partial E}{\partial W_j} = \frac{\partial E}{\partial\phi_j}\frac{\partial\phi_j}{\partial W_j} = \frac{\partial E}{\partial \phi_j}\frac{\partial F_j(\phi_{j-1},W_j)}{\partial W_j}$$
 
 		Also:
 
