@@ -1,0 +1,322 @@
+\chapter{Deep networks}
+
+\section{Need for deep networks}
+The perceptron can only model linear function.
+Kernel machines can model non linear function thanks to the non-linearity provided by kernels.
+There is the need to design appropriate kernels, possibly selecting them from a set like in kernel learning.
+The solution is typically a linear combination of kernels.
+
+\section{Multilayer perceptron}
+The multilayer perceptron is a network of interconnected neurons.
+It has a layered architecture: neurons from one layer send outputs to the following one.
+The input layer is typically at the bottom and it is composed of the input features.
+The output layer is typically at the top and makes the prediction.
+
+	\subsection{Activation function}
+
+		\subsubsection{Perceptron}
+		The activation function of the perceptron is a threshold activation:
+
+		$$f(\vec{x}) = sign(\vec{w}^T\vec{x})$$
+
+		The derivative is zero apart from zero where the function is not differentiable, so it is impossible to run gradient-based optimization.
+
+		\subsubsection{Sigmoid}
+		The sigmoid is a smooth version of a threshold:
+
+		$$f(\vec{x}) = \sigma(\vec{w}^T\vec{x}) = \frac{1}{1+e^{-\vec{w}^T\vec{x}}}$$
+
+		It is approximately linear around zero and saturates for large and small values.
+
+	\subsection{Output layer}
+
+		\subsubsection{Binary classification}
+		In binary classification there is one output neuron $\sigma(\vec{x})$.
+		It has a sigmoid activation function:
+
+		$$f(\vec{x}) = \sigma(o(\vec{x})) = \frac{1}{1+e^{-o(\vec{x}}}$$
+
+		Its decision threshold is at $0.5$:
+
+		$$y^* = sign(f(\vec{x}) - 0.5$$
+
+		\sybsybsection{Multiclass classification}
+		In multiclass classification there is one output neuron per class, together they form the logits layer:
+
+		$$[o_1(\vec{x}),\dots, o_c(\vec{x})]$$
+
+		They use the softmax activation function:
+
+		$$f_i(\vec{x}) = \frac{e^{o_i(\vec{x})}}{\sum\limits_{j=1}^ce^{o_j(\vec{x})}}$$
+
+		The decision is the highest scoring class:
+
+		$$y^* = \arg\max\limits_{i\in[1,c]}f_i(\vec{x})$$
+
+		\subsubsection{Regression}
+		In regression there is one output neuron $o(\vec{x})$ with a linear activation function.
+		The decision is the value of the output neuron:
+
+		$$f(\vec{x}) = o(\vec{x})$$
+
+	\subsection{Representational power of a multilayer perceptron}
+	The function representable by a perceptron are:
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Boolean functions: any boolean function can be represented by some network with two layers of units.
+			\item Continuous functions: every bounded continuous function can be approximated with an arbitrary small error by a network with two layers of unit with a sigmoid hidden activation and linear output activation.
+
+			\item Arbitrary functions: any function can be approximated to arbitrary accuracy by a network with three layers of units with sigmoid hidden activation and a linear output activation.
+		\end{itemize}
+	\end{multicols}
+
+	\subsection{Shallow and deep structures for boolean functions}
+
+		\subsubsection{Conjunctive normal form}
+		For a conjunctive normal form or CNF there is one neuron for each clause representing OR gates with negative weights for negated literals.
+		Moreover there is one neuron at the top representing the and gate.
+
+		\subsubsection{Number of gates}
+		Some functions require an exponential number of gates like the parity function.
+		This can be expressed with a linear number of gates through a deep network representing a combination of xor gates.
+
+	\subsection{Training MLP}
+
+		\subsubsection{Common choices for loss functions}
+
+			\paragraph{Cross entropy}
+			Minimizing cross entropy corresponds to maximizing likelihood.
+
+				\subparagraph{For binary classification}
+				Let $y\in\{0,1\}$:
+				$$l(y, f)\vec{x})) = -(u\log f(\vec{x}) + (1-y)\log(1-f(\vec{x})))$$
+
+				\subparagraph{For multiclass classification}
+				Let $y\in[1,c]$:
+
+				$$l(y,f(\vec{x})) = -\log f_y(\vec{x})$$
+
+			\paragraph{Mean squared error}
+			Mean squared error is used for regression:
+
+			$$l(y,f(\vec{x})) = (y-f(\vec{x}))^2$$
+
+		\subsubsection{Stochastic gradient descent}
+		The training error for example $(\vec{x},y)$ is, for example with regression:
+
+		$$E(W) = \frac{1}{2}(y-f(\vec{x}))^2$$
+
+		Considering $\eta$ learning rate the gradient update is:
+
+		$$w_{ij} = w_{ij}-\eta\frac{\partial E(W)}{\partial w_{ij}}$$
+
+		\subsubsection{Backpropagation}
+		The backpropagation is used to update the weights in all the layer and the chain rule is used for derivation:
+
+		$$\frac{\partial E(W)}{\partial w_{ij}} = \underbrace{\frac{\partial E(W)}{\partial a_i}}_{\delta_i}\frac{\partial a_i}{\partial w_{ij}} = \delta_i\phi_j$$
+
+		\subsubsection{Output units}
+		The $\delta$ is easy to compute on output units.
+		For example for regression with linear output:
+
+		\begin{align*}
+			\delta_o &= \frac{\partial E(W)}{\partial a_o} = \frac{\partial\frac{1}{2}(y-f(\vec{x}))^2}{\partial a_o}=\\
+				 &=\frac{\partial \frac{1}{2}(y-a_o)^2}{\partial a_o} = -(y-a_o)
+		\end{align*}
+
+		\subsubsection{Hidden units}
+		To change the weights on the hidden units the error contribution is considered through all outer connections with sigmoid activation:
+
+		\begin{align*}
+			\delta_i &= \frac{\partial E(W)}{\partial a_i}  = \sum\limits_{k\in ch[i]}\frac{\partial E(W)}{\partial a_k}\frac{\partial a_k}{\partial a_i}=\\
+				 &=\sum\limits_{k\in ch[i]} \delta_k\frac{\partial a_k}{\partial\phi_i}\frac{\partial\phi_i}{\partial a_l}=\\
+				 &=\sum\limits_{k\in ch[i]}\delta_kw_{ki}\frac{\partial\sigma(a_i)}{\frac a_i}=\\
+				 &=\sum\limits_{k\in ch[i]}\delta_kw_{ki}\sigma(a_i)(1-\sigma(a_i))
+		\end{align*}
+
+			\paragraph{Derivative of sigmoid}
+
+			\begin{align*}
+				\frac{\partial\sigma(x)}{\partial x} &= \frac{\partial}{\partial x}\frac{1}{1+e^{-x}}=\\
+								     &=-(1+e^{-x})^{-2}\frac{\partial}{\partial x}(1+e^{-x})=\\
+								     &=-(1+e^{-x})^{-2}-e^{-2x}\frac{\partial e^x}{\partial x}=\\
+								     &=(1+e^{-x})^{-2}e^{-2x}e^x=\\
+								     &=\frac{1}{1+e^x}\frac{e^{-x}}{1+e^{-x}}=\\
+								     &=\frac{1}{1+e^{-x}}\biggl(1-\frac{1}{1+e^{-x}}\biggr)=\\
+								     &=\sigma(x)(1-\sigma(x))
+			\end{align*}
+
+		\subsubsection{Modular nature of deep architectures}
+		The modular structure of deep architectures becomes clear when considering the loss function:
+		For any neuron at layer $j$: $\phi_j = F_j(\phi_{j-1},W_j)$, then:
+
+		$$\frac{\partial E}{\partial W_j} = \frac{\partial E}{\partail\phi_j}\frac{\partial\phi_j}{\partial W_j} = \frac{\partial E}{\partial \phi_j}\frac{\partial F_j(\phi_{j-1},W_j)}{\partial W_j}$$
+
+		Also:
+
+		$$\frac{\partial E}{\partial\phi_{j-1}} = \frac{\partial E}{\partial \phi_j}\frac{\partial \phi_j}{\partial\phi_{j-1}} = \frac{\partial E}{\partial \phi_j}\frac{\partial F_j(\phi_{j-1},W_j)}{\partial\phi_{j-1}}$$
+
+		\subsubsection{Remarks on backpropagation - local minima}
+		The error surface of a multilayer neural network can contain several minima and backpropagation is only guaranteed to converge to a local one.
+		There are heuristic that attempts to address the problem using stochastic instead of true gradient descent, training multiple networks with different random weights and others.
+		Because kernel machines' training requires solving a quadratic optimization problem the global optimum is guaranteed.
+		Deep networks are more expressive in principle, but they are harder to train.
+
+	\subsection{Stopping criterion and generalization}
+	The training termination condition is a crucial factor: overtraining the network increases the possibility of overfitting the training data.
+	The network is initialized with small random weights so there is a simple decision surface.
+	Overfitting occurs at later iteration, when increasingly complex surfaces are being generated.
+	To choose when to stop a separate validation set is used to estimate performance of the network and choose when to stop training.
+
+	\subsection{Vanishing gradient}
+	The error gradient is backpropagated through layers and at each step it is multiplied by the derivative of the sigmoid that is very small for saturated units.
+	It happens that the gradient vanishes in lower layer, making it difficult to train deep networks.
+
+\section{Trick of the trade}
+
+	\subsection{Introduction}
+	Do not initialize weights to zero, but to small random values around zero.
+	Standardize inputs $\vec{x} = \frac{\vec{x}-\vec{\mu}_{\vec{x}}}{\sigma_{\vec{x}}}$ to avoid the saturation of the hidden layers.
+	Randomly shuffle training examples before each training epoch.
+
+	\subsection{Activation functions}
+	Linearity is nice for learning and saturation is bad for learning, so the rectifier activation has been introduced:
+
+	$$f(\vec{x}) = \max(0,\vec{w}^T\vec{x})$$
+
+	Neurons employing the rectifier activation are called rectified linear units \emph{ReLU}.
+
+	\subsection{Regularization}
+	
+		\subsubsection{2-norm regularization}
+		2-norm regularization penalizes weights by their Euclidean norm and weights with less influence on error get smaller values:
+
+		$$J(W) = E(W) + \lambda||W||_2$$
+
+		\subsubsection{1-norm regularization}
+		1-norm regularization penalizes weights by the sum of their absolute values.
+		It encourages less relevant weights to be exactly zero, inducing sparsity:
+
+		$$J(W) = E(W) + \lambda|W|$$
+
+	\subsection{Initialization}
+	Randomly initializing weights breaks symmetries between neurons.
+	There is a need to carefully set an initialization range to preserve forward and backward variance:
+
+	$$W_{ij} \sim U\biggl(-\frac{\sqrt{6}}{\sqrt{n+m}},\frac{\sqrt{6}}{\sqrt{n+m}}\biggr)$$
+
+	Where $n$ and $m$ are the number of inputs and outputs.
+	A sparse initialization enforce a fraction of weights to be non-zero encouraging diversity between neurons.
+
+	\subsection{Gradient descent}
+
+		\subsubsection{Batch vs stochastic}
+		Batch gradient descent updates parameters after seeing all the examples and it is too slow for large dataset.
+		A fully stochastic gradient descent updates parameters after seeing each examples and the objective is too different from the true one.
+		In minibatch gradient descents the parameters are updated after seeing a minibatch $m$ of examples.
+
+		\subsubsection{Momentum}
+
+		$$v_{ji} = \alpha v_{ji}-\eta\frac{\partial E(W)}{\partial w_{lj}}$$
+
+		$$\vec{w}_{ji} = w_{ji} + v_{ji}$$
+
+		$0\le \alpha\le 1$ is the momentum, which tends to keep updating weights in the same direction.
+		Thinking of a ball rolling on the error surface it can roll through local minima without stopping, it can traverse flat surfaces instead of stopping and increase the step size of search in region of constant gradient.
+
+	\subsection{Adaptive gradient}
+
+		\subsubsection{Decreasing learning rate}
+
+		$$\eta_t = \begin{cases}\biggl(1-\frac{t}{\tau}\biggr)\eta_0+\frac{t}{\tau}\eta_\tau &if\ t< \tau\\ \eta_\tau & otherwise\end{cases}$$
+
+		Larger learning rate at the beginning for faster convergence towards the attraction basin and smaller learning rate at the end to avoid oscillations close to the minimum.
+
+		\subsubsection{Adagrad}
+		Adagrad reduces the learning rate in steep directions and increase it in gentler ones.
+
+		$$r_{ij} = r_{ij} + \biggl(\frac{\partial E(W)}{\partial w_{lj}}\biggr)^2$$
+
+		$$\vec{w}_{ji} = \vec{w}_{ji} -\frac{\eta}{\sqrt{r_{ji}}}\frac{\partial E(W)}{\partial w_{lj}}$$
+
+		The square gradient is accumulated over all iterations and for non-convex problem this learning rate reduction can be excessive or premature.
+
+		\subsubsection{RMSProp}
+		RMSProp makes an exponentially decaying accumulation of squared gradient $0<\rho<1$.
+		It avoid the premature reduction of Adagrad and has Adagrad-like behaviour when reaching the convex bowl.
+
+		$$r_{ij} = \rho r_{ij} + (1-\rho)\biggl(\frac{\partial E(W)}{\partial w_{lj}}\biggr)^2$$
+
+		$$\vec{w}_{ji} = \vec{w}_{ji} -\frac{\eta}{\sqrt{r_{ji}}}\frac{\partial E(W)}{\partial w_{lj}}$$
+
+	\subsection{Batch normalization}
+
+		\subsubsection{Covariate shift problem}
+		The covariate shift problem happens when the input distribution to the model changes over time and the model does not adapt to it.
+		In very deep networks internal covariate shift takes place among layers when they get updated by backpropagation.
+		To solve this problem each node activation need to be normalized by its batch statistics:
+
+		$$\bar{x}_i = \frac{x_i-\mu_B}{\sigma_B}$$
+
+		Where $x$ is the activation of an arbitrary layer, $B = \{x_1, \dots, x_m\}$ is a batch of values for that activation and $\mu_B$ and $\sigma^2_B$ are the batch mean and variance.
+		Scaling and shifting each activation with adjustable parameters $\gamma$ and $\beta$ that becomes part of the network parameters yields:
+
+		$$y_i = \gamma\bar{x}_i+\beta$$
+
+		This allows for more robustness to parameteactivation and $\mu_B$ and $\sigma^2_B$ are the batch mean and variance.
+		Scaling and shifting each activation with adjustable parameters $\gamma$ and $\beta$ that becomes part of the network parameters yields:
+
+		$$y_i = \gamma\bar{x}_i+\beta$$
+
+		This allows for more robustness to parameter initialization, it allows for faster learning rates without divergence, keeps the activations in a non-saturated region and regularizes the model.
+
+	\subsection{Pre-training}
+
+		\subsubsection{Layerwise pre-training}
+		In layerwise pre-training each layer is trained by itself with actual labels.
+
+		\subsubsection{Transfer learning}
+		In transfer learning the network is first trained on a similar task, then the last layer is discarded and a new one is added and the resulting network is retrained on the target task.
+
+		\subsubsection{Multi-level supervision}
+		In multi-level supervision auxiliary  output nodes are put at intermediate layers to speed up learning.
+	
+\section{Popular deep architectures}
+There are many different possible architectures for deep neural networks:
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Convolutional networks for exploiting local correlations.
+		\item Recurrent and recursive networks for collective predictions.
+		\item Deep Boltzmann machines as probabilistic generative models.
+		\item Generative adversarial networks to generate new instances as a game between discriminator and generator.
+	\end{itemize}
+\end{multicols}
+
+	\subsection{Autoencoders}
+	Autoencoders are networks that perform unsupervised representation learning.
+	The network is trained to reproduce the input in the output.
+	It learns to map inputs into a sensible hidden representation and it can be done with unlabelled examples.
+
+	\subsection{Convolutional networks}
+	Convolutional networks CNN use location invariance and compositionality: convolution filters extract local features, pooling provide invariance to local variations, a hierarchy of filters compose complex features from simpler ones and there is a fully connected layer for final classification.
+
+	\subsection{Long Short-Term Memory networks}
+	Long short-term memory networks or LSMT perform recurrent computation with selective memory: a cell state is propagated along a chain, the forget gate selectively forgets parts of the cell state, the input gate selectively chooses parts of the candidate for cell update and the output gate selectively chooses parts of the cell state for output.
+
+	\subsection{Generative adversarial networks}
+	Generative adversarial networks or GANs perform generative learning as an adversarial game.
+	A generator network learns to generate items from random noise.
+	A discriminator network learns to distinguish between real items and generated ones.
+	The two networks are jointly learned as an adversarial game.
+	There is no need of human supervision.
+
+		\subsubsection{Transformers}
+		Transformers use an attention mechanisms to learn input words encodings that depend on other words in the sentence.
+		The attention mechanism is used to learn output words encoding that thepend on input wird encodings and previously generated output words.
+
+	\subsection{Graph neural networks}
+	Graph neural networks allow to learn with graph convolution.
+	They allow to learn feature representations for node, to propagate information between neighbouring nodes and efficient training with respect to graph kernels.
+
