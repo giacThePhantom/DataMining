@@ -15,6 +15,6 @@
 	}
 	select $k$-nearest neighbours of $x$\;
 	\comment{return class of $x$ as majority class among neighbours}
-	\Return $\arg\max\limits_{x_y}\sum\limits^{k}_{i=1}\delta(y,y_i)$
+	\Return $\arg\max\limits_{y}\sum\limits^{k}_{i=1}\delta(y,y_i)$
 }
 \end{algorithm}

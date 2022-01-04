@@ -6,29 +6,36 @@ They represent a disjunction of conjunctions of constraints over attribute value
 Each path from the root to a leaf is a conjunction of the constraints specified in the nodes along it: they can be seen as a disjunctive normal formula.
 In this way every class can be written as a DNF.
 The leaf contains the label to be assigned to instances reaching it.
-The disjunction of all paths is the logical formala expressed by the tree.
+The disjunction of all paths is the logical formula expressed by the tree.
 
 	\subsection{Appropriate problems for decision trees}
 	The class of problems that can be solved by decision trees are:
-	\begin{itemize}
-		\item Binary or multiclass classification with an extension to regression (with a linear regression as the leaf).
-		\item Instances represented as attribute-value pairs.
-		\item Different explanations for the concept are possible (disjunction).
-		\item Some instances have missing attributes, its dealing done with probabilistic models.
-		\item There is need for an interpretable explanation of the output. 
-			In fact the main reason for using decision tress is interpretability.
-	\end{itemize}
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Binary or multiclass classification with an extension to regression (with a linear regression as the leaf).
+			\item Instances represented as attribute-value pairs.
+			\item Different explanations for the concept are possible (disjunction).
+			\item Some instances have missing attributes, its dealing done with probabilistic models.
+			\item There is need for an interpretable explanation of the output.
+				In fact the main reason for using decision tress is interpretability.
+		\end{itemize}
+	\end{multicols}
 
 \section{Learning decision trees}
 
 	\subsection{Greedy top-down strategy}
 	For each node, starting from the root with full training set:
-	\begin{enumerate}
-		\item Choose best attribute to be evaluated.
-		\item Add a child for each attribute value.
-		\item Split node training set into children according to value of chosen attribute.
-		\item Stop splitting a node if it contains examples from a single class or there are no more attributes to test.
-	\end{enumerate}
+
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Choose best attribute to be evaluated.
+			\item Add a child for each attribute value.
+			\item Split node training set into children according to value of chosen attribute.
+			\item Stop splitting a node if it contains examples from a single class or there are no more attributes to test.
+		\end{enumerate}
+	\end{multicols}
+
 	It is also known as the divide et impera approach.
 
 	\subsection{Choosing the best attribute}
@@ -53,48 +60,61 @@ The disjunction of all paths is the logical formala expressed by the tree.
 	A complex tree can easily overfit the training set, incorporating random regularities not representative of the full distribution, or noise in the data.
 	It is possible to accept impure leaves, assigning them the label of the majority of their training examples.
 	Two possible strategies to prune a decision tree are:
-	\begin{itemize}
-		\item Pre-pruning; decide whether to stop splitting a node even if it contains training examples with different labels.
-		\item Post-pruning: learn a full tree and then prune it.
-	\end{itemize}
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Pre-pruning; decide whether to stop splitting a node even if it contains training examples with different labels.
+			\item Post-pruning: learn a full tree and then prune it.
+		\end{itemize}
+	\end{multicols}
 
 	\subsection{Post-pruning}
 	In post-pruning you expand the tree and then you prune it.
 	It is introduced the validation set.
-	\begin{enumerate}
-		\item For each node in the tree evaluate the performance on the validation set when removing the subtree rooted at it.
-		\item If all node removals worsen performance, stop.
-		\item Choose the node whose removal has the best performance inprovement.
-		\item Replace the subtree rooted at it with a leaf.
-		\item Assign to the leaf the majority label of all examples in the subtree.
-		\item Return to $1$.
-	\end{enumerate}
+
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item For each node in the tree evaluate the performance on the validation set when removing the subtree rooted at it.
+			\item If all node removals worsen performance, stop.
+			\item Choose the node whose removal has the best performance inprovement.
+			\item Replace the subtree rooted at it with a leaf.
+			\item Assign to the leaf the majority label of all examples in the subtree.
+			\item Return to $1$.
+		\end{enumerate}
+	\end{multicols}
 
 	\subsection{Dealing with continues valued attributes}
 	Continuous valued attributes need to be discretized in order to be used in internal node tests.
 	Discretization threshold can be chosen in order to maximize the attribute quality criterion.
-	\begin{enumerate}
-		\item Examples are sorted according to their continuous attribute values.
-		\item For each pair of successive examples having different labels, a candidate threshold is placed as the average of the two attribute values.
-		\item For each candidate threshold the infogain achieved splitting examples according to it is computed.
-		\item The threshold producing the higher infogain is used to discretize the attribute.
-	\end{enumerate}
-	
+
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Examples are sorted according to their continuous attribute values.
+			\item For each pair of successive examples having different labels, a candidate threshold is placed as the average of the two attribute values.
+			\item For each candidate threshold the infogain achieved splitting examples according to it is computed.
+			\item The threshold producing the higher infogain is used to discretize the attribute.
+		\end{enumerate}
+	\end{multicols}
+
 	\subsection{Alternative attribute test measures}
 	The information gain criterion tends to prefer attributes with a large number of possible values.
 	As an extreme the unique ID of each examples is an attribute perfectly splitting the data into singletons, but it will be no use on new examples.
 	A measure of such spread is the entropy of the dataset with respect to the attribute value instead of the class value:
 	$$H_A(S) = -\sum\limits_{v\in Values(A)}\dfrac{|S_V|}{|S|}\log_2\dfrac{|S_V|}{|S|}$$
-	The gain ration measures downweights the information gain by such attribute value entropy:
+	The gain ratio measures downweights the information gain by such attribute value entropy:
 	$$IGR(S,A) = \dfrac{IG(S,A)}{H_A(S)}$$
-	
+
 	\subsection{Handling attributes with missing values}
 	Assume example $x$ with class $c(x)$ has missing value for attribute $A$.
 	When attribute $A$ is to be tested at node $n$:
-	\begin{itemize}
-		\item Simple solution: Assign to $x$ the most common attribute values among examples in $n$ or the most common of examples in $n$ with class $c(x)$.
-		\item Complex solution: Propagate $x$ to each of the children of $n$ with a fractional value equal to the proportion of examples with the corresponding attribute value.
-	\end{itemize}
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Simple solution: Assign to $x$ the most common attribute values among examples in $n$ or the most common of examples in $n$ with class $c(x)$.
+			\item Complex solution: Propagate $x$ to each of the children of $n$ with a fractional value equal to the proportion of examples with the corresponding attribute value.
+		\end{itemize}
+	\end{multicols}
+
 	The complex solution implies that at test time, for each candidate class, all fractions of the test example which reached a leaf with that class are summed, and the example is assigned the class with highest overall value.
 
 \section{Random forest}
@@ -106,17 +126,20 @@ Random forests are effective and one of the methods of choice in case of tabular
 	\subsection{Training}
 	To train a random forest:
 
-	\begin{enumerate}
-		\item Given a training set of $N$ examples, sample $N$ examples with replacement.
-		\item Train a decision tree on the sample, selecting at each node $m$ features at random among which to choose the best one.
-		\item Repeat the first two step $M$ times in order to generate a forest of $M$ trees.
-	\end{enumerate}
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Given a training set of $N$ examples, sample $N$ examples with replacement.
+			\item Train a decision tree on the sample, selecting at each node $m$ features at random among which to choose the best one.
+			\item Repeat the first two step $M$ times in order to generate a forest of $M$ trees.
+		\end{enumerate}
+	\end{multicols}
 
 	\subsection{Testing}
 	To test a random forest:
 
-	\begin{enumerate}
-		\item Test the example with each tree in the forest.
-		\item Return the majority class among the predictions.
-	\end{enumerate}
-
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Test the example with each tree in the forest.
+			\item Return the majority class among the predictions.
+		\end{enumerate}
+	\end{multicols}

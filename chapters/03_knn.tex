@@ -7,11 +7,14 @@ The $K$-nearest neighbours is an algorithm that, given a training set represente
 
 	\subsection{Metric or distance definition}
 Given a set $\mathcal{X}$ a function $d:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}^{+}_0$ is a metric for $\mathcal{X}$ if for any $x,y,z\in \mathcal{X}$ the following properties are satisfied:
-	\begin{itemize}
-		\item Reflexivity $d(x,y) = 0 \Leftrightarrow x = y$.
-		\item Symmetry $d(x,y) = d(y,x)$.
-		\item Triangle inequality $d(x, y) + d(y, z) \ge d(x, z)$.
-	\end{itemize}
+
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Reflexivity $d(x,y) = 0 \Leftrightarrow x = y$.
+			\item Symmetry $d(x,y) = d(y,x)$.
+			\item Triangle inequality $d(x, y) + d(y, z) \ge d(x, z)$.
+		\end{itemize}
+	\end{multicols}
 
 	\subsection{Euclidean distance}
 	The euclidean distance in $\mathbb{R}^n$ is:
@@ -22,6 +25,10 @@ Given a set $\mathcal{X}$ a function $d:\mathcal{X}\times\mathcal{X}\rightarrow\
 	\subsection{Classification}
 
 		\input{./pseudocode/03/knn-classification}
+
+		Where:
+
+		$$\delta(x,y) = \begin{cases}1 &if\ x=y\\0 &otherwise\end{cases}$$
 
 	\subsection{Regression}
 
@@ -51,4 +58,3 @@ $$\arg\max\limits_{x_y}\sum\limits_{i = 1}^k w_i\delta(y, y_i)$$
 For regression the formula is instead:
 
 $$\dfrac{\sum\limits_{i = 1}^kw_iy_i}{\sum\limits_{i=1}^k w_i}$$
-

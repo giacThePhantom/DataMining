@@ -8,29 +8,33 @@ There is no certainty of correctness.
 	\subsection{Components of a machine learning problem}
 	The components of a machine learning problem are:
 
-	\begin{itemize}
-		\item Task to be addressed by the system.
-		\item Performance measure to evaluate the learned system.
-		\item Training experience to train the learning system.
-	\end{itemize}
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Task to be addressed by the system.
+			\item Performance measure to evaluate the learned system.
+			\item Training experience to train the learning system.
+		\end{itemize}
+	\end{multicols}
 
 	\subsection{Designing a machine learning system}
 	The designing of a machine learning system can be described in a process that consist of different phases:
 
-	\begin{enumerate}
-		\item Formalize the learning task.
-		\item Collect data.
-		\item Extract features.
-		\item Choose class of learning models.
-		\item Train model.
-		\item Evaluate model.
-	\end{enumerate}
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Formalize the learning task.
+			\item Collect data.
+			\item Extract features.
+			\item Choose class of learning models.
+			\item Train model.
+			\item Evaluate model.
+		\end{enumerate}
+	\end{multicols}
 
 		\subsubsection{Formalize the learning task}
 		To formalize the learning task means to define the task that should be addressed by learning system.
 		This type of task, or learning problem, is often composed of a number of related tasks, sub-problems or side-tasks.
 		It is also needed an appropriate performance measure for evaluating the learned system.
-	
+
 		\subsubsection{Collect data}
 		To collect the data means to collect a set of training example in machine readable format.
 		Data collection is often the most cumbersome part of the process, implying manual intervention especially in labelling examples for supervised learning.
@@ -40,7 +44,7 @@ There is no certainty of correctness.
 		A relevant set of features need to be extracted from the data in order to provide inputs to the learning system.
 		Prior knowledge is usually necessary in order to choose the appropriate features for the task in mind.
 		Extracting too few features can miss relevant information preventing the system from learning the task with reasonable performance.
-		Extracting too many feature like can make the learning problem harder and require a number of examples greater than those available for training.
+		Extracting too many features can make the learning problem harder and require a number of examples greater than those available for training.
 		Another problem arises when considering noisy features.
 		It is noticeable that there is a need to choose the correct number and type of feature to permit a correct and efficient solution.
 
@@ -68,29 +72,32 @@ There is no certainty of correctness.
 \section{Learning settings}
 
 	\subsection{Supervised learning}
-	The learner is provided with a set of inputs/output pairs $(x_i,y_i)\in X\times Y$.
-	The learned model $f:x\rightarrow Y$ should map input examples into their output.
+	The learner is provided with a set of inputs/output pairs $(x_i,y_i)\in \mathcal{X}\times \mathcal{Y}$.
+	The learned model $f:x\rightarrow \mathcal{Y}$ should map input examples into their output.
 	A domain expert is typically involved in labelling input examples with output examples in the training set.
 
 		\subsubsection{Tasks}
-			
+
 			\paragraph{Classification}
-			\begin{itemize}
-				\item Binary: assign an example to one of two possible classes often a positive and a negative one.
-				\item Multiclass: assign an example to one of $n>2$ possible classes.
-				\item Multilabel: assign an example to a subset $m\le n$ of the possible classes.
-			\end{itemize}
-	
+
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item Binary: assign an example to one of two possible classes, often a positive and a negative one.
+					\item Multiclass: assign an example to one of $n>2$ possible classes.
+					\item Multilabel: assign an example to a subset $m\le n$ of the possible classes.
+				\end{itemize}
+			\end{multicols}
+
 			\paragraph{Regression}
 			Assign a real value to an example.
-	
+
 			\paragraph{Ordinal regression or ranking}
 			Order a set of examples according to their relative importance or quality with respect to the class.
 
 
 	\subsection{Unsupervised learning}
-	The learner is provided a set of input examples $x_i\in X$ with no labelling information.
-	The learner models training examples, for examples clustering them together into clusters according to their similarity.
+	The learner is provided a set of input examples $x_i\in \mathcal{X}$ with no labelling information.
+	The learner models training examples, for example clustering them together into clusters according to their similarity.
 
 		\subsubsection{Tasks}
 
@@ -105,9 +112,9 @@ There is no certainty of correctness.
 
 
 	\subsection{Semi-supervised learning}
-	The learner is provided with a set of input output pairs $(x_i, y_i)\in X\times Y$.
-	A typically much bigger additional set of unlabelled examples $x_i\in X$ is also provided.
-	Like in supervised learning the learned model $f:X\rightarrow Y$ should map input examples into their output.
+	The learner is provided with a set of input output pairs $(x_i, y_i)\in \mathcal{X}\times \mathcal{Y}$.
+	A typically much bigger additional set of unlabelled examples $x_i\in \mathcal{X}$ is also provided.
+	Like in supervised learning the learned model $f:\mathcal{X}\rightarrow \mathcal{Y}$ should map input examples into their output.
 	Unlabelled data can be exploited to improve performance, by forcing the model to produce similar outputs for similar inputs, or by allowing to learn a better representation of examples.
 
 	\subsection{Reinforcement learning}

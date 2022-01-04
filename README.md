@@ -6,10 +6,10 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 
 ## Lecture plan
 
-	* [FIRST DRAFT] 01_introduzione.pdf
-	* [FIRST DRAFT] 02_decision_trees.pdf
-	* [FIRST DRAFT] 03_knn.pdf
-	* [FIRST DRAFT] 04_linear_algebra.pdf
+	* [X] 01_introduzione.pdf
+	* [X] 02_decision_trees.pdf
+	* [X] 03_knn.pdf
+	* [X] 04_linear_algebra.pdf
 	* [FIRST DRAFT] 05_probability_theory.pdf
 	* [FIRST DRAFT] 06_evaluation.pdf
 	* [FIRST DRAFT] 07_bayesian_decision_theory.pdf

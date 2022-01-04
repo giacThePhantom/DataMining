@@ -1,23 +1,24 @@
 \chapter{Linear algebra}
 
 \section{Vector space}
-A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and scalar multiplication are defined and satisfy for all $x,y,z\in\mathcal{X}$ and $\lambda,\mu\in\mathcal{R}$:
+A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and scalar multiplication are defined and satisfy for all $\vec{x},\vec{y},\vec{z}\in\mathcal{X}$ and $\lambda,\mu\in\mathcal{R}$:
 
 \begin{multicols}{2}
 	\begin{itemize}
 		\item Addition:
 			\begin{itemize}
-				\item Association: $x+(y+z) = (x+y)+z$.
-				\item Commutation: $x+y = y+x$.
-				\item There is an identity element: $\exists 0\in\mathcal{X}:x+0 = x$.
-				\item There is an inverse element: $\forall x\in\mathcal{X} \exists x'\in\mathcal{X}:x+x'=0$.
+				\item Association: $\vec{x}+(\vec{y}+\vec{z}) = (\vec{x}+\vec{y})+\vec{z}$.
+				\item Commutation: $\vec{x}+\vec{y} = \vec{y}+\vec{x}$.
+				\item There is an identity element: $\exists \vec{0}\in\mathcal{X}:\vec{x}+\vec{0} = \vec{x}$.
+				\item There is an inverse element: $\forall \vec{x}\in\mathcal{X} \exists \vec{x}'\in\mathcal{X}:\vec{x}+\vec{x}'=\vec{0}$.
 			\end{itemize}
+			\columnbreak
 		\item Scalar multiplication:
 			\begin{itemize}
-				\item Is distributive over elements: $\lambda(x+y) = \lambda x + \lambda y$.
-				\item Is distributive over scalars: $(\lambda+\mu)x = \lambda x + \mu x$.
-				\item Is associative over scalars: $\lambda(\mu x) = (\lambda\mu)x$.
-				\item There is an identity element: $\exists 1\in\mathbb{R}: 1x=x$.
+				\item Is distributive over elements: $\lambda(\vec{x}+\vec{y}) = \lambda \vec{x} + \lambda \vec{y}$.
+				\item Is distributive over scalars: $(\lambda+\mu)\vec{x} = \lambda \vec{x} + \mu \vec{x}$.
+				\item Is associative over scalars: $\lambda(\mu \vec{x}) = (\lambda\mu)\vec{x}$.
+				\item There is an identity element: $\exists 1\in\mathbb{R}: 1\vec{x}=\vec{x}$.
 			\end{itemize}
 	\end{itemize}
 \end{multicols}
@@ -28,40 +29,40 @@ A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and s
 		A subspace is any non-empty subset of $\mathcal{X}$ being itself a vector space.
 
 		\subsubsection{Linear combination}
-		Given $\lambda_i\in\mathbb{R}\land x_i\in\mathcal{X}$, a linear combination is:
-		$$\sum\limits_{i=1}^n\lambda_i x_i$$
+		Given $\lambda_i\in\mathbb{R}\land \vec{x}_i\in\mathcal{X}$, a linear combination is:
+		$$\sum\limits_{i=1}^n\lambda_i \vec{x}_i$$
 
 		\subsubsection{Span}
-		The span of vectors $x_1, \dots, x_n$ is defined as the set of their linear combination:
-		$$\bigl\{\sum\limits_{i=1}^n\lambda_ix_i, \lambda_i\in\mathbb{R}\bigr\}$$
+		The span of vectors $\vec{x}_1, \dots, \vec{x}_n$ is defined as the set of their linear combination:
+		$$\bigl\{\sum\limits_{i=1}^n\lambda_i\vec{x}_i, \lambda_i\in\mathbb{R}\bigr\}$$
 
 		\subsubsection{Linear independence}
-		A set of vector $x_i$ is linearly independent if none of them can be written as a linear combination of the others.
+		A set of vector $\vec{x}_i$ is linearly independent if none of them can be written as a linear combination of the others.
 
 	\subsection{Basis}
-	A set of vectors $x_i$ is a basis for $\mathcal{X}$ if any element in $\mathcal{X}$ can be uniquely written as a linear combination of vectors $x_j$.
-	The vectors $x_j$ need to be linearly independent.
+	A set of vectors $\vec{x}_i$ is a basis for $\mathcal{X}$ if any element in $\mathcal{X}$ can be uniquely written as a linear combination of vectors $\vec{x}_i$.
+	The vectors $\vec{x}_i$ need to be linearly independent.
 	All bases of $\mathcal{X}$ have the same number of elements, called the dimension of the vector space.
 
 \section{Matrices}
 
 	\subsection{Linear maps}
-	Given two vector spaces $\mathcal{X}$ and $\mathcal{Z}$ a function $f:\mathcal{X}\rightarrow\mathcal{Z}$ is a linear map if $\forall x, y\in\mathcal{X}\lambda\in\mathbb{R}$:
+	Given two vector spaces $\mathcal{X}$ and $\mathcal{Z}$ a function $f:\mathcal{X}\rightarrow\mathcal{Z}$ is a linear map if $\forall \vec{x}, \vec{y}\in\mathcal{X}\lambda\in\mathbb{R}$:
 	\begin{multicols}{2}
 		\begin{itemize}
-			\item $f(x + y) = f(x) + f(y)$.
-			\item $f(\lambda x) = \lambda f(x)$.
+			\item $f(\vec{x} + \vec{y}) = f(\vec{x}) + f(\vec{y})$.
+			\item $f(\lambda \vec{x}) = \lambda f(\vec{x})$.
 		\end{itemize}
 	\end{multicols}
 
 	\subsection{Linear maps as matrices}
 	A linear map between two finite dimensional spaces $\mathcal{X}$ and $\mathcal{Z}$ of dimension $n$ and $m$ can always be written as a matrix.
-	Let $\{x_1, \dots, x_n\}$ and $\{z_1, \dots, z_m\}$ be some bases for $\mathcal{X}$ and $\mathcal{Z}$ respectively.
-	For any $x\in\mathcal{X}$:
+	Let $\{\vec{x}_1, \dots, \vec{x}_n\}$ and $\{\vec{z}_1, \dots, \vec{z}_m\}$ be some bases for $\mathcal{X}$ and $\mathcal{Z}$ respectively.
+	For any $\vec{x}\in\mathcal{X}$:
 	\begin{align*}
-		f(x) &= f(\sum\limits_{i=1}^n\lambda_ix_i) = \sum\limits_{i = 1}^n\lambda_if(x_i)\\
-		f(x_i) &= \sum\limits_{j=1}^ma_{ji}^ma_{ij}z_j\\
-		f(x) &= \sum\limits_{i=1}^n\sum\limits_{j=1}^m\lambda_ia_{ji}z_j = \sum\limits_{j=1}^m\bigl(\sum\limits_{i=1}^n\lambda_ia_{ji}\bigr)z_j = \sum\limits_{j=1}^m\mu_j z_j
+		f(\vec{x}) &= f(\sum\limits_{i=1}^n\lambda_i\vec{x}_i) = \sum\limits_{i = 1}^n\lambda_if(\vec{x}_i)\\
+		f(\vec{x}_i) &= \sum\limits_{j=1}^ma_{ij}\vec{z}_j\\
+		f(\vec{x}) &= \sum\limits_{i=1}^n\sum\limits_{j=1}^m\lambda_ia_{ji}\vec{z}_j = \sum\limits_{j=1}^m\bigl(\sum\limits_{i=1}^n\lambda_ia_{ji}\bigr)\vec{z}_j = \sum\limits_{j=1}^m\mu_j \vec{z}_j
 	\end{align*}
 
 		\subsubsection{Matrix of basis transformation}
@@ -71,17 +72,17 @@ A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and s
 
 		The mapping from basis to basis coefficient is done:
 
-		$$M\lambda = \mu$$
+		$$M\vec{\lambda} = \vec{\mu}$$
 
 		\subsubsection{Matrix changing the coordinates, 2D examples}
 		Let $B = \biggl\{ \begin{bmatrix} 1 \\0 \end{bmatrix} , \begin{bmatrix} 0 \\ 1\end{bmatrix}\biggr\}$ be the standard basis in $\mathbb{R}^2$ and $B' = \biggl\{\begin{bmatrix} 3 \\ 1 \end{bmatrix}, \begin{bmatrix} -2 \\ 1 \end{bmatrix}\biggr\}$ be an alternative basis.
-		The change of coordinate matrix from $B'$ to $B$ is: 
+		The change of coordinate matrix from $B'$ to $B$ is:
 
 		$$P = \begin{bmatrix} 3 & -2 \\ 1 & 1 \end{bmatrix}$$
 
-		So that: 
-		
-		$$[v]_B = P[v]_{B'}\qquad\land\qquad [v]_{B'} = P^{-1}[v]_B$$
+		So that:
+
+		$$[\vec{v}]_B = P[\vec{v}]_{B'}\qquad\land\qquad [\vec{v}]_{B'} = P^{-1}[\vec{v}]_B$$
 
 		For arbitrary $B$ and $B'$ $P$'s columns must be the $B'$ vectors written in terms of the $B$ ones.
 
@@ -108,11 +109,11 @@ A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and s
 	\subsection{Matrix derivatives}
 
 	\begin{align*}
-		\frac{\partial M_X}{\partial x} &= M\\
-		\frac{\partial y^T Mx}{\partial x} &=M^Ty\\
-		\frac{\partial x^T Mx}{\partial x} &= (M^T + M)x\\
-		\frac{\partial x^T Mx}{\partial x} &= 2Mx \qquad \text{if }M\text{ is symmetric}\\
-		\frac{\partial x^T x}{\partial x} &= 2x
+		\frac{\partial M\vec{X}}{\partial \vec{x}} &= M\\
+		\frac{\partial \vec{y}^T M\vec{x}}{\partial \vec{x}} &=M^T\vec{y}\\
+		\frac{\partial \vec{x}^T M\vec{x}}{\partial \vec{x}} &= (M^T + M)\vec{x}\\
+		\frac{\partial \vec{x}^T M\vec{x}}{\partial \vec{x}} &= 2M\vec{x} \qquad \text{if }M\text{ is symmetric}\\
+		\frac{\partial \vec{x}^T \vec{x}}{\partial \vec{x}} &= 2\vec{x}
 	\end{align*}
 
 	Results are columns vectors.
@@ -121,61 +122,61 @@ A set $\mathcal{X}$ is called a vector space over $\mathbb{R}$ if addition and s
 	\subsection{Metric structure}
 
 		\subsubsection{Norm}
-		A function $||\cdot ||: \mathcal{X} \rightarrow \mathbb{R}^+_0$ is a norm $\forall x,y\in\mathcal{X},\lambda\in\mathbb{R}$:
+		A function $||\cdot ||: \mathcal{X} \rightarrow \mathbb{R}^+_0$ is a norm $\forall \vec{x},\vec{y}\in\mathcal{X},\lambda\in\mathbb{R}$:
 
 		\begin{multicols}{3}
 			\begin{itemize}
-				\item $||x + y|| \le ||x|| + ||y||$
-				\item $||\lambda x || = |\lambda| ||x||$
-				\item $||x||>0 if x\neq 0$
+				\item $||\vec{x} + \vec{y}|| \le ||\vec{x}|| + ||\vec{y}||$
+				\item $||\lambda \vec{x} || = |\lambda| ||\vec{x}||$
+				\item $||\vec{x}||>0 \Leftrightarrow\vec{x}\neq \vec{0}$
 			\end{itemize}
 		\end{multicols}
 
 		\subsubsection{Metric}
 		A norm defines a metric $d: \mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}_0^+$:
 
-		$$d(x,y) = ||x - y||$$
+		$$d(\vec{x},\vec{y}) = ||\vec{x} - \vec{y}||$$
 
 		Not every metric gives rise to a norm.
 
 	\subsection{Dot product}
 	A dot product $\langle \cdot, \cdot\rangle:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$ is a symmetric bilinear form which is positive semi-definite:
 
-	$$\langle x, x\rangle \ge 0\forall x \in\mathcal{X}$$
+	$$\langle \vec{x}, \vec{x}\rangle \ge 0\forall \vec{x} \in\mathcal{X}$$
 
 	A positive definite dot product satisfies:
 
-	$$\langle x, x\rangle = 0 \Leftrightarrow x = 0$$
+	$$\langle \vec{x}, \vec{x}\rangle = 0 \Leftrightarrow \vec{x} = \vec{0}$$
 
 		\subsubsection{Norm}
 		Any dot product defines a corresponding norm via:
 
-		$$||x|| = \sqrt{\langle x, x\rangle}$$
+		$$||\vec{x}|| = \sqrt{\langle \vec{x}, \vec{x}\rangle}$$
 
 		\subsubsection{Properties}
 
 			\paragraph{Angle}
 			The angle $\theta$ between two vectors is defined as:
 
-			$$\cos\theta = \frac{\langle x, z\rangle}{||x||||z||}$$
+			$$\cos\theta = \frac{\langle \vec{x}, \vec{z}\rangle}{||\vec{x}||||\vec{z}||}$$
 
 			\paragraph{Orthogonal}
-			Two vectors are orthogonal if $\langle x, y\rangle = 0$.
+			Two vectors are orthogonal if $\langle \vec{x}, \vec{y}\rangle = 0$.
 
 			\paragraph{Orthonormal}
-			A set of vectors $\{x_1, \dots, x_n\}$ is orthonormal is
+			A set of vectors $\{\vec{x}_1, \dots, \vec{x}_n\}$ is orthonormal is
 
-			$$\langle x_i, x_j\rangle = \delta_{ij}$$
+			$$\langle \vec{x}_i, \vec{x}_j\rangle = \delta_{ij}$$
 
 			Where $\delta_{ij} = 1$ if $i = j$, $0$ otherwise.
-			If $x$ and $y$ are $n$-dimensional column vectors, their dot product is computed as:
+			If $\vec{x}$ and $\vec{y}$ are $n$-dimensional column vectors, their dot product is computed as:
 
-			$$\langle x, y\rangle = x^Ty = \sum\limits_{i=1}^nx_iy_i$$
+			$$\langle \vec{x}, \vec{y}\rangle = \vec{x}^T\vec{y} = \sum\limits_{i=1}^n\vec{x}_i\vec{y}_i$$
 
 \section{Eigenvalues and eigenvectors}
-Given a $n\times n$ matrix $M$ the real value $\lambda$ and non zero vector $x$ are eigenvalue and the corresponding eigenvector of $M$ if:
+Given a $n\times n$ matrix $M$ the real value $\lambda$ and non zero vector $\vec{x}$ are eigenvalue and the corresponding eigenvector of $M$ if:
 
-$$Mx = \lambda x$$
+$$M\vec{x} = \lambda \vec{x}$$
 
 	\subsection{Cardinality}
 	An $n\times n$ matrix has $n$ eigenvalues, but less than $n$ distinct ones.
@@ -184,7 +185,7 @@ $$Mx = \lambda x$$
 	\subsection{Singular matrices}
 	A matrix is singular if it has a zero eigenvalue:
 
-	$$Mx = 0x = 0$$
+	$$M\vec{x} = 0\vec{x} = 0$$
 
 	A singular matrix has linearly dependent columns.
 
@@ -192,12 +193,12 @@ $$Mx = \lambda x$$
 	Eigenvectors corresponding to distinct eigenvalues are orthogonal:
 
 	\begin{align*}
-		\lambda\langle x, z\rangle &= \langle Ax, z\rangle=\\
-					   &=(Ax)^Tz=
-					   &=x^TA^Tz=\\
-					   &=x^TAz=\\
-					   &\langle x, Az\rangle=\\
-					   &=\mu\langle x, z\rangle
+		\lambda\langle \vec{x}, \vec{z}\rangle &= \langle A\vec{x}, \vec{z}\rangle=\\
+					   &=(A\vec{x})^T\vec{z}=\\
+					   &=\vec{x}^TA^T\vec{z}=\\
+					   &=\vec{x}^TA\vec{z}=\\
+					   &=\langle \vec{x}, A\vec{z}\rangle=\\
+					   &=\mu\langle \vec{x}, \vec{z}\rangle
 	\end{align*}
 
 	\subsection{Eigen-decomposition}
@@ -205,45 +206,45 @@ $$Mx = \lambda x$$
 		\subsubsection{Raleigh quotient}
 
 		\begin{align*}
-			Ax &=\lambda x\\
-			\frac{x^TAx}{x^Tx} &=\lambda\frac{x^Tx}{x^Tx} = \lambda
+			A\vec{x} &=\lambda \vec{x}\\
+			\frac{\vec{x}^TA\vec{x}}{\vec{x}^T\vec{x}} &=\lambda\frac{\vec{x}^T\vec{x}}{\vec{x}^T\vec{x}} = \lambda
 		\end{align*}
 
 		\subsubsection{Finding eigenvector}
 		To find the eigenvector you need to maximize the eigenvalue:
 
-		$$x = \max\limits_v\frac{v^TAv}{v^Tv}$$
+		$$x = \max\limits_{\vec{v}}\frac{\vec{v}^TA\vec{v}}{\vec{v}^T\vec{v}}$$
 
 		After that you need to normalize it so the solution is invariant to rescaling:
 
-		$$x\leftarrow\frac{x}{||x||}$$
+		$$\vec{x}\leftarrow\frac{\vec{x}}{||\vec{x}||}$$
 
 		\subsubsection{Deflating matrix}
 
-		$$\bar{A} = A - \lambda xx^T$$
+		$$\bar{A} = A - \lambda \vec{x}\vec{x}^T$$
 
-		The deflation turns $x$ into a zero eigenvalue eigenvector:
+		The deflation turns $\vec{x}$ into a zero eigenvalue eigenvector:
 
 		\begin{align*}
-			\bar{A}x &= Ax -\lambda xx^Tx\\
-				 &Ax-\lambda x = 0
+			\tilde{A}\vec{x} &= A\vec{x} -\lambda \vec{x}\vec{x}^T\vec{x}\\
+				 &A\vec{x}-\lambda \vec{x} = 0
 		\end{align*}
-		
+
 		Other eigenvalues are unchanged as eigenvectors with distinct eigenvalues are orthogonal because the matrix is symmetric:
 
 		\begin{align*}
-			\bar{A}z &= Az-\lambda xx^Tz\\
-			\bar{A}z &=Az
+			\tilde{A}\vec{z} &= A\vec{z}-\lambda \vec{x}\vec{x}^T\vec{z}\\
+			\tilde{A}\vec{z} &=A\vec{z}
 		\end{align*}
 
 		\subsubsection{Iterating}
 		The maximization procedure is repeated on the deflated matrix until solution is zero.
 		Minimization is iterated to get eigenvectors with negative eigenvalues.
 		Eigenvectors with zero eigenvalues are obtained extending the obtained set to an orthonormal basis.
-		
+
 		\subsubsection{Eigen-decomposition}
-		Let $V = [v_1 \dots v_n]$ be a matrix with orthonormal eigenvectors as columns.
-		Let $A$ be the diagonal matrix of corresponding eigenvalues.
+		Let $V = [\vec{v}_1 \dots \vec{v}_n]$ be a matrix with orthonormal eigenvectors as columns.
+		Let $\Lambda$ be the diagonal matrix of corresponding eigenvalues.
 		A square symmetric matrix can be diagonalizes as:
 
 		$$V^TAV=\Lambda$$
@@ -253,7 +254,7 @@ $$Mx = \lambda x$$
 			\paragraph{Proof}
 
 			\begin{align*}
-				A[v_1\dots v_n] &= [v_1\dots v_n \begin{bmatrix}\lambda_1 & & 0\\ & \ddots & \\ 0 & & \lambda_n\end{bmatrix}\\
+				A[\vec{v}_1\dots \vec{v}_n] &= [\vec{v}_1\dots \vec{v}_n] \begin{bmatrix}\lambda_1 & & 0\\ & \ddots & \\ 0 & & \lambda_n\end{bmatrix}\\
 				AV &= V\Lambda\\
 				V^{-1}AV &= V^{-1}V\Lambda\\
 				V^TAV &= \Lambda
@@ -266,20 +267,20 @@ $$Mx = \lambda x$$
 		Positive semi-definite:
 		\begin{multicols}{2}
 			\begin{itemize}
-				\item $\Leftrightarrow\forall x\in\mathbb{R}^n: x^TMx\ge 0$
+				\item $\Leftrightarrow\forall \vec{x}\in\mathbb{R}^n: \vec{x}^TM\vec{x}\ge \vec{0}$
 				\item $\Leftrightarrow\exists B: M=B^TB$
 			\end{itemize}
 		\end{multicols}
 
 		\subsubsection{Scaling transformation in standard basis}
-		Let $x_i = [1,0]$ and $x_2 = [0,1]$ the standard orthonormal basis in $\mathbb{R}^2$.
-		Let $x = [x_1, x_2]$ am arbitrary vector in $\mathbb{R}^2$.
-		A linear transformation is a scaling transformation if it only stretches $x$ along its directions.
+		Let $\vec{x}_1 = [1,0]$ and $\vec{x}_2 = [0,1]$ the standard orthonormal basis in $\mathbb{R}^2$.
+		Let $\vec{x} = [x_1, x_2]$ am arbitrary vector in $\mathbb{R}^2$.
+		A linear transformation is a scaling transformation if it only stretches $\vec{x}$ along its directions.
 
 		\subsubsection{Scaling transformation in eigenbasis}
 		Let $A$ be a non-scaling transformation in $\mathbb{R}$.
-		Let $\{v_1, v_2\}$ be an eigenbasis for $A$.
-		By representing vectors in $\mathbb{R}^2$ in terms of the $\{v_1, v_2\}$ basis $A$ becomes a scaling transformation.
+		Let $\{\vec{v}_1, \vec{v}_2\}$ be an eigenbasis for $A$.
+		By representing vectors in $\mathbb{R}^2$ in terms of the $\{\vec{v}_1, \vec{v}_2\}$ basis $A$ becomes a scaling transformation.
 
 \section{Principal component analysis}
 Principal component analysis or PCA is a non-supervised machine learning technique that accomplishes dimensionality reduction.
@@ -289,13 +290,13 @@ It corresponds to fitting an ellipsoid to the data, whose axis are the coordinat
 
 	\subsection{Procedure}
 	Given a dataset $X\in\mathbb{R}^{n\times d}$ in $d$ dimension:
-	Compute the mean of the data:
+	Compute the mean of the data, where $X_i$ are the row vectors of $X$:
 
 	$$\bar{x} = \frac{1}{n}\sum\limits_{i=1}^nX_i$$
 
 	Center the data into the origin:
 
-	$$X - \begin{bmatrix}\bar{x}\\\cdots\\\bar{x}\end{bmatrix}$$
+	$$X - \begin{bmatrix}\bar{x}\\\vdots\\\bar{x}\end{bmatrix}$$
 
 	Compute the data covariance:
 
@@ -303,16 +304,17 @@ It corresponds to fitting an ellipsoid to the data, whose axis are the coordinat
 
 	Compute the orthonormal eigen-decomposition of $C$:
 
-	$$V^TCV=A$$
+	$$V^TCV=\Lambda$$
 
 	Us it as the new coordinate system:
 
-	$$x' = V^{-1}x = V^Tx$$
+	$$\vec{x}' = V^{-1}\vec{x} = V^T\vec{x}$$
 
+	Where $V^1=V^T$ as $V$ is unitary.
 	This method assumes linear correlation and Gaussian distribution.
 
 	\subsection{Dimensionality reduction}
 	Each eigenvalue corresponds to the amount of variance in that direction.
 	Select only the $k$ eigenvalues with largest eigenvalue for dimensionality reduction:
-	$$W = [v_1, \dots, v_k]$$
-	$$x' = W^Tx$$
+	$$W = [\vec{v}_1, \dots, \vec{v}_k]$$
+	$$\vec{x}' = W^T\vec{x}$$
