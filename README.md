@@ -25,3 +25,5 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 	- [FIRST DRAFT] 17_deep_learning.pdf
 	- [FIRST DRAFT] 18_unsupervised_learning.pdf
 	- [FIRST DRAFT] 19_reinforced_learning.pdf
+
+- [ ] Saturn
