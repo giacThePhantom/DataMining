@@ -10,8 +10,8 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 - [x] 02_decision_trees.pdf
 - [x] 03_knn.pdf
 - [x] 04_linear_algebra.pdf
-- [ ] 05_probability_theory.pdf
-- [ ] 06_evaluation.pdf
+- [x] 05_probability_theory.pdf
+- [x] 06_evaluation.pdf
 - [ ] 07_bayesian_decision_theory.pdf
 - [ ] 08_parameter_estimation.pdf
 - [ ] 09_bn.pdf

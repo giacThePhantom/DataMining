@@ -59,11 +59,11 @@ Performance evaluation is needed for:
 		Precision and recall are complementary: increasing prediction typically reduces recall.
 		F-measures combines the two measures balancing the two aspects with a parameter $\beta$ that defines the trade-off between precision and recall:
 
-		$$F_\beta = \frac{(1+\beta^2)(Pre+Rec)}{\beta^2Pre + Rec}$$
+		$$F_\beta = \frac{(1+\beta^2)(Pre\cdot Rec)}{\beta^2Pre + Rec}$$
 
 		If $\beta = 1$ the measure is called $F_1$ and it is the harmonic mean of precision and recall:
 
-		$$F_1 = \frac{2(Pre+Rec)}{Pre+Rec}$$
+		$$F_1 = \frac{2(Pre\cdot Rec)}{Pre+Rec}$$
 
 		\subsubsection{Precision-recall curve}
 		Classifiers often provide a confidence in the prediction and a hard decision is made setting a threshold on the classifier.
@@ -98,14 +98,14 @@ Performance evaluation is needed for:
 
 		Multiclass accuracy is the overall fraction of correctly classified examples:
 
-		$$MAcc = \frac{\sum\limits_i n_{ii}}{\sum\limits_i\sum\limits_j n_{i}}$$
+		$$MAcc = \frac{\sum\limits_i n_{ii}}{\sum\limits_i\sum\limits_j n_{ij}}$$
 
 	\subsection{Regression}
 
 		\subsubsection{Root mean squared error}
 		The root mean squared error for dataset $\mathcal{D}$ with $n = |\mathcal{D}|$ is:
 
-		$$RMSE = \sqrt{\frac{1}{n}\sum\limits_{i=1}^n(f(x_i)-y_i)^2}$$
+		$$RMSE = \sqrt{\frac{1}{n}\sum\limits_{i=1}^n(f(\vec{x}_i)-y_i)^2}$$
 
 		\subsubsection{Pearson correlation coefficient}
 		The Pearson correlation coefficient for random variable $X$ and $Y$ is:
@@ -114,7 +114,7 @@ Performance evaluation is needed for:
 
 		For regression on $\mathcal{D}$ it becomes:
 
-		$$\rho = frac{\sum\limits_{i=1}^n(f(x_i)-\bar{f}(x_i))(y_i-\bar{y}_i)}{\sqrt{\sum\limits_{i=1}^n(f(x_i)-\bar{f}(x_i))^2\sum\limits_{i=1}^n(y_i-\bar{y}_i)^2}}$$
+		$$\rho = \frac{\sum\limits_{i=1}^n(f(\vec{x}_i)-\bar{f}(\vec{x}_i))(y_i-\bar{y}_i)}{\sqrt{\sum\limits_{i=1}^n(f(\vec{x}_i)-\bar{f}(\vec{x}_i))^2\sum\limits_{i=1}^n(y_i-\bar{y}_i)^2}}$$
 
 		Where $\bar{z}$ is the average of $z$ on $\mathcal{D}$.
 
@@ -132,7 +132,7 @@ Performance evaluation is needed for:
 
 		\subsubsection{K-fold cross validation}
 		In the k-fold cross validation $\mathcal{D}$ is split in $k$ equal sized disjoint subsets $\mathcal{D}_i$.
-		Then for $i\in[1,k]$L
+		Then for $i\in[1,k]$:
 
 		\begin{multicols}{2}
 			\begin{enumerate}
@@ -164,7 +164,7 @@ There is a need to know whether observed difference in performance is statistica
 Hypothesis testing allows to test the statistical significance of an hypothesis.
 
 	\subsection{Test statistic}
-	Given a null hypothesis $H_0$, the default hypothesis, for rejecting which evidence should be provided, a sample of $k$ realizations of random variables $X_1, \dots, X_k$, a test statistic is a statistic $T = h(X_1, \dots, X_n$ whose value is used to decide whether to reject $H_0$ or not.
+	Given a null hypothesis $H_0$, the default hypothesis, for rejecting which evidence should be provided, a sample of $k$ realizations of random variables $X_1, \dots, X_k$, a test statistic is a statistic $T = h(X_1, \dots, X_n)$ whose value is used to decide whether to reject $H_0$ or not.
 
 	\subsection{Glossary}
 

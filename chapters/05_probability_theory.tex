@@ -57,7 +57,7 @@
 		Its parameter is $p$ the probability of success.
 		Its probability mass function:
 
-		$$P(x;p) = \begin{cases} p\qquad if x = 1\\ 1-p \qquad if x = 1\end{cases}$$
+		$$P(x;p) = \begin{cases} p & if\ x = 1\\ 1-p &if\ x = 0\end{cases}$$
 
 		\begin{multicols}{2}
 			\begin{itemize}
@@ -133,7 +133,7 @@
 
 			\paragraph{Covariance}
 
-			$$\sigma_{xy} + \mathbb{E}[(x-\mu_x)(y-\mu_y)] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}(x-\mu_x)(y-\mu_y)P(x,y)$$
+			$$\sigma_{xy} = \mathbb{E}[(x-\mu_x)(y-\mu_y)] = \sum\limits_{x\in\mathcal{X}}\sum\limits_{y\in\mathcal{Y}}(x-\mu_x)(y-\mu_y)P(x,y)$$
 
 			\paragraph{Correlation coefficient}
 
@@ -141,28 +141,19 @@
 
 		\subsubsection{Multinomial distribution}
 		Given $n$ samples of an event with $m$ possible outcomes, the multinomial distribution models the probability of a certain distribution of outcomes.
-		It has parameters $p_1,\dots, p_m$ probabiliry of each outcome and $n$ the number of samples.
+		It has parameters $p_1,\dots, p_m$ probability of each outcome and $n$ the number of samples.
 		Its probability mass function assumes $\sum\limits_{i=1}^mx_i = n$ and it is:
 
 		$$P(x_1, \dots, x_m; p_1, \dots, p_m, n) = \dfrac{n!}{\prod\limits_{i=1}^mx_i!}\prod\limits_{i=1}^mp_i^{x_i}$$
 
 		\begin{multicols}{3}
 			\begin{itemize}
-				\item $\mathbb{E}[x_i] = np)i$
-				\item $Var[x_i] = np_i(1-p_i)$
-				\item $Cov[x_i, x_j] = -np_ip_j$
-			\end{itemize}
-		\end{multicols}:
-
-		$$P(x_1, \dots, x_m; p_1, \dots, p_m, n) = \dfrac{n!}{\prod\limits_{i=1}^mx_i!}\prod\limits_{i=1}^mp_i^{x_i}$$
-
-		\begin{multicols}{3}
-			\begin{itemize}
-				\item $\mathbb{E}[x_i] = np)i$
+				\item $\mathbb{E}[x_i] = np_i$
 				\item $Var[x_i] = np_i(1-p_i)$
 				\item $Cov[x_i, x_j] = -np_ip_j$
 			\end{itemize}
 		\end{multicols}
+
 
 \section{Conditionally probability}
 The conditional probability is the probability of $x$ once $y$ is observed:
@@ -195,7 +186,7 @@ This implies:
 		\end{multicols}
 
 		\subsubsection{Product rule}
-		Conditional probabiliry definition implies that:
+		Conditional probability definition implies that:
 
 		$$P(x,y) = P(x|y)P(y) = P(y|x)P(x)$$
 
@@ -284,13 +275,13 @@ This implies:
 		\begin{multicols}{2}
 			\begin{itemize}
 				\item $\mathbb{E}[x] = \frac{\alpha}{\alpha+\beta}$
-				\item $Var[x] = \frac{\alpha\beta}{(\alpha+\beta+1)}$
+				\item $Var[x] = \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$
 				\item $\Gamma(x+1) = x\Gamma(x)$
 				\item $\Gamma(1) = 1$
 			\end{itemize}
 		\end{multicols}
 
-		It models the posterior distribution of parameter $p$ of a binomial distribution after observing $n-1$ independent events with probability $p$ and $\beta-1$ with probability $1-p$.
+		It models the posterior distribution of parameter $p$ of a binomial distribution after observing $\alpha-1$ independent events with probability $p$ and $\beta-1$ with probability $1-p$.
 
 		\subsubsection{Multivariate normal distribution}
 		The multivariate normal distribution is the normal distribution for $d$-dimensional vectorial data.
@@ -308,7 +299,7 @@ This implies:
 			\end{itemize}
 		\end{multicols}
 
-		The standard measure of instance to mean is the squared Mahalanobis distance"
+		The standard measure of instance to mean is the squared Mahalanobis distance:
 
 		$$r^2 = (\vec{x}-\vec{\mu})^T\Sigma^{-1}(\vec{x}-\vec{\mu})$$
 
@@ -317,16 +308,16 @@ This implies:
 		It has parameters $\vec{\alpha} = \alpha_1, \dots, \alpha_m$.
 		Its probability density function is:
 
-		$$p(x_1, \dots, x_m; \vec{\alpha}) = \frac{\Gamma((\alpha_0)}{\prod\limits_{i=1}^m\Gamma(\alpha_i)}\prod\limits_{i=1}^mx_i^{a_i-1}$$
+		$$p(x_1, \dots, x_m; \vec{\alpha}) = \frac{\Gamma(\alpha_0)}{\prod\limits_{i=1}^m\Gamma(\alpha_i)}\prod\limits_{i=1}^mx_i^{a_i-1}$$
 
 		Where $\alpha_0 = \sum\limits_{j=1}^m \alpha_j$.
 		Also:
-		
+
 		\begin{multicols}{3}
 			\begin{itemize}
 				\item $\mathbb{E}[x_i] = \frac{\alpha_i}{\alpha_0}$
 				\item $Var[x_i] = \frac{\alpha_i(\alpha_0-\alpha_i)}{\alpha_0^2(\alpha_0+1)}$
-				\item $Cps[x_i, x_j] = \frac{-\alpha_i\alpha_j}{a_0^2(\alpha_0+1)}$
+				\item $Cov[x_i, x_j] = \frac{-\alpha_i\alpha_j}{a_0^2(\alpha_0+1)}$
 			\end{itemize}
 		\end{multicols}
 
@@ -336,19 +327,23 @@ This implies:
 
 	\subsection{Expectation of an average}
 	Consider a sample of $X_1, \dots, X_n$ instances drawn from a distribution with mean $\mu$ and variance $\sigma^2$.
-	Consider the random variable $\hat{X}_n$ measuring the sample average:
+	Consider the random variable $\bar{X}_n$ measuring the sample average:
 
-	$$\hat{X}_n = \frac{X_1+\cdots+X_n}{n}$$
+	$$\bar{X}_n = \frac{X_1+\cdots+X_n}{n}$$
 
 	Considering that $\mathbb{E}[a(X+Y)] = a(\mathbb{E}[x] + \mathbb{E}[y])$:
 
-	$$\mathbb{E}[\hat{X}_n] = \frac{1}{n}(\mathbb{E}[X_1] + \cdots + \mathbb{E}[X_n]) = p$$
+	$$\mathbb{E}[\bar{X}_n] = \frac{1}{n}(\mathbb{E}[X_1] + \cdots + \mathbb{E}[X_n]) = p$$
+
+	Or that the expectation of an average is the true mean of the distribution.
 
 	\subsection{Variance of an average}
-	Consider the random variable $\hat{X}_n$ measuring the sample average.
+	Consider the random variable $\bar{X}_n$ measuring the sample average.
 	Its variance is computed as $Var[a(X+Y)] = a^2(Var[X] + Var[Y])$ if $X$ and $Y$ are independent:
 
-	$$Var[\hat{X}_n] = \frac{1}{n^2}(Var[X_1] + \cdots Var[X_n]) = \frac{\sigma^2}{n}$$
+	$$Var[\bar{X}_n] = \frac{1}{n^2}(Var[X_1] + \cdots Var[X_n]) = \frac{\sigma^2}{n}$$
+
+	The variance of an average decreases with the number of observations: the more examples are seen, the more likely it is to estimate the correct average.
 
 	\subsection{Chebyshev's inequality}
 	Consider a random variable $X$ with mean $\mu$ and variance $\sigma^2$.
@@ -364,23 +359,23 @@ This implies:
 
 	\subsection{Law of large numbers}
 	Consider a sample $X_1, \dots, X_n$ instances drawn from a distribution with mean $\mu$ and variance $\sigma^2$.
-	For any $\varepsilon >0$ its sample average $\hat{X}_n$ obeys:
+	For any $\varepsilon >0$ its sample average $\bar{X}_n$ obeys:
 
-	$$\lim\limits_{n\rightarrow\infty} Pr[|\hat{X}_n-\mu| >\varepsilon] = 0$$
+	$$\lim\limits_{n\rightarrow\infty} Pr[|\bar{X}_n-\mu| >\varepsilon] = 0$$
 
-	It can be shown using Chebyshev's inequality and the facts that $\mathbb{E}[\hat{X}_n] = \mu$ and $Var[\hat{X}_n] = \frac{\sigma^2}{n}$:
+	It can be shown using Chebyshev's inequality and the facts that $\mathbb{E}[\bar{X}_n] = \mu$ and $Var[\bar{X}_n] = \frac{\sigma^2}{n}$:
 
-	$$Pr[|\hat{X}_n - \mathbb{E}[\bar{X}_n]| \ge\varepsilon] \le \frac{\sigma^2}{n\varepsilon^2}$$
+	$$Pr[|\bar{X}_n - \mathbb{E}[\bar{X}_n]| \ge\varepsilon] \le \frac{\sigma^2}{n\varepsilon^2}$$
 
 	This tells that the accuracy of an empirical statistic increases with the number of samples.
 
 	\subsection{Central limit theorem}
 	Consider a sample of $X_1, \dots, X_n$ instances drawn from a distribution with mean $\mu$ and variance $\sigma^2$.
-	Regardless of the distribution of $X$, for $n\rightarrow\infty$ the distribution of the sample average $\hat{X}_n$ approaches a normal distribution.
+	Regardless of the distribution of $X$, for $n\rightarrow\infty$ the distribution of the sample average $\bar{X}_n$ approaches a normal distribution.
 	Its mean approaches $\mu$ and its variance $\frac{\sigma^2}{n}$.
-	Thus the normalized sample average"
+	Thus the normalized sample average:
 
-	$$z = \frac{\hat{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}}$$
+	$$z = \frac{\bar{X}_n-\mu}{\frac{\sigma}{\sqrt{n}}}$$
 
 	Approaches a normal distribution $N(0,1)$.
 
