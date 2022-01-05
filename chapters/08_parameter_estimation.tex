@@ -14,13 +14,13 @@
 	The training set can be divided into $\mathcal{D}_1, \dots, \mathcal{D}_c$ subsets, one for each class such that $\mathcal{D}_i = \{\vec{x}_1, \dots, \vec{x}_n\}$ contains independent and identically distributed examples for target class $y_i$.
 	For any new example $\vec{x}$ the posterior probability of the class given the example and the full training set $\mathcal{D}$ is computed:
 
-	$$P(y_i|\vec{x}, \mathcal{D}) = \frac{p(\vec{x}|y_i, \mathcal{D})p(y_i|\mathcal{D})}{p(\vec{x}|\mathcal{D}}$$
+	$$P(y_i|\vec{x}, \mathcal{D}) = \frac{p(\vec{x}|y_i, \mathcal{D})p(y_i|\mathcal{D})}{p(\vec{x}|\mathcal{D})}$$
 
 		\subsubsection{Simplifications}
 		$\vec{x}$ can be assumed independent of $\mathcal{D}_j$ with $j\neq i$ given $y_i$ and $\mathcal{D}_i$.
 		Without additional knowledge $p(y_i|\mathcal{D})$ can be computed as the fraction of examples with that class in the dataset.
 		The normalizing factor $p(\vec{x}|\mathcal{D})$ can be computed marginalizing $p(\vec{x}|y_i, \mathcal{D}_i)p(y_i|\mathcal{D})$ over possible classes.
-		There is a need to estimate class-dependent parameters $\vec{\theta}_i$ for $p(\vec{x}|y_i, \mathcal{D}_i$.
+		There is a need to estimate class-dependent parameters $\vec{\theta}_i$ for $p(\vec{x}|y_i, \mathcal{D}_i)$.
 
 \section{Maximum likelihood}
 Maximum likelihood or maximum a posteriori estimation assumes parameters $\vec{\theta}_i$ have fixed but unknown values.
@@ -175,7 +175,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 
 	Because probability of $\vec{x}$ given each class $y_i$ is independent of the other classes $y_i$:
 
-	$$p(\vec{x}|\mathcal{D}) = \int_{\vec{\theta}} p(\vec{x}, \vec{\theta}|mathcal{D})d\vec{\theta} =\int p(\vec{x}|\vec{\theta})p(\vec{\theta}|\mathcal{D})d\vec{\theta}$$
+	$$p(\vec{x}|\mathcal{D}) = \int_{\vec{\theta}} p(\vec{x}, \vec{\theta}|\mathcal{D})d\vec{\theta} =\int p(\vec{x}|\vec{\theta})p(\vec{\theta}|\mathcal{D})d\vec{\theta}$$
 
 	$p(\vec{x}|\vec{\theta})$ can be easily computed because the form and the parameters of the distribution are known, so there is a need to estimate the parameter posterior density given the training set:
 
@@ -190,7 +190,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 	The Gaussian mean prior distribution is itself normal: $p(\mu) \sim N(\mu_0, \sigma^2_0)$.
 	The Gaussian mean posterior given the dataset is computed as:
 
-	$$p(\mu|\mathcal{D}) = \frac{p(\mathcal{D}|\mu)p(\mu)}{p(\mathcal{D}} = \alpha\prod\limits_{j=1}^np(x_j|\mu)p(\mu)$$
+	$$p(\mu|\mathcal{D}) = \frac{p(\mathcal{D}|\mu)p(\mu)}{p(\mathcal{D})} = \alpha\prod\limits_{j=1}^np(x_j|\mu)p(\mu)$$
 
 	Where $\alpha = \frac{1}{p(\mathcal{D})}$ is independent of $\mu$.
 
@@ -234,7 +234,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 											 &\sim N(\mu_n, \sigma^2 + \sigma^2_n)
 		\end{align*}
 
-		The probability of $x$ given the dataset for the class is a Gaussian with mean equal to the posterior mean, variance equal to the sum of the known variance $\sigma^2$ and an additional variaci $\sigma^2_n$ due to the uncertainty of the mean.
+		The probability of $x$ given the dataset for the class is a Gaussian with mean equal to the posterior mean, variance equal to the sum of the known variance $\sigma^2$ and an additional variance $\sigma^2_n$ due to the uncertainty of the mean.
 
 	\subsection{Multivariate normal case - unknown $\mu$, known $\Sigma$}
 	This is a generalization of the univariate case:
@@ -259,7 +259,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 	It is used to model the prior distribution of the precision.
 
 	\subsection{Univariate normal case - unknown $\mu$ and $\lambda = \frac{1}{\sigma^2}$}
-	In this case the samples are drawn from $p(x|\mu, \lambda)\sim N(\mu, \frac{1}{\lambda}$.
+	In this case the samples are drawn from $p(x|\mu, \lambda)\sim N(\mu, \frac{1}{\lambda})$.
 	The prior of mean and precision is the Normal Gamma distribution:
 
 	\begin{align*}
@@ -271,19 +271,19 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 
 		\begin{align*}
 			p(\mu, \lambda|\mathcal{D})& = \frac{1}{\mathcal{D}}\prod\limits_{j=1}^n\overbrace{\frac{\lambda^{\frac{1}{2}}}{\sqrt{2\pi}}e^{-\frac{\lambda}{2}(x_j-\mu)^2}}^{p(x_j|\mu, \lambda)}\overbrace{\frac{(k_0\lambda)^{\frac{1}{2}}}{\sqrt{2\pi}}e^{-\frac{k_0\lambda}{2}(\mu-\mu_0)^2}}^{p(\mu|\lambda)}\overbrace{\frac{\beta^{\alpha_0}_0}{\Gamma(\alpha_0)}\lambda^{\alpha_0-1}e^{-\beta_0\lambda}}^{p(\lambda)}\propto\\
-									&\propto \lambda^{\alpha_0+\frac{n}{2}-1}e^{-\beta_0\lambda}\lambda^{\frac{1}{2}}e^{\frac{\lambda}{2}[\sum\limits_{j=1}^n(x_j-\mu)^2-k_0(\mu-\mu_0)^2}
+									&\propto \lambda^{\alpha_0+\frac{n}{2}-1}e^{-\beta_0\lambda}\lambda^{\frac{1}{2}}e^{\frac{\lambda}{2}[\sum\limits_{j=1}^n(x_j-\mu)^2-k_0(\mu-\mu_0)^2]}
 		\end{align*}
 
 		The posteriori parameter density is still a Normal Gamma distribution:
 
-		$$p(\mu, \lambda|\mathcal{D}) = NG(\mu, \lambda|\mu_n, k-n, \alpha_n, \beta_n)$$
+		$$p(\mu, \lambda|\mathcal{D}) = NG(\mu, \lambda|\mu_n, k_n, \alpha_n, \beta_n)$$
 		Where:
 
 		\begin{itemize}
 			\item $\mu_n = \frac{k_0\mu_0+n\bar{\mu}_n}{k_0+n}$, the weighted average of prior $\mu_0$ and sample means $\mu_n$, weighted by $k_0$ and $n$ respectively.
 			\item $k_n = k_0+n$, increased by the number of samples.
 			\item $\alpha_n = \alpha_0 + \frac{n}{2}$ increased by half the number of samples.
-			\item $\beta_n = \beta_0+\frac{1}{2}\sum\limits_{j=1}^n(x_j-\bar{\mu}_n)^2+\frac{k_0n(\bar{\mu}_n-\mu_0)^2}{2(k_0+n)}$, this is the sum of prior sum of sqares $\beta_0$ and sample um of squares and a term due to the discrepancy between the sample mean and the prior mean.
+			\item $\beta_n = \beta_0+\frac{1}{2}\sum\limits_{j=1}^n(x_j-\bar{\mu}_n)^2+\frac{k_0n(\bar{\mu}_n-\mu_0)^2}{2(k_0+n)}$, this is the sum of prior sum of squares $\beta_0$ and sample sum of squares and a term due to the discrepancy between the sample mean and the prior mean.
 		\end{itemize}
 
 		\subsubsection{Computing the posterior predictive}
@@ -297,7 +297,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 
 	\subsection{Wishart distribution}
 	The Wishart distribution is defined over $d\times d$ a positive semi-definite matrix.
-	Its parameters are $\nu>d-1$, the degrees of freedon adn $T>0$ the $d\times d$ scale matrix.
+	Its parameters are $\nu>d-1$, the degrees of freedom and $T>0$ the $d\times d$ scale matrix.
 	Its probability density function is:
 
 	$$p(X;\nu, T) = \frac{1}{2^{\nu\frac{d}{2}}|T|^{\frac{\nu}{2}}\Gamma_d(\frac{\nu}{2})}|X|^{\frac{\nu-d-1}{2}}e^{-\frac{1}{2}tr(T^{-1}X)}$$
@@ -314,7 +314,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 
 		\subsubsection{A posteriori parameter density}
 
-		$$p(\vec{\mu}, \Lambda) = N(\vec{\mu}|\vec{\mu}_0, (k_0\Lambda)^{-1})Wi(\Lambda|\nu, T)$$
+		$$p(\vec{\mu}, \Lambda|\mathcal{D}) = N(\vec{\mu}|\vec{\mu}_0, (k_0\Lambda)^{-1})Wi(\Lambda|\nu, T)$$
 
 		Where:
 
@@ -333,7 +333,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 
 	\subsection{Definition}
 	Any function on a set of samples $\mathcal{D}$ is a statistic.
-	A statistic $s = \phi(\mathcal{D})$ is sufficient for some parameters $\vec{\theta}$ if $P(\mathcal{D}|\vec{s}, \vec{\theta}) = P(\mathcal{D}|\vec{s})$.
+	A statistic $\vec{s} = \phi(\mathcal{D})$ is sufficient for some parameters $\vec{\theta}$ if $P(\mathcal{D}|\vec{s}, \vec{\theta}) = P(\mathcal{D}|\vec{s})$.
 	If $\vec{\theta}$ is a random variable, a sufficient statistic contains all relevant information $\mathcal{D}$ has for estimating it:
 
 	$$p(\vec{\theta}|\mathcal{D}, \vec{s}) = \frac{p(\mathcal{D}|\vec{\theta}, \vec{s})p(\vec{\theta}|\vec{s})}{p(\mathcal{D}|\vec{s})} = p(\vec{\theta}|\vec{s})$$
@@ -377,7 +377,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 	\subsection{Bayesian estimation}
 	Parameter posterior is proportional to:
 
-	$$P(\theta|\mathcal{D}, \psi)\propto P(\mathcal{D}|\theta)P(\theta|\psi)\propto \theta^t(1-\theta)^t\theta^{\alpha_h-1}(1-\theta)^{\alpha_t-1}$$
+	$$P(\theta|\mathcal{D}, \psi)\propto P(\mathcal{D}|\theta)P(\theta|\psi)\propto \theta^h(1-\theta)^t\theta^{\alpha_h-1}(1-\theta)^{\alpha_t-1}$$
 
 	The posterior has a beta distribution with parameters $h+\alpha_h$ and $t+\alpha_t$:
 
@@ -415,7 +415,7 @@ $$p(\vec{x}|y_i, \mathcal{D}_i) = \int_{\vec{\theta}_i}p(\vec{x}, \vec{\theta}_i
 
 	$$p(\mathcal{D}|\vec{\theta} = \prod\limits_{j=1}^N\prod\limits_{k=1}^r\theta_k^{z_k(x_j)} = \prod\limits_{k=1}^r\theta_k^{N_k}$$
 
-	The maximum likelihood parameter is $\theta_k= \frac{M_k}{N}$ and $N_1, \dots, N_r$ are the sufficient statistics.
+	The maximum likelihood parameter is $\theta_k= \frac{N_k}{N}$ and $N_1, \dots, N_r$ are the sufficient statistics.
 
 	\subsection{Bayesian estimation}
 	The parameter posterior is proportional to:

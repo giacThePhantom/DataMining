@@ -58,24 +58,24 @@ Bayesian reasoning can be generalized to cases when the probabilistic structure 
 \section{Representing classifiers}
 
 	\subsection{Discriminant functions}
-	A classifier can be represented as a set of discriminant functions $g_i(x), i\in 1, \dots, c$, giving:
+	A classifier can be represented as a set of discriminant functions $g_i(\vec{x}), i\in 1, \dots, c$, giving:
 
-	$$y = \arg\max\limits_{i\in 1, \dots, c}g_i(x)$$
+	$$y = \arg\max\limits_{i\in 1, \dots, c}g_i(\vec{x})$$
 
 	A discriminant function is not unique and the most convenient one can be chosen for computational or explanatory reasons:
 
 	\begin{multicols}{2}
 		\begin{itemize}
-			\item $g_i(x) = P(y_i|x) = \frac{p(x|y_i)P(y_i)}{p(x)}$.
-			\item $g_i(x) = p(x|y_i)P(y_i)$.
-			\item $g_i(x) = \ln p(x|y_i) + \ln P(y_i)$.
+			\item $g_i(\vec{x}) = P(y_i|\vec{x}) = \frac{p(\vec{x}|y_i)P(y_i)}{p(\vec{x}x)}$.
+			\item $g_i(\vec{x}) = p(\vec{x}|y_i)P(y_i)$.
+			\item $g_i(\vec{x}) = \ln p(\vec{x}|y_i) + \ln P(y_i)$.
 		\end{itemize}
 	\end{multicols}
 
 	\subsection{Decision regions}
 	The feature space is divided into decision regions $\mathcal{R}_1, \dots, \mathcal{R}_x$ such that:
 
-	$$x\in\mathcal{R}_i\qquad if\ g_i(x)>g_j(x)\forall j\neq i$$
+	$$\vec{x}\in\mathcal{R}_i\qquad if\ g_i(\vec{x})>g_j(\vec{x})\forall j\neq i$$
 
 	This regions are separated by decision boundaries, regions in which ties occur among the largest discriminant functions.
 
@@ -123,13 +123,13 @@ The covariance matrix $\Sigma$ is always symmetric and positive semi-definite an
 
 			$$\underbrace{(\vec{\mu}_i - \vec{\mu}_j)^t}_{\vec{w}^t}\biggl(\vec{x}-\biggl(\underbrace{\frac{1}{2}(\vec{\mu}_i + \vec{\mu}_j) - \frac{\sigma^2}{||\vec{\mu}_i-\vec{\mu}_j||^2}\ln\frac{P(y_i)}{P(y_j)}(\vec{\mu}_i-\vec{\mu}_j)}_{\vec{x}_0}\biggr)\biggr)$$
 
-			This hyperplane is orthogonal to vector $\vec{w}$, the line linking the means and passes through $\vec{x}_0$: if the prior probabilities of the classes are equal, $\vec{x}_o$ is halfway between the means, otherwise it sifts away from the more likely mean.
+			This hyperplane is orthogonal to vector $\vec{w}$, the line linking the means and passes through $\vec{x}_0$: if the prior probabilities of the classes are equal, $\vec{x}_o$ is halfway between the means, otherwise it shifts away from the more likely mean.
 
 				\subparagraph{Derivation of the separating hyperplane}
 
 				\begin{align*}
 					g_i(\vec{x}) - g_j(\vec{x}) &= 0\\
-					\frac{1}{\sigma^2}\vec{\mu}_i^t\vec{x}-\frac{1}{2\sigma^2}\vec{\mu}_i^t\vec{\mu}_i + \ln P(y_i) - \frac{1}{\sigma^2}\vec{\mu}_j^t\vec{x} + \frac{1}{2\sigma^2}\vec{\mu}_j^t\vec{\mu}^j - \ln P(y_j) & = 0\\
+					\frac{1}{\sigma^2}\vec{\mu}_i^t\vec{x}-\frac{1}{2\sigma^2}\vec{\mu}_i^t\vec{\mu}_i + \ln P(y_i) - \frac{1}{\sigma^2}\vec{\mu}_j^t\vec{x} + \frac{1}{2\sigma^2}\vec{\mu}_j^t\vec{\mu}_j - \ln P(y_j) & = 0\\
 					 (\vec{\mu}_i-\vec{\mu}_j)^t\vec{x} - \frac{1}{2}(\vec{\mu}_i^t\vec{\mu}_i-\vec{\mu}_j^t\vec{\mu}_j)+\sigma^2\ln\frac{P(y_i)}{P(y_j)} &=0\\
 					 \vec{w}^t(\vec{x}-\vec{x}_o) & = 0\\
 					 \vec{w} &= \vec{\mu}_i-\vec{\mu}_j\\
@@ -169,7 +169,7 @@ The covariance matrix $\Sigma$ is always symmetric and positive semi-definite an
 		\subsubsection{Conditional risk}
 		The conditional risk of predicting $y^*$ given $\vec{x}$ is:
 
-		$$R(y^*|\vec{x}) = \int_\mathcal{Y}l(y^*, y)P(y|x)dy$$
+		$$R(y^*|\vec{x}) = \int_\mathcal{Y}l(y^*, y)P(y|\vec{x})dy$$
 
 		\subsubsection{Overall risk}
 		The overall risk of a decision rule $g$ is:
@@ -190,7 +190,7 @@ The covariance matrix $\Sigma$ is always symmetric and positive semi-definite an
 	\begin{align*}
 		P(y_i|\vec{x}_o) &= \frac{p(y_i, \vec{x}_o)}{p(\vec{x}_o)} = \frac{\int p(y_i, \vec{x}_o, \vec{x}_m)d\vec{x_m}}{p(\vec{x}_o)}=\\
 										 &= \frac{\int P(y_i|\vec{x}_o, \vec{x}_m)p(\vec{x}_o, \vec{x}_m)d\vec{x}_m}{\int p(\vec{x}_o, \vec{x}_m)d\vec{x}_m}=\\
-										 &= \frac{\int P(y_i|vec{x})p(\vec{x})d\vec{x}_m}{\int p(\vec{x})d\vec{x}_m}
+										 &= \frac{\int P(y_i|\vec{x})p(\vec{x})d\vec{x}_m}{\int p(\vec{x})d\vec{x}_m}
 	\end{align*}
 
 	\subsection{Handling noisy features - marginalize over true variables}
@@ -200,7 +200,7 @@ The covariance matrix $\Sigma$ is always symmetric and positive semi-definite an
 
 	\begin{align*}
 		P(y_i|\vec{x}_x, \vec{x}_n) &=\frac{p(y_i, \vec{x}_c, \vec{x}_n)}{p(\vec{x}_c, \vec{x}_n)} = \frac{\int p(y_i, \vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}{\int p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t)}=\\
-																&=\frac{\int p(y_i|\vec{x}_cm \vec{x}_n, \vec{x}_t)p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}{\int p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}=\\
+																&=\frac{\int p(y_i|\vec{x}_c, \vec{x}_n, \vec{x}_t)p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}{\int p(\vec{x}_c, \vec{x}_n, \vec{x}_t)d\vec{x}_t}=\\
 																&=\frac{\int p(y_i|\vec{x}_c, \vec{x}_t)p(\vec{x}_n|\vec{x}_c, \vec{x}_t)p(\vec{x}_c, \vec{x}_t)d\vec{x}_t}{\int p(\vec{x}_n|\vec{x}_c, \vec{x}_t)p(\vec{x}_c, \vec{x}_t)d\vec{x}_t}\\
 																&=\frac{\int p(y_i|\vec{x})p(\vec{x}_n|\vec{x_t})p(\vec{x})d\vec{x}_t}{\int p(\vec{x}_n|\vec{x}_t)p(\vec{x})d\vec{x}_t}
 	\end{align*}

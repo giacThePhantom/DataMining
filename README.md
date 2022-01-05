@@ -12,8 +12,8 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 - [x] 04_linear_algebra.pdf
 - [x] 05_probability_theory.pdf
 - [x] 06_evaluation.pdf
-- [ ] 07_bayesian_decision_theory.pdf
-- [ ] 08_parameter_estimation.pdf
+- [x] 07_bayesian_decision_theory.pdf
+- [x] 08_parameter_estimation.pdf
 - [ ] 09_bn.pdf
 - [ ] 10_bn_inference.pdf
 - [ ] 11_bn_learning.pdf
