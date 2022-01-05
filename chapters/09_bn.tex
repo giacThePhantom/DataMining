@@ -19,7 +19,7 @@ Probabilistic graphical models are graphical representation of the qualitative a
 	Each edge represents a direct dependency between two variables.
 	The structure encodes these independence assumptions:
 
-	$$\mathcal{I}_l(\mathcal{G}) = \{\forall u x_i \perp NonDescendants_{x_i}|Parents_{x_i}\} \qquad\perp \equiv Independent$$
+	$$\mathcal{I}_l(\mathcal{G}) = \{\forall i\ x_i \perp NonDescendants_{x_i}|Parents_{x_i}\} \qquad\perp \equiv Independent$$
 
 	Each variable is independent of its non-descendants given its parents.
 	These are the local independences encoded by the networks.
@@ -27,7 +27,7 @@ Probabilistic graphical models are graphical representation of the qualitative a
 	\subsection{Graph and distributions}
 	Let $p$ be a joint distribution over variables $\mathcal{X}$.
 	Let $\mathcal{I}(p)$ be the set of independence assertions holding in $p$.
-	$\mathcal{G}$ in as independence map I-map for $p$ if $p$ satisfies the local independences in $\mathcal{G}$.
+	$\mathcal{G}$ is as independence map I-map for $p$ if $p$ satisfies the local independences in $\mathcal{G}$.
 
 	$$\mathcal{I}_l(\mathcal{G})\subseteq\mathcal{I}(p)$$
 
@@ -71,7 +71,7 @@ Probabilistic graphical models are graphical representation of the qualitative a
 		Applying factorization and isolating the only term containing $x_m$ we get:
 
 		\begin{align*}
-			=\frac{\prod\limits_{i=1}^mp(x_i|Pa_{x_i}}{\sum\limits_{x_m}\prod\limits_{i=1}^mp(x_i | Pa_{x_i})} =\\
+			=\frac{\prod\limits_{i=1}^mp(x_i|Pa_{x_i})}{\sum\limits_{x_m}\prod\limits_{i=1}^mp(x_i | Pa_{x_i})} =\\
 			=\frac{p(x_m|Pa_{x_m})\prod\limits_{i=1}^{m-1}p(x_i | Pa_{x_i})}{\prod\limits_{i=1}^{m-1}p(x_i|Pa_{x_i})\sum\limits_{x_m}p(x_m|Pa_{x_m})}=\\
 			=\frac{p(x_m|Pa_{x_m})}{\sum\limits_{x_m}p(x_m|Pa_{x_m})} = p(x_m|Pa_{x_m})
 		\end{align*}
@@ -169,7 +169,7 @@ Graphical models allow to directly verify them through the $d$-separation criter
 	\subsection{Independence assumptions}
 	A BN stricture $\mathcal{G}$ encodes a set of local independence assumptions:
 
-	$$\mathcal{I}_l(\mathcal{G}) = \{\forall i x_i \perp NonDescendants_{x_i} | Parents_{x_i}\}$$
+	$$\mathcal{I}_l(\mathcal{G}) = \{\forall i\ x_i \perp NonDescendants_{x_i} | Parents_{x_i}\}$$
 
 	A BN structure $\mathcal{G}$ encodes a set of global or Markov independence assumptions:
 
@@ -220,7 +220,7 @@ Graphical models allow to directly verify them through the $d$-separation criter
 		$$\mathcal{I}(\mathcal{G}) = \mathcal{I}(p)$$
 
 		The algorithm for finding such P-map is exponential in the in-degree of the P-map.
-		The algorithm returns an equivalence class rather than a single structures.
+		The algorithm returns an equivalence class rather than a single structure.
 		Not all distributions have a P-map: some cannot be modelled exactly by the BN formalism.
 
 	\subsection{Building Bayesian networks}
