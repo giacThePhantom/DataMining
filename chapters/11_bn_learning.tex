@@ -14,8 +14,8 @@ $$\vec{\theta}^{\max} = \arg\max\limits_{\vec{\theta}}p(\mathcal{D}|\vec{\theta}
 
 		\begin{align*}
 			p(\mathcal{D}|\vec{\theta}) &=\prod\limits_{i=1}^Np(\vec{x}(i)|\vec{\theta})&\text{examples independent given }\theta\\
-																	&=\prod\limits_{i=1}^N\prod\limits_{j=1}^mp(x_j(i)|pa_j(i),\vec{\theta} &\text{factorization for BAN}\\
-																	&=\prod\limits_{i=1}^N\prod\limits_{j=1}^mp(x_j(i)|pa_j(i),\vec{\theta}_{X_j|pa_j} &\text{disjoint CPD parameters}
+																	&=\prod\limits_{i=1}^N\prod\limits_{j=1}^mp(x_j(i)|pa_j(i),\vec{\theta} &\text{factorization for BN}\\
+																	&=\prod\limits_{i=1}^N\prod\limits_{j=1}^mp(x_j(i)|pa_j(i),\vec{\theta}_{X_j|pa_j}) &\text{disjoint CPD parameters}
 		\end{align*}
 
 		\subsubsection{Learning graphical models}
@@ -23,11 +23,11 @@ $$\vec{\theta}^{\max} = \arg\max\limits_{\vec{\theta}}p(\mathcal{D}|\vec{\theta}
 
 		$$\vec{\theta}^{\max}_{X_j|pa_j} = \arg\max\limits_{\vec{\theta}_{X_j|pa_j}}\underbrace{\prod\limits_{i=1}^Mp(x_j(i)|pa_j(i),\vec{\theta}_{X_j|pa_j})}_{\mathcal{L}(\vec{\theta}_{x_j|pa_j},\mathcal{D})}$$
 
-		A discrete CPD $P(X|\mathcal{U})$ can be represented as a table with a number of rows equal to the number $Val(X)$ of configurations for $X$, a number of columns equal to the number $Val(\vec{U})$ of configurations for its parents $\vec{U}$ and each table entry $\theta_{x|\vec{u}}$ indicating the probability of a specific configuration of $X=x$ and its parents $\vec{U}=\vec{u}$.
+		A discrete CPD $P(X|\vec{U})$ can be represented as a table with a number of rows equal to the number $Val(X)$ of configurations for $X$, a number of columns equal to the number $Val(\vec{U})$ of configurations for its parents $\vec{U}$ and each table entry $\theta_{x|\vec{u}}$ indicating the probability of a specific configuration of $X=x$ and its parents $\vec{U}=\vec{u}$.
 		Replacing $p(x(i)|pa(i))$ with $\theta_{x(i)|\vec{u}(i)}$ the local likelihood of a single CPD becomes:
 
 		\begin{align*}
-			\mathcal{L}(\vec{\theta}_{X|pa}, \mathcal{D} &= \prod\limits_{i=1}^Np(x(i)|pa(i), \vec{\theta}_{X|pa_j})=\\
+			\mathcal{L}(\vec{\theta}_{X|pa}, \mathcal{D}) &= \prod\limits_{i=1}^Np(x(i)|pa(i), \vec{\theta}_{X|pa_j})=\\
 																									 &=\prod\limits_{i=1}^N\theta_{x(i)|\vec{u}(i)}=\\
 																									 &=\prod\limits_{\vec{u}\in Val(\vec{U})}\biggl[\prod\limits_{x\in Val(X)}\theta_{x|\vec{u}}^{N_{\vec{u}, x}}\biggr]\\
 		\end{align*}
@@ -98,7 +98,7 @@ $$\vec{\theta}^{\max} = \arg\max\limits_{\vec{\theta}}p(\mathcal{D}|\vec{\theta}
 	Prediction for a new instance are computed marginalizing over both structures and parameters:
 
 	\begin{align*}
-		p(\vec{X}_{N+1}|\mathcal{D} &= \sum\limits_{S\in\mathcal{S}} \int_{\vec{\theta}} P(\vec{X}_{N+1}, S, \vec{\theta}|\mathcal{D}d\vec{\theta}=\\
+		p(\vec{X}_{N+1}|\mathcal{D}) &= \sum\limits_{S\in\mathcal{S}} \int_{\vec{\theta}} P(\vec{X}_{N+1}, S, \vec{\theta}|\mathcal{D})d\vec{\theta}=\\
 																&=\sum\limits_{S\in\mathcal{S}}\int_{\vec{\theta}}P(\vec{X}_{N+1}|S, \vec{\theta}, \mathcal{D})P(S, \vec{\theta}|\mathcal{D})d\vec{\theta}=\\
 																&=\sum\limits_{S\in\mathcal{S}}\int_{\vec{\theta}} P(\vec{X}_{N+1}|S, \vec{\theta})P(\vec{\theta}|S, \mathcal{D})P(S|\mathcal{D})d\vec{\theta}=\\
 																&=\sum\limits_{S\in\mathcal{S}}P(S|\mathcal{D})\int_{\vec{\theta}}P(\vec{X}_{N+1}|S, \vec{\theta})P(\vec{\theta}|S, \mathcal{D})d\vec{\theta}

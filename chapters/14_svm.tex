@@ -85,7 +85,7 @@ They have a sound generalization theory with bounds or error based on the margin
 		\end{align*}
 
 		Which is maximized with respect to the dual variables $\alpha$.
-		The resulting maximization problem including the constraints is $\max\limits_{\alpha\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}^T_i\vec{x}_j$ subject to $\alpha_i\ge 0\forall i\in\{1, dots, m\}$ and $\sum\limits_{i=1}^m\alpha_iy_i = 0$.
+		The resulting maximization problem including the constraints is $\max\limits_{\alpha\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}^T_i\vec{x}_j$ subject to $\alpha_i\ge 0\forall i\in\{1, \dots, m\}$ and $\sum\limits_{i=1}^m\alpha_iy_i = 0$.
 		It is still a quadratic optimization problem.
 		The dual formulation has simpler constraints and it's easier to solve.
 		The primal formulation has $d+1$ variables: $\min\limits_{\vec{w},w_0}\frac{1}{2}||\vec{w}||^2$.
@@ -135,13 +135,13 @@ They have a sound generalization theory with bounds or error based on the margin
 	The sum of the slacks is minimized together to the inverse margin.
 	The regularization parameter $C\ge 0$ trades-off data fitting and size of the margin.
 
-	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\vec{\xi}\in\mathbb{R}^m}\frac{1}{2}||vec{w}||^2+C\sum\limits_{i=1}^m\xi_i$$
+	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\vec{\xi}\in\mathbb{R}^m}\frac{1}{2}||\vec{w}||^2+C\sum\limits_{i=1}^m\xi_i$$
 
-	Subject to $y_i(\vec{w}^T\vec{x}_i+w_0)\ge 1-\xi_i\forall i\in\{1, \dots, m\}$ and $\xi_i\ge 0\forall i\in\{1, \dots\}$.
+	Subject to $y_i(\vec{w}^T\vec{x}_i+w_0)\ge 1-\xi_i\forall i\in\{1, \dots, m\}$ and $\xi_i\ge 0\forall i\in\{1, \dots,m\}$.
 
 	\subsection{Regularization theory}
 
-	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\vec{\xi}\in\mathbb{R}^m}\frac{1}{2}||vec{w}||^2+C\sum\limits_{i=1}^ml(y_i, f(\vec{x}_i))$$
+	$$\min\limits_{\vec{w}\in\mathcal{X}, w_0\in\mathbb{R},\vec{\xi}\in\mathbb{R}^m}\frac{1}{2}||\vec{w}||^2+C\sum\limits_{i=1}^ml(y_i, f(\vec{x}_i))$$
 
 	This is a regularized loss minimization problem.
 	The loss term accounts for error minimization.
@@ -182,7 +182,7 @@ They have a sound generalization theory with bounds or error based on the margin
 
 	$$\max\limits_{\alpha\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i -\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\vec{x}_i^T\vec{x}_j$$
 
-	Subject to $0\ge \alpha_i\ge C \forall i\in\{1, \dots, m\}$ and $\sum\limits_{i=1}^m\alpha)iy)i=0$.
+	Subject to $0\ge \alpha_i\ge C \forall i\in\{1, \dots, m\}$ and $\sum\limits_{i=1}^m\alpha_iy_i=0$.
 
 	\subsection{Karush-Khun-Tucker conditions}
 	At the saddle point it holds that for all $i$ $\alpha_i(y_i(\vec{w}^T\vec{x}_i + w_0)-1+\xi_i)=0$ and $\beta_i\xi_i = 0$, thus support vectors $\alpha_i > 0$ are examples for which $(y_i(\vec{w}^T\vec{x}_i+w_0)\le 1$.
@@ -204,15 +204,15 @@ They have a sound generalization theory with bounds or error based on the margin
 
 	The subgradient is:
 
-	$$\nabla_{\vec{w}}E(\vec{w};(\vec{x}_i, y_i)) = \lambda\vec{w}-\mathbb{1}[y_i\langle\vec{w},\vec{x}_i\rangle < 1]y_i\vec{x}_i$$
+	$$\nabla_{\vec{w}}E(\vec{w};(\vec{x}_i, y_i)) = \lambda\vec{w}-\mathbbm{1}[y_i\langle\vec{w},\vec{x}_i\rangle < 1]y_i\vec{x}_i$$
 
 	The indicator function is such that:
 
-	$$\mathbb{1}[y_i\langle\vec{w}, \vec{x}_i\rangle< 1] = \begin{cases}1 &if\ y_i\langle\vec{w},\vec{x}_i\rangle < 1\\ 0 &otherwise\end{cases}$$
+	$$\mathbbm{1}[y_i\langle\vec{w}, \vec{x}_i\rangle< 1] = \begin{cases}1 &if\ y_i\langle\vec{w},\vec{x}_i\rangle < 1\\ 0 &otherwise\end{cases}$$
 
 	The subgradient of a function $f$ at a point $x_0$ is any vector $\vec{v}$ such that for any $x$:
 
-	$$f(x) - f(x_0)\ge \vec{v}^T(x-x_0)$$
+	$$f(\vec{x}) - f(\vec{x}_0)\ge \vec{v}^T(\vec{x}-\vec{x}_0)$$
 
 		\subsubsection{Pseudocode - pegasus}
 
@@ -235,7 +235,7 @@ They have a sound generalization theory with bounds or error based on the margin
 	\subsection{Dual version}
 	It is easy to show that:
 
-	$$\vec{w}_{t+1} = \frac{1}{\lambda t}\sum\limits_{i=1}^t\mathbb{1}[y_{i_t}\langle\vec{w}_t, \vec{x}_{i_t}\rangle < 1]y_{i_t}\vec{x}_{i_t}$$
+	$$\vec{w}_{t+1} = \frac{1}{\lambda t}\sum\limits_{i=1}^t\mathbbm{1}[y_{i_t}\langle\vec{w}_t, \vec{x}_{i_t}\rangle < 1]y_{i_t}\vec{x}_{i_t}$$
 
 	$\vec{w}_{t+1}$ can be represented implicitly by storing in vector $\alpha_{t+1}$ the number of times each example was selected and had a non-zero loss:
 

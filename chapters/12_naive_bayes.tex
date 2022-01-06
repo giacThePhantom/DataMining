@@ -28,8 +28,8 @@ $$y^* = \arg\max\limits_{y_i\in\mathcal{Y}}\prod\limits_{j=1}^mP(a_j|y_i)P(y_i)$
 
 \section{Parameters learning}
 Target prior $P(y_i)$ can be learned as the fraction of training set instances having each target value.
-The maximum-likelihood estimate for the parameter $\theta_{kc}$, the probability of value $v_k$ given class $c$ is the fraction of times the value was observed in training examples of class $c$: $\theta_{kx} = \frac{N_{kn}}{N_c}$.
-The posterior distribution for attribute parameters is multinomial:
+The maximum-likelihood estimate for the parameter $\theta_{kc}$, the probability of value $v_k$ given class $c$ is the fraction of times the value was observed in training examples of class $c$: $\theta_{kc} = \frac{N_{kc}}{N_c}$.
+Assuming a Dirichlet prior distribution with parameters $\alpha_{1c},\dots,\alpha_{Kc}$, the posterior distribution for attribute parameters is multinomial:
 
 $$\theta_{kc} = \frac{N_{kc}+\alpha_{kc}}{N_c+\alpha_c}$$
 
@@ -45,7 +45,7 @@ $$\theta_{kc} = \frac{N_{kc}+\alpha_{kc}}{N_c+\alpha_c}$$
 		Model the attributes with a multinomial distribution with $K=|V|$ possible states.
 		Compute the probability of word $w_k$ given class $c$ as the fraction of times the word appear in documents of class $y_i$ with respect to all words in document of class $c$:
 
-		$$\theta_{kc} = \frac{\sum\limits_{\vec{x}\in\mathcal{D}_x}\sum\limits_{j=1}^{|\vec{x}|}z_k(x[j])}{\sum\limits_{\vec{x}\in\mathcal{D}_c}|\vec{x}}$$
+		$$\theta_{kc} = \frac{\sum\limits_{\vec{x}\in\mathcal{D}_c}\sum\limits_{j=1}^{|\vec{x}|}z_k(x[j])}{\sum\limits_{\vec{x}\in\mathcal{D}_c}|\vec{x}}$$
 
 		\subsubsection{Naive Bayes classification}
 

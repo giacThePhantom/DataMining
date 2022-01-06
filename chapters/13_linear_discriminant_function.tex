@@ -33,7 +33,7 @@ For classification it directly models decision boundaries rather than inferring 
 
 	\begin{align*}
 		\forall\vec{x}, \vec{x}':f(\vec{x})&=f(\vec{x}') = 0\\
-		\vec{w}^T\vec{x}+w_0-\vec{w}^T\vec{x}'-w_o &=0\\
+		\vec{w}^T\vec{x}+w_0-\vec{w}^T\vec{x}'-w_0 &=0\\
 		\vec{w}^T(\vec{x}-\vec{x}') &= 0
 	\end{align*}
 
@@ -91,10 +91,12 @@ It is a single neuron architecture.
 		\subsubsection{Gradient descent}
 		Gradient descent is the technique by which the error is minimized:
 
-		\begin{enumerate}
-			\item Initialize $\vec{w}$, for example $\vec{w} = \vec{0}$.
-			\item Iterate until gradient is approximately zero: $\vec{w} = \vec{w}-\eta\nabla E(\vec{w};\mathcal{D})$
-		\end{enumerate}
+		\begin{multicols}{2}
+			\begin{enumerate}
+				\item Initialize $\vec{w}$, for example $\vec{w} = \vec{0}$.
+				\item Iterate until gradient is approximately zero: $\vec{w} = \vec{w}-\eta\nabla E(\vec{w};\mathcal{D})$
+			\end{enumerate}
+		\end{multicols}
 
 		$\eta$ is the learning rate and controls the amount of movement at each gradient step.
 		The algorithm is guaranteed to converge to a local optimum of $E(\vec{w};\mathcal{D})$ for small enough $\eta$.
@@ -117,14 +119,16 @@ It is a single neuron architecture.
 
 	The amount to update is:
 
-	$$-\eta\nabla E(\vec{w};\mathcal{D} = \eta\sum\limits_{(\vec{x}, y)\in\mathcal{D}_E}y\vec{x}$$
+	$$-\eta\nabla E(\vec{w};\mathcal{D}) = \eta\sum\limits_{(\vec{x}, y)\in\mathcal{D}_E}y\vec{x}$$
 
 	\subsection{Stochastic perceptron training rule}
 
-	\begin{enumerate}
-		\item Initialize weights randomly.
-		\item Iterate until all examples are correctly classified: for each incorrectly classified training example $(\vec{x}, y)$ update the weight vector $\vec{w}\leftarrow \vec{w}+\eta y\vec{x}$.
-	\end{enumerate}
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Initialize weights randomly.
+			\item Iterate until all examples are correctly classified: for each incorrectly classified training example $(\vec{x}, y)$ update the weight vector $\vec{w}\leftarrow \vec{w}+\eta y\vec{x}$.
+		\end{enumerate}
+	\end{multicols}
 
 	The gradient step for each training error is done instead of the some of them in batch learning.
 	Each gradient step is very fast and stochasticity can sometimes help to avoid local minima, being guided by various gradients for each training example.

@@ -106,7 +106,7 @@ A sparsifying loss can be used to have few support vectors.
 	\end{align*}
 
 	\subsection{Support vectors}
-	All patterns within the $\epsilon$-tube, for which $|f(\vec{x})i-y)i|<\epsilon$ have $\alpha_i, \alpha_i^* = 0$ and don't contribute to the estimated function $f$.
+	All patterns within the $\epsilon$-tube, for which $|f(\vec{x}_i)-y_i|<\epsilon$ have $\alpha_i, \alpha_i^* = 0$ and don't contribute to the estimated function $f$.
 	Pattern for which either $0<\alpha_i<C$ or $0<\alpha_i^*<C$ are on the border of the $\epsilon$-tube: $|f(\vec{x}_i)-y_i| = \epsilon$ and are the unbound support vectors.
 	The remaining patterns are margin errors: $\xi_i>0\lor\xi_i^*>0$ and reside out of the $\epsilon$-insensitive region and they are bound support vectors with corresponding $\alpha_i=C\lor\alpha_i^* = C$.
 
@@ -125,7 +125,7 @@ This is done for one-class classification: it models a class when no negative ex
 	\subsection{Lagrangian}
 	Considering Lagrange multipliers $\alpha_i,\beta_i\ge 0$ the Lagrangian is:
 
-	$$L = R^2 + C\sum\limits_{i=1}^m-\sum\limits_{i=1}^m\alpha_i(R^2+\xi_i-||\Phi(\vec{x}_i)-\vec{o}||^2)-\sum\limits_{i=1}^m\beta_i\xi_i$$
+	$$L = R^2 + C\sum\limits_{i=1}^m\xi_i-\sum\limits_{i=1}^m\alpha_i(R^2+\xi_i-||\Phi(\vec{x}_i)-\vec{o}||^2)-\sum\limits_{i=1}^m\beta_i\xi_i$$
 
 		\subsubsection{Vanishing the derivatives with respect to the primal variables}
 
@@ -137,7 +137,7 @@ This is done for one-class classification: it models a class when no negative ex
 
 	\subsection{Dual formulation}
 
-	$$R^2\underbrace{\biggl(1-\sum\limits_{i=1}^m\alpha_i\biggr)}_{=0}+\sum\limits_{i=1}^m\xi_i\underbrace{(C-\alpha_i-\beta_i}_{=0} + \sum\limits_{i=1}^m\alpha_i(\Phi(\vec{x}_i) - \underbrace{\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j))}_{\vec{o}}^T(\Phi(\vec{x}_i)-\underbrace{\sum\limits_{h=1}^m\alpha_h\Phi(\vec{x}_h))}_{\vec{0}}$$
+	$$R^2\underbrace{\biggl(1-\sum\limits_{i=1}^m\alpha_i\biggr)}_{=0}+\sum\limits_{i=1}^m\xi_i\underbrace{(C-\alpha_i-\beta_i}_{=0} + \sum\limits_{i=1}^m\alpha_i(\Phi(\vec{x}_i) - \underbrace{\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j))^T}_{\vec{o}}(\Phi(\vec{x}_i)-\underbrace{\sum\limits_{h=1}^m\alpha_h\Phi(\vec{x}_h))}_{\vec{o}}$$
 
 	So:
 
@@ -157,9 +157,9 @@ This is done for one-class classification: it models a class when no negative ex
 	The distance of a point from the origin is:
 
 	\begin{align*}
-		R^2(\vec{x}) &-||\Phi(\vec{x}-\vec{o}||^2\\
-								 &=(\Phi(\vec{x}-\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i))^T(\Phi(\vec{x})-\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j))=\\
-								 &=\Phi(\vec{x})^T\Phi(\vec{x}) - 2\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\Phi(\vec{x}) + \sum\limits_{i,j=1}^m\alpha_i\alpha_j\Phi(\vec{x}_i^T\Phi(\vec{x}_j)
+		R^2(\vec{x}) &=||\Phi(\vec{x}-\vec{o}||^2=\\
+								 &=(\Phi(\vec{x})-\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i))^T(\Phi(\vec{x})-\sum\limits_{j=1}^m\alpha_j\Phi(\vec{x}_j))=\\
+								 &=\Phi(\vec{x})^T\Phi(\vec{x}) - 2\sum\limits_{i=1}^m\alpha_i\Phi(\vec{x}_i)^T\Phi(\vec{x}) + \sum\limits_{i,j=1}^m\alpha_i\alpha_j\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)
 	\end{align*}
 
 	\subsection{KKT conditions}
