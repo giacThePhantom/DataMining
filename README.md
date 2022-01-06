@@ -15,7 +15,7 @@ See this [Github gist](https://gist.github.com/giacThePhantom/e080a777782754542d
 - [x] 07_bayesian_decision_theory.pdf
 - [x] 08_parameter_estimation.pdf
 - [x] 09_bn.pdf
-- [ ] 10_bn_inference.pdf
+- [x] 10_bn_inference.pdf
 - [ ] 11_bn_learning.pdf
 - [ ] 12_naive_bayes.pdf
 - [ ] 13_linear_discriminant_functions.pdf

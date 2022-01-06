@@ -1,26 +1,26 @@
 \chapter{Bayesian networks inference}
 
 \section{Inference in graphical models}
-Assume that there is evidence $e$ on the state of a subset of variables $W$ in the model.
-Inference amounts at computing the posterior probability of a subset $X$ of the non-observed variables given the observations: $p(X|E=e)$.
+Assume that there is evidence $\vec{e}$ on the state of a subset of variables $\vec{W}$ in the model.
+Inference amounts at computing the posterior probability of a subset $\vec{X}$ of the non-observed variables given the observations: $p(\vec{X}|\vec{E}=\vec{e})$.
 
 	\subsection{Efficiency}
-	The posterior probability can alwasy be computed as the ratio of two joint probabilities:
+	The posterior probability can always be computed as the ratio of two joint probabilities:
 
-	$$p(X|E=e)=\frac{p(X,E=e)}{p(E=e)}$$
+	$$p(\vec{X}|\vec{E}=\vec{e})=\frac{p(\vec{X},\vec{E}=\vec{e})}{p(\vec{E}=\vec{e})}$$
 
-	The problem consists of estimating such joint porbabilities when dealing with a large number of variables.
+	The problem consists of estimating such joint probabilities when dealing with a large number of variables.
 	Directly working on the full joint probabilities requires time exponential in the number of variables: if all $N$ variables are discrete and take one of $K$ possible values, a joint probability table has $K^N$ entries.
 	There is a way to exploit the structure in graphical models to do inference more efficiently.
 
 	\subsection{Inference on a chain}
 	Let a probability chain be:
 
-	$$p(X) = p(X_1)p(X_2|X_1)p(X_3|X_2)\cdot p(X_N|X_{N-1})$$
+  $$p(\vec{X}) = p(X_1)p(X_2|X_1)p(X_3|X_2)\cdot p(X_N|X_{N-1})$$
 
 	The marginal probability of an arbitrary $X_n$ is:
 
-	$$p(X_n) = \sum\limits_{X_1}\cdots\sum\limits_{X_{n-1}}\sum\limits_{X_{n+1}}\cdot\sum\limits_{X_{N}}p(X)$$
+  $$p(X_n) = \sum\limits_{X_1}\cdots\sum\limits_{X_{n-1}}\sum\limits_{X_{n+1}}\cdot\sum\limits_{X_{N}}p(\vec{X})$$
 
 	Only the $p(X_n|X_{N-1})$ is involved in the last summation which can be computed first, giving a function of $X_{N-1}$:
 
@@ -36,7 +36,7 @@ Inference amounts at computing the posterior probability of a subset $X$ of the 
 
 	The same procedure can be applied starting from the other end of the chain, giving:
 
-	$$\mu_\alpha(X_2) = \sum\limits_{X_1}p(X_1)p(X_2|x_1)$$
+	$$\mu_\alpha(X_2) = \sum\limits_{X_1}p(X_1)p(X_2|X_1)$$
 
 	Up to $\mu_\alpha(X_n)$.
 	The marginal probability is now computed as the product of the contributions coming from both ends:
@@ -46,7 +46,7 @@ Inference amounts at computing the posterior probability of a subset $X$ of the 
 	\subsection{Inference as message passing}
 	$\mu_\alpha(X_n)$ can be though as a message passing from $X_{n-1}$ to $X_n$:
 
-	$$\mu_\alpha(X_n) = \sum\limits_{X_{n-1}} p(X_n|X_{n-1})$$
+  $$\mu_\alpha(X_n) = \sum\limits_{X_{n-1}} p(X_n|X_{n-1})\mu_\alpha(X_{N-1})$$
 
 	$\mu_\beta(X_n)$ can be thought as a message passing from $X_{n+1}$ to $X_n$:
 
@@ -71,12 +71,12 @@ Inference amounts at computing the posterior probability of a subset $X$ of the 
 	For any $i$ having sent a double number of messages with respect to a single marginal computation.
 
 	\subsection{Adding evidence}
-	If some nodes $X_e$ are observed their observed values are used instead of summing over all possible values when computing their messages.
+  If some nodes $\vec{X}_e$ are observed their observed values are used instead of summing over all possible values when computing their messages.
 
 	\subsection{Computing conditional probability given evidence}
 	When adding evidence, the message passing procedure computes the joint probability of the variable and the evidence, and it has to be normalized to obtain the conditional probability given the evidence:
 
-	$$p(X_n|X_e =x_e) = \frac{p(X_n, X_e = x_e)}{\sum\limits_{X_n}p(X_n, X_e = x_e)}$$
+  $$p(X_n|\vec{X}_e =\vec{x}_e) = \frac{p(X_n, \vec{X}_e = \vec{x}_e)}{\sum\limits_{X_n}p(X_n, \vec{X}_e = \vec{x}_e)}$$
 
 	\subsection{Inference on trees}
 	Efficient inference can be computed for the broad family  of tree-structured models: undirected trees, directed trees and directed polytrees.
@@ -95,7 +95,7 @@ Inference amounts at computing the posterior probability of a subset $X$ of the 
 	It can be applied to undirected models and directed ones.
 
 		\subsubsection{Computing marginals}
-		The marginal probability of $X$ is $p(X) = \sum\limits_{x\backslash X}p(X)$.
+    The marginal probability of $X$ is $p(X) = \sum\limits_{\vec{X}\backslash X}p(\vec{X})$.
 		Generalizing the message passing scheme, this can be computed as the product of messages coming from all neighbouring factors $f_s$:
 
 		$$p(X) = \prod\limits_{f_s\in ne(X)}\mu_{f_s\rightarrow X}(X)$$
@@ -135,7 +135,7 @@ Inference amounts at computing the posterior probability of a subset $X$ of the 
 		All messages are passed in all directions using only twice the number of computations used for a single marginal.
 
 		\subsubsection{Adding evidence}
-		If some nodes $X_e$ are observed, their values are used instead of summing over all possible values when computing their messages.
+    If some nodes $\vec{X}_e$ are observed, their values are used instead of summing over all possible values when computing their messages.
 		After normalization, this gives the conditional probability given the evidence.
 
 \section{Finding the most probable configuration}
@@ -143,7 +143,7 @@ Given a joint probability distribution $p(\vec{X})$, there is a need to find the
 
 $$\vec{X}^{\max} = \arg\max\limits_{\vec{X}}p(\vec{X})$$
 
-For which the probability is $p(\vec{X}^{\max}) = \max\limits_{\vec{X}}p(\vec{x})$.
+For which the probability is $p(\vec{X}^{\max}) = \max\limits_{\vec{X}}p(\vec{X})$.
 Because the focus is the jointly maximal for all variables the sum-product algorithm cannot be used.
 
 	\subsection{The max-product algorithm}
@@ -151,7 +151,7 @@ Because the focus is the jointly maximal for all variables the sum-product algor
 	$$p(\vec{X}^{\max}) = \max\limits_{\vec{X}}p(\vec{x}) = \max\limits_{X_1}\cdots\max\limits_{X_M}p(\vec{X})$$
 
 	As for the sum-product algorithm the distribution factorization can be exploited to efficiently compute the maximum.
-	To to so it is sufficient to replace the sum with the max in the sum-product algorithm.
+	To do so it is sufficient to replace the sum with the max in the sum-product algorithm.
 
 		\subsubsection{Linear chain}
 
@@ -192,7 +192,7 @@ Because the focus is the jointly maximal for all variables the sum-product algor
 
 		\subsubsection{Trellis for linear chain}
 		A trellis or lattice diagram shows the $K$ possible states of each variable $X_n$ one per row.
-		For each state $k$ of a variable $X_n, \phi_{f_{n-1,n}\rightarrow X_n}(X_n)$ defines a unique and maximal previous state linked by and edge in the diagram.
+		For each state $k$ of a variable $X_n, \phi_{f_{n-1,n}\rightarrow X_n}(X_n)$ defines a unique and maximal previous state linked by an edge in the diagram.
 		Once the maximal state for the last variable $X_N$ is chosen, the maximal states for other variables are recovered following the edges backward.
 
 \section{Approximate inference}
@@ -221,7 +221,7 @@ Because the focus is the jointly maximal for all variables the sum-product algor
 	This is done through the sum-product algorithm.
 	All nodes are assumed in condition of sending messages.
 	A message passing schedule is chosen in order to decide which nodes start sending messages, like flooding (all nodes send messages in all directions at each time step).
-	Information flows many times around the graph, each message on a link replaces the previous one and is only bsed on the most recent messages received from the other neighbours.
+	Information flows many times around the graph, each message on a link replaces the previous one and is only based on the most recent messages received from the other neighbours.
 	The algorithm can eventually converge depending on the specific model over which it is applied.
 
 	\subsection{Variational methods}
@@ -246,7 +246,7 @@ Because the focus is the jointly maximal for all variables the sum-product algor
 	\subsection{Definition}
 	A Markov chain consist of a space $Val(\vec{X})$ of possible states, one for each possible instantiation of all variables $\vec{X}$.
 	A transition probability model defining for each state $\vec{x}\in Val(\vec{X})$ a next-state distribution over $Val(\vec{X})$.
-	The transition probability from $\vec{x}$ to $\vec{X}'$ is $\mathcal{T}(\vec{X}\rightarrow\vec{x}')$.
+	The transition probability from $\vec{x}$ to $\vec{X}'$ is $\mathcal{T}(\vec{x}\rightarrow\vec{x}')$.
 	A Markov chain defines a stochastic process that evolves from state to state.
 
 	\subsection{Homogeneous chains}
@@ -280,18 +280,18 @@ Because the focus is the jointly maximal for all variables the sum-product algor
 	For a Markov chain with a finite state space, regularity is a sufficient and necessary condition.
 
 	\subsection{Regular chains}
-	A Markov chain is regular if there exists a number $k$ such that for all state pairs $\vec{x},\vec{x}\in Val(\vec{X})$ the probability of getting from $\vec{x}$ to $\vec{x}'$ in exactly $k$ steps is greater than zero.
+	A Markov chain is regular if there exists a number $k$ such that for all state pairs $\vec{x},\vec{x}'\in Val(\vec{X})$ the probability of getting from $\vec{x}$ to $\vec{x}'$ in exactly $k$ steps is greater than zero.
 	Regularity is ensured if it is possible to get from any state to any other using a positive probability path in the state graph and for every state $\vec{x}$ there is a positive probability of transitioning from $\vec{x}$ to $\vec{x}$ in one step.
 
 	\subsection{Markov chains for graphical models}
 	The typical use is estimating the probability of a certain instantiation $\vec{x}$ of the variables $\vec{X}$ given some evidence $\vec{E}=\vec{e}$.
-	This requires sampling from the posterior distribution $p(\vec{X}|\vec{E}=\vec{e}$.
+  This requires sampling from the posterior distribution $p(\vec{X}|\vec{E}=\vec{e})$.
 	There is a need to define a chain for which $p(\vec{X}|\vec{E}=\vec{e})$ is the stationary distribution.
 	States in the chain should be the subset of all possible instantiations which is consistent with the evidence: $\vec{x}\in Val(\vec{X})|\vec{x}_{\vec{E}} = \vec{e}$.
 
 	\subsection{Transition model}
 	A simple transition model consists of updating variables in $\bar{\vec{X}} = \vec{X}-\vec{E}$ one at a time.
-	This can be seen as made of a set of $k=|\bar{\vec{X}}$ local transition model $\mathcal{T}_i$, one for each variable $X_i\in\bar\vec{X}$.
+  This can be seen as made of a set of $k=|\bar{\vec{X}}|$ local transition model $\mathcal{T}_i$, one for each variable $X_i\in\bar{\vec{X}}$.
 	Let $\vec{U}_i = \vec{X}-X_i$ and $\vec{u}_i$ a possible instantiation of $\vec{U}_i$.
 	The local transition model $\mathcal{T}_i$ defines transitions between states $(\vec{u}_i, x_i)$ and $(\vec{u}_i, x_i')$.
 	By defining  a transition as a sequence of $k$ local transitions, one for each variable $X_i$, a homogeneous global transition model is obtained.
@@ -299,11 +299,11 @@ Because the focus is the jointly maximal for all variables the sum-product algor
 	\subsection{Gibbs sampling}
 	Gibbs sampling is an efficient and effective simple Markov chain for factored state spaces.
 	Local transitions $\mathcal{T}_i$ are defined forgetting about the value of $X_i$ in the current state.
-	This allows to sample a new value according to the posterior probability of $X_i$ given the rest of the current state"
+	This allows to sample a new value according to the posterior probability of $X_i$ given the rest of the current state:
 
 	$$\mathcal{T}_i((\vec{u}_i, x_i)\rightarrow(\vec{u}_i, x_i')) = p(x_i'|\vec{u}_i)$$
 
-	The Gibbs chain samples a new state performing the rest of the current state"
+	The Gibbs chain samples a new state performing the rest of the current state:
 
 	$$\mathcal{T}_i((\vec{u}_i, x_i)\rightarrow(\vec{u}_i, x_i')) = p(x_i'|\vec{u}_i)$$
 
