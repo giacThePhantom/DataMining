@@ -17,9 +17,9 @@
 A Markov decision process is defined by:
 
 \begin{itemize}
-	\item A set of states $\mathcal{S}$ in which the agent can be at each time instant, 
+	\item A set of states $\mathcal{S}$ in which the agent can be at each time instant,
 	\item A possibly empty set of terminal states $\mathcal{S}_G\subset\mathcal{S}$,
-	\item A set of actions $\mathcal{A}$ that the agent can make, 
+	\item A set of actions $\mathcal{A}$ that the agent can make,
 	\item A transition model providing the probability of going to a state $s'$ with action $a$ from state $s$:
 
 		$$p(s'|s,a)\qquad s,s'\in\mathcal{S},a\in\mathcal{A}$$
@@ -35,13 +35,13 @@ A Markov decision process is defined by:
 	With these assumptions two sensible way to define utilities are:
 
 	\begin{itemize}
-		\item[Additive rewards]
+		\item Additive rewards:
 
-			$$U([s_0,\dots,s_2]) = R(s_0) + \cdots +R(s_n)$$
+			$$U([s_0,\dots,s_n]) = R(s_0) + \cdots +R(s_n)$$
 
-		\item[Discounted rewards] for $\gamma\in[0,1]$:
+		\item Discounted rewards: for $\gamma\in[0,1]$:
 
-			$$U([s_0,\dots,s_2]) = \gamma^0R(s_0) + \cdots +\gamma^{n-1}R(s_n)$$
+			$$U([s_0,\dots,s_n]) = \gamma^0R(s_0) + \cdots +\gamma^{n-1}R(s_n)$$
 
 	\end{itemize}
 
@@ -73,7 +73,7 @@ A Markov decision process is defined by:
 	\subsection{Computing an optimal policy}
 	The utility of a state is its immediate reward plus the expected discounted utility of the next state, assuming that the agent chooses an optimal action.
 
-		\subsubsection{Bellman equation}	
+		\subsubsection{Bellman equation}
 
 		$$U(s) = R(s) + \gamma\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U(s')$$
 
@@ -116,7 +116,7 @@ A Markov decision process is defined by:
 
 					\item Policy improvement:
 
-						$$\pi_{i+1}(s)\leftarrow \arg\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U_i(s')\\quad\forall s\in\mathcal{S}$$
+						$$\pi_{i+1}(s)\leftarrow \arg\max\limits_{a\in\mathcal{A}}\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U_i(s')\qquad\forall s\in\mathcal{S}$$
 
 				\end{enumerate}
 
@@ -133,78 +133,81 @@ With policy evaluation a policy is given and the environment is learned, with po
 	\subsection{Policy evaluation in an unknown environment}
 
 		\subsubsection{Adaptive dynamic programming}
-	
+
 			\paragraph{Algorithm}
-	
+
 			\begin{enumerate}
 				\item Loop.
-	
+
 					\begin{enumerate}
 						\item Initialize $s$.
-						
+
 							\begin{enumerate}
 								\item Receive reward $r$, set $R(s) = r$.
 								\item Choose next action $a\leftarrow\pi(s)$.
 								\item Take action $a$, reach step $s'$.
 								\item Update counts:
-	
+
 									$$N_{sa}\leftarrow N_{sa} + 1\qquad N_{s'|sa}\leftarrow N_{s'|sa}+1$$
-	
+
 								\item Update transition model:
-	
+
 									$$p(s''|s,a)\leftarrow \frac{N_{s''|sa}}{N_{sa}}\qquad\forall s''\in\mathcal{S}$$
-	
+
 								\item Update utility estimate:
-	
+
 									$$U\leftarrow PolicyEvaluation(\pi, U, p, R, \gamma)$$
-	
+
 							\end{enumerate}
-	
+
 						\item Until $s$ is terminal.
 					\end{enumerate}
 			\end{enumerate}
-	
+
 			\paragraph{Characteristics}
 			The algorithm performs maximum likelihood estimation of transition probabilities and upon updating the transition model it calls a standard policy evaluation to update the utility estimate ($U$ is initially empty).
 			Each step is expensive as it runs policy evaluation.
-	
+
 		\subsubsection{Temporal-difference policy evaluation}
-	
+
 			\paragraph{Rationale}
 			Temporal-difference (TD) policy evaluation avoids running the policy evaluation at each iteration locally updating the utility.
 			If transition from $s$ to $s'$ is observed if $s'$ was always the successor of $s$, its utility should be:
-	
+
 			$$U(s) = R(s) + \gamma U(s')$$
-	
+
 			The temporal-difference update rule updates the utility to get closer to that situation:
-	
+
 			$$U(s)\leftarrow U(s) + \alpha(R(s)+\gamma U(s')-U(s))$$
-	
+
+			Where $\alpha$ is a learning rate, possibly decreasing over time.
+
 			\paragraph{Algorithm}
-	
+
 			\begin{enumerate}
 				\item Loop.
-	
+
 					\begin{enumerate}
+						\item Initialize $s$
 						\item Repeat.
-	
+
 							\begin{enumerate}
 								\item Receive reward $r$.
-								\item Choose next action $a$ and reach step $s'$.
+								\item Choose next action $a\rightarrow \pi(s)$ and reach step $s'$.
 								\item Update the local utility estimate:
-			
+
 									$$U(s)\leftarrow U(s) + \alpha(r+\gamma U(s')-U(s))$$
-	
+
 							\end{enumerate}
-	
+
 						\item Until $s$ is terminal
 					\end{enumerate}
-	
+
 			\end{enumerate}
-	
+
 			\paragraph{Characteristics}
 			There is no need for a transition model for the utility update and each step is faster than ADP, without loosing anything on the long run.
-			It takes longer to converge and can e seen as a rough efficient approximation of ADP.
+			It takes longer to converge and can be seen as a rough efficient approximation of ADP.
 
 	\subsection{Policy learning in an unknown environment}
 
@@ -225,14 +228,14 @@ With policy evaluation a policy is given and the environment is learned, with po
 		$$U^+(s) = R(s) + \gamma\max\limits_{a\in\mathcal{A}}f\biggl(\sum\limits_{s'\in\mathcal{S}}p(s'|s,a)U^+(s'),N_{sa}\biggr)$$
 
 		With $f$ increasing over the first argument and decreasing over the second.
-	
+
 		\subsubsection{Temporal-difference learning - learning utilities of actions}
 		The TD policy evaluation can also be adapted to learn an optimal policy.
 		If TD is used to learn a state utility function it needs to estimate a transition model to derive a policy.
 		TD can instead be applied to learn an action utility function $Q(s,a)$ and the optimal policy corresponds to:
 
 		$$\pi^*(s) = \arg\max\limits_{a\in\mathcal{A}}Q(s,a)$$
-	
+
 		\subsubsection{SARSA - on-policy temporal-difference learning}
 
 		\begin{enumerate}
@@ -259,7 +262,7 @@ With policy evaluation a policy is given and the environment is learned, with po
 		\end{enumerate}
 
 		$\pi^\epsilon$ is an $\epsilon$-greedy or some other form of non-greedy policy based on $Q$.
-	
+
 		\subsubsection{Q-learning - off-policy temporal-difference learning}
 
 		\begin{enumerate}
@@ -283,9 +286,9 @@ With policy evaluation a policy is given and the environment is learned, with po
 				\end{enumerate}
 
 		\end{enumerate}
-	
+
 		\subsubsection{SARSA vs Q-learning}
-		SARSA is on-policy: it updates $Q$ using the current policy;s action.
+		SARSA is on-policy: it updates $Q$ using the current policy's action.
 		Q-learning is off-policy: it updates $Q$ using the greedy policy's action.
 		Off-policy methods are more flexible and they can learn from traces generated with an unknown policy.
 		On-policy methods tend to converge faster and are easier to use for continuous-state spaces and linear function approximators.

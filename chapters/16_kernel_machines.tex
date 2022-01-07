@@ -14,7 +14,7 @@ The kernel function uses examples in the input space
 
 		$$\max\limits_{\vec{\alpha}\in\mathbb{R}^m}\sum\limits_{i=1}^m\alpha_i-\frac{1}{2}\sum\limits_{i,j=1}^m\alpha_i\alpha_jy_iy_j\underbrace{\Phi(\vec{x}_i)^T\Phi(\vec{x}_j)}_{k(\vec{x}_i,\vec{x}_j)}$$
 
-		Subject to $o\le\alpha_i\le C\forall i\in\{1,\dots,m\}$ and $\sum\limits_{i=1}^m\alpha_iy_i=0$
+		Subject to $0\le\alpha_i\le C\forall i\in\{1,\dots,m\}$ and $\sum\limits_{i=1}^m\alpha_iy_i=0$
 
 		\subsubsection{Dual decision function}
 
@@ -42,7 +42,7 @@ The kernel function uses examples in the input space
 
 		\begin{align*}
 			k\biggl(\begin{pmatrix}x_1\\x_2\end{pmatrix},\begin{pmatrix}x'_1\\x'_2\end{pmatrix}\biggr) &=(1+x_1x_1'+x_2x_2')^2 =\\
-																																																 &=1+ (x_1x_1')^23+(x_2x_2')^2+2x_1x_1' +2x_2x_2'+2x_1x_1'x_2x_2'=\\
+																																																 &=1+ (x_1x_1')^2+(x_2x_2')^2+2x_1x_1' +2x_2x_2'+2x_1x_1'x_2x_2'=\\
 																																																 &=\underbrace{\begin{pmatrix}1&\sqrt{2}x_1 &\sqrt{2}x_2 &x_1^2 &\sqrt{2}x_1x_2 &x_2^2\end{pmatrix}^T}_{\Phi(\vec{x})^T}\underbrace{\begin{pmatrix}1\\\sqrt{2}x_1'\\\sqrt{2}x_2'\\x_1^{'2}\\\sqrt{2}x_1'x_2'\\x_2^{'2}\end{pmatrix}}_{\Phi(\vec{x}')}
 		\end{align*}
 
@@ -51,7 +51,7 @@ The kernel function uses examples in the input space
 
 	\subsection{Dot product in feature space}
 	A valid kernel is a similarity function defined in the Cartesian product of the input space: $k:\mathcal{X}\times\mathcal{X}\rightarrow\mathbb{R}$,
-	It corresponds to a dot product in a certain feature space: $k(\vec{x},\vec{x}'=\Phi(\vec{x})^T\Phi(\vec{x}')$.
+	It corresponds to a dot product in a certain feature space: $k(\vec{x},\vec{x}')=\Phi(\vec{x})^T\Phi(\vec{x}')$.
 	The kernel generalizes the notion of dot product to arbitrary input space and it can be seen as a measure of similarity between objects.
 
 	\subsection{Gram matrix}
@@ -122,7 +122,7 @@ The kernel function uses examples in the input space
 
 	\subsection{Gaussian kernel}
 
-	$$k_\sigma(\vec{x},\vec{x}' = e^{-\frac{||\vec{x}-\vec{x}'||^2}{2\sigma^2}} = e^{-\frac{\vec{x}^T\vec{x}-2\vec{x}^T\vec{x}' +\vec{x}^{'T}\vec{x}}{2\sigma^2}}$$
+	$$k_\sigma(\vec{x},\vec{x}') = e^{-\frac{||\vec{x}-\vec{x}'||^2}{2\sigma^2}} = e^{-\frac{\vec{x}^T\vec{x}-2\vec{x}^T\vec{x}' +\vec{x}^{'T}\vec{x}}{2\sigma^2}}$$
 
 	The Gaussian kernel depends on a width parameter $\sigma$.
 	The smaller the width, the more prediction on a point only depends on its nearest neighbours.
@@ -153,7 +153,7 @@ The kernel function uses examples in the input space
 
 		\begin{align*}
 			(k_1+k_2)(\vec{x},\vec{x}') &=k_1(\vec{x},\vec{x}')+k_2(\vec{x},\vec{x}')=\\
-																	&=\Phi_1(\vec{x})^T\Phi(\vec{x}') + \Phi_2(\vec{x})^T\Phi(\vec{x}')=\\
+																	&=\Phi_1(\vec{x})^T\Phi_1(\vec{x}') + \Phi_2(\vec{x})^T\Phi_2(\vec{x}')=\\
 																	&=\begin{pmatrix}\phi_1(\vec{x})&\Phi_2(\vec{x})\end{pmatrix}\begin{pmatrix}\Phi_1(\vec{x}')\\\Phi_2(\vec{x}')\end{pmatrix}
 		\end{align*}
 
@@ -203,7 +203,7 @@ The kernel function uses examples in the input space
 		It defines a family of graph kernels.
 
 			\paragraph{Weistfeiler-Lehman isomorphism test}
-			Given $G=(\mathcal{V},\mathcal{E})$ and $G'=(\mathcal{V}',\mathcal{E}')$ with $n=|\mathcal{V}|=|mathcal{V}'|$, let $L(G) = \{l(v)|v\in\mathcal{V}\}$ be the set of labels in $G$ end let $L(G) =L(G')$.
+			Given $G=(\mathcal{V},\mathcal{E})$ and $G'=(\mathcal{V}',\mathcal{E}')$ with $n=|\mathcal{V}|=|\mathcal{V}'|$, let $L(G) = \{l(v)|v\in\mathcal{V}\}$ be the set of labels in $G$ end let $L(G) =L(G')$.
 			Let $label(s)$ be a function assigning a unique label to a string.
 
 			\begin{enumerate}

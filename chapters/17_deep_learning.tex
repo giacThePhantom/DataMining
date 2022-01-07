@@ -34,11 +34,11 @@ The output layer is typically at the top and makes the prediction.
 		In binary classification there is one output neuron $\sigma(\vec{x})$.
 		It has a sigmoid activation function:
 
-		$$f(\vec{x}) = \sigma(o(\vec{x})) = \frac{1}{1+e^{-o(\vec{x}}}$$
+		$$f(\vec{x}) = \sigma(o(\vec{x})) = \frac{1}{1+e^{-o(\vec{x})}}$$
 
 		Its decision threshold is at $0.5$:
 
-		$$y^* = sign(f(\vec{x}) - 0.5$$
+		$$y^* = sign(f(\vec{x}) - 0.5)$$
 
 		\subsubsection{Multiclass classification}
 		In multiclass classification there is one output neuron per class, together they form the logits layer:
@@ -90,7 +90,7 @@ The output layer is typically at the top and makes the prediction.
 
 				\subparagraph{For binary classification}
 				Let $y\in\{0,1\}$:
-				$$l(y, f)\vec{x})) = -(u\log f(\vec{x}) + (1-y)\log(1-f(\vec{x})))$$
+				$$l(y, f(\vec{x})) = -(y\log f(\vec{x}) + (1-y)\log(1-f(\vec{x})))$$
 
 				\subparagraph{For multiclass classification}
 				Let $y\in[1,c]$:
@@ -130,7 +130,7 @@ The output layer is typically at the top and makes the prediction.
 
 		\begin{align*}
 			\delta_i &= \frac{\partial E(W)}{\partial a_i}  = \sum\limits_{k\in ch[i]}\frac{\partial E(W)}{\partial a_k}\frac{\partial a_k}{\partial a_i}=\\
-				 &=\sum\limits_{k\in ch[i]} \delta_k\frac{\partial a_k}{\partial\phi_i}\frac{\partial\phi_i}{\partial a_l}=\\
+				 &=\sum\limits_{k\in ch[i]} \delta_k\frac{\partial a_k}{\partial\phi_i}\frac{\partial\phi_i}{\partial a_i}=\\
 				 &=\sum\limits_{k\in ch[i]}\delta_kw_{ki}\frac{\partial\sigma(a_i)}{\partial a_i}=\\
 				 &=\sum\limits_{k\in ch[i]}\delta_kw_{ki}\sigma(a_i)(1-\sigma(a_i))
 		\end{align*}
@@ -188,7 +188,7 @@ The output layer is typically at the top and makes the prediction.
 	Neurons employing the rectifier activation are called rectified linear units \emph{ReLU}.
 
 	\subsection{Regularization}
-	
+
 		\subsubsection{2-norm regularization}
 		2-norm regularization penalizes weights by their Euclidean norm and weights with less influence on error get smaller values:
 
@@ -264,7 +264,7 @@ The output layer is typically at the top and makes the prediction.
 
 		$$y_i = \gamma\bar{x}_i+\beta$$
 
-		This allows for more robustness to parameteactivation and $\mu_B$ and $\sigma^2_B$ are the batch mean and variance.
+		This allows for more robustness to parameter activation and $\mu_B$ and $\sigma^2_B$ are the batch mean and variance.
 		Scaling and shifting each activation with adjustable parameters $\gamma$ and $\beta$ that becomes part of the network parameters yields:
 
 		$$y_i = \gamma\bar{x}_i+\beta$$
@@ -281,7 +281,7 @@ The output layer is typically at the top and makes the prediction.
 
 		\subsubsection{Multi-level supervision}
 		In multi-level supervision auxiliary  output nodes are put at intermediate layers to speed up learning.
-	
+
 \section{Popular deep architectures}
 There are many different possible architectures for deep neural networks:
 
@@ -314,9 +314,8 @@ There are many different possible architectures for deep neural networks:
 
 		\subsubsection{Transformers}
 		Transformers use an attention mechanisms to learn input words encodings that depend on other words in the sentence.
-		The attention mechanism is used to learn output words encoding that thepend on input wird encodings and previously generated output words.
+		The attention mechanism is used to learn output words encoding that depend on input word encodings and previously generated output words.
 
 	\subsection{Graph neural networks}
 	Graph neural networks allow to learn with graph convolution.
 	They allow to learn feature representations for node, to propagate information between neighbouring nodes and efficient training with respect to graph kernels.
-
